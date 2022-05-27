@@ -2,13 +2,13 @@ package com.boribob.dto;
 
 public class EmailDTO {
 	String id;
-	String id_hash;
+	String idHash;
 	
 	public EmailDTO() {}
-	public EmailDTO(String id, String id_hash) {
+	public EmailDTO(String id, String idHash) {
 		super();
 		this.id = id;
-		this.id_hash = id_hash;
+		this.idHash = idHash;
 	}
 	public String getId() {
 		return id;
@@ -16,15 +16,15 @@ public class EmailDTO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getId_hash() {
-		return id_hash;
+	public String getIdHash() {
+		return idHash;
 	}
-	public void setId_hash(String id_hash) {
-		this.id_hash = id_hash;
+	public void setId_hash(String idHash) {
+		this.idHash = idHash;
 	}
 	@Override
 	public String toString() {
-		return "EmailDTO [id=" + id + ", id_hash=" + id_hash + "]";
+		return "EmailDTO [id=" + id + ", idHash=" + idHash + "]";
 	}
 	
 	
