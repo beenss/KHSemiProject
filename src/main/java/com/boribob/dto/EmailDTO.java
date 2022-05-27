@@ -1,8 +1,8 @@
 package com.boribob.dto;
 
 public class EmailDTO {
-	String id;
-	String idHash;
+	private String id;
+	private String idHash;
 	
 	public EmailDTO() {}
 	public EmailDTO(String id, String idHash) {
@@ -26,6 +26,4 @@ public class EmailDTO {
 	public String toString() {
 		return "EmailDTO [id=" + id + ", idHash=" + idHash + "]";
 	}
-	
-	
 }
