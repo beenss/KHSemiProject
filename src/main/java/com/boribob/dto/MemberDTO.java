@@ -1,6 +1,6 @@
 package com.boribob.dto;
 
-public class CustomerDTO {
+public class MemberDTO {
 	private String id;
 	private String password;
 	private String name;
@@ -10,8 +10,8 @@ public class CustomerDTO {
 	private String phone;
 	private int seqSubscribe;
 	
-	public CustomerDTO() {}
-	public CustomerDTO(String id, String password, String name, String roadAddress, String post, String detailAddress,
+	public MemberDTO() {}
+	public MemberDTO(String id, String password, String name, String roadAddress, String post, String detailAddress,
 			String phone, int seqSubscribe) {
 		super();
 		this.id = id;
@@ -75,7 +75,7 @@ public class CustomerDTO {
 	}
 	@Override
 	public String toString() {
-		return "CustomerDTO [id=" + id + ", password=" + password + ", name=" + name + ", roadAddress=" + roadAddress
+		return "MemberDTO [id=" + id + ", password=" + password + ", name=" + name + ", roadAddress=" + roadAddress
 				+ ", post=" + post + ", detailAddress=" + detailAddress + ", phone=" + phone + ", seqSubscribe="
 				+ seqSubscribe + "]";
 	}

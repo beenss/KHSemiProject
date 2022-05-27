@@ -1,11 +1,11 @@
 package com.boribob.dto;
 
-public class EmailDTO {
+public class CertificationDTO {
 	private String id;
 	private String idHash;
 	
-	public EmailDTO() {}
-	public EmailDTO(String id, String idHash) {
+	public CertificationDTO() {}
+	public CertificationDTO(String id, String idHash) {
 		super();
 		this.id = id;
 		this.idHash = idHash;
@@ -24,6 +24,6 @@ public class EmailDTO {
 	}
 	@Override
 	public String toString() {
-		return "EmailDTO [id=" + id + ", idHash=" + idHash + "]";
+		return "CertificationDTO [id=" + id + ", idHash=" + idHash + "]";
 	}
 }
