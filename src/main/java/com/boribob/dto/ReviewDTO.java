@@ -62,5 +62,4 @@ public class ReviewDTO {
 				+ ", reviewTitle=" + reviewTitle + ", reviewContent=" + reviewContent + ", reviewDate="
 				+ reviewDate + "]";
 	}
-	
 }
