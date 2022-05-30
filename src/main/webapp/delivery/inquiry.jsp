@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,58 +9,27 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
-    <title>고객센터-초안</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <title>문의게시판</title>
     <style>
-        /*메인 로고 스타일*/
-        #main-logo {
-            margin-left: 123px;
-            width: 350px;
-            height: 200px;
-        }
-
         body {
+            box-sizing: border-box;
             background-color: rgb(255, 252, 221);
         }
 
-        /*메뉴 스타일*/
-        *.nav-link {
-            color: rgb(44, 44, 44);
-            font-size: large;
+        .header {
+            padding: 20px;
+            position: relative;
         }
 
-        *.nav-link:hover {
-            background-color: blanchedalmond;
-            background-size: 3px;
-        }
-
-        /*메뉴 위치*/
-        #nav-item {
-            margin-top: 150px;
-            margin-left: 325px;
-        }
-
-        /*상품이미지 div 사이즈*/
-        .container {
-            padding-right: 100px;
-        }
-
-        /*대략적인 구조를 직관적으로 확인하시라고 임의로 설정해 둔 테두리입니다!*/
-        img {
-            border: 1px solid rgb(218, 218, 218);
-        }
-
-        /*footer*/
-        .footer {
-            height: 150px;
-            overflow: visible;
+        .footer > * {
             background-color: rgb(255, 216, 131);
-            z-index: 1;
-            margin-top: 40px;
+            padding: 20px;
+            position: relative;
         }
-
+        
         .ft-ul {
             list-style: none;
             text-align: center;
@@ -71,221 +39,142 @@
             font-size: 12px;
             z-index: 1;
         }
-
-        .ft-ul li {
-            height: 25px;
+        .ft-images {
+            text-align: center;
         }
-
-        .facebookicon {
-            position: relative;
-            bottom: 40px;
-            margin-left: 1000px;
-            z-index: 2;
+        .pagination > li > a{
+        background-color: white;
+        color: #7e60b0;
+        background-color: rgba( 255, 255, 255, 0.7 );
         }
-
-        .instagramicon {
-            position: relative;
-            bottom: 90px;
-            margin-left: 1100px;
-            z-index: 2;
+        .container>.row{
+            border-bottom: 1px solid black;
         }
-
-        .youtubeicon {
-            position: relative;
-            bottom: 140px;
-            margin-left: 1200px;
-            z-index: 2;
+        .container>.row:first-child{
+            height: 60px;
         }
-
-        .ft-ul2 {
-            position: relative;
-            bottom: 250px;
-            margin-left: 1100px;
-            z-index: 2;
-            font-size: 10px;
+        .content{
+            height: 40px;
         }
-
-        .ft-ul2 li {
-            height: 17px;
+        .paging{
+            margin-top: 20px;
+        }
+        .buttonBox{
+            margin-right: 300px;
+            margin-top: 20px;
         }
     </style>
-
 </head>
-
 <body>
-    <header>
-        <div class="row justify-content">
-            <div class="col-4">
+    <div class="wrapper">
+        <div class="row justify-content-center header">
+            <div class="col-lg-4 col-12">
                 <img src="images/project_logo.PNG" class="d-block w-100" id="main-logo">
             </div>
-            <div class="col" id="nav-item">
-                <nav class="nav">
-                    <a class="nav-link" href="#">제품 보기</a>
-                    <a class="nav-link" href="#">리뷰</a>
-                    <a class="nav-link" href="#">고객센터</a>
-                    <a class="nav-link" href="#">로그인</a>
-                    <a class="nav-link" href="#">회원가입</a>
-                    <a class="nav-link" style="color: rgb(255, 94, 0);" href="#">구독하기</a>
+            <div class="col-lg-8 col-12">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="#">Boribob</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">제품 보기</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">고객센터</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">회원 가입</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">리뷰</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">로그인</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">구독하기</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </nav>
             </div>
         </div>
+        <!-- 여기까지 헤더 -->
+        <!-- 여기부터 바디 -->
+        <div class= "container">
+            <div class="row text-center align-items-center">
+                <div class="col-lg-1 col-2">번호</div>
+                <div class="col-lg-5 col-10">제목</div>
+                <div class="col-lg-3 d-none d-lg-block">작성자</div>
+                <div class="col-lg-3 d-none d-lg-block">작성일</div>    
+            </div>
+            <div class="row content text-center align-items-center">
+                <div class="col-lg-1 col-2">1</div>
+                <div class="col-lg-5 col-10">배송문의 드립니다.</div>
+                <div class="col-3 d-none d-lg-block">aa11@naver.com</div>
+                <div class="col-3 d-none d-lg-block">2020.03.11</div>    
+            </div>     
         </div>
-    </header>
-    <!--메인영역-->
-    <!--구분선-->
-    <hr class="divider" style="width: 1200px; margin-left: 123px;">
-    <div class="container">
-        <!--로딩 텍스트는 왜 뜨는지 모르겟어요... 수정 시에 반영할테니 감안하고 봐주세요-->
-        <table data-toggle="table" id="inquiry-table" style="margin-left: 48px;">
-            <thead>
-                <tr>
-                    <th>번호</th>
-                    <th>문의유형</th>
-                    <th>제목</th>
-                    <th>작성자</th>
-                    <th>작성일</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>배송</td>
-                    <td>배송 문의</td>
-                    <td>보리보리</td>
-                    <td>2022-05-12</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>배송</td>
-                    <td>배송문의</td>
-                    <td>바비바비</td>
-                    <td>2022-05-07</td>
-                </tr>
-
-                <tr>
-                    <td>3</td>
-                    <td>배송</td>
-                    <td>배송 문의</td>
-                    <td>보리보리</td>
-                    <td>가나다</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>배송</td>
-                    <td>배송 문의</td>
-                    <td>보리보리</td>
-                    <td>가나다</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>배송</td>
-                    <td>배송문의</td>
-                    <td>바비바비</td>
-                    <td>가나다</td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>배송</td>
-                    <td>배송 문의</td>
-                    <td>보리보리</td>
-                    <td>가나다</td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td>배송</td>
-                    <td>배송문의</td>
-                    <td>바비바비</td>
-                    <td>가나다</td>
-                </tr>
-                <tr>
-                    <td>8</td>
-                    <td>배송</td>
-                    <td>배송문의</td>
-                    <td>바비바비</td>
-                    <td>가나다</td>
-                </tr>
-                <tr>
-                    <td>9</td>
-                    <td>배송</td>
-                    <td>배송문의</td>
-                    <td>바비바비</td>
-                    <td>가나다</td>
-                </tr>
-                <tr>
-                    <td>10</td>
-                    <td>배송</td>
-                    <td>배송문의</td>
-                    <td>바비바비</td>
-                    <td>가나다</td>
-                </tr>
-                <tr>
-                    <td>11</td>
-                    <td>배송</td>
-                    <td>배송문의</td>
-                    <td>바비바비</td>
-                    <td>가나다</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="row justify-content-center" style="padding-left: 600px; margin-top: 20px;">
-        <div class="col">
-            <ul class="pagination">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#">&laquo;</a>
-                </li>
-                <li class="page-item active">
-                    <a class="page-link" href="#">1</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">2</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">3</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">4</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">5</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">&raquo;</a>
-                </li>
-                <div style="padding-left: 420px;"><button type="button" class="btn btn-danger disabled">글쓰기</button>
-                </div>
-
-            </ul>
-
+        <!--페이징-->
+        <div class="buttonBox" align="right">
+            <button type="button" class="btn btn-outline-secondary" id="write-btn">글쓰기</button>
         </div>
-    </div>
-    </div>
-    </head>
-
-    <body>
-        <div class="footer">
-            <ul class="ft-ul">
-                <li>BoriBob Inc. 사랑시 고백구 행복동</li>
-                <li>대표 : 보리밥형제들 사업자등록번호 : 780-86-01094</li>
-                <li>대표번호 : +82)-665-3430 팩스번호 : +82)-888-3430 홈페이지 : petvenience.store.com</li>
-                <li>CopyrightⓒBoriBob Inc. All Rights Reserved.</li>
-                <div class="facebookicon">
+        <div class="row paging">
+            <div class="col-12">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">4</a></li>
+                        <li class="page-item"><a class="page-link" href="#">5</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        
+        <!-- 여기부터 풋터 -->
+        <div class="row justify-content-center footer">
+            <div class="col-lg-10 col-12">
+                <ul class="ft-ul">
+                    <li>BoriBob Inc. 사랑시 고백구 행복동</li>
+                    <li>대표 : 보리밥형제들 사업자등록번호 : 780-86-01094</li>
+                    <li>대표번호 : +82)-665-3430 팩스번호 : +82)-888-3430 홈페이지 : petvenience.store.com</li>
+                    <li>CopyrightⓒBoriBob Inc. All Rights Reserved.</li>
+                </ul>
+            </div>
+            <div class="col-lg-2 col-12">
+                <ul class="ft-images">
                     <img src="images/facebook_icon.png" style="border-color: lightblue;">
-                </div>
-                <div class="instagramicon">
                     <img src="images/instagram_icon.png" style="border-color: lightblue;">
-                </div>
-                <div class="youtubeicon">
                     <img src="images/youtube_icon.png" style="border-color: lightblue;">
-                </div>
-                <div class="ft-ul2">
+                </ul>
+                <ul class="ft-ul">
                     <li><strong>고객센터</strong></li>
                     <li style="height: 8px;"></li>
                     <li>오전 10시부터 오후 6시까지</li>
                     <li>토요일, 일요일, 공휴일 휴무</li>
-                </div>
-            </ul>
+                </ul>
+            </div>
         </div>
-        </div>
-    </body>
+
+    </div>
+</body>
 </html>
