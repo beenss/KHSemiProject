@@ -16,9 +16,9 @@ public class ReviewDTO {
 		this.seqReview = seqReview;
 		this.productCode = productCode;
 		this.id = id;
-		this.review_title = reviewTtle;
-		this.review_content = reviewContent;
-		this.review_date = reviewDate;
+		this.reviewTitle = reviewTitle;
+		this.reviewContent = reviewContent;
+		this.reviewDate = reviewDate;
 	}
 	public int getSeqReview() {
 		return seqReview;
@@ -54,7 +54,7 @@ public class ReviewDTO {
 		return reviewDate;
 	}
 	public void setReview_date(String reviewDate) {
-		this.reviewDate = review_date;
+		this.reviewDate = reviewDate;
 	}
 	@Override
 	public String toString() {
