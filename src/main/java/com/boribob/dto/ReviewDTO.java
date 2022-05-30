@@ -26,7 +26,7 @@ public class ReviewDTO {
 	public void setSeqReview(int seqReview) {
 		this.seqReview = seqReview;
 	}
-	public int getProdictCode() {
+	public int getProductCode() {
 		return productCode;
 	}
 	public void setProdictCode(int prodictCode) {
@@ -53,7 +53,7 @@ public class ReviewDTO {
 	public String getReviewDate() {
 		return reviewDate;
 	}
-	public void setReview_date(String reviewDate) {
+	public void setReviewDate(String reviewDate) {
 		this.reviewDate = reviewDate;
 	}
 	@Override
