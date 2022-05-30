@@ -7,6 +7,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+
 import org.apache.commons.dbcp2.BasicDataSource;
 
 import order.orderDTO.OrderDTO;
@@ -14,17 +17,19 @@ import order.orderDTO.PaymentDTO;
 
 public class OrderDAO {
 
-	private BasicDataSource bds = new BasicDataSource();
+	private BasicDataSource bds; 
 
+	
+	
 	public OrderDAO() {
-		String url = "jdbc:oracle:thin:@54.180.114.149:1521/xe";
-		String username = "kh";
-		String password = "kh";
-		bds.setDriverClassName("oracle.jdbc.driver.OracleDriver");
-		bds.setUrl(url);
-		bds.setUsername(username);
-		bds.setPassword(password);
-		bds.setInitialSize(30);
+		try {
+			Context iCtx = new InitialContext(); 
+			Context envCtx = (Context)iCtx.lookup("java:comp/env");
+			bds = (BasicDataSource)envCtx.lookup("jdbc/bds"); 
+		
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 
 	}
 	
@@ -32,9 +37,9 @@ public class OrderDAO {
 		return bds.getConnection();
 	}
 	
-	public int insertOrder(OrderDTO dto) {  // 주문정보 등록 
+	public int insertOrder(OrderDTO dto)throws Exception {  // 주문정보 등록 
 		String sql = "insert into tbl_order values(order_seq.nextval,?,?,?,?,?,?)";
-		try (Connection con = getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
+		try (Connection con = bds.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
 			// order_no -> 시퀀스
 			pstmt.setInt(1, dto.getSeqSubscribe()); // -> 구독번호
 			pstmt.setString(2, dto.getOrderName());// -> 수취인 이름
@@ -47,18 +52,16 @@ public class OrderDAO {
 			int rs = pstmt.executeUpdate();
 
 			return rs;
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
-		return -1;
+		
 
 	}
 		
 	
 	
-	public ArrayList<OrderDTO> findbyOrderName(String orderName) { //주문자명으로 검색하기 
+	public ArrayList<OrderDTO> findbyOrderName(String orderName)throws Exception { //주문자명으로 검색하기 
 		String sql = "select * from tbl_order where order_name = ?";
-		try (Connection con = getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
+		try (Connection con = bds.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
 		pstmt.setString(1, orderName);
 		
 		ResultSet rs  = pstmt.executeQuery();
@@ -79,15 +82,12 @@ public class OrderDAO {
 		
 		
 			
-		}catch (Exception e) {
-			e.printStackTrace();
 		}
-		return null;
 	}
 	
-	public ArrayList<OrderDTO> findbySubscirbeNo(int subscribeNo) { //구독번호로 검색하기 
+	public ArrayList<OrderDTO> findbySubscirbeNo(int subscribeNo)throws Exception { //구독번호로 검색하기 
 		String sql = "select * from tbl_order where seq_subscribe = ?";
-		try (Connection con = getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
+		try (Connection con = bds.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
 		pstmt.setInt(1, subscribeNo);
 		
 		ResultSet rs  = pstmt.executeQuery();
@@ -108,16 +108,13 @@ public class OrderDAO {
 		
 		
 			
-		}catch (Exception e) {
-			e.printStackTrace();
 		}
-		return null;
 	}
 	
 
-	public int updateOrder(OrderDTO dto) {  // 주문정보 등록 
+	public int updateOrder(OrderDTO dto)throws Exception {  // 주문정보 등록 
 		String sql = "update tbl_order set order_phone = ?, order_Address = ?,order_msg = ?,post_msg = ? where order_no = ? ";
-		try (Connection con = getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
+		try (Connection con = bds.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
 			
 			pstmt.setString(1, dto.getOrderPhone()); // -> 수취인 연락처
 			pstmt.setString(2, dto.getOrderAddress()); // -> 수취인 주소
@@ -128,10 +125,7 @@ public class OrderDAO {
 			int rs = pstmt.executeUpdate();
 
 			return rs;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return -1;
+		} 
 
 	}
 		
