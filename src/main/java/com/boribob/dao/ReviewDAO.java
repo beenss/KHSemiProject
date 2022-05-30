@@ -27,7 +27,7 @@ public class ReviewDAO {
 		}
 	}
 
-	// 리뷰 삽압
+	// 리뷰 삽입
 	public int insert(ReviewDTO dto) throws Exception {
 		String sql = "insert into tbl_review values(seq_review.nextval,?,?,?,?,sysdate)";
 
@@ -93,7 +93,8 @@ public class ReviewDAO {
 
 	}
 
-	public String dateToString(Date date) {// date를 String으로 변환하는 메서드
+	//date > string 
+	public String dateToString(Date date) {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 		return sdf.format(date);
 	}
