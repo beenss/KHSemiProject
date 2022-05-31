@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
@@ -62,12 +63,22 @@
             margin-top: 20px;
         }
     </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
+    <title>고객센터-초안</title>
+    <link rel='stylesheet' href='../css/inquiry.css'>
 </head>
 <body>
+
     <div class="wrapper">
         <div class="row justify-content-center header">
             <div class="col-lg-4 col-12">
                 <img src="/images/project_logo.PNG" class="d-block w-100" id="main-logo">
+    <header>
+        <div class="row justify-content">
+            <div class="col-4">
+                <img src="../images/project_logo.PNG" class="d-block w-100" id="main-logo">
             </div>
             <div class="col-lg-8 col-12">
                 <nav class="navbar navbar-expand-lg navbar-light">
@@ -124,6 +135,7 @@
         <div class="buttonBox" align="right">
             <button type="button" class="btn btn-outline-secondary" id="write-btn">글쓰기</button>
         </div>
+
         <div class="row paging">
             <div class="col-12">
                 <nav aria-label="Page navigation">
@@ -165,6 +177,29 @@
                     <img src="/images/youtube_icon.png" style="border-color: lightblue;">
                 </ul>
                 <ul class="ft-ul">
+
+    </div>
+    </div>
+    </head>
+
+    <body>
+        <div class="footer">
+            <ul class="ft-ul">
+                <li>BoriBob Inc. 사랑시 고백구 행복동</li>
+                <li>대표 : 보리밥형제들 사업자등록번호 : 780-86-01094</li>
+                <li>대표번호 : +82)-665-3430 팩스번호 : +82)-888-3430 홈페이지 : petvenience.store.com</li>
+                <li>CopyrightⓒBoriBob Inc. All Rights Reserved.</li>
+                <div class="facebookicon">
+                    <img src="../images/facebook_icon.png" style="border-color: lightblue;">
+                </div>
+                <div class="instagramicon">
+                    <img src="../images/instagram_icon.png" style="border-color: lightblue;">
+                </div>
+                <div class="youtubeicon">
+                    <img src="../images/youtube_icon.png" style="border-color: lightblue;">
+                </div>
+                <div class="ft-ul2">
+
                     <li><strong>고객센터</strong></li>
                     <li style="height: 8px;"></li>
                     <li>오전 10시부터 오후 6시까지</li>
