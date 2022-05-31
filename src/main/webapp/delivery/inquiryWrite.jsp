@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,8 +15,7 @@
     <title>문의글쓰기</title>
     <style>
         body {
-            box-sizing: border-box;
-            background-color: rgb(255, 252, 221);
+            box-sizing: border-box;      
         }
 
         .header {
@@ -24,8 +23,7 @@
             position: relative;
         }
 
-        .footer > * {
-            background-color: rgb(255, 216, 131);
+        .footer > * {          
             padding: 20px;
             position: relative;
         }
@@ -44,7 +42,7 @@
         }
         .container>.row:first-child{
             border-bottom: 1px solid black;
-            padding-bottom: 30px;
+            padding-bottom: 20px;
             margin-bottom: 30px;
         }
         textarea{
@@ -60,7 +58,7 @@
     <div class="wrapper">
         <div class="row justify-content-center header">
             <div class="col-lg-4 col-12">
-                <img src="images/project_logo.PNG" class="d-block w-100" id="main-logo">
+                <img src="/images/project_logo.PNG" class="d-block w-100" id="main-logo">
             </div>
             <div class="col-lg-8 col-12">
                 <nav class="navbar navbar-expand-lg navbar-light">
@@ -103,7 +101,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    문의게시판 
+                    <h4>문의게시판</h4> 
                 </div>
             </div>      
             <div class="row pb-3">
@@ -136,9 +134,9 @@
             </div>
             <div class="col-lg-2 col-12">
                 <ul class="ft-images">
-                    <img src="images/facebook_icon.png" style="border-color: lightblue;">
-                    <img src="images/instagram_icon.png" style="border-color: lightblue;">
-                    <img src="images/youtube_icon.png" style="border-color: lightblue;">
+                    <img src="/images/facebook_icon.png" style="border-color: lightblue;">
+                    <img src="/images/instagram_icon.png" style="border-color: lightblue;">
+                    <img src="/images/youtube_icon.png" style="border-color: lightblue;">
                 </ul>
                 <ul class="ft-ul">
                     <li><strong>고객센터</strong></li>

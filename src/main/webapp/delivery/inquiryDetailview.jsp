@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -16,7 +16,6 @@
         <style>
             body {
                 box-sizing: border-box;
-                background-color: rgb(255, 252, 221);
             }
     
             .header {
@@ -25,7 +24,6 @@
             }
     
             .footer > * {
-                background-color: rgb(255, 216, 131);
                 padding: 20px;
                 position: relative;
             }
@@ -67,7 +65,7 @@
 	<div class="wrapper">
             <div class="row justify-content-center header">
                 <div class="col-lg-4 col-12">
-                    <img src="images/project_logo.PNG" class="d-block w-100" id="main-logo">
+                    <img src="/images/project_logo.PNG" class="d-block w-100" id="main-logo">
                 </div>
                 <div class="col-lg-8 col-12">
                     <nav class="navbar navbar-expand-lg navbar-light">
@@ -109,7 +107,7 @@
             <div class="container">
                 <div class="row  py-3">
                     <div class="col-12">
-                        문의게시판 
+                        <h4>문의게시판</h4> 
                     </div>
                 </div>      
                 <div class="row py-2">
@@ -131,9 +129,11 @@
                     </div>
                 </div>
             </div>
-            <div class="buttonBox d-grid gap-2 d-flex justify-content-center">
+            <div class="buttonBox d-grid gap-3 d-flex justify-content-center">
                 <button type="button" class="btn btn-outline-secondary" id="submit-btn">수정</button>
                 <button type="button" class="btn btn-outline-secondary" id="cancel-btn">취소</button>
+                <button type="button" class="btn btn-outline-secondary" id="reply-btn">답글</button>
+                
             </div>
             <!-- 여기부터 풋터 -->
             <div class="row justify-content-center footer">
@@ -147,9 +147,9 @@
                 </div>
                 <div class="col-lg-2 col-12">
                     <ul class="ft-images">
-                        <img src="images/facebook_icon.png" style="border-color: lightblue;">
-                        <img src="images/instagram_icon.png" style="border-color: lightblue;">
-                        <img src="images/youtube_icon.png" style="border-color: lightblue;">
+                        <img src="/images/facebook_icon.png" style="border-color: lightblue;">
+                        <img src="/images/instagram_icon.png" style="border-color: lightblue;">
+                        <img src="/images/youtube_icon.png" style="border-color: lightblue;">
                     </ul>
                     <ul class="ft-ul">
                         <li><strong>고객센터</strong></li>
