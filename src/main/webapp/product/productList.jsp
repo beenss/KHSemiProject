@@ -14,106 +14,13 @@
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
     <title>제품보기_초안</title>
-    <style>
-        /*메인 로고 스타일*/
-        #main-logo {
-            margin-left: 123px;
-            width: 350px;
-            height: 200px;
-        }
-        body{
-            background-color: rgb(255, 252, 221);
-        }
-        /*메뉴 폰트 스타일*/
-        *.nav-link {
-            color: rgb(44, 44, 44);
-            font-size: large;
-        }
-        *.nav-link:hover {
-            background-color: blanchedalmond;
-            background-size: 3px;
-        }
-        /*메뉴 위치*/
-        #nav-item {
-            margin-top: 150px;
-            margin-left: 325px;
-        }
-        
-        /*상품이미지 div 사이즈*/
-        .container {
-            padding-right: 100px;
-        }
-        /*대략적인 구조를 직관적으로 확인하시라고 임의로 설정해 둔 테두리입니다!*/
-        img{
-            border: 1px solid rgb(218, 218, 218);
-        }
-
-        #btn-category{
-            margin-left: 150px;
-
-        }
-        /*footer*/
-        .footer {
-            height: 150px;
-            overflow: visible;
-            background-color: rgb(255, 216, 131);
-            z-index: 1;
-            margin-top: 40px;
-        }
-
-        .ft-ul {
-            list-style: none;
-            text-align: center;
-            height: 100%;
-            padding-top: 28px;
-            color: black;
-            font-size: 12px;
-            z-index: 1;
-        }
-
-        .ft-ul li {
-            height: 25px;
-        }
-
-        .facebookicon {
-            position: relative;
-            bottom: 40px;
-            margin-left: 1000px;
-            z-index: 2;
-        }
-
-        .instagramicon {
-            position: relative;
-            bottom: 90px;
-            margin-left: 1100px;
-            z-index: 2;
-        }
-
-        .youtubeicon {
-            position: relative;
-            bottom: 140px;
-            margin-left: 1200px;
-            z-index: 2;
-        }
-
-        .ft-ul2 {
-            position: relative;
-            bottom: 250px;
-            margin-left: 1100px;
-            z-index: 2;
-            font-size: 10px;
-        }
-
-        .ft-ul2 li {
-            height: 17px;
-        }
-    </style>
+    <link rel="stylesheet" href="../css/productList.css">
 </head>
 <body>
     <header>
         <div class="row justify-content">
             <div class="col-4">
-                <img src="images/project_logo.PNG" class="d-block w-100" id="main-logo">
+                <img src="../images/project_logo.PNG" class="d-block w-100" id="main-logo">
             </div>
             <div class="col" id="nav-item">
                 <nav class="nav">
@@ -141,15 +48,15 @@
         <div class="row justify-content-around">
             <div class="col" id="product-imgs" style="margin-left: 100px;">
                 <br>
-                <a href="#"><img src="images/project_product.PNG" class="d-block w-100"></a>
+                <a href="#"><img src="../images/project_product.PNG" class="d-block w-100"></a>
             </div>
             <div class="col order-5">
                 <br>
-                <a href="#"><img src="images/project_product.PNG" class="d-block w-100"></a>
+                <a href="#"><img src="../images/project_product.PNG" class="d-block w-100"></a>
             </div>
             <div class="col order-1">
                 <br>
-                <a href="#"><img src="images/project_product.PNG" class="d-block w-100"></a>
+                <a href="#"><img src="../images/project_product.PNG" class="d-block w-100"></a>
             </div>
         </div>
     </div>
@@ -157,15 +64,15 @@
         <div class="row justify-content-around">
             <div class="col" id="product-imgs" style="margin-left: 100px;">
                 <br>
-                <a href="#"><img src="images/project_product.PNG" class="d-block w-100"></a>
+                <a href="#"><img src="../images/project_product.PNG" class="d-block w-100"></a>
             </div>
             <div class="col order-5">
                 <br>
-                <a href="#"><img src="images/project_product.PNG" class="d-block w-100"></a>
+                <a href="#"><img src="../images/project_product.PNG" class="d-block w-100"></a>
             </div>
             <div class="col order-1">
                 <br>
-                <a href="#"><img src="images/project_product.PNG" class="d-block w-100"></a>
+                <a href="#"><img src="../images/project_product.PNG" class="d-block w-100"></a>
             </div>
         </div>
     </div>
@@ -180,13 +87,13 @@
                 <li>대표번호 : +82)-665-3430 팩스번호 : +82)-888-3430 홈페이지 : petvenience.store.com</li>
                 <li>CopyrightⓒBoriBob Inc. All Rights Reserved.</li>
                 <div class="facebookicon">
-                    <img src="images/facebook_icon.png" style="border-color: lightblue;">
+                    <img src="../images/facebook_icon.png" style="border-color: lightblue;">
                 </div>
                 <div class="instagramicon">
-                    <img src="images/instagram_icon.png" style="border-color: lightblue;">
+                    <img src="../images/instagram_icon.png" style="border-color: lightblue;">
                 </div>
                 <div class="youtubeicon">
-                    <img src="images/youtube_icon.png" style="border-color: lightblue;">
+                    <img src="../images/youtube_icon.png" style="border-color: lightblue;">
                 </div>
                 <div class="ft-ul2">
                     <li><strong>고객센터</strong></li>
