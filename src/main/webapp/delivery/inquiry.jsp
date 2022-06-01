@@ -12,6 +12,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <title>문의게시판</title>
     <style>
         body {
@@ -122,7 +123,7 @@
         </div>
         <!--페이징-->
         <div class="buttonBox" align="right">
-            <button type="button" class="btn btn-outline-secondary" id="write-btn">글쓰기</button>
+            <button type="button" class="btn btn-outline-secondary" id="btn-write">글쓰기</button>
         </div>
         <div class="row paging">
             <div class="col-12">
@@ -172,7 +173,11 @@
                 </ul>
             </div>
         </div>
-
     </div>
 </body>
+<script>
+	$("#btn-write").on("click",function(){
+		location.href="/inquiryWrite.iq";
+	})
+</script>
 </html>

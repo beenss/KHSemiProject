@@ -98,7 +98,8 @@
         <!-- 여기까지 헤더 -->
 
         <!-- 여기에 바디 코드 짜주셈 -->
-        <div class="container">
+        <form action = "inquiryWriteProc.iq" method="post">
+        	<div class="container">
             <div class="row">
                 <div class="col-12">
                     <h4>문의게시판</h4> 
@@ -116,12 +117,12 @@
                     <textarea class="form-control" id="inquiry-content" rows="20"></textarea>
                 </div>
             </div>
-        </div>
-        <div class="buttonBox d-grid gap-2 d-flex justify-content-center">
-            <button type="button" class="btn btn-outline-secondary" id="submit-btn">저장</button>
-            <button type="button" class="btn btn-outline-secondary" id="cancel-btn">취소</button>
-        </div>
-
+        	</div>
+        	<div class="buttonBox d-grid gap-2 d-flex justify-content-center">
+            	<button type="button" class="btn btn-outline-secondary" id="submit-btn">저장</button>
+            	<button type="button" class="btn btn-outline-secondary" id="cancel-btn">취소</button>
+        	</div>
+        </form>
         <!-- 여기부터 풋터 -->
         <div class="row justify-content-center footer">
             <div class="col-lg-10 col-12">
