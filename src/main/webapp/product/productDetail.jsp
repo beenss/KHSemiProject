@@ -17,7 +17,6 @@
         crossorigin="anonymous"></script>
 
     <title>상품상세-초안</title>
-
     <style>
         /*메인 로고 스타일*/
         #main-logo {
@@ -190,7 +189,7 @@
     <header>
         <div class="row justify-content">
             <div class="col-4">
-                <img src="images/project_logo.PNG" class="d-block w-100" id="main-logo">
+                <img src="../images/project_logo.PNG" class="d-block w-100" id="main-logo">
             </div>
             <div class="col" id="nav-item">
                 <nav class="nav">
@@ -303,13 +302,13 @@
                 <li>대표번호 : +82)-665-3430 팩스번호 : +82)-888-3430 홈페이지 : petvenience.store.com</li>
                 <li>CopyrightⓒBoriBob Inc. All Rights Reserved.</li>
                 <div class="facebookicon">
-                    <img src="images/facebook_icon.png" style="border-color: lightblue;">
+                    <img src="../images/facebook_icon.png" style="border-color: lightblue;">
                 </div>
                 <div class="instagramicon">
-                    <img src="images/instagram_icon.png" style="border-color: lightblue;">
+                    <img src="../images/instagram_icon.png" style="border-color: lightblue;">
                 </div>
                 <div class="youtubeicon">
-                    <img src="images/youtube_icon.png" style="border-color: lightblue;">
+                    <img src="../images/youtube_icon.png" style="border-color: lightblue;">
                 </div>
                 <div class="ft-ul2">
                     <li><strong>고객센터</strong></li>
