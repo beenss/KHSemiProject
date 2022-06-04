@@ -10,16 +10,15 @@ import javax.naming.InitialContext;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 
-import order.orderDTO.DeliveryDTO;
-import order.orderDTO.OrderDTO;
-import order.orderDTO.PaymentDTO;
+import com.boribob.dto.DeliveryDTO;
+import com.boribob.dto.OrderDTO;
+import com.boribob.dto.PaymentDTO;
 
 public class PaymentDAO {
 	
 	private BasicDataSource bds; 
 
 	public PaymentDAO() {
-		public DeliveryDAO() {
 			try {
 				Context iCtx = new InitialContext(); 
 				Context envCtx = (Context)iCtx.lookup("java:comp/env");

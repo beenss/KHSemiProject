@@ -12,8 +12,7 @@ import javax.naming.InitialContext;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 
-import order.orderDTO.OrderDTO;
-import order.orderDTO.PaymentDTO;
+import com.boribob.dto.OrderDTO;
 
 public class OrderDAO {
 

@@ -27,16 +27,15 @@
                 <nav class="nav">
                     <a class="nav-link" href="#">제품 보기</a>
                     <a class="nav-link" href="#">리뷰</a>
-                    <a class="nav-link" href="#">고객센터</a>
+                    <a class="nav-link" href="/inquiry.iq?currentPage=1">고객센터</a>
                     <a class="nav-link" href="#">로그인</a>
                     <a class="nav-link" href="#">회원가입</a>
                     <a class="nav-link" style="color: rgb(255, 94, 0);" href="#">구독하기</a>
                 </nav>
             </div>
         </div>
-        </div>
     </header>
-
+	
     <!--캐러셀로 공지사항 및 이벤트 안내-->
     <div class="row justify-content-center">
         <div class="col-4">

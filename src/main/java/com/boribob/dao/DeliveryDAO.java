@@ -10,8 +10,7 @@ import javax.naming.InitialContext;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 
-import order.orderDTO.DeliveryDTO;
-import order.orderDTO.OrderDTO;
+import com.boribob.dto.DeliveryDTO;
 
 public class DeliveryDAO {
 
