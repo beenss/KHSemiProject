@@ -1,7 +1,5 @@
 package com.boribob.dao;
 
-import java.lang.reflect.Member;
-import java.nio.channels.SelectableChannel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,8 +7,7 @@ import java.util.ArrayList;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 
-import order.orderDTO.OrderDTO;
-import order.orderDTO.PaymentDTO;
+import com.boribob.dto.OrderDTO;
 
 public class OrderDAO {
 

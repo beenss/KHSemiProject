@@ -7,12 +7,9 @@ import java.util.ArrayList;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 
-import order.orderDTO.DeliveryDTO;
-import order.orderDTO.OrderDTO;
-import order.orderDTO.PaymentDTO;
+import com.boribob.dto.PaymentDTO;
 
 public class PaymentDAO {
-	
 	private BasicDataSource bds = new BasicDataSource();
 
 	public PaymentDAO() {
@@ -24,13 +21,11 @@ public class PaymentDAO {
 		bds.setUsername(username);
 		bds.setPassword(password);
 		bds.setInitialSize(30);
-
 	}
-
+	
 	public Connection getConnection() throws Exception {
 		return bds.getConnection();
 	}
-	
 	
 	public int insertPayment(PaymentDTO dto) {   // 결제 정보 입력 
 		String sql = "insert into tbl_payment values(?,?,?,?,?,?)";

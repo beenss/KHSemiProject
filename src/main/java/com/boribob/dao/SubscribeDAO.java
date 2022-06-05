@@ -3,7 +3,6 @@ package com.boribob.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -47,7 +46,7 @@ public class SubscribeDAO {
 	// 아이디로 구독 정보 찾기
 	public SubscribeDTO selectSubscribesById(String id) throws Exception {
 		// tbl_subscribe 테이블과 tbl_member 테이블 join
-		String sql = "select s.* form tbl_subscribe s join tbl_member m on s.seq_subscribe = m.seq_subscribe where m.id = ?";
+		String sql = "select s.* form tbl_subscribe s join tbl_member m on s.id = m.id where m.id = ?";
 
 		try(Connection con = this.getConnection();
 			PreparedStatement pstmt = con.prepareCall(sql)) {
