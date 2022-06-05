@@ -17,7 +17,6 @@
         crossorigin="anonymous"></script>
 
     <title>상품상세-초안</title>
-
     <style>
         /*메인 로고 스타일*/
         #main-logo {
@@ -120,6 +119,69 @@
         .ft-ul2 li {
             height: 17px;
         }
+
+ 		/* 상품상세 페이지 바디 부분 */
+ 		
+        .container {
+            margin-top: 20px;
+
+        }
+        ul {
+            margin-top: 30px;
+            margin-bottom: 30px;
+            display: block;
+            list-style: none;
+            height:150px;
+        }
+
+        li {
+            float: left;
+            height: 75px;
+            line-height: 75px;
+        }
+
+        li:not(:first-child) {
+            margin-left: 35px;
+        }
+
+        li>p {
+            margin: 0%;
+        }
+
+        li>p>img {
+            width: 100%;
+            height: 60px;
+        }
+        .txt{
+            margin-top: 50px;
+            margin-bottom: 20px;
+        }
+        .txt>span{
+            font-size:18px;
+            font-weight: 700;
+        }
+        .btn{
+            width: fit-content;
+        }
+        .product-img img {
+            padding: 50px;
+        }
+        .product-info{
+            vertical-align: middle;
+            padding: 30px;
+        }
+        .btn-subscribe>button{
+            width: 200px;
+            height: 45px;
+            font-size: 20px;
+        }
+        .btn-subscribe{
+            text-align: center;
+        }
+        .product-info h2{
+            margin-top: 30px;
+            font-weight: 650;
+        }
     </style>
 </head>
 
@@ -127,13 +189,13 @@
     <header>
         <div class="row justify-content">
             <div class="col-4">
-                <img src="images/project_logo.PNG" class="d-block w-100" id="main-logo">
+                <img src="../images/project_logo.PNG" class="d-block w-100" id="main-logo">
             </div>
             <div class="col" id="nav-item">
                 <nav class="nav">
                     <a class="nav-link" href="#">제품 보기</a>
                     <a class="nav-link" href="#">리뷰</a>
-                    <a class="nav-link" href="#">고객센터</a>
+                    <a class="nav-link" href="#">고객센터</a>	
                     <a class="nav-link" href="#">로그인</a>
                     <a class="nav-link" href="#">회원가입</a>
                     <a class="nav-link" style="color: rgb(255, 94, 0);" href="#">구독하기</a>
@@ -146,57 +208,92 @@
 
     <!--헤더와 메인의 구분선-->
     <hr class="divider" style="width: 1200px; margin-left: 123px;">
-    <div class="container">
         <!--상품 이미지 영역입니다 해당 이미지를 클릭 시 상품 상세정보로 이동-->
-        <div class="row justify-content-left">
-            <div class="col-5" id="product-imgs" style="margin-left: 100px;">
-                <div class="btn-category" style="margin-bottom: 10px;">
-                    <button type="button" class="btn btn-warning">강아지</button>
-                    <button type="button" class="btn btn-warning">고양이</button>
-                </div>
-                <img src="images/project_product.PNG" class="d-block w-100">
+        <!-- 상품 상세 페이지 -->
+    <div class="container product-detail-info">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1><span>${product.productName}</span></h1>
             </div>
-            <div class="col-5">
-                <br>
-                <br>
-                <br>
-                <div class="col" style="text-align: right;">
-                    <h3>보리밥's Special food type A</h3>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-lg-6 product-img">
+                <div>
+                    <img src="${product.productImg}" class="card-img-top" alt="...">
                 </div>
-                <div class="col" style="text-align: right;">
-                    <br>
-                    <br>
-                    <h4>상품설명</h4>
-                </div>
-                <div class="col" style="text-align: right;">
-                    -브로컬리<br>
-                    칼륨, 칼슘 등의 풍부한 미네랄로 아이들의 활력 증강 !<br>
-                    -단호박<br>
-                    식이섬유와 펙틴으로 노폐물 배출에 도움 ! <br>
-                    -렌틸콩<br>
-                    콜레스테롤을 낮추고 혈당 조절에 도움 ! <br>
+            </div>
+            <div class="col-lg-6 product-info">
+                <div>
+                    <h2><span>${product.productName}</span><span>는</span> <br>
+                    <span>이런 특징을 가지고 있어요!</span></h2>
                 </div>
                 <br>
-                <br>
-                <div class="col" style="text-align: right;">
-                    <br>
-                    <h4>상품가격</h4>
-                    <div>
-                        <h6>50,000원</h6>
-                    </div>
-                </div>
-                <br>
-                <br>
-                <div class="row">
-                    <button type="button" class="btn btn-danger disabled" style="height: 50px;">구독하기</button>
+                <ul class="d-none d-lg-block">
+                    <li>
+                        <p class="img"><img src="/semi_project/images/영양/고단백.png"></p>
+                        <span>고단백</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/semi_project/images/영양/기호증강.png"></p>
+                        <span>기호증강</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/semi_project/images/영양/성장기 도움.png"></p>
+                        <span>성장기도움</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/semi_project/images/영양/영양보충.png"></p>
+                        <span>영양보충</span>
+                    </li>
+                </ul>
+                <div class="txt">
+                    <span>${product.productContent}</span>
+                </div> <br>
+                <div class="btn-subscribe">
+                    <button type="button" class="btn btnCat btn-dark">구독하기</button>
                 </div>
             </div>
         </div>
+        <br>
     </div>
-    <hr class="divider" style="width: 1200px; margin-left: 123px;">
-    <div class="row justify-content-center" id="pro-explain">상품 상세설명 및 이미지</div>
-    </div>
-    <!--풋터영역-->
+    <div class="container product-detail-nutrient">
+        <div class="row">
+            <p>필수 영양소들이 포함된 재로로 만들어졌어요!</p>
+        </div>
+        <div class="row">
+            <ul>
+                <li>
+                    <p class="img"><img src="/semi_project/images/식재료/소고기.png"></p>
+                    <span>소고기</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/semi_project/images/식재료/보리.png"></p>
+                    <span>보리</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/semi_project/images/식재료/블루베리.png"></p>
+                    <span>블루베리</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/semi_project/images/식재료/비트.png"></p>
+                    <span>비트</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/semi_project/images/식재료/두부.png"></p>
+                    <span>두부</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/semi_project/images/식재료/감자.png"></p>
+                    <span>감자</span>
+                </li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-6"><h1>영양소 설명</h1></div>
+            <div class="col-6"><h1>영양 정보표</h1></div>
+        </div>
+    </div>    <!--풋터영역-->
     <div class="row justify-content-around">
         <div class="footer">
             <ul class="ft-ul">
@@ -205,13 +302,13 @@
                 <li>대표번호 : +82)-665-3430 팩스번호 : +82)-888-3430 홈페이지 : petvenience.store.com</li>
                 <li>CopyrightⓒBoriBob Inc. All Rights Reserved.</li>
                 <div class="facebookicon">
-                    <img src="images/facebook_icon.png" style="border-color: lightblue;">
+                    <img src="../images/facebook_icon.png" style="border-color: lightblue;">
                 </div>
                 <div class="instagramicon">
-                    <img src="images/instagram_icon.png" style="border-color: lightblue;">
+                    <img src="../images/instagram_icon.png" style="border-color: lightblue;">
                 </div>
                 <div class="youtubeicon">
-                    <img src="images/youtube_icon.png" style="border-color: lightblue;">
+                    <img src="../images/youtube_icon.png" style="border-color: lightblue;">
                 </div>
                 <div class="ft-ul2">
                     <li><strong>고객센터</strong></li>
