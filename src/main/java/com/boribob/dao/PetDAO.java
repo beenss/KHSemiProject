@@ -49,25 +49,29 @@ public class PetDAO {
 		}
 	}
 	
+	// 아이디로 펫 정보 확인
+	
+	
 	// 펫의 정보를 비트 배열로 저장
 	public ArrayList<Integer> getPetStatus(PetDTO dto) throws Exception {
 		ArrayList<Integer> petDetails = new ArrayList<>();
 		
-		// 인덱스 순서대로 견/묘 구분, 나이, 알러지 종류, 몸무게
-		// 견/묘 구분 입력
-		if (dto.getPetType() == "dog") petDetails.add(0); // 개
-		else if (dto.getPetType() == "cat") petDetails.add(1); // 고양이
+		// 인덱스 순서대로 알러지 종류, 나이, 몸무게, 견/묘 구분
+
+		// 알러지 종류 입력
+		petDetails.add(dto.getPetAllergy()); // 0이면 없음, 1이면 있음
 		
 		// 나이 입력
 		if (dto.getPetAge() <= 5) petDetails.add(0); // 5살 이하
 		else petDetails.add(1); // 6살 이상
 		
-		// 알러지 종류 입력
-		petDetails.add(dto.getPetAllergy()); // 0이면 없음, 1이면 있음
-		
 		// 몸무게 입력
 		if (dto.getPetWeight() <= 5) petDetails.add(0); // 5kg 이하
 		else petDetails.add(1); // 6kg 이상
+
+		// 견/묘 구분 입력
+		if (dto.getPetType() == "dog") petDetails.add(0); // 개
+		else if (dto.getPetType() == "cat") petDetails.add(1); // 고양이
 		
 		return petDetails;
 	}
@@ -77,6 +81,4 @@ public class PetDAO {
 		Algorithms algorithm = new Algorithms();
 		return algorithm.bitmask(petDetails, 0);
 	}
-	
-	
 }

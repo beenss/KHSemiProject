@@ -7,12 +7,9 @@ import java.util.ArrayList;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 
-import order.orderDTO.DeliveryDTO;
-import order.orderDTO.OrderDTO;
+import com.boribob.dto.DeliveryDTO;
 
 public class DeliveryDAO {
-
-	
 	private BasicDataSource bds = new BasicDataSource();
 
 	public DeliveryDAO() {
@@ -30,8 +27,6 @@ public class DeliveryDAO {
 	public Connection getConnection() throws Exception {
 		return bds.getConnection();
 	}
-	
-	
 	
 	public int insertOrder(DeliveryDTO dto) {  // 주문정보 등록 
 		String sql = "insert into tbl_delivery values(?,?)";
