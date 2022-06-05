@@ -87,8 +87,28 @@ public class MemberDAO {
 			return rs;
 		}
 	}
+	
+	public boolean selectById(String id, String password)throws Exception{
+		String sql = "select count(*) from tbl_member where id = ? and password =?";
+		try(Connection con = bds.getConnection(); 
+				PreparedStatement pstmt = con.prepareStatement(sql)){
+			
+			pstmt.setString(1, id);
+			pstmt.setString(2, password);
+			
+			ResultSet rs = pstmt.executeQuery();
+			rs.next();
+			int result = rs.getInt(1); // 로그인 성공시 1 / 로그인 실패시 0
+			if(result == 1) {
+				return true;
+			}else {
+				return false;
+			}
+		}
+	}
+	
 	public MemberDTO selectById(String id)throws Exception{
-		String sql = "select * from tbl_member where id=?";
+		String sql = "select * from tbl_member where id = ?";
 		try(Connection con = bds.getConnection();
 			PreparedStatement pstmt = con.prepareStatement(sql);){
 			pstmt.setString(1, id);
@@ -108,6 +128,7 @@ public class MemberDAO {
 			}return null;
 		}
 	}
+	/* 수빈씨랑 상의중
 	public MemberDTO isLoginOk(String id, String password)throws Exception{
 		String sql = "select * from tbl_member where id = ? and password = ?";
 		try(Connection con = bds.getConnection(); 
@@ -116,7 +137,6 @@ public class MemberDAO {
 			pstmt.setString(2, password);
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {//로그인 성공 이라면
-				String name = rs.getString("name");
 				String post = rs.getString("post");
 				String roadAddress = rs.getString("road_address");
 				String detailAddress = rs.getString("detail_address");
@@ -125,10 +145,8 @@ public class MemberDAO {
 			}else {
 				return null;
 			}
-			
 		}
-	}
-	
+	}*/
 }
 
 
