@@ -1,17 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-            crossorigin="anonymous"></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
         <title>문의글쓰기</title>
         <style>
             body {
@@ -40,23 +42,21 @@
             .ft-images {
                 text-align: center;
             }
-            .container>.row:first-child{
+            .inquiry>.row:first-child{
                 border-bottom: 1px solid black;
             }
             textarea{
                 resize: none;
                 margin-bottom: 30px;
+                background-color:#FFF !important;
             }
             .buttonBox{
                 margin-bottom: 30px;
             }
-            #inquiry-content{
-            background-color:#FFF !important;
-            }
-            .container>.row:nth-child(2){
+            .inquiry>.row:nth-child(2){
                 border-bottom: 1px solid lightgray;
             }
-            .container>.row:nth-child(3){
+            .inquiry>.row:nth-child(3){
                 border-bottom: 1px solid lightgray;
             }
         </style>
@@ -104,7 +104,7 @@
             </div>
             <!-- 여기까지 헤더 -->
             <!-- 여기에 바디 코드 짜주셈 -->
-            <div class="container">
+            <div class="container inquiry">
                 <div class="row  py-3">
                     <div class="col-12">
                         <h4>문의게시판</h4> 
@@ -113,28 +113,40 @@
                 <div class="row py-2">
                     <div class="col-2 col-form-label">제목</div>
                     <div class="col-10">
-                        배송관련 문의 드립니다
+                        ${dto.inquiryTitle}
                     </div>
                 </div>
                 <div class="row py-2">
                     <div class="col-lg-2 d-none d-lg-block col-form-label">작성자</div>
-                    <div class="col-lg-5 col-7">sss123@google.com</div>
+                    <div class="col-lg-5 col-7">${dto.id}</div>
                     <div class="col-lg-2 d-none d-lg-block col-form-label">작성일</div>
-                    <div class="col-lg-3 col-5">2022.05.01</div>
+                    <div class="col-lg-3 col-5">${dto.inquiryDate}</div>
                 </div>
                 <div class="row py-2">
                     <div class="col-2 form-label">내용</div>
                     <div class="col-10">
-                        <textarea readonly class="form-control" id="inquiry-content" rows="20">22일에 보낸 물건은 대체 언제 도착하나요?? 너무 화나요!</textarea>
+                        <textarea readonly class="form-control" id="inquiry-content" rows="20">${dto.inquiryContent}</textarea>
                     </div>
                 </div>
             </div>
-            <div class="buttonBox d-grid gap-3 d-flex justify-content-center">
-                <button type="button" class="btn btn-outline-secondary" id="submit-btn">수정</button>
-                <button type="button" class="btn btn-outline-secondary" id="cancel-btn">취소</button>
-                <button type="button" class="btn btn-outline-secondary" id="reply-btn">답글</button>
-                
+            <c:if test="${not empty dto.inquiryAnswer}">
+            <div class="container">
+            	<div class="row py-2">
+                    <div class="col-2 form-label">답변</div>
+                    <div class="col-10">
+                        <textarea readonly class="form-control" id="inquiry-answer" rows="20">${dto.inquiryAnswer}</textarea>
+                    </div>
+                </div>
             </div>
+            </c:if>
+            <div class="buttonBox d-grid d-flex justify-content-center">
+                <button type="button" class="btn btn-outline-secondary" id="back-btn">뒤로가기</button>                                
+            </div>
+            <script>
+            $("#back-btn").on("click",function(){
+            		location.href="/inquiry.iq?currentPage=1"
+            	})
+            </script>
             <!-- 여기부터 풋터 -->
             <div class="row justify-content-center footer">
                 <div class="col-lg-10 col-12">

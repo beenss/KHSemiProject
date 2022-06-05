@@ -12,6 +12,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <title>문의글쓰기</title>
     <style>
         body {
@@ -98,7 +99,8 @@
         <!-- 여기까지 헤더 -->
 
         <!-- 여기에 바디 코드 짜주셈 -->
-        <div class="container">
+        <form action = "/inquiryWriteProc.iq" method="post" id="inquiry-write-form">
+        	<div class="container">
             <div class="row">
                 <div class="col-12">
                     <h4>문의게시판</h4> 
@@ -107,21 +109,37 @@
             <div class="row pb-3">
                 <div class="col-2 col-form-label">제목</div>
                 <div class="col-10">
-                    <input type="text" class="form-control" id="inquiry-title">
+                    <input type="text" class="form-control" id="inquiry-title" name="inquiryTitle">
                 </div>
             </div>
             <div class="row">
                 <div class="col-2 form-label">내용</div>
                 <div class="col-10">
-                    <textarea class="form-control" id="inquiry-content" rows="20"></textarea>
+                    <textarea class="form-control" id="inquiry-content" name="inquiryContent" rows="20"></textarea>
                 </div>
             </div>
-        </div>
+        	</div>
+        </form>
         <div class="buttonBox d-grid gap-2 d-flex justify-content-center">
-            <button type="button" class="btn btn-outline-secondary" id="submit-btn">저장</button>
-            <button type="button" class="btn btn-outline-secondary" id="cancel-btn">취소</button>
+            <button type="button" class="btn btn-outline-secondary" id="btn-save">저장</button>
+            <button type="button" class="btn btn-outline-secondary" id="btn-cancel">취소</button>
         </div>
-
+        <script>
+        	$("#btn-save").on("click",function(){
+        		if($("#inquiry-title").val()===""){
+        			//제목 입력 안하면 제목 입력해달라 요청
+        			alert("제목을 입력해주세요")
+        			$("#inquiry-title").focus();
+        			return;
+        		}
+        		if($("#inquiry-content").val()===""){
+        			alert("내용을 입력해주세요");
+        			$("#inquiry-content").focus();
+        			return;
+        		}
+        		$("#inquiry-write-form").submit();
+        	})
+        </script>
         <!-- 여기부터 풋터 -->
         <div class="row justify-content-center footer">
             <div class="col-lg-10 col-12">
@@ -146,7 +164,6 @@
                 </ul>
             </div>
         </div>
-
     </div>
 </body>
 </html>

@@ -8,11 +8,10 @@ public class MemberDTO {
 	private String post;
 	private String detailAddress;
 	private String phone;
-	private int seqSubscribe;
 	
 	public MemberDTO() {}
 	public MemberDTO(String id, String password, String name, String roadAddress, String post, String detailAddress,
-			String phone, int seqSubscribe) {
+			String phone) {
 		super();
 		this.id = id;
 		this.password = password;
@@ -21,7 +20,6 @@ public class MemberDTO {
 		this.post = post;
 		this.detailAddress = detailAddress;
 		this.phone = phone;
-		this.seqSubscribe = seqSubscribe;
 	}
 
 
@@ -67,16 +65,10 @@ public class MemberDTO {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public int getSeqSubscribe() {
-		return seqSubscribe;
-	}
-	public void setSeqSubscribe(int seqSubscribe) {
-		this.seqSubscribe = seqSubscribe;
-	}
 	@Override
 	public String toString() {
 		return "MemberDTO [id=" + id + ", password=" + password + ", name=" + name + ", roadAddress=" + roadAddress
-				+ ", post=" + post + ", detailAddress=" + detailAddress + ", phone=" + phone + ", seqSubscribe="
-				+ seqSubscribe + "]";
+				+ ", post=" + post + ", detailAddress=" + detailAddress + ", phone=" + phone + 
+				"]";
 	}
 }
