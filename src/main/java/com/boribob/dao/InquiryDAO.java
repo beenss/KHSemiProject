@@ -29,7 +29,7 @@ public class InquiryDAO {
 		}
 	
 	public int insert (InquiryDTO dto)throws Exception{//데이터삽입
-		String sql = "insert into tbl_inquiry values(seq_inquiry.nextval,?,?,?,sysdate,null) ";
+		String sql = "insert into tbl_inquiry values(seq_inquiry.nextval,?,?,?,sysdate)";
 		try(Connection con = bds.getConnection(); 
 			PreparedStatement pstmt = con.prepareStatement(sql);){
 			pstmt.setString(1, dto.getId());
