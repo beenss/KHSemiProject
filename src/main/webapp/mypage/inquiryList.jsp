@@ -2,10 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -63,15 +63,30 @@
             margin-right: 300px;
             margin-top: 20px;
         }
+        .container>.row:first-child{
+            border-bottom: 1px solid black;
+        }
+        textarea{
+            resize: none;
+            margin-bottom: 30px;
+            background-color:#FFF !important;
+        }
+        .inquiryTitle{
+          	background-color:#FFF !important;
+        }
+        .listAll>.row:nth-child(2){
+            border-bottom: 1px solid lightgray;
+        }
+        .listAll>.row:nth-child(3){
+            border-bottom: 1px solid lightgray;
+        }
+        .buttonBox2>button{
+        	display:none;
+        }
     </style>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
-    <title>고객센터-초안</title>
-    <link rel='stylesheet' href='../css/inquiry.css'>
 </head>
 <body>
-   <div class="wrapper">
+	<div class="wrapper">
         <div class="row justify-content-center header">
             <div class="col-lg-4 col-12">
                 <img src="/images/project_logo.PNG" class="d-block w-100" id="main-logo">
@@ -100,7 +115,7 @@
                                     <a class="nav-link" href="#">리뷰</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">로그인</a>
+                                    <a class="nav-link" href="/login.jsp">로그인</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">구독하기</a>
@@ -113,7 +128,7 @@
         </div>
         <!-- 여기까지 헤더 -->
         <!-- 여기부터 바디 -->
-        <div class= "container">
+        <div class= "container listAll">
             <div class="row text-center align-items-center">
                 <div class="col-lg-1 col-2">번호</div>
                 <div class="col-lg-5 col-10">제목</div>
@@ -124,20 +139,15 @@
 				<c:when test="${list.size()==0}">
 					<div class="row content text-center align-items-center">
 						<div class="col">
-							등록된 게시글이 없습니다.
+							등록된 문의글이 없습니다.
 						</div>
 					</div>
 				</c:when>
 				<c:otherwise>
 					<c:forEach items="${list}" var="dto">
-						<div class="row content text-center align-items-center" style="cursor: pointer;" onclick="location.href='/inquiryDetailview.iq?seqInquiry=${dto.seqInquiry}';">
+						<div class="row content text-center align-items-center" style="cursor: pointer;">
                 			<div class="col-lg-1 col-2">${dto.seqInquiry}</div>
-                			<c:if test="${not empty dto.inquiryAnswer}">
-               		 			<div class="col-lg-5 col-10"><strong>[답변완료]</strong> ${dto.inquiryTitle}</div>
-               		 		</c:if>
-               		 		<c:if test="${empty dto.inquiryAnswer}">
-               		 			<div class="col-lg-5 col-10">${dto.inquiryTitle}</div>
-               		 		</c:if >
+               		 		<div class="col-lg-5 col-10">${dto.inquiryTitle}</div>
                	 			<div class="col-3 d-none d-lg-block">${dto.id}</div>
                 			<div class="col-3 d-none d-lg-block">${dto.inquiryDate}</div>    
            				</div>
@@ -145,35 +155,104 @@
 				</c:otherwise>
 			</c:choose>     
         </div>
-        <!--페이징-->
-        <div class="buttonBox" align="right">
-            <button type="button" class="btn btn-outline-secondary" id="btn-write">글쓰기</button>
-        </div>
-        <div class="row paging">
-            <div class="col-12">
-                <nav aria-label="Page navigation">
-                    <ul class="pagination justify-content-center">
-                    <c:if test="${map.makePrev eq true}">
-                        <li class="page-item">
-                            <a class="page-link" href="/inquiry.iq?currentPage=${map.startNavi-1}" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                   </c:if>
-                   <c:forEach var="pageNumber" begin="${map.startNavi}" end="${map.endNavi}" step="1">
-                   		<li class="page-item"><a class="page-link" href="/inquiry.iq?currentPage=${pageNumber}">${pageNumber}</a></li>
-                   </c:forEach>    
-                   <c:if test="${map.makeNext eq true}">                   
-                        <li class="page-item">
-                            <a class="page-link" href="/inquiry.iq?currentPage=${map.endNavi+1}" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        	</a>
-                        </li>
-                    </c:if>
-                    </ul>
-                </nav>
-            </div>
-        </div>
+        <script>
+       		$(".content").on("click",function(e){
+       			let seqInquiry = $(e.target).parent(".row").children().eq(0).html();
+       			console.log(seqInquiry);
+       			$.ajax({url:"/inquiryListDetail.iq?seqInquiry="+seqInquiry
+       				, type:"get"
+       				, dataType:"json"
+           			,success:function(rs){
+           				console.log(rs);
+           				makeInquiry(rs);
+           			}, error: function(e){
+        					console.log(e);
+        			}
+           		})
+       				
+       		});
+       		$(".container").on("click",".modifyInquiry",function(e){//수정버튼
+       			$(e.target).parent().children().css("display","none");
+       			$(e.target).parent().next(".buttonBox2").children().css("display","block");
+	       		$(".inquiryTitle").attr("readonly",false);
+	       		$(".inquiryContent").attr("readonly",false);
+	       		$(".inquiryTitle").focus();
+       		})
+       		$(".container").on("click",".backBtn",function(){//뒤로가기버튼
+    			location.href="/inquiryList.iq"
+    		})
+    		$(".container").on("click",".deleteInquiry",function(e){//삭제버튼
+    			let seqInquiry = $(e.target).val();
+    			console.log(seqInquiry);
+    			location.href="/inquiryDelete.iq?seqInquiry="+seqInquiry;
+    		})
+    		$(".container").on("click",".cancelInquiry",function(e){//취소버튼
+    			location.href="/inquiryList.iq"
+    		})
+       		$(".container").on("click",".submitInquiry",function(e){//수정완료버튼
+       			let seqInquiry = $(e.target).val();
+       			console.log(seqInquiry);
+       			let inquiryTitle = $(e.target).parent(".buttonBox2").parent(".container").find(".inquiryTitle").val();
+       			console.log(inquiryTitle);
+       			let inquiryContent = $(e.target).parent(".buttonBox2").parent(".container").find("textarea").val();
+       			console.log(inquiryContent);
+       			
+       			$.ajax({
+    				url : "/inquiryUpdate.iq"
+    				,type: "post"
+    				, dataType:"json"
+    				,data:{seqInquiry:seqInquiry,inquiryTitle:inquiryTitle,inquiryContent:inquiryContent}
+    				,success:function(rs){
+    					console.log(rs)
+    					if(rs ==="fail"){
+    						alert("수정에 실패했습니다.")
+    					}else{
+    						console.log(rs);
+               				makeInquiry(rs);
+    					}
+    				}, error:function(e){
+    					console.log(e)
+    				}
+    			})
+    		})
+    		function makeInquiry(rs){
+       			$(".container").empty();
+   				let container = $("<div class='container'>");
+   				let row1 = $("<div class='row py-2'>")
+   				let col1 = $("<div class='col-2 col-form-label'>").html("제목");
+   				let col2 = $("<div class='col-10'>")
+   				let text = $("<input type='text' readonly='readonly'>").addClass("form-control inquiryTitle").val(rs.inquiryTitle);
+   				col2.append(text);
+   				row1.append(col1,col2);
+   					
+   				let row2 = $("<div class='row py-2'>")
+   				let col3 = $("<div class='col-lg-2 d-none d-lg-block col-form-label'>").html("작성자");
+   				let col4 = $("<div class='col-lg-5 col-7'>").html(rs.id);
+   				let col5 = $("<div class='col-lg-2 d-none d-lg-block col-form-label'>").html("작성일");
+   				let col6 = $("<div class='col-lg-3 col-5'>").html(rs.inquiryDate);
+   				row2.append(col3,col4,col5,col6);
+   					
+   				let row3 = $("<div class='row py-2'>");
+   				let col7 = $("<div class='col-2 form-label'>").html("내용");
+   				let col8 = $("<div class='col-10'>");
+   				let textarea = $("<textarea readonly class='inquiryContent form-control' rows='20'>").val(rs.inquiryContent);
+   				col8.append(textarea);
+   				row3.append(col7,col8);
+   					
+   				let buttonBox1 = $("<div class='buttonBox1 d-grid gap-3 d-flex justify-content-center'>")
+   				let button1 = $("<button>").addClass("btn btn-outline-secondary modifyInquiry").html("수정").val(rs.seqInquiry);
+   				let button2 = $("<button>").addClass("btn btn-outline-secondary deleteInquiry").html("삭제").val(rs.seqInquiry);
+   				let button3 = $("<button>").addClass("btn btn-outline-secondary backBtn").html("뒤로가기")
+   				let buttonBox2 = $("<div class='buttonBox2 d-grid gap-2 d-flex justify-content-center'>")
+   				let button4 = $("<button>").addClass("btn btn-outline-secondary submitInquiry").html("완료").val(rs.seqInquiry);
+   				let button5 = $("<button>").addClass("btn btn-outline-secondary cancelInquiry").html("취소").val(rs.seqInquiry);
+   				buttonBox1.append(button1,button2,button3);
+   				buttonBox2.append(button4,button5);
+   				container.append(row1,row2,row3,buttonBox1,buttonBox2);
+   				$(".container").append(container);
+       		}
+       		    		
+        </script>
         <!-- 여기부터 풋터 -->
         <div class="row justify-content-center footer">
             <div class="col-lg-10 col-12">
@@ -200,9 +279,4 @@
         </div>
     </div>
 </body>
-<script>
-	$("#btn-write").on("click",function(){
-		location.href="/inquiryWrite.iq";
-	})
-</script>
 </html>

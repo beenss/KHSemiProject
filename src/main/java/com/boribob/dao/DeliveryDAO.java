@@ -5,22 +5,31 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+
 import org.apache.commons.dbcp2.BasicDataSource;
 
 import com.boribob.dto.DeliveryDTO;
 
 public class DeliveryDAO {
+<<<<<<< HEAD
 	private BasicDataSource bds = new BasicDataSource();
+=======
+
+	
+	private BasicDataSource bds;
+>>>>>>> d6672ac0bb586e6d33ad88cc2c0f6a5a7230e6a1
 
 	public DeliveryDAO() {
-		String url = "jdbc:oracle:thin:@54.180.114.149:1521/xe";
-		String username = "kh";
-		String password = "kh";
-		bds.setDriverClassName("oracle.jdbc.driver.OracleDriver");
-		bds.setUrl(url);
-		bds.setUsername(username);
-		bds.setPassword(password);
-		bds.setInitialSize(30);
+		try {
+			Context iCtx = new InitialContext(); 
+			Context envCtx = (Context)iCtx.lookup("java:comp/env");
+			bds = (BasicDataSource)envCtx.lookup("jdbc/bds"); 
+		
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 
 	}
 
@@ -28,9 +37,13 @@ public class DeliveryDAO {
 		return bds.getConnection();
 	}
 	
+<<<<<<< HEAD
 	public int insertOrder(DeliveryDTO dto) {  // 주문정보 등록 
+=======
+	public int insertOrder(DeliveryDTO dto)throws Exception {  // 주문정보 등록 
+>>>>>>> d6672ac0bb586e6d33ad88cc2c0f6a5a7230e6a1
 		String sql = "insert into tbl_delivery values(?,?)";
-		try (Connection con = getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
+		try (Connection con =  bds.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
 			// order_no -> 시퀀스
 			pstmt.setInt(1, dto.getDelivery_no()); // -> 배송번호 
 			pstmt.setString(2, dto.getDeliveryStatus());// -> 배송상태 
@@ -40,17 +53,14 @@ public class DeliveryDAO {
 			int rs = pstmt.executeUpdate();
 
 			return rs;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return -1;
+		} 
 
 	}
 	
 
-	public ArrayList<DeliveryDTO> findbyDeliveryNo(int deliverNo) { //배달번호로 검색하기 
+	public ArrayList<DeliveryDTO> findbyDeliveryNo(int deliverNo)throws Exception { //배달번호로 검색하기 
 		String sql = "select * from tbl_delivery where delivery_no = ?";
-		try (Connection con = getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
+		try (Connection con = bds.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
 		pstmt.setInt(1, deliverNo);
 		
 		ResultSet rs  = pstmt.executeQuery();
@@ -68,15 +78,12 @@ public class DeliveryDAO {
 		
 		
 			
-		}catch (Exception e) {
-			e.printStackTrace();
 		}
-		return null;
 	}
 	
-	public int updateOrder(DeliveryDTO dto) {  // 배달정보 수정 
+	public int updateOrder(DeliveryDTO dto)throws Exception {  // 배달정보 수정 
 		String sql = "update tbl_delivery set delivery_status = ?";
-		try (Connection con = getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
+		try (Connection con = bds.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
 			
 			pstmt.setString(1, dto.getDeliveryStatus()); // -> 배달 상태 
 			
@@ -84,10 +91,7 @@ public class DeliveryDAO {
 			int rs = pstmt.executeUpdate();
 
 			return rs;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return -1;
+		} 
 
 	}
 	

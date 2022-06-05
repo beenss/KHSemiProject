@@ -125,5 +125,78 @@ public class ProductDAO {
 		}
 
 	}
-
+	
+	// 원하는 상품 클릭시 해당 상품의 코드를 이용해 정보를 얻어내고 뿌려준다. 
+	public ProductDTO selectByCode(int productCode)throws Exception {
+		String sql = "select * from tbl_product where product_code = ?";
+		
+		try(Connection con = this.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);){
+			pstmt.setInt(1, productCode);
+			ResultSet rs = pstmt.executeQuery();
+			rs.next();
+			String productName = rs.getString(2);
+			int productPrice = rs.getInt(3);
+			String productContent = rs.getString(4);
+			String productImg = rs.getString(5);
+			ProductDTO dto = new ProductDTO(productCode,productName,productPrice,productContent,productImg);
+			return dto;
+		}
+	}
+	
+	// 강아지 사료만 조회 
+	public ArrayList<ProductDTO> selectByDog() throws Exception {
+		String sql = "select * from tbl_product where product_code between 1 and 8 ";
+		try (Connection con = this.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);){
+			ResultSet rs = pstmt.executeQuery();
+			
+			ArrayList<ProductDTO> list = new ArrayList<>();
+			while(rs.next()) {
+				int productCode = rs.getInt(1);
+				String productName = rs.getString(2);
+				int productPrice = rs.getInt(3);
+				String productContent = rs.getString(4);
+				String productImg = rs.getString(5);
+				
+				list.add(new ProductDTO(productCode,productName, productPrice, productContent, productImg));
+			}return list;
+			
+		}
+	}
+	// 고양이 사료만 조회 
+	public ArrayList<ProductDTO> selectByCat() throws Exception {
+		String sql = "select * from tbl_product where product_code between 9 and 16 ";
+		try (Connection con = this.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);){
+			ResultSet rs = pstmt.executeQuery();
+			
+			ArrayList<ProductDTO> list = new ArrayList<>();
+			while(rs.next()) {
+				
+				int productCode = rs.getInt(1);
+				String productName = rs.getString(2);
+				int productPrice = rs.getInt(3);
+				String productContent = rs.getString(4);
+				String productImg = rs.getString(5);
+				
+				list.add(new ProductDTO(productCode,productName, productPrice, productContent, productImg));
+			}return list;
+			
+		}
+	}
+	
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
