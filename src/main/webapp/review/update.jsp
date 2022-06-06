@@ -160,12 +160,11 @@ body {
 	</div>
 	<div class="board_wrap">
 		<div class="board_title">
-			<div class="board_list">
 				<img src="images/review_main.png"
 					class="img-responsive center-block/" id="review-logo">
 			</div>
-			<strong>공지사항</strong>
-			<p>공지사항을 빠르고 정확하게 안내해드립니다.</p>
+			<strong>리뷰</strong>
+			<p>보리밥 회원들의 생생한 후기를 들려드립니다.</p>
 			<form id="updateForm" action="/updateProc.bo" method="post">
 				<div class="board_write_wrap">
 					<div class="board_write">
@@ -182,15 +181,15 @@ body {
 						</div>
 					</div>
 					<div class="bt_wrap">
-						<button type="button" class="btn btn-secondary" id="btnback">목록</button>
-						<button type="button" class="btn btn-warning" id="btnupdate">수정하기</button>
+						<button type="button" class="btn btn-secondary" id="btn-back">목록</button>
+						<button type="button" class="btn btn-warning" id="btn-update">수정하기</button>
 					</div>
 				</div>
 		</div>
 		</form>
 		<script>
 	
-  	$("#btnupdate").on("click", function(){
+  	$("#btn-update").on("click", function(){
   		if($("#reviewtitle").val() === ""){
   			$("#reviewtitle").val("제목없음");
   		}
@@ -203,10 +202,10 @@ body {
   		$("#writeForm").submit();
   	})
   
-      const btnBack = document.getElementById("btnback");
+      const btnBack = document.getElementById("btn-back");
 
       btnBack.addEventListener("click", function(e){
-          location.href="/riveiw.bo";
+          location.href="/review.bo";
       });
   </script>
 		<div class="row justify-content-center footer">

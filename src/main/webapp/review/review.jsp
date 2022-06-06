@@ -35,7 +35,7 @@ body {
 }
 
 .footer>* {
-	background-color: rgb(255, 216, 131);
+	background-color: white;
 	padding: 20px;
 	position: relative;
 }
@@ -78,7 +78,7 @@ a {
 
 #review-index-wrap {
 	border-bottom: 2px solid rgb(196, 202, 178);
-	background-color: rgb(235, 255, 213);
+	background-color: white;
 	font-family: 'Courier New', Courier, monospace;
 }
 
@@ -199,9 +199,8 @@ a {
 				<div class="board_list">
 					<div class="row row-cols-5" id="review-index-wrap">
 						<div class="col-lg-1">번호</div>
-						<div class="col-lg-1">상품코드</div>
 						<div class="col-lg-7">제목</div>
-						<div class="col-lg-1">글쓴이</div>
+						<div class="col-lg-2">글쓴이</div>
 						<div class="col-lg-2">작성일</div>
 					</div>
 					<div class="review-body">
@@ -210,17 +209,30 @@ a {
 						</div>
 						<div class="row row-cols-5">
 							<div class="col-lg-1">${dto.seqReview}</div>
-							<div class="col-lg-1">${dto.productCode}</div>
 							<div class="col-lg-7">
 								<a href="">${dto.reviewTitle}</a>
 							</div>
-							<div class="col-lg-1">${dto.id}</div>
+							<div class="col-lg-2">${dto.id}</div>
 							<div class="col-lg-2">${dto.reviewDate}</div>
 						</div>
 					</div>
 				</div>
-
-				<nav></nav>
+					<nav>
+	  <ul class="pagination justify-content-center">
+	  	<c:if test="${naviMap.needPrev eq true}">
+	  		 <li class="page-item"><a class="page-link" href="/review.bo?curPage=${naviMap.startNavi-1}">Prev</a></li>
+	  		 <%-- 현재 6페이지에 있는 상태에서 이전 버튼을 클릭했음 ->  5페이지로 이동 --%>
+	  	</c:if>
+	    
+	    <c:forEach var="pageNum" begin="${naviMap.startNavi}" end="${naviMap.endNavi}" step="1">
+	    	<li class="page-item"><a class="page-link" href="/reivew.bo?curPage=${pageNum}">${pageNum}</a></li>
+	    </c:forEach>
+	    
+	    <c:if test="${naviMap.needNext eq true}">
+	    	 <li class="page-item"><a class="page-link" href="/review.bo?curPage=${naviMap.endNavi+1}">Next</a></li>
+	    </c:if>	    
+	  </ul>
+    </nav>
 			</div>
 			<div class="btnWrap">
 				<button type="button" class="btn btn-secondary" id="btnwrite">작성하기</button>
@@ -228,11 +240,12 @@ a {
 
 			<script>
 			const btnwrite = document.getElementById("btnwrite");
-		
-			$("#btnwrite").on("click", function(){
-				location.href = "/review/write.jsp";
-			});
 			
+			$("#btnwrite").on("click", function(){
+		 	location.href = "/review/write.jsp";
+				
+			});
+		
 			</script>
 			<div class="row justify-content-center footer">
 				<div class="col-lg-10 col-12">

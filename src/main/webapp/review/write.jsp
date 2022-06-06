@@ -168,23 +168,51 @@ body {
 			</nav>
 		</div>
 	</div>
-	<form id="writeForm" action="/writeProc.bo" method="post">
+	<div class="board_wrap">
+		<div class="board_title">
+			<img src="images/review_main.png"
+				class="img-responsive center-block/" id="review-logo">
+		</div>
+		<strong>리뷰</strong>
+		<p>보리밥 회원들의 생생한 후기를 들려드립니다.</p>
+		<form id="writeForm" action="/writeProc.bo" method="post">
+			<div class="board_write_wrap">
+				<div class="board_write">
+					<div class="title">
+						<div
+							class="col-2 d-flex justify-content-center align-items-center">
+							<h6>제목</h6>
+						</div>
+						<div class="col-10 p-2">
+							<input type="text" placeholder="제목을 입력해주세요" id="review-title"
+								name="title">
+							<div class="row"></div>
+						</div>
+					</div>
+					<div class="cont">
+						<textarea class="form-control" id="review-content" name="content"
+							placeholder="어떤 점이 좋았나요?"></textarea>
+					</div>
+				</div>
+			</div>
+		</form>
+		<!-- <form id="writeForm" action="/writeProc.bo" method="post">
 		<div class="container">
 			<div class="row">
 				<img src="images/review_main.png" class="col-lg-10 d-block w-100"
 					id="main-logo">
 				<div class="col-2 d-flex justify-content-center align-items-center">
-					<h4>제목</h4>
+					<h6>제목</h6>
 				</div>
 				<div class="col-10 p-2">
-					<input type="text" class="form-control" id="reviewtitle"
+					<input type="text" class="form-control" id="reviewTitle"
 						name="title">
 				</div>
 			</div>
 
 			<div class="row">
 				<div class="col-2 d-flex justify-content-center align-items-center">
-					<h4>첨부파일</h4>
+					<h6>이미지</h6>
 				</div>
 				<div class="col-10 p-2">
 					<input type="file" class="form-control" name="file">
@@ -193,70 +221,69 @@ body {
 
 			<div class="row">
 				<div class="col-2 d-flex justify-content-center align-items-center">
-					<h4>내용</h4>
+					<h6>내용</h6>
 				</div>
 				<div class="col-10 p-2">
-					<textarea id="content" class="form-control" id="reviewcontent"
+					<textarea id="content" class="form-control" id="reviewContent"
 						name="content"></textarea>
 				</div>
 			</div>
 		</div>
-	</form>
-	<div class="boxBtn">
-		<button type="button" class="btn btn-secondary" id="btnback">목록</button>
-		<button type="button" class="btn btn-danger" id="btnsave">등록하기</button>
-	</div>
-	<script>
-	
-  	$("#btnsave").on("click", function(){
-  		if($("#reviewtitle").val() === ""){
-  			$("#reviewtitle").val("제목없음");
-  		}
-  		if($("#reivewcontent").val() === ""){
-  			alert("내용을 입력하세요.");
-  			//커서 이동
-  			$("#reviewcontent").focus();
-  			return;
-  		}
-  		$("#writeForm").submit();
-  	})
-  
-      const btnBack = document.getElementById("btnback");
+	</form> -->
+		<div class="boxBtn">
+			<button type="button" class="btn btn-danger" id="btnsave">등록하기</button>
+			<button type="button" class="btn btn-secondary" id="btnback">목록</button>
 
-      btnBack.addEventListener("click", function(e){
-          location.href="/riveiw.bo";
-      });
-  </script>
-
-	<div class="row justify-content-center footer">
-		<div class="col-lg-10 col-12">
-			<ul class="ft-ul">
-				<li>BoriBob Inc. 사랑시 고백구 행복동</li>
-				<li>대표 : 보리밥형제들 사업자등록번호 : 780-86-01094</li>
-				<li>대표번호 : +82)-665-3430 팩스번호 : +82)-888-3430 홈페이지 :
-					petvenience.store.com</li>
-				<li>CopyrightⓒBoriBob Inc. All Rights Reserved.</li>
-			</ul>
 		</div>
-		<div class="col-lg-2 col-12">
-			<ul class="ft-images">
-				<img src="images/facebook_icon.png" style="border-color: lightblue;">
-				<img src="images/instagram_icon.png"
-					style="border-color: lightblue;">
-				<img src="images/youtube_icon.png" style="border-color: lightblue;">
-			</ul>
-			<ul class="ft-ul">
-				<li><strong>고객센터</strong></li>
-				<li style="height: 8px;"></li>
-				<li>오전 10시부터 오후 6시까지</li>
-				<li>토요일, 일요일, 공휴일 휴무</li>
-			</ul>
+		<script>
+			$("#btnsave").on("click", function() {
+				if ($("#review-title").val() === "") {
+					$("#review-title").val("제목없음");
+				}
+				if ($("#reivew-content").val() === "") {
+					alert("내용을 입력하세요.");
+					//커서 이동
+					$("#review-content").focus();
+					return;
+				}
+				$("#writeForm").submit();
+			})
+
+			$("#btnback").on("click", function() {
+				const btnback = document.getElementById("btnback");
+				location.href = "/review.bo";
+			});
+		</script>
+
+		<div class="row justify-content-center footer">
+			<div class="col-lg-10 col-12">
+				<ul class="ft-ul">
+					<li>BoriBob Inc. 사랑시 고백구 행복동</li>
+					<li>대표 : 보리밥형제들 사업자등록번호 : 780-86-01094</li>
+					<li>대표번호 : +82)-665-3430 팩스번호 : +82)-888-3430 홈페이지 :
+						petvenience.store.com</li>
+					<li>CopyrightⓒBoriBob Inc. All Rights Reserved.</li>
+				</ul>
+			</div>
+			<div class="col-lg-2 col-12">
+				<ul class="ft-images">
+					<img src="images/facebook_icon.png"
+						style="border-color: lightblue;">
+					<img src="images/instagram_icon.png"
+						style="border-color: lightblue;">
+					<img src="images/youtube_icon.png" style="border-color: lightblue;">
+				</ul>
+				<ul class="ft-ul">
+					<li><strong>고객센터</strong></li>
+					<li style="height: 8px;"></li>
+					<li>오전 10시부터 오후 6시까지</li>
+					<li>토요일, 일요일, 공휴일 휴무</li>
+				</ul>
+			</div>
 		</div>
+
 	</div>
-
-</div>
-</body>
-
+	</body>
 </html>
 
 </body>
