@@ -27,7 +27,7 @@ public class MemberDAO {
 		}
 	
 	public int insert (MemberDTO dto)throws Exception{
-		String sql = "insert into tbl_member values(?,?,?,?,?,?,?,seq_subscribe.nextval) ";
+		String sql = "insert into tbl_member values(?,?,?,?,?,?,?) ";
 		try(Connection con = bds.getConnection(); 
 			PreparedStatement pstmt = con.prepareStatement(sql);){
 			pstmt.setString(1, dto.getId());
@@ -57,14 +57,13 @@ public class MemberDAO {
 				String post = rs.getString("post");
 				String detailAddress = rs.getString("detailAddress");
 				String phone = rs.getString("phone");
-				int seqSubscribe = rs.getInt("seq_subscribe");
-				memberList.add(new MemberDTO(id,password,name,roadAddress,post,detailAddress,phone,seqSubscribe));
+				memberList.add(new MemberDTO(id,password,name,roadAddress,post,detailAddress,phone));
 				
 			}return memberList;
 		}
 	}
 	public int update(MemberDTO dto)throws Exception{
-		String sql = "update tbl_member set password=?, name=?, roadAddress=?, post=?, detailAddress=?, phone=? where seq_subscribe=?";
+		String sql = "update tbl_member set password=?, name=?, roadAddress=?, post=?, detailAddress=?, phone=?";
 		try(Connection con = bds.getConnection(); 
 			PreparedStatement pstmt = con.prepareStatement(sql);){
 			pstmt.setString(1, dto.getPassword());
@@ -73,41 +72,40 @@ public class MemberDAO {
 			pstmt.setString(4, dto.getPost());
 			pstmt.setString(5, dto.getDetailAddress());
 			pstmt.setString(6, dto.getPhone());
-			pstmt.setInt(7, dto.getSeqSubscribe());
 			
 			int rs = pstmt.executeUpdate();
 			return rs;
 		}
 	}
-	public int delete(int seq_subscribe)throws Exception{
-		String sql = "delete from tbl_member where seq_subscribe=?";
+	public int delete(String id)throws Exception{
+		String sql = "delete from tbl_member where id=?";
 		try(Connection con = bds.getConnection(); 
 			PreparedStatement pstmt = con.prepareStatement(sql);){
-			pstmt.setInt(1, seq_subscribe);
+			pstmt.setString(1, id);
 			
 			int rs = pstmt.executeUpdate();
 			return rs;
 		}
 	}
 	
-	public boolean selectById(String id, String password)throws Exception{
-		String sql = "select count(*) from tbl_member where id = ? and password =?";
-		try(Connection con = bds.getConnection(); 
-				PreparedStatement pstmt = con.prepareStatement(sql)){
-			
-			pstmt.setString(1, id);
-			pstmt.setString(2, password);
-			
-			ResultSet rs = pstmt.executeQuery();
-			rs.next();
-			int result = rs.getInt(1); // 로그인 성공시 1 / 로그인 실패시 0
-			if(result == 1) {
-				return true;
-			}else {
-				return false;
-			}
-		}
-	}
+//	public boolean selectById(String id, String password)throws Exception{
+//		String sql = "select count(*) from tbl_member where id = ? and password =?";
+//		try(Connection con = bds.getConnection(); 
+//				PreparedStatement pstmt = con.prepareStatement(sql)){
+//			
+//			pstmt.setString(1, id);
+//			pstmt.setString(2, password);
+//			
+//			ResultSet rs = pstmt.executeQuery();
+//			rs.next();
+//			int result = rs.getInt(1); // 로그인 성공시 1 / 로그인 실패시 0
+//			if(result == 1) {
+//				return true;
+//			}else {
+//				return false;
+//			}
+//		}
+//	}
 	
 	public MemberDTO selectById(String id)throws Exception{
 		String sql = "select * from tbl_member where id = ?";
@@ -123,15 +121,14 @@ public class MemberDAO {
 				String post = rs.getString(5);
 				String detailAddress = rs.getString(6);
 				String phone = rs.getString(7);
-				int seq_subscribe = rs.getInt(8);
 				
-				MemberDTO dto = new MemberDTO(id, password, name, roadAddress, post, detailAddress, phone, seq_subscribe);
+				MemberDTO dto = new MemberDTO(id, password, name, post, roadAddress, detailAddress, phone);
 				return dto;				
 				
 			}return null;
 		}
 	}
-	/* 수빈씨랑 상의중
+	
 	public MemberDTO isLoginOk(String id, String password)throws Exception{
 		String sql = "select * from tbl_member where id = ? and password = ?";
 		try(Connection con = bds.getConnection(); 
@@ -145,30 +142,18 @@ public class MemberDAO {
 				String post = rs.getString("post");				
 				String detailAddress = rs.getString("detail_address");
 				String phone = rs.getString("phone");
-				return new MemberDTO(id, null, name, roadAddress, post, detailAddress, phone);
+				return new MemberDTO(id, null, name, post, roadAddress, detailAddress, phone);
 			}else {
 				return null;
 			}
 			
 		}
-	}*/
+	}
+	
+	
+						
+
+	
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
