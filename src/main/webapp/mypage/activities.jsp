@@ -1,22 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <title>문의게시판</title>
-    <style>
+<title>활동내역</title>
+	<style>
         body {
             box-sizing: border-box;
         }
@@ -26,7 +24,7 @@
             position: relative;
         }
 
-        .footer > * {
+        .footer > * { 
             padding: 20px;
             position: relative;
         }
@@ -43,35 +41,20 @@
         .ft-images {
             text-align: center;
         }
-        .pagination > li > a{
-        background-color: white;
-        color: #7e60b0;
+        menu{
+           text-align: center;
         }
-        .container>.row{
-            border-bottom: 1px solid black;
+        button{
+            margin-bottom: 40px;
         }
-        .container>.row:first-child{
-            height: 60px;
+        .list{
+            margin-bottom: 20px;
+            border-bottom: 1px solid gray;
         }
-        .content{
-            height: 40px;
-        }
-        .paging{
-            margin-top: 20px;
-        }
-        .buttonBox{
-            margin-right: 300px;
-            margin-top: 20px;
-        }
-    </style>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
-    <title>고객센터-초안</title>
-    <link rel='stylesheet' href='../css/inquiry.css'>
+	</style>
 </head>
 <body>
-   <div class="wrapper">
+	<div class="wrapper">
         <div class="row justify-content-center header">
             <div class="col-lg-4 col-12">
                 <img src="/images/project_logo.PNG" class="d-block w-100" id="main-logo">
@@ -112,68 +95,37 @@
             </div>
         </div>
         <!-- 여기까지 헤더 -->
-        <!-- 여기부터 바디 -->
-        <div class= "container">
-            <div class="row text-center align-items-center">
-                <div class="col-lg-1 col-2">번호</div>
-                <div class="col-lg-5 col-10">제목</div>
-                <div class="col-lg-3 d-none d-lg-block">작성자</div>
-                <div class="col-lg-3 d-none d-lg-block">작성일</div>    
-            </div>
-            <c:choose>
-				<c:when test="${list.size()==0}">
-					<div class="row content text-center align-items-center">
-						<div class="col">
-							등록된 게시글이 없습니다.
-						</div>
-					</div>
-				</c:when>
-				<c:otherwise>
-					<c:forEach items="${list}" var="dto">
-						<div class="row content text-center align-items-center" style="cursor: pointer;" onclick="location.href='/inquiryDetailview.iq?seqInquiry=${dto.seqInquiry}';">
-                			<div class="col-lg-1 col-2">${dto.seqInquiry}</div>
-                			<c:if test="${not empty dto.inquiryAnswer}">
-               		 			<div class="col-lg-5 col-10"><strong>[답변완료]</strong> ${dto.inquiryTitle}</div>
-               		 		</c:if>
-               		 		<c:if test="${empty dto.inquiryAnswer}">
-               		 			<div class="col-lg-5 col-10">${dto.inquiryTitle}</div>
-               		 		</c:if >
-               	 			<div class="col-3 d-none d-lg-block">${dto.id}</div>
-                			<div class="col-3 d-none d-lg-block">${dto.inquiryDate}</div>    
-           				</div>
-					</c:forEach>
-				</c:otherwise>
-			</c:choose>     
-        </div>
-        <!--페이징-->
-        <div class="buttonBox" align="right">
-            <button type="button" class="btn btn-outline-secondary" id="btn-write">글쓰기</button>
-        </div>
-        <div class="row paging">
-            <div class="col-12">
-                <nav aria-label="Page navigation">
-                    <ul class="pagination justify-content-center">
-                    <c:if test="${map.makePrev eq true}">
-                        <li class="page-item">
-                            <a class="page-link" href="/inquiry.iq?currentPage=${map.startNavi-1}" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                   </c:if>
-                   <c:forEach var="pageNumber" begin="${map.startNavi}" end="${map.endNavi}" step="1">
-                   		<li class="page-item"><a class="page-link" href="/inquiry.iq?currentPage=${pageNumber}">${pageNumber}</a></li>
-                   </c:forEach>    
-                   <c:if test="${map.makeNext eq true}">                   
-                        <li class="page-item">
-                            <a class="page-link" href="/inquiry.iq?currentPage=${map.endNavi+1}" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        	</a>
-                        </li>
-                    </c:if>
-                    </ul>
-                </nav>
+        <!-- 여기에 바디 코드 짜주셈 -->
+        <div class="container">
+            <div class="row">
+                <div class="col-4 menu">
+                    <p><h3>김이보리밥 님,<br>안녕하세요</h3></p>
+                    <div class="col-4">
+                        <button type="button" class="btn btn-outline-secondary" id="modify-btn">회원 정보 수정</button>
+                    </div>
+                    <div class="col-4">
+                        <button type="button" class="btn btn-outline-secondary" id="select-btn">구독 내역 조회</button>
+                    </div>
+                    <div class="col-4">
+                        <button type="button" class="btn btn-outline-secondary" id="activiteis-btn">회원 활동 내역</button>
+                    </div>
+                </div>
+                <div class="col-8">
+                    <div class="col-8 list"><h4>회원 활동 내역</h4></div>
+                    <div class="col-4">
+                        <button type="button" class="btn btn-outline-secondary" id="review-btn">내가 쓴 리뷰</button>
+                    </div>
+                    <div class="col-4">
+                        <button type="button" class="btn btn-outline-secondary" id="inquiry-btn">내가 쓴 문의</button>
+                    </div>
+                </div>
             </div>
         </div>
+        <script>
+        	$("#inquiry-btn").on("click",function(){
+        		location.href="/inquiryList.iq";
+        	})
+        </script>
         <!-- 여기부터 풋터 -->
         <div class="row justify-content-center footer">
             <div class="col-lg-10 col-12">
@@ -198,11 +150,7 @@
                 </ul>
             </div>
         </div>
+
     </div>
 </body>
-<script>
-	$("#btn-write").on("click",function(){
-		location.href="/inquiryWrite.iq";
-	})
-</script>
 </html>

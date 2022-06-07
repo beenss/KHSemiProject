@@ -65,10 +65,18 @@ public class MemberDTO {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
+<<<<<<< HEAD
 	
 	@Override
 	public String toString() {
 		return "MemberDTO [id=" + id + ", password=" + password + ", name=" + name + ", post=" + post
 				+ ", roadAddress=" + roadAddress + ", detailAddress=" + detailAddress + ", phone=" + phone + "]";
+=======
+	@Override
+	public String toString() {
+		return "MemberDTO [id=" + id + ", password=" + password + ", name=" + name + ", roadAddress=" + roadAddress
+				+ ", post=" + post + ", detailAddress=" + detailAddress + ", phone=" + phone + 
+				"]";
+>>>>>>> 4591b859410ffd30a4ec9d7de07347551dc81a02
 	}
 }
