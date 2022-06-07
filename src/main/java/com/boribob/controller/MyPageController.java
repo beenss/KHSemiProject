@@ -88,8 +88,58 @@ public class MyPageController extends HttpServlet {
 				e.printStackTrace();
 			}
 
-		}
+		} else if(uri.equals("/update.my")) { // 회원정보 수정 jsp로 이동
+			
+			HttpSession session = request.getSession();
+			MemberDTO dto = (MemberDTO) session.getAttribute("loginSession");
+			request.setAttribute("dto", dto);
+			request.getRequestDispatcher("/mypage/memberUpdate.jsp").forward(request, response);
+	
+		}else if(uri.equals("/updateProc.my")) { // 회원정보 수정
+			HttpSession session = request.getSession();
+			MemberDTO dto = (MemberDTO) session.getAttribute("loginSession");
+			String id = dto.getId();
+			String password = request.getParameter("password");
+			String name = request.getParameter("name");
+			String phone = request.getParameter("phone");
+			String post = request.getParameter("post");
+			String roadAddr = request.getParameter("roadAddress");
+			String detailAddr = request.getParameter("detailAddress");
+			
+			MemberDAO dao= new MemberDAO();
+			
+			try {
+				password = EncryptionUtils.getSHA512(password);
+				
+				int rs = dao.update(new MemberDTO(id,password, name, post,roadAddr, detailAddr, phone));
+				if(rs>0) {
+					System.out.println("회원 정보수정 성공");
+					response.sendRedirect("/mypage.my"); // 회원정보 수정완료 후 마이페이지 메인으로 이동
+				}
+				
+			}catch(Exception e) {e.printStackTrace();
+			}
+
+		} 
 
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

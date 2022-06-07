@@ -70,9 +70,9 @@
 						aria-current="page" href="#">구독 내역 조회</a></li>
 					<li class="nav-item"><a class="nav-link" href="#">회원 활동 내역</a>
 					</li>
-					<li class="nav-item"><a class="nav-link" href="#">회원 정보 수정</a>
+					<li class="nav-item"><a class="nav-link" href="/update.my">회원 정보 수정</a>
 					</li>
-					<li class="nav-item"><a class="nav-link" href="#">회원 탈퇴</a></li>
+					<li class="nav-item"><a class="nav-link" href="/withdrawal.my">회원 탈퇴</a></li>
 				</ul>
 			</div>
 			<!-- content body -->
