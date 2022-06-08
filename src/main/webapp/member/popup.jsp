@@ -45,7 +45,7 @@
 						<span>사용가능한 이메일입니다.</span>
 					</c:if>
 					<c:if test="${rs eq 'no'}">
-						<span>사용가능하지 않은 이메일입니다.</span>
+						<span>중복된 이메일입니다.</span>
 					</c:if>
 				</div>
 				<div class="col-4">
