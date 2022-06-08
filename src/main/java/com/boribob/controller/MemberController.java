@@ -122,19 +122,22 @@ public class MemberController extends HttpServlet {
 			
 		MemberDAO dao = new MemberDAO();
 		
-		try {
-			password = EncryptionUtils.getSHA512(password);
-			System.out.println(password);
-			MemberDTO dto = dao.isLoginOk(id, password);
-			if(dto !=null) {
-				System.out.println("로그인성공");
-				request.setAttribute("rs", true);
-				HttpSession session = request.getSession();
-				session.setAttribute("loginSession", dto);
-				
-			}else {
-				System.out.println("로그인실패");
-				request.setAttribute("rs", false);
+		  try {
+			  password = EncryptionUtils.getSHA512(password);
+		         System.out.println(password);
+		         MemberDTO dto = dao.isLoginOk(id, password);
+		         if(dto !=null) {
+		            System.out.println("로그인성공");
+		            request.setAttribute("rs", true);
+		            HttpSession session = request.getSession();
+		            session.setAttribute("loginSession", dto);
+		         }else {
+		            System.out.println("로그인실패");
+		            request.setAttribute("rs", false);
+		         }
+		         request.getRequestDispatcher("/index.jsp").forward(request, response);
+			}catch(Exception e) {
+				e.printStackTrace();
 			}
 			request.getRequestDispatcher("/index.jsp").forward(request, response);
 		}catch(Exception e) {
@@ -142,20 +145,5 @@ public class MemberController extends HttpServlet {
 		}	
 		}
 	}
-			
-		
-		
-					
-						
-				
-					
-				
-
-	
-	
-
-
-	
-	
 }
    
