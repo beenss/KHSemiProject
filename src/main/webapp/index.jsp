@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,16 +24,35 @@
             <div class="col-4">
                 <img src="images/project_logo.PNG" class="d-block w-100" id="main-logo">
             </div>
+            <c:choose>
+			<c:when test="${not empty loginSession}">
             <div class="col" id="nav-item">
                 <nav class="nav">
                     <a class="nav-link" href="/product.pro">제품 보기</a>
                     <a class="nav-link" href="/review.bo?currentPage=1">리뷰</a>
                     <a class="nav-link" href="/inquiry.iq?currentPage=1">고객센터</a>
-                    <a class="nav-link" href="#">로그인</a>
-                    <a class="nav-link" href="#">회원가입</a>
+                    <a class="nav-link" href="/login/login.jsp">로그아웃</a>
+                    <a class="nav-link" href="/mypage/activities.jsp">마이페이지</a>
                     <a class="nav-link" style="color: rgb(255, 94, 0);" href="/petInput.pet">구독하기</a>
                 </nav>
             </div>
+            </c:when>
+            <c:otherwise>
+            <div class="col" id="nav-item">
+                <nav class="nav">
+                    <a class="nav-link" href="/product.pro">제품 보기</a>
+                    <a class="nav-link" href="/review.bo?currentPage=1">리뷰</a>
+                    <a class="nav-link" href="/inquiry.iq?currentPage=1">고객센터</a>
+                    <a class="nav-link" href="/login/login.jsp">로그인</a>
+                    <a class="nav-link" href="/member/member.jsp">회원가입</a>
+                    <a class="nav-link" style="color: rgb(255, 94, 0);" href="/petInput.pet">구독하기</a>
+                </nav>
+            </div>
+            </c:otherwise>
+           </c:choose> 
+            
+            
+            
         </div>
     </header>
 	

@@ -125,6 +125,7 @@ body {
 				</div>
 				<div class="col-12 mb-2">
 					<input type="password" class="form-control" id="pw" name="password">
+					<span style="font-size : 10px;">*6~10자의 영문 대소문자와 숫자, 특수문자로만 입력하세요.</span>
 				</div>
 			</div>
 
@@ -194,10 +195,10 @@ body {
 						</select>
 					</div>
 					<div class="col-4 mb-2">
-						<input type="text" class="form-control" id="phone2">
+						<input type="text" class="form-control" id="phone2" maxlength="4">
 					</div>
 					<div class="col-4 mb-2">
-						<input type="text" class="form-control" id="phone3">
+						<input type="text" class="form-control" id="phone3" maxlength="4">
 					</div>
 					<div class="col d-none">
 						<input type="text" id="phone" name="phone">
@@ -281,7 +282,7 @@ body {
 
 		// 가입 버튼을 눌렀을 때 유효성 검사 후 form 제출
 		$("#submitBtn").on("click",	function() {
-					let regexPw = /[a-zA-Z0-9~!@#$%^&*]{6,20}/; // 비밀번호 정규식 (영문자, 숫자,~!@#$%^&* 6~20자리)
+					let regexPw = /[a-zA-Z0-9~!@#$%^&*]{6,10}/; // 비밀번호 정규식 (영문자, 숫자,~!@#$%^&* 6~10자리)
 					let regexName = /[ㄱ-힣]{2,5}/; // 이름 정규식 (한글, 2~5자리)
 					let regexPhone = /[0-9]{11}/; // 휴대전화 정규식   
 
