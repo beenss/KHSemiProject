@@ -62,6 +62,7 @@ public class InquiryController extends HttpServlet {
 			MemberDTO dto = (MemberDTO)request.getSession().getAttribute("loginSession");
 			try {
 				String id = dto.getId();
+			
 				int rs = dao.insert(new InquiryDTO(0,id,inquiryTitle,inquiryContent,null,null));
 				if(rs>0) {
 					response.sendRedirect("/inquiry.iq?currentPage=1");
@@ -69,7 +70,7 @@ public class InquiryController extends HttpServlet {
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
-			
+		
 		}else if(uri.equals("/inquiryDetailview.iq")) {
 			int seqInquiry = Integer.parseInt(request.getParameter("seqInquiry"));
 			System.out.println(seqInquiry);

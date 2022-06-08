@@ -50,6 +50,7 @@ public class OrderController extends HttpServlet {
 			
 			
 
+			
 			request.getRequestDispatcher("/order/orderForm.jsp").forward(request, response);
 
 		} else if (uri.equals("/insert.order")) { // 2.주문정보 저장
@@ -150,3 +151,4 @@ public class OrderController extends HttpServlet {
 	}
 
 }
+

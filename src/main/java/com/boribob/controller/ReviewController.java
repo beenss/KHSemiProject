@@ -13,9 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.boribob.dao.ReviewDAO;
 import com.boribob.dto.MemberDTO;
 import com.boribob.dto.ReviewDTO;
-import com.google.gson.Gson;
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 @WebServlet("*.bo")
 public class ReviewController extends HttpServlet {

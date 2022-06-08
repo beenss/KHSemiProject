@@ -21,7 +21,7 @@
     </script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
-    <link rel="stylesheet" type="text/css" href="order/css/orderForm.css"> 
+    <link rel="stylesheet" type="text/css" href="/css/orderForm.css"> 
    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
    
         <title>주문서창</title>
