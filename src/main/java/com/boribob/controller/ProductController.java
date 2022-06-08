@@ -96,7 +96,84 @@ public class ProductController extends HttpServlet {
 			}catch(Exception e) {e.printStackTrace();
 			}
 			
+		} 
+		
+		// 관리자페이지에서 상품과 관련된 컨트롤러
+		
+		else if(uri.equals("/productInsert.admin")) { // 관리자 페이지에서 상품 등록하기
+			int productCode = Integer.parseInt(	request.getParameter("productCode"));
+			String productName = request.getParameter("productName");
+			int productPrice = Integer.parseInt(request.getParameter("productPrice"));
+			String productContent = request.getParameter("productContent");
+			String productImg = request.getParameter("productImg");
+			
+			ProductDAO dao = new ProductDAO();
+			try {
+				int rs = dao.insert(new ProductDTO(productCode,productName,productPrice,productContent,productImg));
+				if(rs>0) {  // 만약에 상품 등록에 성공하면 관리자 페이지에 얼럿 띄워주기
+					request.setAttribute("productInsert", rs);
+					
+				}else{
+					request.setAttribute("productInsert", rs);		
+				}
+				
+			}catch(Exception e) {e.printStackTrace();
+			} request.getRequestDispatcher("/admin/product.jsp").forward(request, response);
 		}
+		
+		else if(uri.equals("/productDelete.admin")) { // 관리자 페이지에 상품 삭제하기
+			int productCode = Integer.parseInt(request.getParameter("productCode"));
+			
+			ProductDAO dao = new ProductDAO();
+			
+			try {
+				int result = dao.delete(productCode);
+				
+				if(result>0) {	// 만약에 상품 삭제에 성공하면 관리자 페이지에 얼럿 띄워주기
+					request.setAttribute("productDelete", result);
+				}else {
+					request.setAttribute("productDelete", result);
+				}
+				
+			}catch(Exception e) {e.printStackTrace();
+			}request.getRequestDispatcher("/admin/product.jsp").forward(request, response);
+			
+		}
+		else if(uri.equals("/productUpdate.admin")) {	// 관리자 페이지에서 상품 수정하기
+			int productCode = Integer.parseInt(	request.getParameter("productCode"));
+			String productName = request.getParameter("productName");
+			int productPrice = Integer.parseInt(request.getParameter("productPrice"));
+			String productContent = request.getParameter("productContent");
+			String productImg = request.getParameter("productImg");
+			
+			ProductDAO dao = new ProductDAO();
+			try{
+				
+				int update = dao.update(new ProductDTO(productCode,productName,productPrice,productContent,productImg));
+				if(update>0) {  // 만약에 상품 수정에 성공하면 관리자 페이지에 얼럿 띄워주기
+					request.setAttribute("productUpdate", update);
+					
+				}else{
+					request.setAttribute("productUpdate", update);		
+				}
+				
+			}catch(Exception e) {e.printStackTrace();
+			}request.getRequestDispatcher("/admin/product.jsp").forward(request, response);
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		
