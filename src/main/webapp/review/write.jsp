@@ -175,7 +175,7 @@ body {
 		</div>
 		<strong>리뷰</strong>
 		<p>보리밥 회원들의 생생한 후기를 들려드립니다.</p>
-		<form id="writeForm" action="/writeProc.bo" method="post">
+		<form id="write-form" action="/writeProc.bo" method="post">
 			<div class="board_write_wrap">
 				<div class="board_write">
 					<div class="title">
@@ -185,12 +185,12 @@ body {
 						</div>
 						<div class="col-10 p-2">
 							<input type="text" placeholder="제목을 입력해주세요" id="review-title"
-								name="title">
+								name="reviewTitle">
 							<div class="row"></div>
 						</div>
 					</div>
 					<div class="cont">
-						<textarea class="form-control" id="review-content" name="content"
+						<textarea class="form-control" id="review-content" name="reviewContent"
 							placeholder="어떤 점이 좋았나요?"></textarea>
 					</div>
 				</div>
@@ -231,12 +231,12 @@ body {
 		</div>
 	</form> -->
 		<div class="boxBtn">
-			<button type="button" class="btn btn-danger" id="btnsave">등록하기</button>
-			<button type="button" class="btn btn-secondary" id="btnback">목록</button>
+			<button type="button" class="btn btn-danger" id="btn-save">등록하기</button>
+			<button type="button" class="btn btn-secondary" id="btn-back">목록</button>
 
 		</div>
 		<script>
-			$("#btnsave").on("click", function() {
+			$("#btn-save").on("click", function() {
 				if ($("#review-title").val() === "") {
 					$("#review-title").val("제목없음");
 				}
@@ -246,11 +246,11 @@ body {
 					$("#review-content").focus();
 					return;
 				}
-				$("#writeForm").submit();
+				$("#write-form").submit();
 			})
 
 			$("#btnback").on("click", function() {
-				const btnback = document.getElementById("btnback");
+				const btnback = document.getElementById("btn-back");
 				location.href = "/review.bo";
 			});
 		</script>

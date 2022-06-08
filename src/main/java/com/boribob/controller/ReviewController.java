@@ -71,7 +71,7 @@ public class ReviewController extends HttpServlet {
 
 				int rs = dao.insert(new ReviewDTO(0, 0, id, reviewTitle, reviewContent, null, null));
 				if (rs > 0) {
-					response.sendRedirect("/Review.bo?currentPage=1");
+					response.sendRedirect("review.bo?currentPage=1");
 				}
 			} catch (Exception e) {
 				e.printStackTrace();

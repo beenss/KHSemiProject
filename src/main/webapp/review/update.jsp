@@ -202,9 +202,9 @@ body {
   		$("#writeForm").submit();
   	})
   
-      const btnBack = document.getElementById("btn-back");
+      const btn-back = document.getElementById("btn-back");
 
-      btnBack.addEventListener("click", function(e){
+      btn-back.addEventListener("click", function(e){
           location.href="/review.bo";
       });
   </script>
