@@ -64,9 +64,9 @@
     </div>
     <script>
     	// 나의 활동내역에서 문의내역 버튼을 눌렀을 때
-    	$(".btnInquiry").on("click", function(){
+    	$("#btnradio1").on("click", function(){
     		
-    		location.href="/inquiry.my";
+    		location.href="/inquiryList.iq";
     	})
     	
     	// 나의 활동내역에서 후기버튼을 눌렀을 때
