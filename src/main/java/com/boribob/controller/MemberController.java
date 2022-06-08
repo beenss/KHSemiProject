@@ -116,101 +116,26 @@ public class MemberController extends HttpServlet {
 		MemberDAO dao = new MemberDAO();
 		
 		  try {
-				if(dao.selectById(id, password)) { //로그인 성공
-					System.out.println("로그인 성공");
-					request.setAttribute("rs", true);
-	//response.sendRedirect(" 메인페이지 경로 ");
-					// session 저장소 > login 정보 저장
-					HttpSession session = request.getSession();
-					session.setAttribute("loginSession", id);  
-		 
-		
-		
-		/*수빈씨랑 상의중
-		try {
-			inputpassword = EncryptionUtils.getSHA512(password);
-			System.out.println(password);
-			MemberDTO dto = dao.isLoginOk(id, password);
-			if(dto !=null) {
-				System.out.println("로그인성공");
-				request.setAttribute("rs", true);
-				HttpSession session = request.getSession();
-				session.setAttribute("loginSession", dto);
-			}else {
-				System.out.println("로그인실패");
-				request.setAttribute("rs", false);
-			}request.getRequestDispatcher("/index.jsp").forward(request, response);
-		*/			
-					
-					
-					
-				}else { //로그인 실패
-					System.out.println("로그인 실패");
-					request.setAttribute("rs", false);
-				}
-				request.getRequestDispatcher("/login.jsp").forward(request, response);
+			  password = EncryptionUtils.getSHA512(password);
+		         System.out.println(password);
+		         MemberDTO dto = dao.isLoginOk(id, password);
+		         if(dto !=null) {
+		            System.out.println("로그인성공");
+		            request.setAttribute("rs", true);
+		            HttpSession session = request.getSession();
+		            session.setAttribute("loginSession", dto);
+		         }else {
+		            System.out.println("로그인실패");
+		            request.setAttribute("rs", false);
+		         }
+		         request.getRequestDispatcher("/index.jsp").forward(request, response);
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
 		}
 	}
 
-	
-	
-	
-	public String sendEmail() { //MemberDTO userVO
-		//String host = "smtp.gmail.com";
-		String user = "damnyou1994@gmail.com"; // 발신자 메일
-		String password = "go1070915@@";        // 발신자 패스워드
-		
-		
-		Properties prop = new Properties();
 
-		prop.put("mail.smtp.host", "smtp.gmail.com");
-		prop.put("mail.smtp.port", 465);
-		prop.put("mail.smtp.auth", "true");
-		prop.put("mail.smtp.ssl.enable", "true"); 
-		prop.put("mail.smtp.ssl.trust", "smtp.gmail.com");
-
-		System.out.println("complete props set");
-		
-		Session session = Session.getDefaultInstance(prop, new javax.mail.Authenticator() {
-			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication(user, password);
-				}
-			}
-		);
-
-		// 인증번호 난수 6자리 설정
-		String randomNumber = "123457";
-		try {
-			MimeMessage message = new MimeMessage(session);
-			message.setFrom(new InternetAddress(user));
-
-			// 메일 대상
-			message.addRecipient(Message.RecipientType.TO, new InternetAddress("sungpar1994@naver.com"));
-			// 메일 대상 (다수)
-			InternetAddress[] addArray = new InternetAddress[3];
-			addArray[0] = new InternetAddress("damnyou1994@nate.com");
-			addArray[1] = new InternetAddress("sungpar1994@naver.com");
-			addArray[2] = new InternetAddress("1994gsm@hanmail.net");
-			// 메일 제목
-			message.setSubject("안녕하세요. Boribob입니다.");
-
-			// 메일 내용
-			message.setText("귀하의 이메일 인증번호는 " + randomNumber + " 입니다.\n인증번호를 복사하여 입력해주세요.");
-
-			// send the message
-			Transport.send(message);
-			System.out.println("Success Message Send");
-
-		} catch (MessagingException e) {
-			e.printStackTrace();
-		}
-		
-		return randomNumber;
-	}
-	
 	
 }
    
