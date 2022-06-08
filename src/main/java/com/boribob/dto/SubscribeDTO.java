@@ -1,7 +1,7 @@
 package com.boribob.dto;
 
 public class SubscribeDTO {
-	private String seqSubscribe;
+	private String id;
 	private int productCode;
 	private String subscribeStart;
 	private int subscribeTerm;
@@ -9,16 +9,16 @@ public class SubscribeDTO {
 	public SubscribeDTO() {};
 	public SubscribeDTO(String seqSubscribe, int productCode, String subscribeStart, int subscribeTerm) {
 		super();
-		this.seqSubscribe = seqSubscribe;
+		this.id = seqSubscribe;
 		this.productCode = productCode;
 		this.subscribeStart = subscribeStart;
 		this.subscribeTerm = subscribeTerm;
 	}
-	public String getSeqSubscribe() {
-		return seqSubscribe;
+	public String getId() {
+		return id;
 	}
-	public void setSeqSubscribe(String seqSubscribe) {
-		this.seqSubscribe = seqSubscribe;
+	public void setId(String seqSubscribe) {
+		this.id = seqSubscribe;
 	}
 	public int getProductCode() {
 		return productCode;
@@ -40,7 +40,7 @@ public class SubscribeDTO {
 	}
 	@Override
 	public String toString() {
-		return "SubscribeDTO [seqSubscribe=" + seqSubscribe + ", productCode=" + productCode + ", subscribeStart="
+		return "SubscribeDTO [seqSubscribe=" + id + ", productCode=" + productCode + ", subscribeStart="
 				+ subscribeStart + ", subscribeTerm=" + subscribeTerm + "]";
 	}
 }
