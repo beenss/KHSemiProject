@@ -21,7 +21,7 @@
 <style>
 body {
 	box-sizing: border-box;
-	background-color: rgb(255, 252, 221);
+	background-color: white;
 }
 
 .header {
@@ -30,7 +30,7 @@ body {
 }
 
 .footer>* {
-	background-color: rgb(255, 216, 131);
+	background-color: white;
 	padding: 20px;
 	position: relative;
 }
@@ -186,31 +186,31 @@ body {
 					</dl>
 				</div>
 				<div class="cont">
-					<p>${dto.content}</p>
+					<p>$(dto.productImg)</p>
+					<p>${dto.reviewContent}</p>
 				</div>
 			</div>
 			<div class="bt_wrap">
-				<c:if test="${dto.id}">
-					<div class="col-2">
-						<button type="button" class="btn btn-warning" id="btnmodify">수정</button>
-					</div>
-					<div class="col-2">
-						<button type="button" class="btn btn-danger" id="btndelete">삭제</button>
-					</div>
-					<script>
-                    $("#btnmodify").on("click", function() { 
-                        location.href = "/review.bo";
+				<c:if test="${loginSession.id eq dto.id}">
+                <div class="col-2">
+                    <button type="button" class="btn btn-warning" id="btnupdate">수정</button>
+                </div>
+                <div class="col-2">
+                    <button type="button" class="btn btn-danger" id="btndelete">삭제</button>
+                </div>
+                <script>
+                    $("#btnupdate").on("click", function() { // 수정 페이지 요청
+                        location.href = "/modify.bo?seq_board=${dto.seq_board}";
                     });
-                    $("#btndelete").on("click",function() { 
+                    $("#btndelete").on("click",function() { // 삭제 요청
                         let answer = confirm("정말 삭제하시겠습니까?");
                         console.log(answer);
                         if (answer) {
-                            location.href = "/review.bo;
+                            location.href = "/deleteProc.bo?seqReview=${dto.seqReview}";
                         }
                     })
                 </script>
-				</c:if>
-
+            </c:if>
 			</div>
 		</div>
 	</div>
