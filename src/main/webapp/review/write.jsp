@@ -195,41 +195,7 @@ body {
 					</div>
 				</div>
 			</div>
-		</form>
-		<!-- <form id="writeForm" action="/writeProc.bo" method="post">
-		<div class="container">
-			<div class="row">
-				<img src="images/review_main.png" class="col-lg-10 d-block w-100"
-					id="main-logo">
-				<div class="col-2 d-flex justify-content-center align-items-center">
-					<h6>제목</h6>
-				</div>
-				<div class="col-10 p-2">
-					<input type="text" class="form-control" id="reviewTitle"
-						name="title">
-				</div>
-			</div>
 
-			<div class="row">
-				<div class="col-2 d-flex justify-content-center align-items-center">
-					<h6>이미지</h6>
-				</div>
-				<div class="col-10 p-2">
-					<input type="file" class="form-control" name="file">
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-2 d-flex justify-content-center align-items-center">
-					<h6>내용</h6>
-				</div>
-				<div class="col-10 p-2">
-					<textarea id="content" class="form-control" id="reviewContent"
-						name="content"></textarea>
-				</div>
-			</div>
-		</div>
-	</form> -->
 		<div class="boxBtn">
 			<button type="button" class="btn btn-danger" id="btn-save">등록하기</button>
 			<button type="button" class="btn btn-secondary" id="btn-back">목록</button>

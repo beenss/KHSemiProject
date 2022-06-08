@@ -199,10 +199,37 @@ a {
 				<div class="board_list">
 					<div class="row row-cols-5" id="review-index-wrap">
 						<div class="col-lg-1">번호</div>
-						<div class="col-lg-7">제목</div>
+	
+						<div class="col-lg-6">제목</div>
+						<div class="col-lg-7">제목</div>					
 						<div class="col-lg-2">글쓴이</div>
 						<div class="col-lg-2">작성일</div>
 					</div>
+					 <c:choose>
+				<c:when test="${list.size()==0}">
+					<div class="row content text-center align-items-center">
+						<div class="col">
+							등록된 게시글이 없습니다.
+						</div>
+					</div>
+				</c:when>
+				<c:otherwise>
+					<c:forEach items="${list}" var="dto">
+						<div class="row content text-center align-items-center" style="cursor: pointer;" onclick="location.href='/inquiryDetailview.iq?seqInquiry=${dto.seqInquiry}';">
+                			<div class="col-lg-1 col-2">${dto.seqInquiry}</div>
+                			<c:if test="${not empty dto.inquiryAnswer}">
+               		 			<div class="col-lg-5 col-10"><strong>[답변완료]</strong> ${dto.inquiryTitle}</div>
+               		 		</c:if>
+               		 		<c:if test="${empty dto.inquiryAnswer}">
+               		 			<div class="col-lg-5 col-10">${dto.inquiryTitle}</div>
+               		 		</c:if >
+               	 			<div class="col-3 d-none d-lg-block">${dto.id}</div>
+                			<div class="col-3 d-none d-lg-block">${dto.inquiryDate}</div>    
+           				</div>
+					</c:forEach>
+				</c:otherwise>
+			</c:choose>     
+        </div>
 					<div class="review-body">
 						<div>
 							<div class="col-lg-11" id="review-blank">등록된 게시글이 없습니다.</div>
@@ -217,31 +244,41 @@ a {
 						</div>
 					</div>
 				</div>
-					<nav>
-	  <ul class="pagination justify-content-center">
-	  	<c:if test="${naviMap.needPrev eq true}">
-	  		 <li class="page-item"><a class="page-link" href="/review.bo?curPage=${naviMap.startNavi-1}">Prev</a></li>
-	  		 <%-- 현재 6페이지에 있는 상태에서 이전 버튼을 클릭했음 ->  5페이지로 이동 --%>
-	  	</c:if>
-	    
-	    <c:forEach var="pageNum" begin="${naviMap.startNavi}" end="${naviMap.endNavi}" step="1">
-	    	<li class="page-item"><a class="page-link" href="/reivew.bo?curPage=${pageNum}">${pageNum}</a></li>
-	    </c:forEach>
-	    
-	    <c:if test="${naviMap.needNext eq true}">
-	    	 <li class="page-item"><a class="page-link" href="/review.bo?curPage=${naviMap.endNavi+1}">Next</a></li>
-	    </c:if>	    
-	  </ul>
-    </nav>
-			</div>
-			<div class="btnWrap">
-				<button type="button" class="btn btn-secondary" id="btnwrite">작성하기</button>
-			</div>
+				
 
+	  	 <!--페이징-->
+        <div class="buttonBox" align="right">
+            <button type="button" class="btn btn-outline-secondary" id="btn-write">글쓰기</button>
+        </div>
+        <div class="row paging">
+            <div class="col-12">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center">
+                    <c:if test="${map.makePrev eq true}">
+                        <li class="page-item">
+                            <a class="page-link" href="/inquiry.iq?currentPage=${map.startNavi-1}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                   </c:if>
+                   <c:forEach var="pageNumber" begin="${map.startNavi}" end="${map.endNavi}" step="1">
+                   		<li class="page-item"><a class="page-link" href="/inquiry.iq?currentPage=${pageNumber}">${pageNumber}</a></li>
+                   </c:forEach>    
+                   <c:if test="${map.makeNext eq true}">                   
+                        <li class="page-item">
+                            <a class="page-link" href="/inquiry.iq?currentPage=${map.endNavi+1}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        	</a>
+                        </li>
+                    </c:if>
+                    </ul>
+                </nav>
+            </div>
+        </div>
 			<script>
-			const btnwrite = document.getElementById("btnwrite");
+			const btnwrite = document.getElementById("btn-write");
 			
-			$("#btnwrite").on("click", function(){
+			$("#btn-write").on("click", function(){
 		 	location.href = "/review/write.jsp";
 				
 			});

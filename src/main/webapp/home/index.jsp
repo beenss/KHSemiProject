@@ -223,7 +223,7 @@
                             저는 특히 닭고기를 좋아하는데 고소하면서도
                             잡냄새가 나지 않아서
                             먹는 내내 감탄만 했습니다
-                            <a href="#" class="btn btn-primary">리뷰 더보기</a>
+                     <a href="#" class="btn btn-primary">리뷰 더보기</a>
                 </div>
             </div>
         </div>

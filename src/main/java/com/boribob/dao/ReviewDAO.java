@@ -84,14 +84,13 @@ public class ReviewDAO {
 
 	//작성된 글을 테이블에 넣기 ok
 	public int insert(ReviewDTO dto) throws Exception{
-		String sql = "insert into tbl_review values(seq_review.nextval,?,?,?,?,sysdate,null)";
+		String sql = "insert into tbl_review values(seq_review.nextval,?,null,?,?,sysdate,null)";
 		try (Connection con = bds.getConnection();
 			PreparedStatement pstmt = con.prepareStatement(sql)) {
 	
 			pstmt.setInt(1, dto.getProductCode());
-			pstmt.setString(2, dto.getId());
-			pstmt.setString(3, dto.getReviewTitle());
-			pstmt.setString(4, dto.getReviewContent());
+			pstmt.setString(2, dto.getReviewTitle());
+			pstmt.setString(3, dto.getReviewContent());
 		
 
 			int rs = pstmt.executeUpdate();
@@ -134,10 +133,10 @@ public class ReviewDAO {
 			
 			while(rs.next()) {
 				int seqReview = rs.getInt("seq_review");
-				String id = rs.getString("id");
 				int productCode = rs.getInt("product_code");
+				String id = rs.getString("id");
 				String reviewTitle = rs.getString("review_title");
-				String reviewContent = rs.getString("review_conntent");
+				String reviewContent = rs.getString("review_content");
 				String productImg = rs.getString("product_img");
 				String reviewDate = dateToString(rs.getDate("review_date"));
 				ReviewList.add(new ReviewDTO(seqReview,productCode,id,reviewTitle,reviewContent,productImg,reviewDate));

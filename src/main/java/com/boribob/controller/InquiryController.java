@@ -75,7 +75,7 @@ public class InquiryController extends HttpServlet {
 			System.out.println(seqInquiry);
 			InquiryDAO dao = new InquiryDAO();
 			try{
-				InquiryDTO dto = dao.selectBySq(seqInquiry);
+				InquiryDTO dto = dao.selectBySeq(seqInquiry);
 				request.setAttribute("dto", dto);
 				Gson gson = new Gson();
 				String rs = gson.toJson(dto);

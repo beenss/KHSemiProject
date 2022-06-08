@@ -67,11 +67,11 @@ public class ReviewController extends HttpServlet {
 			ReviewDAO dao = new ReviewDAO();
 			MemberDTO dto = (MemberDTO) request.getSession().getAttribute("loginSession");
 			try {
-				String id = dto.getId();
+//				String id = dto.getId();
 
-				int rs = dao.insert(new ReviewDTO(0, 0, id, reviewTitle, reviewContent, null, null));
+				int rs = dao.insert(new ReviewDTO(0, 0, null, reviewTitle, reviewContent, null, null));
 				if (rs > 0) {
-					response.sendRedirect("review.bo?currentPage=1");
+					response.sendRedirect("/review.bo?currentPage=1");
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -116,7 +116,7 @@ public class ReviewController extends HttpServlet {
 				int rs = dao.update(new ReviewDTO(seqReview, 0, null, reviewTitle, reviewContent, null, null));
 				if (rs > 0) {
 			// 수정한 게시물 바로 확인하기
-			response.sendRedirect("/detailView.bo?seqReview=" + seqReview);
+			response.sendRedirect("/detailView.bo?seqReview=");
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
