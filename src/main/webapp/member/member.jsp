@@ -27,7 +27,6 @@
 <style>
 body {
 	box-sizing: border-box;
-	background-color: rgb(255, 252, 221);
 }
 
 .header {
@@ -36,7 +35,6 @@ body {
 }
 
 .footer>* {
-	background-color: rgb(255, 216, 131);
 	padding: 20px;
 	position: relative;
 }
@@ -150,14 +148,20 @@ body {
 
 
 			<div class="row p-2">
-				<div class="col">
+			
+				<div class="col">				
+					<label for="address" class="form-label">주소</label>
+				</div>
+				<div class="row p-2">
+				<div class="col">				
 					<input type="text" class="form-control" id="postCode"
 						name="post" placeholder="우편번호">
 				</div>
-
+				
 				<div class="col">
 					<button type="button" class="btn btn-primary w-100"
 						id="btnPostCode">우편번호 찾기</button>
+				</div>
 				</div>
 				<div class="row p-2">
 					<div class="col">
@@ -179,9 +183,8 @@ body {
 
 
 			<div class="row p-2">
-				<div class="col-12">
 					<label for="phone" class="form-label">휴대폰번호</label>
-					<div class="col-4 mb-2">
+					<div class="col-3 mb-2">
 						<select class="form-select" id="phone1">
 							<option value="010" selected>010</option>
 							<option value="011">011</option>
@@ -199,13 +202,28 @@ body {
 					<div class="col d-none">
 						<input type="text" id="phone" name="phone">
 					</div>
-
-					<div style="border: 1px solid lightgrey; width: 600px; height: 400px;">
-						<span>이용약관</span>
-					</div>
-				</div>
+					
+				
 
 			</div>
+			<div class="row p-2">
+			<label for="address" class="form-label">이용약관</label>
+			</div>
+			<div style="border: 1px solid lightgrey; width: 600px; height: 400px;">						
+			<textarea style="font-size: small; width: 400px; height: 100px; border: 1px solid black;">여러분을 환영합니다.보리밥 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. 
+본 약관은 다양한 보리밥 서비스의 이용과 관련하여 보리밥 서비스를 제공하는 보리밥 주식회사(이하 ‘보리밥’)와
+이를 이용하는 보리밥 서비스 회원(이하 ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 보리밥
+서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.</textarea>
+<textarea style="font-size: small; width: 400px; height: 100px; border: 1px solid black;">여러분을 환영합니다.보리밥 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. 
+본 약관은 다양한 보리밥 서비스의 이용과 관련하여 보리밥 서비스를 제공하는 보리밥 주식회사(이하 ‘보리밥’)와
+이를 이용하는 보리밥 서비스 회원(이하 ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 보리밥
+서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.</textarea>
+<textarea style="font-size: small; width: 400px; height: 100px; border: 1px solid black;">여러분을 환영합니다.보리밥 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. 
+본 약관은 다양한 보리밥 서비스의 이용과 관련하여 보리밥 서비스를 제공하는 보리밥 주식회사(이하 ‘보리밥’)와
+이를 이용하는 보리밥 서비스 회원(이하 ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 보리밥
+서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.</textarea>
+			</div>
+			
 		</form>
 
 	</div>
