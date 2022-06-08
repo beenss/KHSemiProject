@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -19,11 +20,7 @@
     </script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
-<<<<<<< HEAD
-    <link rel="stylesheet" type="text/css" href="/css/orderForm.css"> 
-=======
      
->>>>>>> branch 'main' of https://github.com/ImBoriPapa/KHSemiProject.git
    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
    
         <title>주문서창</title>
