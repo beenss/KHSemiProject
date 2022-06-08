@@ -1,23 +1,23 @@
 package com.boribob.dto;
 
 public class SubscribeDTO {
-	private int seqSubscribe;
+	private String seqSubscribe;
 	private int productCode;
-	private int subscribeStart;
+	private String subscribeStart;
 	private int subscribeTerm;
 	
-	public SubscribeDTO() {}
-	public SubscribeDTO(int seqSubscribe, int productCode, int subscribeStart, int subscribeTerm) {
+	public SubscribeDTO() {};
+	public SubscribeDTO(String seqSubscribe, int productCode, String subscribeStart, int subscribeTerm) {
 		super();
 		this.seqSubscribe = seqSubscribe;
 		this.productCode = productCode;
 		this.subscribeStart = subscribeStart;
 		this.subscribeTerm = subscribeTerm;
 	}
-	public int getSeqSubscribe() {
+	public String getSeqSubscribe() {
 		return seqSubscribe;
 	}
-	public void setSeqSubscribe(int seqSubscribe) {
+	public void setSeqSubscribe(String seqSubscribe) {
 		this.seqSubscribe = seqSubscribe;
 	}
 	public int getProductCode() {
@@ -26,10 +26,10 @@ public class SubscribeDTO {
 	public void setProductCode(int productCode) {
 		this.productCode = productCode;
 	}
-	public int getSubscribeStart() {
+	public String getSubscribeStart() {
 		return subscribeStart;
 	}
-	public void setSubscribeStart(int subscribeStart) {
+	public void setSubscribeStart(String subscribeStart) {
 		this.subscribeStart = subscribeStart;
 	}
 	public int getSubscribeTerm() {

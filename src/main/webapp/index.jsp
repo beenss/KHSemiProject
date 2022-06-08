@@ -30,7 +30,7 @@
                     <a class="nav-link" href="/inquiry.iq?currentPage=1">고객센터</a>
                     <a class="nav-link" href="#">로그인</a>
                     <a class="nav-link" href="#">회원가입</a>
-                    <a class="nav-link" style="color: rgb(255, 94, 0);" href="/petInput.pet">구독하기</a>
+                    <a class="nav-link" style="color: rgb(255, 94, 0);" href="/pet.pet">구독하기</a>
                 </nav>
             </div>
         </div>
