@@ -15,8 +15,6 @@ import com.boribob.dao.ReviewDAO;
 import com.boribob.dto.MemberDTO;
 import com.boribob.dto.ReviewDTO;
 import com.google.gson.Gson;
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 @WebServlet("*.bo")
 public class ReviewController extends HttpServlet {
@@ -64,8 +62,6 @@ public class ReviewController extends HttpServlet {
 			String reviewContent = request.getParameter("reviewContent");
 			System.out.println("리뷰 제목 : " + reviewTitle);
 			System.out.println("리뷰 내용 : " + reviewContent);
-			
-		
 			ReviewDAO dao = new ReviewDAO();
 			MemberDTO dto = (MemberDTO) request.getSession().getAttribute("loginSession");
 			try {

@@ -1,12 +1,11 @@
-<%@page import="order.orderDTO.OrderDTO"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
-
-<head>
+ <head>
     
   
     <meta charset="UTF-8">
@@ -21,11 +20,127 @@
     </script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
-    <link rel="stylesheet" type="text/css" href="order/css/orderForm.css"> 
+     
    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
    
         <title>주문서창</title>
-    
+        <style>
+          /*메인 로고 스타일*/
+      #main-logo {
+        margin-left: 123px;
+        width: 350px;
+        height: 200px;
+      }
+      
+      body {
+        background-color: rgb(255, 252, 221);
+      }
+      
+      /*메뉴 스타일*/
+      *.nav-link {
+        color: rgb(44, 44, 44);
+        font-size: large;
+      }
+      
+      *.nav-link:hover {
+        background-color: blanchedalmond;
+        background-size: 3px;
+      }
+      
+      /*메뉴 위치*/
+      #nav-item {
+        margin-top: 150px;
+        margin-left: 325px;
+      }
+      
+      .container {
+        width: 1200px;
+        height: 700px;
+      }
+      
+      .content {
+        position: relative;
+        width: 600px;
+        height: 600px;
+        left: 30px;
+      }
+      
+      .customeritem {
+        border: 1px solid lightblue;
+        width: 400px;
+        height: 600px;
+      }
+      
+      .content1 {
+        position: relative;
+        width: 600px;
+        height: 600px;
+        left: 630px;
+        bottom: 600px;
+      }
+      
+      /*대략적인 구조를 직관적으로 확인하시라고 임의로 설정해 둔 테두리입니다!*/
+      img {
+        border: 1px solid rgb(218, 218, 218);
+      }
+      
+      /*footer*/
+      .footer {
+        height: 150px;
+        overflow: visible;
+        background-color: rgb(255, 216, 131);
+        z-index: 1;
+        margin-top: 40px;
+      }
+      
+      .ft-ul {
+        list-style: none;
+        text-align: center;
+        height: 100%;
+        padding-top: 28px;
+        color: black;
+        font-size: 12px;
+        z-index: 1;
+      }
+      
+      .ft-ul li {
+        height: 25px;
+      }
+      
+      .facebookicon {
+        position: relative;
+        bottom: 40px;
+        margin-left: 1000px;
+        z-index: 2;
+      }
+      
+      .instagramicon {
+        position: relative;
+        bottom: 90px;
+        margin-left: 1100px;
+        z-index: 2;
+      }
+      
+      .youtubeicon {
+        position: relative;
+        bottom: 140px;
+        margin-left: 1200px;
+        z-index: 2;
+      }
+      
+      .ft-ul2 {
+        position: relative;
+        bottom: 250px;
+        margin-left: 1100px;
+        z-index: 2;
+        font-size: 10px;
+      }
+      
+      .ft-ul2 li {
+        height: 17px;
+      }
+      
+        </style>  
 </head>
 
 <body>
@@ -61,7 +176,7 @@
                 
                       
                 <div style="text-align: center;">
-                  주문상품코드<input id="productCode" name="productName" value="${orderInfoDTO.productCode}">
+                  주문상품코드<input id="productCode" name="productName" value="${subscribeDto.productCode}">
                   
                 </div>
                 
@@ -73,11 +188,11 @@
                     <strong>배송 정보</strong><br>
                     <div>멤버 테이블에 저장된 회원정보</div>
                 
-                 <p>회원이름<input id="name" type="text" value="${orderInfoDTO.name}"></p>
-                 <p>회원연락처 <input id="phone" type="text" value="${orderInfoDTO.phone}"></p>
-                 <p>회원우편번호 <input id="post" type="text" value="${orderInfoDTO.post}"></p>
-                 <p>회원주소 <input id="roadAddress" type="text" value="${orderInfoDTO.roadAddress}"></p>
-                 <p>회원상세주소<input id="detailAddress" type="text" value="${orderInfoDTO.detailAddress}"></p>
+                 <p>회원이름<input id="name" type="text" value="${memberDTO.name}"></p>
+                 <p>회원연락처 <input id="phone" type="text" value="${memberDTO.phone}"></p>
+                 <p>회원우편번호 <input id="post" type="text" value="${memberDTO.post}"></p>
+                 <p>회원주소 <input id="roadAddress" type="text" value="${memberDTO.roadAddress}"></p>
+                 <p>회원상세주소<input id="detailAddress" type="text" value="${memberDTO.detailAddress}"></p>
                     
                  
                  
@@ -105,7 +220,7 @@
                     <input type="text" id="orderMsg"  placeholder="주문 메시지" style="width: 380px; margin-top: 5px;"><br>
                     
                       
-                    <button type="submit"> 테스트 전송</button>
+                    
                 
                   </div>
           
@@ -123,7 +238,12 @@
                 <div>
                     <strong>결제 정보</strong><br>
                     <div>결제 금액</div>
-                    <input type="text" id="totalPay" value="${orderInfoDTO.price}" placeholder="100"><br>
+                    <input type="text" id="totalPrice" value="${subscribeDto.subscribePrice}" placeholder="100"><br>
+                    <div>구독 개월 수</div>
+                    <input type="text" id="subscribeTerm" value="${subscribeDto.subscribeTerm}" ><br>
+                    
+                    
+
                     <div>결제하실분 이름</div>
                     <input type="text" id="namePay" placeholder="이보리"><br>
                     <div>결제하실분 이메일</div>
@@ -136,7 +256,16 @@
                     <input type="text" id="detailAddressPay" placeholder="예)123-456"><br>
                    
                 </div>
-
+				          	<input type="text" id="petName" value="${petDto.getPetName()}" style="display: none;">
+                    <input type="text" id="petAge" value="${petDto.getPetAge()}" style="display: none;">
+                    
+                    <input type="text" id="petAllergy" value="${petDto.getPetAllergy()}" style="display: none;">
+                    <input type="text" id="petWeight" value="${petDto.getPetWeight()}" style="display: none;">
+                    <input type="text" id="petKind" value="${petDto.getPetKind()}" style="display: none;">
+                    <input type="text" id="petType" value="${petDto.getPetType()}" style="display: none;">
+                    
+                    
+                    
                       
                  
                 <div style="text-align: center;"><strong>배송을 시작할까요?</strong></div>
@@ -147,7 +276,7 @@
             
         </div>
     </div>
-
+	
 
 
     <!--구분선-->
@@ -180,6 +309,9 @@
     
 
        <script>
+        
+          
+          
            const infoBtn = document.querySelector('#infoBtn');
            
            const name = document.querySelector('#name');
@@ -231,14 +363,18 @@
       new daum.Postcode({
         oncomplete: function (data) {
           //선택시 입력값 세팅
-          document.getElementById("input_address").value = data.address; // 주소 넣기
-          document.getElementById("input_zoneCode").value = data.zonecode;
-          documnet.getElementById("input_bname").value = data.bname;
-          document.getElementById("detail_address").focus(); //상세입력 포커싱
+          document.getElementById("orderRoadAddress").value = data.address; // 주소 넣기
+          document.getElementById("orderPost").value = data.zonecode;
+          
+          document.getElementById("orderDetailAddress").focus(); //상세입력 포커싱
         },
       }).open();
     });
+
+    
 };
+
+
 //결제정보 ============================================================================
   
 
@@ -251,8 +387,8 @@ $("#check_module").click(function () { // 결제 api
   }
 
 
-  const totalPay = document.querySelector("#totalPay");   
-  if(totalPay.value===""){
+  const totalPrice = document.querySelector("#totalPrice");   
+  if(totalPrice.value===""){
     alert("금액을 입력하세요.")
     return
   }
@@ -293,7 +429,7 @@ $("#check_module").click(function () { // 결제 api
       pay_method: "card",
       merchant_uid: "merchant_" + new Date().getTime(),
       name: nameProduct.value,
-      amount: totalPay.value,
+      amount: totalPrice.value,
       buyer_email: emailPay.value,
       buyer_name: namePay.value,
       buyer_tel: phonePay.value,
@@ -311,7 +447,7 @@ $("#check_module").click(function () { // 결제 api
       if (rsp.success) {
         //결제완료정보
         var payAlert ="결제가 완료 되었습니다."
-        const paySuccess = "입금완료 ";
+        const paySuccess = "ok";
         const payId = "고유ID :"+ rsp.imp_uid;;
         const payTradeId = "상점 거래ID :" + rsp.merchant_uid;
         const payAmount =  rsp.paid_amount;
@@ -323,9 +459,19 @@ $("#check_module").click(function () { // 결제 api
         const orderRoadAddress = $('#orderRoadAddress').val();
         const orderDetailAddress = $('#orderDetailAddress').val();
         const orderMsg =  $('#orderMsg').val();
-        const postMsg   =$('#postMsg').val();  
+        const postMsg   =$('#postMsg').val();
+        const totalPrice = $('#totalPrice').val();  
        
+        const petName = $('#petName').val();
+        const petAge = $('#petAge').val();
+        const petAllergy = $('#petAllergy').val();
+        const petWeight = $('#petWeight').val();
+        const petKind = $('#petKind').val();
+        const petType =  $('#petType').val();
         
+        const productCode   =$('#productCode').val(); 
+        const subscribeTerm   =$('#subscribeTerm').val();  
+
         $.ajax({
             url:"/insert.order",
             method:"post",
@@ -344,6 +490,17 @@ $("#check_module").click(function () { // 결제 api
                     "orderDetailAddress" : orderDetailAddress,
                     "orderMsg" : orderMsg,
                     "postMsg" : postMsg,
+                    "totalPrice" :totalPrice,
+                  
+                    "petName" : petName,
+                    "petAge" : petAge,
+                    "petAllergy" : petAllergy,
+                    "petWeight" : petWeight,
+                    "petKind" : petKind,
+                    "petType" : petType,
+
+                    "productCode" : productCode,
+                    "subscribeTerm" : subscribeTerm
                   }
                   
         })

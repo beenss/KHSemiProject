@@ -13,7 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
-    <title>레이아웃</title>
+    <title>구독 정보 입력</title>
     <style>
         body {
             box-sizing: border-box;
@@ -106,56 +106,35 @@
 
         <!-- 바디 -->
         <div class="container class-body">
-            <form action="/petInput.pet" method="post" id="pet-input-form">
+            <form action="/subscribeInput.sub" method="post" id="subscribe-input-form">
                 <div class="row">
+                    <div class="row">
+                        ${petDto.getPetName()} 에게 가장 어울리는 사료는 ${productCode} 입니다.
+                    </div>
                     <div class="col-12">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="petTypeSelect" value="dog"/>강아지
+                            <input class="form-check-input" type="radio" name="subscribeTypeSelect" value="1" checked/>1개월 구독
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="petTypeSelect" value="cat" checked/>고양이
+                            <input class="form-check-input" type="radio" name="subscribeTypeSelect" value="3"/>3개월 구독
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="subscribeTypeSelect" value="6"/>6개월 구독
                         </div>
                     </div>
-                    <input type="text" name="petType" id="pet-type" style="display: none;">
-                    <div class="col-12 ">
-                        우리 아이의 견/묘종은
-                        <select style="display:inline; width: 200px;" class="form-select" id="pet-kind">
-                            <option value="1">테스트</option>
-                            <option value="2">닥스훈트</option>
-                            <option value="3">브리티쉬 숏헤어</option>
-                        </select>
-                        입니다.
-                    </div>
-
+                    <input type="text" name="subscribeType" id="subscribe-type" style="display: none;">
+                    
+                    <input type="text" name="productCode" value="${productCode}" style="display: none;">
+                    
+                    <input type="text" name="petName" value="${petDto.getPetName()}" style="display: none;">
+                    <input type="text" name="petAge" value="${petDto.getPetAge()}" style="display: none;">
+                    <input type="text" name="petAllergy" value="${petDto.getPetAllergy()}" style="display: none;">
+                    <input type="text" name="petWeight" value="${petDto.getPetWeight()}" style="display: none;">
+                    <input type="text" name="petKind" value="${petDto.getPetKind()}" style="display: none;">
+                    <input type="text" name="petType" value="${petDto.getPetType()}" style="display: none;">
+                    
                     <div class="col-12">
-                        우리 아이 이름은 
-                        <input type="text" class="form-control" id="pet-name" name="petName" style="display:inline; width: 200px;">
-                        입니다.
-                    </div>
-                    <div class="col-12">
-                        우리 아이 생일은 
-                        <input type="text" class="form-control" id="pet-birthday-year" name="petBirthdayYear" style="display:inline; width: 100px;">
-                        년
-                        <input type="text" class="form-control" id="pet-birthday-month" name="petBirthdayMonth" style="display:inline; width: 100px;">
-                        월
-                        <input type="text" class="form-control" id="pet-birthday-day" name="petBirthdayDay" style="display:inline; width: 100px;">
-                        일 입니다.
-                    </div>
-                    <div class="col-12">
-                        우리 아이의 체형은
-                        <select aria-label="Default select example" style="display:inline; width: 200px;" class="form-select">
-                            <option value="0">보통</option>
-                            <option value="1">통통</option>
-                        </select>
-                        입니다.
-                    </div>
-                    <div class="col-12">
-                        우리 아이의 알러지는
-                        <input type="text" class="form-control" id="pet-allergy" name="petAllergy" style="display:inline; width: 200px;" placeholder="없으면 '없음'으로 입력">
-                        가 있습니다.
-                    </div>
-                    <div class="col-12">
-                        <button type="button" class="btn btn-primary" id="button-submit">제출하기</button>
+                        <button type="button" class="btn btn-primary" id="button-pay">결제하기</button>
                         <button type="button" class="btn btn-secondary" id="button-back">뒤로가기</button>
                     </div>
                 </div>
@@ -190,23 +169,17 @@
         <!-- 여기까지 풋터 -->
     </div>
     <script>
-        function getPetType() {
-            const petTypeSelect = document.getElementsByName('petTypeSelect');
+        function getSubscribeType() {
+            const petTypeSelect = document.getElementsByName('subscribeTypeSelect');
             petTypeSelect.forEach((elem) => {
                 if (elem.checked) {
-                    document.getElementById('pet-type').value = elem.value;
+                    document.getElementById('subscribe-type').value = elem.value;
                 }
             })
         }
 
         // 현재 작업중
         function isValidInput() {
-            let petName = document.getElementById('pet-name').value;
-            let petBirthdayYear = document.getElementById('pet-birthday-year').value;
-            let petBirthdayMonth= document.getElementById('pet-birthday-month').value;
-            let petBirthdayDay = document.getElementById('pet-birthday-day').value;
-            let petAllergy = document.getElementById('pet-allergy').value;
-
             let now = new Date();
 
             /* if (petName.length == 0 || petName.length > 10) {
@@ -214,12 +187,12 @@
             } */
             return 'valid';
         }
+        
+        console.log(isValidInput())
 
-        document.getElementById('button-submit').addEventListener('click', () => {
-            getPetType();
-            if (isValidInput() === 'valid') {
-                document.getElementById('pet-input-form').submit();
-            }
+        document.getElementById('button-pay').addEventListener('click', () => {
+            getSubscribeType();
+            document.getElementById('subscribe-input-form').submit();
         })
     </script>
 </body>

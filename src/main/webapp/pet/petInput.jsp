@@ -13,7 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
-    <title>레이아웃</title>
+    <title>펫 정보 입력</title>
     <style>
         body {
             box-sizing: border-box;
@@ -119,7 +119,7 @@
                     <input type="text" name="petType" id="pet-type" style="display: none;">
                     <div class="col-12 ">
                         우리 아이의 견/묘종은
-                        <select style="display:inline; width: 200px;" class="form-select" id="pet-kind">
+                        <select style="display:inline; width: 200px;" class="form-select" id="pet-kind" name="petKind">
                             <option value="1">테스트</option>
                             <option value="2">닥스훈트</option>
                             <option value="3">브리티쉬 숏헤어</option>
@@ -143,7 +143,7 @@
                     </div>
                     <div class="col-12">
                         우리 아이의 체형은
-                        <select aria-label="Default select example" style="display:inline; width: 200px;" class="form-select">
+                        <select style="display:inline; width: 200px;" class="form-select" id='pet-weight' name='petWeight'>
                             <option value="0">보통</option>
                             <option value="1">통통</option>
                         </select>
@@ -220,6 +220,10 @@
             if (isValidInput() === 'valid') {
                 document.getElementById('pet-input-form').submit();
             }
+        })
+        
+        document.getElementById('button-back').addEventListener('click', () => {
+        	location.href = "/home";
         })
     </script>
 </body>

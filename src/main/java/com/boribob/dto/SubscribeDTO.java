@@ -1,46 +1,63 @@
 package com.boribob.dto;
 
 public class SubscribeDTO {
-	private int seqSubscribe;
+	private String id;
 	private int productCode;
-	private int subscribeStart;
+	private String subscribeStart;
 	private int subscribeTerm;
+	private int subscribePrice;
 	
 	public SubscribeDTO() {}
-	public SubscribeDTO(int seqSubscribe, int productCode, int subscribeStart, int subscribeTerm) {
+
+	public SubscribeDTO(String id, int productCode, String subscribeStart, int subscribeTerm, int subscribePrice) {
 		super();
-		this.seqSubscribe = seqSubscribe;
+		this.id = id;
 		this.productCode = productCode;
 		this.subscribeStart = subscribeStart;
 		this.subscribeTerm = subscribeTerm;
+		this.subscribePrice = subscribePrice;
 	}
-	public int getSeqSubscribe() {
-		return seqSubscribe;
+
+	public String getId() {
+		return id;
 	}
-	public void setSeqSubscribe(int seqSubscribe) {
-		this.seqSubscribe = seqSubscribe;
+
+	public void setId(String id) {
+		this.id = id;
 	}
+
 	public int getProductCode() {
 		return productCode;
 	}
+
 	public void setProductCode(int productCode) {
 		this.productCode = productCode;
 	}
-	public int getSubscribeStart() {
+
+	public String getSubscribeStart() {
 		return subscribeStart;
 	}
-	public void setSubscribeStart(int subscribeStart) {
+
+	public void setSubscribeStart(String subscribeStart) {
 		this.subscribeStart = subscribeStart;
 	}
+
 	public int getSubscribeTerm() {
 		return subscribeTerm;
 	}
+
 	public void setSubscribeTerm(int subscribeTerm) {
 		this.subscribeTerm = subscribeTerm;
 	}
-	@Override
-	public String toString() {
-		return "SubscribeDTO [seqSubscribe=" + seqSubscribe + ", productCode=" + productCode + ", subscribeStart="
-				+ subscribeStart + ", subscribeTerm=" + subscribeTerm + "]";
+
+	public int getSubscribePrice() {
+		return subscribePrice;
 	}
+
+	public void setSubscribePrice(int subscribePrice) {
+		this.subscribePrice = subscribePrice;
+	}
+
+	
+	
 }

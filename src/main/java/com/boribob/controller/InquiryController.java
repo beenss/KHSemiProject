@@ -56,12 +56,14 @@ public class InquiryController extends HttpServlet {
 		}else if(uri.equals("/inquiryWriteProc.iq")) {//문의글쓰기 페이지
 			String inquiryTitle = request.getParameter("inquiryTitle");
 			String inquiryContent = request.getParameter("inquiryContent");
-			System.out.println(inquiryTitle + inquiryContent);
+			System.out.println("글 제목 : " + inquiryTitle);
+			System.out.println("글 내용 : " + inquiryContent);
 			
 			InquiryDAO dao = new InquiryDAO();
 			MemberDTO dto = (MemberDTO)request.getSession().getAttribute("loginSession");
 			try {
 				String id = dto.getId();
+			
 				int rs = dao.insert(new InquiryDTO(0,id,inquiryTitle,inquiryContent,null,null));
 				if(rs>0) {
 					response.sendRedirect("/inquiry.iq?currentPage=1");
@@ -69,7 +71,7 @@ public class InquiryController extends HttpServlet {
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
-			
+		
 		}else if(uri.equals("/inquiryDetailview.iq")) {
 			int seqInquiry = Integer.parseInt(request.getParameter("seqInquiry"));
 			System.out.println(seqInquiry);
