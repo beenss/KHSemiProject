@@ -199,14 +199,14 @@ a {
 				<div class="board_list">
 					<div class="row row-cols-5" id="review-index-wrap">
 						<div class="col-lg-1">번호</div>
-	
+						<div class="col-lg-1">상품코드</div>
 						<div class="col-lg-6">제목</div>
 						<div class="col-lg-7">제목</div>					
 						<div class="col-lg-2">글쓴이</div>
 						<div class="col-lg-2">작성일</div>
 					</div>
 					 <c:choose>
-				<c:when test="${list.size()==0}">
+			<%-- 	<c:when test="${list.size()==0}">
 					<div class="row content text-center align-items-center">
 						<div class="col">
 							등록된 게시글이 없습니다.
@@ -216,7 +216,7 @@ a {
 				<c:otherwise>
 					<c:forEach items="${list}" var="dto">
 						<div class="row content text-center align-items-center" style="cursor: pointer;" onclick="location.href='/inquiryDetailview.iq?seqInquiry=${dto.seqInquiry}';">
-                			<div class="col-lg-1 col-2">${dto.seqInquiry}</div>
+                			<div class="col-lg-1 col-2">${dto.seqReview}</div>
                 			<c:if test="${not empty dto.inquiryAnswer}">
                		 			<div class="col-lg-5 col-10"><strong>[답변완료]</strong> ${dto.inquiryTitle}</div>
                		 		</c:if>
@@ -229,7 +229,7 @@ a {
 					</c:forEach>
 				</c:otherwise>
 			</c:choose>     
-        </div>
+        </div> --%>
 					<div class="review-body">
 						<div>
 							<div class="col-lg-11" id="review-blank">등록된 게시글이 없습니다.</div>
