@@ -63,10 +63,10 @@ public class ReviewController extends HttpServlet {
 		} else if (uri.equals("/writeProc.bo")) {
 			String reviewTitle = request.getParameter("reviewTitle");
 			String reviewContent = request.getParameter("reviewContent");
-			System.out.println("제목 : "+reviewTitle + "내용 : "+reviewContent);
+			System.out.println("리뷰 제목 : " + reviewTitle);
+			System.out.println("리뷰 내용 : " + reviewContent);
 			
-			
-
+		
 			ReviewDAO dao = new ReviewDAO();
 			MemberDTO dto = (MemberDTO) request.getSession().getAttribute("loginSession");
 			try {

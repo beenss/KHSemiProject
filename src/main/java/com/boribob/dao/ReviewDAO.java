@@ -78,7 +78,6 @@ public class ReviewDAO {
 			pstmt.setString(2, dto.getId());
 			pstmt.setString(3, dto.getReviewTitle());
 			pstmt.setString(4, dto.getReviewContent());
-		
 
 			int rs = pstmt.executeUpdate();
 			return rs;
