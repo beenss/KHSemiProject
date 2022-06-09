@@ -51,7 +51,7 @@
                                         회원
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <li><a class="dropdown-item" href="#">조회</a></li>
+                                        <li><a class="dropdown-item" href="/member.admin">조회</a></li>
                                         <li><a class="dropdown-item" href="#">블랙리스트</a></li>
                                     </ul>
                                 </li>
