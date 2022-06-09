@@ -1,4 +1,4 @@
-<%@page import="order.orderDTO.OrderDTO"%> <%@ page language="java"
+<%@ page language="java"
 contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> <%@ taglib
 prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -38,7 +38,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
       .title {
         border-bottom: 1px solid black;
       }
-      .title-body {
+      .body-title {
         background-color: lightgray;
       }
       .content {
@@ -183,49 +183,41 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
       </div>
       <div class="container">
         <div class="row title py-3">
-          <h3>주문 상태</h3>
+          <h3>배송 상태</h3>
         </div>
-        <div class="row title-body py-2 mt-4 text-center">
-          <div class="col-3">
-            <h5>주문번호</h5>
+        <div class="row body-title py-2 mt-4 text-center">
+          <div class="col-2">
+            <h5>배송번호</h5>
           </div>
-          <div class="col-3">
-            <h5>구매자id</h5>
+          <div class="col-2">
+            <h5>배송회차</h5>
           </div>
-          <div class="col-3">
-            <h5>상품명</h5>
+          <div class="col-4">
+            <h5>배송상태</h5>
           </div>
-          <div class="col-3">
-            <h5>상세보기</h5>
+          <div class="col-4">
+            <h5>수정</h5>
           </div>
         </div>
-        
-        <c:forEach items="${orderList}" var="orderList">
-          
-          <form id="form" action="/orderDetail.admin" method="post">
-            <div
-              class="row content py-2 text-center"
-              style="cursor: pointer"> 
-                
-              <!--클릭시 상세보기 페이지로 이어짐-->
-              <input type="hidden" name="orderId" value="${orderList.orderId}">
-              <div class="col-3">${orderList.orderId}</div>
-              <div class="col-3">${orderList.id}</div>
-              <div class="col-3">${orderList.productCode}</div>
-              <div class="col-3">   
-                 <button
-                id="goToDetailBtn"
-                type="submit"
-                class="btn btn-primary"
-              >
-                바로가기
-              </button>
-            </div>
-            
+        <c:forEach items="${deliveryList}" var="deliveryList">
+          <form id="form" action="/deliveryManagement.admin" method="post">
+            <div class="row content py-2 text-center" style="cursor: pointer">
+              <input type="hidden" name="orderId" value="${deliveryList.orderId}">
+              <div class="col-2">${deliveryList.orderId}</div>
+              <div class="col-2">${deliveryList.deliveryCount}</div>
+              <div class="col-4">${deliveryList.deliveryStatus}</div>
+              <div class="col-4">
+                <button
+                  type="submit"
+                  class="btn btn-outline-secondary"
+                  id="btn-update"
+                >
+                  수정
+                </button>
+              </div>
             </div>
           </form>
         </c:forEach>
-      
       </div>
     </div>
   </body>

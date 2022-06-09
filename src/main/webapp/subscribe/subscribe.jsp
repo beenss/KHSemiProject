@@ -109,7 +109,7 @@
             <form action="/subscribeInput.sub" method="post" id="subscribe-input-form">
                 <div class="row">
                     <div class="row">
-                        ${petDto.getPetName()} 에게 가장 어울리는 사료는 ${productCode} 입니다.
+                        ${petDto.getPetName()} 에게 가장 어울리는 사료는 ${productName} 입니다.
                     </div>
                     <div class="col-12">
                         <div class="form-check">

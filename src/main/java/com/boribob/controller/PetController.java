@@ -84,6 +84,7 @@ public class PetController extends HttpServlet {
 				
 				request.setAttribute("petDto", petDto);
 				request.setAttribute("productCode", productCode);
+				request.setAttribute("productName", productName);
 				
 				request.getRequestDispatcher("/subscribe/subscribe.jsp").forward(request, response);
 			} catch (Exception e) {
