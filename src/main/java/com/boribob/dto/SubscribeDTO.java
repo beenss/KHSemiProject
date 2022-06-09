@@ -5,17 +5,15 @@ public class SubscribeDTO {
 	private int productCode;
 	private String subscribeStart;
 	private int subscribeTerm;
-	private int subscribePrice;
 	
 	public SubscribeDTO() {}
 
-	public SubscribeDTO(String id, int productCode, String subscribeStart, int subscribeTerm, int subscribePrice) {
+	public SubscribeDTO(String id, int productCode, String subscribeStart, int subscribeTerm) {
 		super();
 		this.id = id;
 		this.productCode = productCode;
 		this.subscribeStart = subscribeStart;
 		this.subscribeTerm = subscribeTerm;
-		this.subscribePrice = subscribePrice;
 	}
 
 	public String getId() {
@@ -50,14 +48,4 @@ public class SubscribeDTO {
 		this.subscribeTerm = subscribeTerm;
 	}
 
-	public int getSubscribePrice() {
-		return subscribePrice;
-	}
-
-	public void setSubscribePrice(int subscribePrice) {
-		this.subscribePrice = subscribePrice;
-	}
-
-	
-	
 }
