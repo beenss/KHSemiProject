@@ -53,11 +53,11 @@ public class MemberDAO {
 				String id = rs.getString("id");
 				String password = rs.getString("password");
 				String name = rs.getString("name");
-				String roadAddress = rs.getString("roadAddress");
+				String roadAddress = rs.getString("road_address");
 				String post = rs.getString("post");
-				String detailAddress = rs.getString("detailAddress");
+				String detailAddress = rs.getString("detail_address");
 				String phone = rs.getString("phone");
-				memberList.add(new MemberDTO(id,password,name,roadAddress,post,detailAddress,phone));
+				memberList.add(new MemberDTO(id,password,name,post,roadAddress,detailAddress,phone));
 				
 			}return memberList;
 		}
@@ -157,7 +157,6 @@ public class MemberDAO {
 		}
 
 	}
-	
 	
 						
 

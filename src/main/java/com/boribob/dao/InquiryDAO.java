@@ -79,6 +79,27 @@ public class InquiryDAO {
 			}return inquiryList;
 		}
 	}
+	public ArrayList<InquiryDTO> selectNotAnswer(int start, int end)throws Exception{//페이징에 맞춰서 전체목록 보여주기
+		String sql = "select * from(select tbl_inquiry.*,row_number() over(order by seq_inquiry desc)as num from tbl_inquiry) where (num between ? and ?)"
+				+ "and inquiry_answer is null";
+		try(Connection con = bds.getConnection(); 
+			PreparedStatement pstmt = con.prepareStatement(sql);){
+			pstmt.setInt(1,start);
+			pstmt.setInt(2,end);
+			ResultSet rs = pstmt.executeQuery();
+			ArrayList<InquiryDTO> inquiryList = new ArrayList<>();
+			
+			while(rs.next()) {
+				int seqInquiry = rs.getInt("seq_inquiry");
+				String id = rs.getString("id");
+				String inquiryTitle = rs.getString("inquiry_title");
+				String inquiryContent = rs.getString("inquiry_content");
+				String inquiryDate = dateToString(rs.getDate("inquiry_date"));
+				inquiryList.add(new InquiryDTO(seqInquiry,id,inquiryTitle,inquiryContent,inquiryDate,null));
+				
+			}return inquiryList;
+		}
+	}
 	public int update(InquiryDTO dto)throws Exception{//수정
 		String sql = "update tbl_inquiry set inquiry_title=?, inquiry_content=? where seq_inquiry=?";
 		try(Connection con = bds.getConnection(); 
@@ -90,6 +111,17 @@ public class InquiryDAO {
 			int rs = pstmt.executeUpdate();
 			return rs;
 		}
+	}
+	public int updateAnswer(String inquiryAnswer, int seqInquiry)throws Exception{
+		String sql = "update tbl_inquiry set inquiry_answer=? where seq_inquiry=?";
+		try(Connection con = bds.getConnection(); 
+				PreparedStatement pstmt = con.prepareStatement(sql);){
+				pstmt.setString(1,inquiryAnswer);
+				pstmt.setInt(2,seqInquiry);
+				
+				int rs = pstmt.executeUpdate();
+				return rs;
+			}
 	}
 	public int delete(int seq_inquiry)throws Exception{//삭제
 		String sql = "delete from tbl_inquiry where seq_inquiry=?";
