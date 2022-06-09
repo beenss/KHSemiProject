@@ -31,7 +31,11 @@
                     <a class="nav-link" href="/product.pro">제품 보기</a>
                     <a class="nav-link" href="/review.bo?currentPage=1">리뷰</a>
                     <a class="nav-link" href="/inquiry.iq?currentPage=1">고객센터</a>
+<<<<<<< HEAD
                     <a class="nav-link" href="/logout.mem">로그아웃</a>
+=======
+                    <a class="nav-link" href="/login/login.jsp">로그아웃</a>
+>>>>>>> 5b9904131fb47d077bd8c3d61b2a1c57cc6b3b6b
                     <a class="nav-link" href="/mypage/activities.jsp">마이페이지</a>
                     <a class="nav-link" style="color: rgb(255, 94, 0);" href="/petInput.pet">구독하기</a>
                 </nav>

@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.boribob.dao.PetDAO;
 import com.boribob.dao.ProductDAO;
+import com.boribob.dto.MemberDTO;
 import com.boribob.dto.PetDTO;
-import com.boribob.dto.ProductDTO;
 
 @WebServlet("*.pet")
 public class PetController extends HttpServlet {
@@ -29,7 +29,7 @@ public class PetController extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		
 		if (uri.equals("/petInput.pet")) {
-//			String id = ((MemberDTO)request.getSession().getAttribute("loginSession")).getId();
+			String id = ((MemberDTO)request.getSession().getAttribute("loginSession")).getId();
 			
 			String petType = request.getParameter("petType");
 			String petName = request.getParameter("petName");
@@ -51,7 +51,7 @@ public class PetController extends HttpServlet {
 			
 			String petAllergyInput = request.getParameter("petAllergy");
 			int petAllergy = 0;
-			if (petAllergyInput == "없음") {
+			if (petAllergyInput == "없음" || petAllergyInput == "") {
 				petAllergy = 0;
 			} else {
 				petAllergy = 1;
@@ -67,24 +67,22 @@ public class PetController extends HttpServlet {
 			
 			try {
 				PetDAO dao = new PetDAO();
-				PetDTO petDto = new PetDTO("1", petName, petAge, petAllergy, petWeight, petKind, petType);
+				PetDTO petDto = new PetDTO(id, petName, petAge, petAllergy, petWeight, petKind, petType);
 				ProductDAO productDao = new ProductDAO();
-				int productNum = dao.getProductNum(dao.getPetStatus(petDto));
+				int productCode = dao.getProductNum(dao.getPetStatus(petDto));
 //				String productName = (productDao.selectByCode(productNum)).getProductName();
 				
-				System.out.println("상품 번호 : " + productNum);
+				System.out.println("상품 번호 : " + productCode);
 //				System.out.println("상품 이름 : " + productName);
 				
-				int rs = dao.insert(petDto);
-				if (rs > 0) {
-					System.out.println("펫 정보 입력 완료");
-					request.setAttribute("petDto", petDto);
-					request.setAttribute("productNum", productNum);
-					request.getRequestDispatcher("/subscribe/subscribe.jsp").forward(request, response);
-				}
+				request.setAttribute("petDto", petDto);
+				request.setAttribute("productCode", productCode);
+				request.getRequestDispatcher("/subscribe/subscribe.jsp").forward(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		} else if (uri.equals("/pet.pet")) {
+			response.sendRedirect("/pet/petInput.jsp");
 		}
 	}
 }
