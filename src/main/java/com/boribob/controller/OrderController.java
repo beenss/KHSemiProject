@@ -55,7 +55,7 @@ public class OrderController extends HttpServlet {
 				PetDTO petDto = new PetDTO("id2", "보리", 1, 10, 5, "왕", "cat");
 				request.setAttribute("petDto", petDto);
 
-				SubscribeDTO subscribeDto = new SubscribeDTO("21", 1, null, 6,60);
+				SubscribeDTO subscribeDto = new SubscribeDTO("21", 1, null, 6);
 				request.setAttribute("subscribeDto", subscribeDto);
 
 				request.setAttribute("memberDTO", memberDTO);
@@ -119,7 +119,7 @@ public class OrderController extends HttpServlet {
 
 					PetDTO petDTO = new PetDTO("id10", petName, petAge, petAllergy, petWeight, petKind, petType);
 
-					SubscribeDTO subscribeDTO = new SubscribeDTO("id10", productCode, null, subscribeTerm,price);
+					SubscribeDTO subscribeDTO = new SubscribeDTO("id10", productCode, null, subscribeTerm);
 
 					StatisticsDTO statisticsDTO = new StatisticsDTO(productName(productCode), id, price, subscribeTerm,
 							Integer.parseInt(payAmount));
