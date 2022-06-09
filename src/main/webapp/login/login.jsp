@@ -75,7 +75,7 @@ body {
 							<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 								<li class="nav-item"><a class="nav-link" href="#">제품 보기</a>
 								</li>
-								<li class="nav-item"><a class="nav-link" href="#">고객센터</a>
+								<li class="nav-item"><a class="nav-link" href="/inquiry.iq?currentPage=1">고객센터</a>
 								</li>
 								<li class="nav-item"><a class="nav-link" href="#">회원 가입</a>
 								</li>
