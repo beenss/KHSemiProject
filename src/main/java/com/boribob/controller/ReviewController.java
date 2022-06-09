@@ -129,7 +129,7 @@ public class ReviewController extends HttpServlet {
 			}catch(Exception e) {
 				e.printStackTrace();
 			}request.getRequestDispatcher("/mypage/reviewList.jsp").forward(request, response);
-		}else if(uri.equals("/reviewListDetail.iq")) {
+		}else if(uri.equals("/reviewListDetail.bo")) {
 			int seqReview = Integer.parseInt(request.getParameter("seqReview"));
 			System.out.println(seqReview);
 			ReviewDAO dao = new ReviewDAO();
@@ -151,7 +151,7 @@ public class ReviewController extends HttpServlet {
 			try {
 				int rs = dao.delete(seqReview);
 				if(rs>0) {
-					response.sendRedirect("/ReviewList.iq");
+					response.sendRedirect("/reviewList.bo");
 				}else {
 					System.out.println("실패");
 				}

@@ -116,13 +116,14 @@ public class ReviewDAO {
 				int seqReview = rs.getInt("seq_review");
 				int productCode = rs.getInt("product_code");
 				String reviewTitle = rs.getString("review_title");
-				String reviewContent = rs.getString("review_conntent");
-				String productImg = rs.getString("product_img");
+				String reviewContent = rs.getString("review_content");
 				String reviewDate = dateToString(rs.getDate("review_date"));
-				list.add(new ReviewDTO(seqReview, productCode, id, reviewTitle, reviewContent, productImg, reviewDate));
+				String reviewImg = rs.getString("review_img");
+				list.add(new ReviewDTO(seqReview, productCode,id,reviewTitle, reviewContent,reviewImg,reviewDate));
 			}return list;
 		}
 	}
+	
 	//전체목록 띄워주기
 	public ArrayList<ReviewDTO> selectAll(int start, int end)throws Exception{
 		String sql = "select * from(select tbl_Review.*,row_number() over(order by seq_review desc)as num from tbl_review)"
