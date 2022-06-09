@@ -238,7 +238,7 @@
                 <div>
                     <strong>결제 정보</strong><br>
                     <div>결제 금액</div>
-                    <input type="text" id="totalPrice" value="${subscribeDto.subscribePrice}" placeholder="100"><br>
+                    <input type="text" id="totalPrice" value="${subscribePrice}" placeholder="100"><br>
                     <div>구독 개월 수</div>
                     <input type="text" id="subscribeTerm" value="${subscribeDto.subscribeTerm}" ><br>
                     

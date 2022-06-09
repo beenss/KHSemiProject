@@ -42,21 +42,21 @@ public class OrderController extends HttpServlet {
 		if (uri.equals("/form.order")) { // 1. 주문정보 입력페이지로 이동
 
 			HttpSession session = request.getSession();
-//			String memberId = ((MemberDTO)session.getAttribute("loginSession")).getId();
+			String memberId = ((MemberDTO)session.getAttribute("loginSession")).getId();
 			// 세션값으로 회원id를 받고 회원 id로 회원정보랑 구독 정보를 OrderInfoDTO에 담아서 뷰에 뿌려주기
 
-			String memberId = "bori@gmail.com";// 세션으로 받아오는 아이디 -> 임시회원 아이디
+//			String memberId = "bori@gmail.com";// 세션으로 받아오는 아이디 -> 임시회원 아이디
 
 			try {
 				MemberDAO memberDAO = new MemberDAO();
 				MemberDTO memberDTO = memberDAO.selectById(memberId);
 
 				// test용 임시 객체
-				PetDTO petDto = new PetDTO("id2", "보리", 1, 10, 5, "왕", "cat");
-				request.setAttribute("petDto", petDto);
+//				PetDTO petDto = new PetDTO("id2", "보리", 1, 10, 5, "왕", "cat");
+//				request.setAttribute("petDto", petDto);
 
-				SubscribeDTO subscribeDto = new SubscribeDTO("21", 1, null, 6);
-				request.setAttribute("subscribeDto", subscribeDto);
+//				SubscribeDTO subscribeDto = new SubscribeDTO("21", 1, null, 6);
+//				request.setAttribute("subscribeDto", subscribeDto);
 
 				request.setAttribute("memberDTO", memberDTO);
 			} catch (Exception e) {

@@ -97,7 +97,7 @@ public class ReviewDAO {
 				String reviewContent = rs.getString("review_conntent");
 				String productImg = rs.getString("product_img");
 				String reviewDate = dateToString(rs.getDate("review_date"));
-				ReviewDTO dto = new ReviewDTO(seqReview, productCode, id, reviewTitle, reviewContent, productImg, reviewDate);
+				ReviewDTO dto = new ReviewDTO(seqReview, productCode, id, reviewTitle, reviewContent, reviewDate, productImg);
 				return dto;
 			}
 			return null;
@@ -119,7 +119,7 @@ public class ReviewDAO {
 				String reviewContent = rs.getString("review_content");
 				String reviewDate = dateToString(rs.getDate("review_date"));
 				String reviewImg = rs.getString("review_img");
-				list.add(new ReviewDTO(seqReview, productCode,id,reviewTitle, reviewContent,reviewImg,reviewDate));
+				list.add(new ReviewDTO(seqReview, productCode,id,reviewTitle, reviewContent,reviewDate, reviewImg));
 			}return list;
 		}
 	}
@@ -143,7 +143,7 @@ public class ReviewDAO {
 				String reviewContent = rs.getString("review_content");
 				String productImg = rs.getString("product_img");
 				String reviewDate = dateToString(rs.getDate("review_date"));
-				ReviewList.add(new ReviewDTO(seqReview,productCode,id,reviewTitle,reviewContent,productImg,reviewDate));
+				ReviewList.add(new ReviewDTO(seqReview,productCode,id,reviewTitle,reviewContent,reviewDate,productImg));
 				
 			}return ReviewList;
 		}
