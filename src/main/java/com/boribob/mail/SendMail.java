@@ -1,22 +1,22 @@
 package com.boribob.mail;
 
+import java.net.PasswordAuthentication;
 import java.util.Date;
 import java.util.Properties;
 import java.util.concurrent.ThreadLocalRandom;
 
 import javax.activation.CommandMap;
 import javax.activation.MailcapCommandMap;
-import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.Message.RecipientType;
 import javax.mail.Multipart;
-import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
+
 
 public class SendMail {
 
@@ -50,14 +50,12 @@ public class SendMail {
 
 		try {
 			// 메일 서버 인증 계정 설정
-			Authenticator auth = new Authenticator() {
-				protected PasswordAuthentication getPasswordAuthentication() {
-					return new PasswordAuthentication(username, password);
-				}
-			};
-
 			// 메일 세션 생성
-			Session session = Session.getInstance(props, auth);
+			Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
+	            protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
+	                return new javax.mail.PasswordAuthentication(username, password);
+	            }
+	        });
 
 			// 메일 송/수신 옵션 설정
 			Message message = new MimeMessage(session);
