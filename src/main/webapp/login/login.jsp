@@ -142,7 +142,8 @@ body {
 								</div>
 
 								<div style="text-align: center;" id="search">
-									<a class="nav-link" href="/login/login.jsp">아이디/비밀번호 찾기</a>
+									<a class="nav-link" href="#" id="idSearch">이메일 찾기</a>/
+									<a class="nav-link" href="#" id="passwordSearch">비밀번호 찾기</a>
 								</div>
 							</div>
 
@@ -230,18 +231,24 @@ body {
 						location.href = "/member.mem"; // 로그인하던 회원가입하던 회원과 관련된 컨트롤러에게 보낸기 위한 공통 url(뒤가.mem으로 끝나도록~)
 					}		
 					
-					// 아이디/비밀번호 찾기 버튼 누르면 팝업창 띄우기
-					document.getElementById("search").onclick = function() {
-						let url = "/searchPopup.mem"; // jsp 경로값 (팝업창 꾸며주는 jsp 필요 **)
-						let name = "아이디/비밀번호 찾기"; // 팝업창 이름값
-						let option = "width=600, height=300, left=500, top=300"; // 팝업창 크기, 위치
+					// 아이디 찾기 버튼 누르면 팝업창 띄우기
+					document.getElementById("idSearch").onclick = function() {
+						let url = "/idSearchPopup.mem"; // jsp 경로값 (팝업창 꾸며주는 jsp 필요 **)
+						let name = "이메일 찾기"; // 팝업창 이름값
+						let option = "width=600, height=400, left=500, top=300"; // 팝업창 크기, 위치
+						window.open(url, name, option);
+					}
+					
+					document.getElementById("passwordSearch").onclick = function() {
+						let url = "/passwordSearchPopup.mem"; // jsp 경로값 (팝업창 꾸며주는 jsp 필요 **)
+						let name = "비밀번호 찾기"; // 팝업창 이름값
+						let option = "width=600, height=400, left=500, top=300"; // 팝업창 크기, 위치
 						window.open(url, name, option);
 					}
 					
 				</script>
 			</c:otherwise>
 		</c:choose>
-
 
 
 

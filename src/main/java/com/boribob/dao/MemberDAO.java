@@ -53,8 +53,8 @@ public class MemberDAO {
 				String id = rs.getString("id");
 				String password = rs.getString("password");
 				String name = rs.getString("name");
-				String roadAddress = rs.getString("road_address");
 				String post = rs.getString("post");
+				String roadAddress = rs.getString("road_address");				
 				String detailAddress = rs.getString("detail_address");
 				String phone = rs.getString("phone");
 				memberList.add(new MemberDTO(id,password,name,post,roadAddress,detailAddress,phone));
@@ -64,7 +64,7 @@ public class MemberDAO {
 	}
 	public int update(MemberDTO dto)throws Exception{
 
-		String sql = "update tbl_member set password=?, name=?, roadAddress=?, post=?, detailAddress=?, phone=?";
+		String sql = "update tbl_member set password=?, name=?, post=?, road_address=?, detail_address=?, phone=?";
 
 		try(Connection con = bds.getConnection(); 
 			PreparedStatement pstmt = con.prepareStatement(sql);){
@@ -91,25 +91,6 @@ public class MemberDAO {
 		}
 	}
 	
-//	public boolean selectById(String id, String password)throws Exception{
-//		String sql = "select count(*) from tbl_member where id = ? and password =?";
-//		try(Connection con = bds.getConnection(); 
-//				PreparedStatement pstmt = con.prepareStatement(sql)){
-//			
-//			pstmt.setString(1, id);
-//			pstmt.setString(2, password);
-//			
-//			ResultSet rs = pstmt.executeQuery();
-//			rs.next();
-//			int result = rs.getInt(1); // 로그인 성공시 1 / 로그인 실패시 0
-//			if(result == 1) {
-//				return true;
-//			}else {
-//				return false;
-//			}
-//		}
-//	}
-	
 	public MemberDTO selectById(String id)throws Exception{
 		String sql = "select * from tbl_member where id = ?";
 		try(Connection con = bds.getConnection();
@@ -120,8 +101,8 @@ public class MemberDAO {
 			if(rs.next()) {
 				String password = rs.getString(2);
 				String name = rs.getString(3);
-				String roadAddress = rs.getString(4);
-				String post = rs.getString(5);
+				String post = rs.getString(4);
+				String roadAddress = rs.getString(5);				
 				String detailAddress = rs.getString(6);
 				String phone = rs.getString(7);
 				
@@ -158,10 +139,33 @@ public class MemberDAO {
 
 	}
 	
-						
 
-	
-	
+	// 회원의 핸드폰번호 조회
+		public MemberDTO selectByPhone(String phone1)throws Exception{
+			String sql = "select * from tbl_member where phone = ?";
+			try(Connection con = bds.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);){
+				pstmt.setString(1, phone1);
+				
+				ResultSet rs = pstmt.executeQuery();
+				if(rs.next()) {
+					String id = rs.getString(1);
+					String password = rs.getString(2);
+					String name = rs.getString(3);
+					String post = rs.getString(4);
+					String roadAddress = rs.getString(5);
+					String detailAddress = rs.getString(6);
+					String phone = rs.getString(7);
+					
+
+					MemberDTO dto = new MemberDTO(id, password, name, post, roadAddress, detailAddress, phone);
+
+
+					return dto;				
+					
+				}return null;
+			}
+		}
 
 
 
