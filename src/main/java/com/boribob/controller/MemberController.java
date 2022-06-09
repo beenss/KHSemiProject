@@ -1,15 +1,7 @@
 package com.boribob.controller;
 
 import java.io.IOException;
-import java.util.Properties;
 
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -144,9 +136,39 @@ public class MemberController extends HttpServlet {
 		}else if(uri.equals("/logout.mem")) { // 로그아웃
 			HttpSession session = request.getSession();
 			session.invalidate();
-			response.sendRedirect("/login/login.jsp");
+			response.sendRedirect("/home");
 			
-		}else if(uri.equals("/searchPopup.mem")) { // 아이디/비밀번호 찾기
+		}else if(uri.equals("/searchId.mem")) { // 이메일 찾기
+			String phone1 = request.getParameter("phone");
+			System.out.println("phone : " + phone1);
+			MemberDAO dao = new MemberDAO();
+			try {
+				MemberDTO phone = dao.selectByPhone(phone1);
+				System.out.println("ph : " + phone);
+				
+				if(phone!=null) { // 그런 핸드폰 번호 없음
+					
+					request.setAttribute("phone", phone);
+				}else { // 등록된 핸드폰 번호와 일치함
+					
+					request.setAttribute("rs", "no");
+				}
+				
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}request.getRequestDispatcher("/search/searchid.jsp").forward(request, response);
+			
+			
+		}else if(uri.equals("/idSearchPopup.mem")) {
+			response.sendRedirect("/search/searchid.jsp");
+			
+		}else if(uri.equals("/passwordsearch.mem")) { // 비밀번호 찾기
+			
+			
+						
+		}else if(uri.equals("/passwordSearchPopup.mem")) {
+			response.sendRedirect("/search/searchpassword.jsp");
 			
 		}
 		
