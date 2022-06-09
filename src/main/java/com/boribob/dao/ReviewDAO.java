@@ -95,9 +95,9 @@ public class ReviewDAO {
 				int productCode = rs.getInt("product_code");
 				String reviewTitle = rs.getString("review_title");
 				String reviewContent = rs.getString("review_conntent");
-				String productImg = rs.getString("product_img");
+				String reviewImg = rs.getString("review_img");
 				String reviewDate = dateToString(rs.getDate("review_date"));
-				ReviewDTO dto = new ReviewDTO(seqReview, productCode, id, reviewTitle, reviewContent, productImg, reviewDate);
+				ReviewDTO dto = new ReviewDTO(seqReview, productCode, id, reviewTitle, reviewContent,reviewDate,reviewImg);
 				return dto;
 			}
 			return null;
@@ -116,23 +116,24 @@ public class ReviewDAO {
 				int seqReview = rs.getInt("seq_review");
 				int productCode = rs.getInt("product_code");
 				String reviewTitle = rs.getString("review_title");
-				String reviewContent = rs.getString("review_conntent");
-				String productImg = rs.getString("product_img");
+				String reviewContent = rs.getString("review_content");
 				String reviewDate = dateToString(rs.getDate("review_date"));
-				list.add(new ReviewDTO(seqReview, productCode, id, reviewTitle, reviewContent, productImg, reviewDate));
+				String reviewImg = rs.getString("product_img");
+				list.add(new ReviewDTO(seqReview, productCode,id,reviewTitle, reviewContent,reviewDate,reviewImg));
 			}return list;
 		}
 	}
+	
 	//전체목록 띄워주기
 	public ArrayList<ReviewDTO> selectAll(int start, int end)throws Exception{
-		String sql = "select * from(select tbl_Review.*,row_number() over(order by seq_review desc)as num from tbl_review)"
+		String sql = "select * from(select tbl_review.*,row_number() over(order by seq_review desc)as num from tbl_review)"
 				+ "where num between ? and ?";
 		try(Connection con = bds.getConnection(); 
 			PreparedStatement pstmt = con.prepareStatement(sql);){
 			pstmt.setInt(1,start);
 			pstmt.setInt(2,end);
 			ResultSet rs = pstmt.executeQuery();
-			ArrayList<ReviewDTO> ReviewList = new ArrayList<>();
+			ArrayList<ReviewDTO> reviewList = new ArrayList<>();
 			
 			while(rs.next()) {
 				int seqReview = rs.getInt("seq_review");
@@ -140,11 +141,11 @@ public class ReviewDAO {
 				String id = rs.getString("id");
 				String reviewTitle = rs.getString("review_title");
 				String reviewContent = rs.getString("review_content");
-				String productImg = rs.getString("product_img");
 				String reviewDate = dateToString(rs.getDate("review_date"));
-				ReviewList.add(new ReviewDTO(seqReview,productCode,id,reviewTitle,reviewContent,productImg,reviewDate));
+				String reviewImg = rs.getString("review_img");
+			reviewList.add(new ReviewDTO(seqReview,productCode,id,reviewTitle,reviewContent,reviewDate,reviewImg));
 				
-			}return ReviewList;
+			}return reviewList;
 		}
 	}
 	//date > string 
