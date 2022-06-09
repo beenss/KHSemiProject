@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -175,7 +176,7 @@
                 
                       
                 <div style="text-align: center;">
-                  주문상품코드<input id="productCode" name="productName" value="${orderInfoDTO.productCode}">
+                  주문상품코드<input id="productCode" name="productName" value="${subscribeDto.productCode}">
                   
                 </div>
                 
@@ -187,11 +188,11 @@
                     <strong>배송 정보</strong><br>
                     <div>멤버 테이블에 저장된 회원정보</div>
                 
-                 <p>회원이름<input id="name" type="text" value="${orderInfoDTO.name}"></p>
-                 <p>회원연락처 <input id="phone" type="text" value="${orderInfoDTO.phone}"></p>
-                 <p>회원우편번호 <input id="post" type="text" value="${orderInfoDTO.post}"></p>
-                 <p>회원주소 <input id="roadAddress" type="text" value="${orderInfoDTO.roadAddress}"></p>
-                 <p>회원상세주소<input id="detailAddress" type="text" value="${orderInfoDTO.detailAddress}"></p>
+                 <p>회원이름<input id="name" type="text" value="${memberDTO.name}"></p>
+                 <p>회원연락처 <input id="phone" type="text" value="${memberDTO.phone}"></p>
+                 <p>회원우편번호 <input id="post" type="text" value="${memberDTO.post}"></p>
+                 <p>회원주소 <input id="roadAddress" type="text" value="${memberDTO.roadAddress}"></p>
+                 <p>회원상세주소<input id="detailAddress" type="text" value="${memberDTO.detailAddress}"></p>
                     
                  
                  
@@ -237,7 +238,12 @@
                 <div>
                     <strong>결제 정보</strong><br>
                     <div>결제 금액</div>
-                    <input type="text" id="totalPay" value="${orderInfoDTO.price}" placeholder="100"><br>
+                    <input type="text" id="totalPrice" value="${subscribeDto.subscribePrice}" placeholder="100"><br>
+                    <div>구독 개월 수</div>
+                    <input type="text" id="subscribeTerm" value="${subscribeDto.subscribeTerm}" ><br>
+                    
+                    
+
                     <div>결제하실분 이름</div>
                     <input type="text" id="namePay" placeholder="이보리"><br>
                     <div>결제하실분 이메일</div>
@@ -250,7 +256,16 @@
                     <input type="text" id="detailAddressPay" placeholder="예)123-456"><br>
                    
                 </div>
-
+				          	<input type="text" id="petName" value="${petDto.getPetName()}" style="display: none;">
+                    <input type="text" id="petAge" value="${petDto.getPetAge()}" style="display: none;">
+                    
+                    <input type="text" id="petAllergy" value="${petDto.getPetAllergy()}" style="display: none;">
+                    <input type="text" id="petWeight" value="${petDto.getPetWeight()}" style="display: none;">
+                    <input type="text" id="petKind" value="${petDto.getPetKind()}" style="display: none;">
+                    <input type="text" id="petType" value="${petDto.getPetType()}" style="display: none;">
+                    
+                    
+                    
                       
                  
                 <div style="text-align: center;"><strong>배송을 시작할까요?</strong></div>
@@ -261,7 +276,7 @@
             
         </div>
     </div>
-
+	
 
 
     <!--구분선-->
@@ -294,6 +309,9 @@
     
 
        <script>
+        
+          
+          
            const infoBtn = document.querySelector('#infoBtn');
            
            const name = document.querySelector('#name');
@@ -369,8 +387,8 @@ $("#check_module").click(function () { // 결제 api
   }
 
 
-  const totalPay = document.querySelector("#totalPay");   
-  if(totalPay.value===""){
+  const totalPrice = document.querySelector("#totalPrice");   
+  if(totalPrice.value===""){
     alert("금액을 입력하세요.")
     return
   }
@@ -411,7 +429,7 @@ $("#check_module").click(function () { // 결제 api
       pay_method: "card",
       merchant_uid: "merchant_" + new Date().getTime(),
       name: nameProduct.value,
-      amount: totalPay.value,
+      amount: totalPrice.value,
       buyer_email: emailPay.value,
       buyer_name: namePay.value,
       buyer_tel: phonePay.value,
@@ -429,7 +447,7 @@ $("#check_module").click(function () { // 결제 api
       if (rsp.success) {
         //결제완료정보
         var payAlert ="결제가 완료 되었습니다."
-        const paySuccess = "입금완료 ";
+        const paySuccess = "ok";
         const payId = "고유ID :"+ rsp.imp_uid;;
         const payTradeId = "상점 거래ID :" + rsp.merchant_uid;
         const payAmount =  rsp.paid_amount;
@@ -441,9 +459,19 @@ $("#check_module").click(function () { // 결제 api
         const orderRoadAddress = $('#orderRoadAddress').val();
         const orderDetailAddress = $('#orderDetailAddress').val();
         const orderMsg =  $('#orderMsg').val();
-        const postMsg   =$('#postMsg').val();  
+        const postMsg   =$('#postMsg').val();
+        const totalPrice = $('#totalPrice').val();  
        
+        const petName = $('#petName').val();
+        const petAge = $('#petAge').val();
+        const petAllergy = $('#petAllergy').val();
+        const petWeight = $('#petWeight').val();
+        const petKind = $('#petKind').val();
+        const petType =  $('#petType').val();
         
+        const productCode   =$('#productCode').val(); 
+        const subscribeTerm   =$('#subscribeTerm').val();  
+
         $.ajax({
             url:"/insert.order",
             method:"post",
@@ -462,6 +490,17 @@ $("#check_module").click(function () { // 결제 api
                     "orderDetailAddress" : orderDetailAddress,
                     "orderMsg" : orderMsg,
                     "postMsg" : postMsg,
+                    "totalPrice" :totalPrice,
+                  
+                    "petName" : petName,
+                    "petAge" : petAge,
+                    "petAllergy" : petAllergy,
+                    "petWeight" : petWeight,
+                    "petKind" : petKind,
+                    "petType" : petType,
+
+                    "productCode" : productCode,
+                    "subscribeTerm" : subscribeTerm
                   }
                   
         })

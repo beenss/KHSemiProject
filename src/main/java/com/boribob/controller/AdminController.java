@@ -37,10 +37,8 @@ public class AdminController extends HttpServlet {
 		//if(!(id.equals("admin@gmail.com"))) {
 		//response.sendRedirect("/login");
 		//}else
-			
-			response.sendRedirect("/admin/index.jsp");
-			
-		}else if(uri.equals("/member.admin")) { //member 리스트 불러오기
+	}	
+		else if(uri.equals("/member.admin")) { //member 리스트 불러오기
 			MemberDAO dao =new MemberDAO();
 			try {
 				ArrayList<MemberDTO> list = dao.selectAll();
@@ -312,5 +310,7 @@ public class AdminController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+
 	}
 }
+
