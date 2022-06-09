@@ -79,10 +79,8 @@ body {
 								</li>
 								<li class="nav-item"><a class="nav-link" href="#">회원 가입</a>
 								</li>
-								<li class="nav-item"><a class="nav-link" href="#">리뷰</a>
-								</li>								
-								<li class="nav-item"><a class="nav-link" href="#">로그인</a>
-								</li>
+								<li class="nav-item"><a class="nav-link" href="#">리뷰</a></li>
+								<li class="nav-item"><a class="nav-link" href="#">로그인</a></li>
 								<li class="nav-item"><a class="nav-link" href="#">구독하기</a>
 								</li>
 							</ul>
@@ -97,22 +95,22 @@ body {
 
 		<c:choose>
 			<c:when test="${not empty loginSession}">
-			<c:if test="${rs eq true}">
+				<c:if test="${rs eq true}">
 					<script>
 						alert("로그인 성공");
 					</script>
-			</c:if>
-			
-			
-			
+				</c:if>
+
+
+
 			</c:when>
-			<c:otherwise>	
-		<c:if test="${rs eq false}">
-			<script>
+			<c:otherwise>
+				<c:if test="${rs eq false}">
+					<script>
 				alert("로그인 실패");
 			</script>
-		</c:if>			
-				<form id="loginForm" action="/login.mem" method="post" onsubmit="return frm_check();">
+				</c:if>
+				<form id="loginForm" action="/login.mem" method="post">
 					<div class="row">
 						<div class="content1" style="border: 1px solid lightgrey">
 
@@ -139,10 +137,13 @@ body {
 									style="text-align: center;">회원가입</button>
 
 								<div style="text-align: center;">
-									<input type="checkbox" id="emailSave" name="emailSave">이메일 저장하기
+									<input type="checkbox" id="emailSave" name="emailSave">이메일
+									저장하기
 								</div>
 
-								<div style="text-align: center;" id="search"><a class="nav-link" href="/login/login.jsp">아이디/비밀번호 찾기</a></div>
+								<div style="text-align: center;" id="search">
+									<a class="nav-link" href="/login/login.jsp">아이디/비밀번호 찾기</a>
+								</div>
 							</div>
 
 						</div>
@@ -150,15 +151,11 @@ body {
 					</div>
 				</form>
 
-<!-- 캐시를 이용하여 이메일 저장하기 checkbox 활용 -->
-<script type="text/javascript">
+				<!-- 캐시를 이용하여 이메일 저장하기 checkbox 활용 -->
+				<script type="text/javascript">
      $(function() {         
            fnInit();         
      });
-     
-     function frm_check(){
-         saveid();
-     }
  
     function fnInit(){
         var cookieid = getCookie("emailSave");
@@ -171,16 +168,11 @@ body {
     }    
  
     function setCookie(name, value, expiredays) {
-        var todayDate = new Date();
-        todayDate.setTime(todayDate.getTime() + 0);
-        if(todayDate > expiredays){
-            document.cookie = name + "=" + escape(value) + "; path=/; expires=" + expiredays + ";";
-        }else if(todayDate < expiredays){
-            todayDate.setDate(todayDate.getDate() + expiredays);
-            document.cookie = name + "=" + escape(value) + "; path=/; expires=" + todayDate.toGMTString() + ";";
+        if(expiredays == 0){
+        	document.cookie = name + "=" + escape(value) + "; path=/; max-age=0;";
+        }else{
+        	document.cookie = name + "=" + escape(value) + "; path=/; expires=" + expiredays + ";";
         }
-        
-        
         console.log(document.cookie);
     }
  
@@ -212,10 +204,9 @@ body {
         if ($("#emailSave").is(":checked")){
             expdate.setTime(expdate.getTime() + 1);
             setCookie("emailSave", $("#id").val(), expdate);
-            }else if($("#emailSave").is(":unchecked")){
-           expdate.setTime(expdate.getTime() - 1);
-            setCookie("emailSave", $("#id").val(), expdate);
-             
+        }else {
+           	expdate.setTime(expdate.getTime() - 1);
+            setCookie("emailSave", $("#id").val(), 0);
         }
     } 
 </script>
@@ -231,6 +222,7 @@ body {
 									//alert("패스워드가 일치하지 않습니다.");
 									//return;
 								//}
+								saveid();
 								$("#loginForm").submit();
 							})
 
@@ -246,12 +238,12 @@ body {
 						window.open(url, name, option);
 					}
 					
-				</script>		
+				</script>
 			</c:otherwise>
 		</c:choose>
-		
-		
-		
+
+
+
 
 
 		<!-- 여기부터 풋터 -->
