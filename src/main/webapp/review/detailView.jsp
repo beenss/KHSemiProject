@@ -179,7 +179,7 @@ body {
 	<script>
     $("#btn-back").on("click", function () {
     location.href = "/review.bo?currentPage=1"
-        })
+ })
 
      </script>
      <div class="row justify-content-center footer">

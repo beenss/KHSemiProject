@@ -142,7 +142,6 @@ body {
 			</c:otherwise>
 		</c:choose>
 	</div>
-
 	<!--페이징-->
 	<div class="row justify-content-center boxBtn">
 		<button type="button" class="btnBox" id="btn-write">글쓰기</button>

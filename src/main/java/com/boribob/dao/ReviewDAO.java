@@ -63,10 +63,8 @@ public class ReviewDAO {
 			int rs = pstmt.executeUpdate();
 			return rs;
 			
-
 		}
 	}
-
 
 	//작성된 글을 테이블에 넣기 ok
 	public int insert(ReviewDTO dto) throws Exception{

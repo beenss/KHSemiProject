@@ -163,7 +163,7 @@
                         $("#write-form").submit();
                     })
 
-                    $("#btn-back").on("click", function () {
+                    $("#btnback").on("click", function () {
                  
                         location.href = "/review.bo?currentPage=1"
                     });
@@ -192,5 +192,4 @@
 
             </div>
     </body>
-
     </html>

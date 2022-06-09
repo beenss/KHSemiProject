@@ -40,7 +40,6 @@ public class ReviewController extends HttpServlet {
 			int currentPage = Integer.parseInt(request.getParameter("currentPage"));
 			ReviewDAO dao = new ReviewDAO();
 			try {
-
 				HashMap map = dao.getPage(currentPage);
 				System.out.println(map.get("startNavi"));
 				System.out.println(map.get("endNavi"));
