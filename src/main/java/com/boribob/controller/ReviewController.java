@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 import com.boribob.dao.ReviewDAO;
 import com.boribob.dto.MemberDTO;
 import com.boribob.dto.ReviewDTO;
@@ -62,14 +63,16 @@ public class ReviewController extends HttpServlet {
 		} else if (uri.equals("/writeProc.bo")) {
 			String reviewTitle = request.getParameter("reviewTitle");
 			String reviewContent = request.getParameter("reviewContent");
-			System.out.println(reviewTitle + reviewContent);
+			System.out.println("제목 : "+reviewTitle + "내용 : "+reviewContent);
+			
+			
 
 			ReviewDAO dao = new ReviewDAO();
 			MemberDTO dto = (MemberDTO) request.getSession().getAttribute("loginSession");
 			try {
-//				String id = dto.getId();
+				String id = dto.getId();
 
-				int rs = dao.insert(new ReviewDTO(0, 0, null, reviewTitle, reviewContent, null, null));
+				int rs = dao.insert(new ReviewDTO(0, 0, id, reviewTitle, reviewContent, null, null));
 				if (rs > 0) {
 					response.sendRedirect("/review.bo?currentPage=1");
 				}
@@ -85,58 +88,83 @@ public class ReviewController extends HttpServlet {
 
 				ReviewDTO dto = ReviewDAO.selectBySeq(seqReview);
 				request.setAttribute("dto", dto);
+				Gson gson = new Gson();
+				String rs = gson.toJson(dto);
+				System.out.println(rs);
+				response.setCharacterEncoding("utf-8");
+				response.getWriter().append(rs);
 
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			request.getRequestDispatcher("/review/detailView.jsp").forward(request, response);
 
-			// 게시물 수정 페이지 요청
-		} else if (uri.equals("/update.bo")) {
+			// 게시물 수정 요청
+		}else if(uri.equals("/reviewUpdate.bo")) {
 			int seqReview = Integer.parseInt(request.getParameter("seqReview"));
-			System.out.println("seqReview : " + seqReview);
-
+			String reviewTitle = request.getParameter("reivewTitle");
+			String reviewContent = request.getParameter("reviewContent");
+			System.out.println(reviewTitle+reviewContent);
+			
 			ReviewDAO dao = new ReviewDAO();
 			try {
+				int result = dao.update(new ReviewDTO(seqReview,0,null,reviewTitle,reviewContent,null,null));
+				if(result>0){
+					ReviewDTO dto = dao.selectBySeq(seqReview);
+					request.setAttribute("dto", dto);
+					Gson gson = new Gson();
+					String rs = gson.toJson(dto);
+					System.out.println(rs);
+					response.setCharacterEncoding("utf-8");
+					response.getWriter().append(rs);
+				}else {
+					response.getWriter().append("fail");
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+
+		}else if(uri.equals("/reviewList.bo")) {//마이페이지에서 문의글 보기
+			ReviewDAO dao = new ReviewDAO();
+			MemberDTO dto = (MemberDTO)request.getSession().getAttribute("loginSession");
+			try {
+				String id = dto.getId();
+				ArrayList<ReviewDTO> list =  dao.selectById(id);
+				request.setAttribute("list", list);
+			}catch(Exception e) {
+				e.printStackTrace();
+			}request.getRequestDispatcher("/mypage/reviewList.jsp").forward(request, response);
+		}else if(uri.equals("/reviewListDetail.iq")) {
+			int seqReview = Integer.parseInt(request.getParameter("seqReview"));
+			System.out.println(seqReview);
+			ReviewDAO dao = new ReviewDAO();
+			try{
 				ReviewDTO dto = dao.selectBySeq(seqReview);
 				request.setAttribute("dto", dto);
-			} catch (Exception e) {
+				Gson gson = new Gson();
+				String rs = gson.toJson(dto);
+				System.out.println(rs);
+				response.setCharacterEncoding("utf-8");
+				response.getWriter().append(rs);
+			}catch(Exception e) {
 				e.printStackTrace();
 			}
-
-			request.getRequestDispatcher("/review/update.jsp").forward(request, response);
-			// 게시물 수정 요청
-		} else if (uri.equals("/updateProc.bo")) {
+		}else if(uri.equals("/reviewDelete.bo")) {//문의글 삭제하기
 			int seqReview = Integer.parseInt(request.getParameter("seqReview"));
-			String reviewTitle = request.getParameter("reviewTitle");
-			String reviewContent = request.getParameter("reviewContent");
-
+			System.out.println(seqReview);
 			ReviewDAO dao = new ReviewDAO();
-			try {
-				int rs = dao.update(new ReviewDTO(seqReview, 0, null, reviewTitle, reviewContent, null, null));
-				if (rs > 0) {
-			// 수정한 게시물 바로 확인하기
-			response.sendRedirect("/detailView.bo?seqReview=");
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-
-		} else if (uri.equals("/deleteProc.bo")) {// 삭제 요청
-			int seqReview = Integer.parseInt(request.getParameter("seqReview"));
-			System.out.println("seqReview :" + seqReview);
-
-			ReviewDAO dao = new ReviewDAO();
-			// 시퀀스번호 이용해 tbl_Review에서 게시글 삭제
 			try {
 				int rs = dao.delete(seqReview);
-				if (rs > 0) {
-					// 삭제완료 후에는 게시글 목록을 요청하도록.
-					response.sendRedirect("/review.bo");
+				if(rs>0) {
+					response.sendRedirect("/ReviewList.iq");
+				}else {
+					System.out.println("실패");
 				}
-			} catch (Exception e) {
+			}catch(Exception e){
 				e.printStackTrace();
 			}
 		}
 	}
+	
+
 }

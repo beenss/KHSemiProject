@@ -1,18 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-	rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&family=Noto+Sans+KR:wght@400;500;700&display=swap"
-	rel="stylesheet">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -22,6 +17,7 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <title>review</title>
 <style>
 body {
@@ -50,110 +46,36 @@ body {
 	z-index: 1;
 }
 
-.ft-images {
-	text-align: center;
-}
-
-.container {
-	/* padding-left: 50px;
-            padding-right: 50px; */
-	text-align: center;
-	/* border: 1px solid black; */
-}
-
-* {
-	margin: 0;
-	padding: 0;
-}
-
-a {
-	text-decoration: none;
-	color: inherit;
-}
-
-.board_list_wrap {
-	padding: 50px;
-	/* border: 1px solid olive; */
-}
-
-#review-index-wrap {
-	border-bottom: 2px solid rgb(196, 202, 178);
+.pagination>li>a {
 	background-color: white;
-	font-family: 'Courier New', Courier, monospace;
+	color: #7e60b0;
 }
 
-#review-index-wrap>div {
-	font-family: 'Courier New', Courier, monospace;
+.container>.row {
+	border-top: 1px solid black;
 }
 
-#review-submit-btn {
-	background-color: rgb(179, 240, 171);
-	color: black;
-	border: none;
-	margin-bottom: 20px;
+.container>.row:first-child {
+	height: 60px;
 }
-/* paging */
+
+.content {
+	height: 40px;
+}
+
 .paging {
-	margin-top: 30px;
-	text-align: center;
+	margin-top: 20px;
 }
 
-.paging a {
-	display: inline-block;
-	vertical-align: middle;
-}
-
-.paging a.bt {
-	width: 30px;
-	height: 30px;
-	background-color: rgb(115, 158, 121);
-	background-image: url(images/page_bt.png);
-	background-repeat: no-repeat;
-	border-radius: 100px;
-	text-indent: -1000px;
-	overflow: hidden;
-}
-
-.paging a.bt:hover {
-	background-color: #999;
-}
-
-.paging a.first {
-	background-position: 10px -40px;
-}
-
-.paging a.prev {
-	margin-right: 5px;
-	background-position: 10px 10px;
-}
-
-.paging a.next {
-	margin-left: 5px;
-	background-position: -40px 10px;
-}
-
-.paging a.last {
-	background-position: -40px -40px;
-}
-
-.paging a.num {
-	margin: 0 5px;
-}
-
-.paging a.num.on {
-	color: green;
-}
-
-.paging a.num:hover {
-	text-decoration: underline;
-}
-
-#review-blank {
-	text-align: center;
-}
-
-#review_main {
-	width: 200px;
+.btnBox {
+	background-color: rgb(0, 0, 0);
+	border: 1px solid white;
+	width: 100px;
+	height: 40px;
+	margin: 20px;
+	border-radius: 40px;
+	font-size: 15px;
+	color: white;
 }
 </style>
 </head>
@@ -192,127 +114,97 @@ a {
 		</div>
 	</div>
 	<div class="container">
-		<div id="review-title">
-			<img src="images/review_main.png" class="col-lg-10 d-block w-100"
-				id="main-logo">
-			<div class="board_list_wrap">
-				<div class="board_list">
-					<div class="row row-cols-5" id="review-index-wrap">
-						<div class="col-lg-1">번호</div>
-						<div class="col-lg-1">상품코드</div>
-						<div class="col-lg-6">제목</div>
-						<div class="col-lg-7">제목</div>					
-						<div class="col-lg-2">글쓴이</div>
-						<div class="col-lg-2">작성일</div>
-					</div>
-					 <c:choose>
-			<%-- 	<c:when test="${list.size()==0}">
-					<div class="row content text-center align-items-center">
-						<div class="col">
-							등록된 게시글이 없습니다.
-						</div>
-					</div>
-				</c:when>
-				<c:otherwise>
-					<c:forEach items="${list}" var="dto">
-						<div class="row content text-center align-items-center" style="cursor: pointer;" onclick="location.href='/inquiryDetailview.iq?seqInquiry=${dto.seqInquiry}';">
-                			<div class="col-lg-1 col-2">${dto.seqReview}</div>
-                			<c:if test="${not empty dto.inquiryAnswer}">
-               		 			<div class="col-lg-5 col-10"><strong>[답변완료]</strong> ${dto.inquiryTitle}</div>
-               		 		</c:if>
-               		 		<c:if test="${empty dto.inquiryAnswer}">
-               		 			<div class="col-lg-5 col-10">${dto.inquiryTitle}</div>
-               		 		</c:if >
-               	 			<div class="col-3 d-none d-lg-block">${dto.id}</div>
-                			<div class="col-3 d-none d-lg-block">${dto.inquiryDate}</div>    
-           				</div>
-					</c:forEach>
-				</c:otherwise>
-			</c:choose>     
-        </div> --%>
-					<div class="review-body">
-						<div>
-							<div class="col-lg-11" id="review-blank">등록된 게시글이 없습니다.</div>
-						</div>
-						<div class="row row-cols-5">
-							<div class="col-lg-1">${dto.seqReview}</div>
-							<div class="col-lg-7">
-								<a href="">${dto.reviewTitle}</a>
-							</div>
-							<div class="col-lg-2">${dto.id}</div>
-							<div class="col-lg-2">${dto.reviewDate}</div>
-						</div>
-					</div>
-				</div>
-				
-
-	  	 <!--페이징-->
-        <div class="buttonBox" align="right">
-            <button type="button" class="btn btn-outline-secondary" id="btn-write">글쓰기</button>
-        </div>
-        <div class="row paging">
-            <div class="col-12">
-                <nav aria-label="Page navigation">
-                    <ul class="pagination justify-content-center">
-                    <c:if test="${map.makePrev eq true}">
-                        <li class="page-item">
-                            <a class="page-link" href="/inquiry.iq?currentPage=${map.startNavi-1}" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                   </c:if>
-                   <c:forEach var="pageNumber" begin="${map.startNavi}" end="${map.endNavi}" step="1">
-                   		<li class="page-item"><a class="page-link" href="/inquiry.iq?currentPage=${pageNumber}">${pageNumber}</a></li>
-                   </c:forEach>    
-                   <c:if test="${map.makeNext eq true}">                   
-                        <li class="page-item">
-                            <a class="page-link" href="/inquiry.iq?currentPage=${map.endNavi+1}" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        	</a>
-                        </li>
-                    </c:if>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-			<script>
-			const btnwrite = document.getElementById("btn-write");
-			
-			$("#btn-write").on("click", function(){
-		 	location.href = "/review/write.jsp";
-				
-			});
-		
-			</script>
-			<div class="row justify-content-center footer">
-				<div class="col-lg-10 col-12">
-					<ul class="ft-ul">
-						<li>BoriBob Inc. 사랑시 고백구 행복동</li>
-						<li>대표 : 보리밥형제들 사업자등록번호 : 780-86-01094</li>
-						<li>대표번호 : +82)-665-3430 팩스번호 : +82)-888-3430 홈페이지 :
-							petvenience.store.com</li>
-						<li>CopyrightⓒBoriBob Inc. All Rights Reserved.</li>
-					</ul>
-				</div>
-				<div class="col-lg-2 col-12">
-					<ul class="ft-images">
-						<img src="images/facebook_icon.png"
-							style="border-color: lightblue; color: rgb(233, 148, 122);">
-						<img src="images/instagram_icon.png"
-							style="border-color: lightblue;">
-						<img src="images/youtube_icon.png"
-							style="border-color: lightblue;">
-					</ul>
-					<ul class="ft-ul">
-						<li><strong>고객센터</strong></li>
-						<li style="height: 8px;"></li>
-						<li>오전 10시부터 오후 6시까지</li>
-						<li>토요일, 일요일, 공휴일 휴무</li>
-					</ul>
-				</div>
-			</div>
-
+		<div class="row text-center align-items-center">
+			<div class="col-lg-1 col-2">번호</div>
+			<div class="col-lg-2 d-none d-lg-block">상품코드</div>
+			<div class="col-lg-6 col-8">제목</div>
+			<div class="col-lg-1 d-none d-lg-block">작성자</div>
+			<div class="col-lg-2 col-2">작성일</div>
 		</div>
+		<c:choose>
+			<c:when test="${list.size()==0}">
+				<div class="row content text-center align-items-center">
+					<div class="col">등록된 게시글이 없습니다.</div>
+				</div>
+			</c:when>
+			<c:otherwise>
+				<c:forEach items="${list}" var="dto">
+					<div class="row content text-center align-items-center"
+						style="cursor: pointer;"
+						onclick="location.href='/detailView.bo?seqReview=${dto.seqReview}';">
+						<div class="col-lg-1 col-2">${dto.seqReview}</div>
+						<div class="col-lg-2">${dto.productCode}</div>
+						<div class="col-lg-5">${dto.id}</div>
+						<div class="col-lg-2">${dto.reviewTitle}</div>
+						<div class="col-lg-2">${dto.reviewDate}</div>
+					</div>
+				</c:forEach>
+			</c:otherwise>
+		</c:choose>
+	</div>
 
-		</body>
+	<!--페이징-->
+	<div class="row justify-content-center boxBtn">
+		<button type="button" class="btnBox" id="btn-write">글쓰기</button>
+	</div>
+	<div class="row paging">
+		<div class="col-12">
+			<nav aria-label="Page navigation">
+				<ul class="pagination justify-content-center">
+					<c:if test="${map.makePrev eq true}">
+						<li class="page-item"><a class="page-link"
+							href="/review.bo?currentPage=${map.startNavi-1}"
+							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+						</a></li>
+					</c:if>
+					<c:forEach var="pageNumber" begin="${map.startNavi}"
+						end="${map.endNavi}" step="1">
+						<li class="page-item"><a class="page-link"
+							href="/review.bo?currentPage=${pageNumber}">${pageNumber}</a></li>
+					</c:forEach>
+					<c:if test="${map.makeNext eq true}">
+						<li class="page-item"><a class="page-link"
+							href="/review.bo?currentPage=${map.endNavi+1}" aria-label="Next">
+								<span aria-hidden="true">&raquo;</span>
+						</a></li>
+					</c:if>
+				</ul>
+			</nav>
+		</div>
+	</div>
+	<script>
+$("#btn-write").on("click", function(){
+location.href = "/write.bo";
+});
+</script>
+	<div class="row justify-content-center footer">
+		<div class="col-lg-10 col-12">
+			<ul class="ft-ul">
+				<li>BoriBob Inc. 사랑시 고백구 행복동</li>
+				<li>대표 : 보리밥형제들 사업자등록번호 : 780-86-01094</li>
+				<li>대표번호 : +82)-665-3430 팩스번호 : +82)-888-3430 홈페이지 :
+					petvenience.store.com</li>
+				<li>CopyrightⓒBoriBob Inc. All Rights Reserved.</li>
+			</ul>
+		</div>
+		<div class="col-lg-2 col-12">
+			<ul class="ft-images">
+				<img src="images/facebook_icon.png"
+					style="border-color: lightblue; color: rgb(233, 148, 122);">
+				<img src="images/instagram_icon.png"
+					style="border-color: lightblue;">
+				<img src="images/youtube_icon.png" style="border-color: lightblue;">
+			</ul>
+			<ul class="ft-ul">
+				<li><strong>고객센터</strong></li>
+				<li style="height: 8px;"></li>
+				<li>오전 10시부터 오후 6시까지</li>
+				<li>토요일, 일요일, 공휴일 휴무</li>
+			</ul>
+		</div>
+	</div>
+
+</div>
+
+</body>
 </html>

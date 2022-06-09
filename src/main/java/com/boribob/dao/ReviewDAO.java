@@ -13,7 +13,6 @@ import javax.naming.InitialContext;
 
 import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 
-
 import com.boribob.dto.ReviewDTO;
 
 public class ReviewDAO {
@@ -71,20 +70,21 @@ public class ReviewDAO {
 
 	//작성된 글을 테이블에 넣기 ok
 	public int insert(ReviewDTO dto) throws Exception{
-		String sql = "insert into tbl_review values(seq_review.nextval,?,null,?,?,sysdate,null)";
+		String sql = "insert into tbl_review values(seq_review.nextval,?,?,?,?,sysdate,null)";
 		try (Connection con = bds.getConnection();
 			PreparedStatement pstmt = con.prepareStatement(sql)) {
 	
 			pstmt.setInt(1, dto.getProductCode());
-			pstmt.setString(2, dto.getReviewTitle());
-			pstmt.setString(3, dto.getReviewContent());
+			pstmt.setString(2, dto.getId());
+			pstmt.setString(3, dto.getReviewTitle());
+			pstmt.setString(4, dto.getReviewContent());
 		
 
 			int rs = pstmt.executeUpdate();
 			return rs;
 		}
 	}
-	//상세보기 페이지를 시퀀스 넘버 기준으로 ok
+	//상세보기 페이지를 시퀀스 넘버 기준으로 
 	public ReviewDTO selectBySeq(int seqReview) throws Exception{
 		String sql = "SELECT * FROM TBL_review WHERE seq_review = ?";
 
@@ -107,8 +107,28 @@ public class ReviewDAO {
 			return null;
 		}
 	}
+	//사용자가 작성한 리뷰 보여주기
+	public ArrayList<ReviewDTO> selectById(String id)throws Exception{
+		String sql = "select * from tbl_review where id=? ";
+		try (Connection con = bds.getConnection();
+			PreparedStatement pstmt = con.prepareStatement(sql);){
+			pstmt.setString(1, id);
+			ResultSet rs = pstmt.executeQuery();
+			ArrayList<ReviewDTO> list = new ArrayList<>();
+			
+			while(rs.next()) {
+				int seqReview = rs.getInt("seq_review");
+				int productCode = rs.getInt("product_code");
+				String reviewTitle = rs.getString("review_title");
+				String reviewContent = rs.getString("review_conntent");
+				String productImg = rs.getString("product_img");
+				String reviewDate = dateToString(rs.getDate("review_date"));
+				list.add(new ReviewDTO(seqReview, productCode, id, reviewTitle, reviewContent, productImg, reviewDate));
+			}return list;
+		}
+	}
 	//전체목록 띄워주기
-	public ArrayList<ReviewDTO> selectAll(int start, int end)throws Exception{//페이징에 맞춰서 전체목록 보여주기
+	public ArrayList<ReviewDTO> selectAll(int start, int end)throws Exception{
 		String sql = "select * from(select tbl_Review.*,row_number() over(order by seq_review desc)as num from tbl_review)"
 				+ "where num between ? and ?";
 		try(Connection con = bds.getConnection(); 
