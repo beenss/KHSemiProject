@@ -73,6 +73,21 @@ public class SubscribeDAO {
 		}
 	}
 	
+	// 아이디로 구독 여부 확인
+	public boolean isSubscribedId(String id) throws Exception {
+		String sql = "select * from tbl_subscribe where id = ?";
+
+		try(Connection con = this.getConnection();
+			PreparedStatement pstmt = con.prepareStatement(sql)) {
+		
+			pstmt.setString(1, id);
+			
+			ResultSet rs = pstmt.executeQuery();
+			return rs.next();
+		}
+	}
+	
+	// String 형을 Date 형으로
 	public String getStringDate(Date date) {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분 ss초");
 		return sdf.format(date);

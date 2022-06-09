@@ -36,7 +36,14 @@ public class PetController extends HttpServlet {
 			
 			String petBirthdayYear = request.getParameter("petBirthdayYear");
 			String petBirthdayMonth = request.getParameter("petBirthdayMonth");
+			if (petBirthdayMonth.length() == 1) {
+				petBirthdayMonth = "0" + petBirthdayMonth;
+			}
 			String petBirthdayDay = request.getParameter("petBirthdayDay");
+			if (petBirthdayDay.length() == 1) {
+				petBirthdayDay = "0" + petBirthdayDay;
+			}
+			
 			String petBirthday = petBirthdayYear + petBirthdayMonth + petBirthdayDay;
 			int petAge = 0;
 			try {
@@ -70,10 +77,10 @@ public class PetController extends HttpServlet {
 				PetDTO petDto = new PetDTO(id, petName, petAge, petAllergy, petWeight, petKind, petType);
 				ProductDAO productDao = new ProductDAO();
 				int productCode = dao.getProductNum(dao.getPetStatus(petDto));
-//				String productName = (productDao.selectByCode(productNum)).getProductName();
+				String productName = (productDao.selectByCode(productCode)).getProductName();
 				
 				System.out.println("상품 번호 : " + productCode);
-//				System.out.println("상품 이름 : " + productName);
+				System.out.println("상품 이름 : " + productName);
 				
 				request.setAttribute("petDto", petDto);
 				request.setAttribute("productCode", productCode);
