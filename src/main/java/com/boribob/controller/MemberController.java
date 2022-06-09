@@ -141,7 +141,7 @@ public class MemberController extends HttpServlet {
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
-		}else if(uri.equals("/login/login.jsp")) { // 로그아웃
+		}else if(uri.equals("/logout.mem")) { // 로그아웃
 			HttpSession session = request.getSession();
 			session.invalidate();
 			response.sendRedirect("/login/login.jsp");
