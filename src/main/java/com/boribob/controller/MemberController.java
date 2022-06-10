@@ -120,14 +120,13 @@ public class MemberController extends HttpServlet {
 		         MemberDTO dto = dao.isLoginOk(id, password);
 		         if(dto !=null) {
 		            System.out.println("로그인성공");
-		            request.setAttribute("rs", true);
 		            HttpSession session = request.getSession();
 		            session.setAttribute("loginSession", dto);
-		            request.getRequestDispatcher("/home").forward(request, response);
+		            response.sendRedirect("/home");
 		         }else {
 		            System.out.println("로그인실패");
 		            request.setAttribute("rs", false);
-		            response.sendRedirect("/login/login.jsp");
+		            request.getRequestDispatcher("/login/login.jsp").forward(request, response);
 
 		         }
 		         
@@ -182,13 +181,11 @@ public class MemberController extends HttpServlet {
 			response.sendRedirect("/search/searchId.jsp");
 		}else if(uri.equals("/passwordSearch.mem")) {
 			response.sendRedirect("/search/searchPassword.jsp");
+		}else if(uri.equals("/loginError.mem")) {
+			response.sendRedirect("/login/loginError.jsp");
+		}else if(uri.equals("/cancelSignup.mem")) {
+			response.sendRedirect("/login/login.jsp");
 		}
-		
-		
-		
-		
-		
-		
 	}
 }
    

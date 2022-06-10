@@ -61,7 +61,7 @@ nav {
 									<ul class="dropdown-menu"
 										aria-labelledby="navbarDropdownMenuLink">
 										<li><a class="dropdown-item" href="/member.admin">조회</a></li>
-										<li><a class="dropdown-item" href="#">블랙리스트</a></li>
+										<li><a class="dropdown-item" href="/blacklist.admin">블랙리스트</a></li>
 									</ul></li>
 								<li class="nav-item dropdown"><a
 									class="nav-link dropdown-toggle" href="#"

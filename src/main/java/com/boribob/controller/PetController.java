@@ -1,5 +1,6 @@
 package com.boribob.controller;
 
+import java.io.Console;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -7,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.boribob.dao.PetDAO;
 import com.boribob.dao.ProductDAO;
@@ -27,6 +29,7 @@ public class PetController extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=utf-8");
+		
 		
 		if (uri.equals("/petInput.pet")) {
 			String id = ((MemberDTO)request.getSession().getAttribute("loginSession")).getId();
@@ -91,7 +94,13 @@ public class PetController extends HttpServlet {
 				e.printStackTrace();
 			}
 		} else if (uri.equals("/pet.pet")) {
-			response.sendRedirect("/pet/petInput.jsp");
+			MemberDTO dto = (MemberDTO)request.getSession().getAttribute("loginSession");
+			System.out.println(dto);
+			if (dto == null) {
+				response.sendRedirect("/loginError.mem");
+			} else {
+				response.sendRedirect("/pet/petInput.jsp");
+			}
 		}
 	}
 }

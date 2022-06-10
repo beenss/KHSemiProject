@@ -10,6 +10,7 @@
 	rel="stylesheet"
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
@@ -24,20 +25,36 @@ body {
 nav {
 	height: 80px;
 }
+
+.nav-item {
+	padding-right: 50px;
+}
+
 .header {
 	position: relative;
 	padding: 60px;
 }
-.nav-item {
-	padding-right: 50px;
+
+.title {
+	border-bottom: 1px solid black;
 }
-.d-grid{
-	margin-left:70px
+
+.title-body {
+	background-color: lightgray;
+	
+}
+
+.content {
+	border-bottom: 1px solid darkgray;
+}
+
+button {
+	margin-top: 20px;
 }
 </style>
 </head>
 <body>
-	<div class="wrapper">
+	<div class="container">
 		<div class="row header">
 			<div class="col">
 				<nav
@@ -100,7 +117,7 @@ nav {
 								<li class="nav-item"><a class="nav-link active"
 									aria-current="page" href="#">리뷰 조회/삭제</a></li>
 								<li class="nav-item"><a class="nav-link active"
-									aria-current="page" href="#">logout</a></li>
+									aria-current="page" href="#">login</a></li>
 							</ul>
 						</div>
 					</div>
@@ -108,32 +125,79 @@ nav {
 			</div>
 		</div>
 		<div class="container">
-			<form id="loginForm" action="/login.admin" method="post">
-				<div class="row mb-3 justify-content-center">
-					<label for="inputEmail3" class="col-sm-1 col-form-label"><h5>아이디</h5></label>
-					<div class="col-sm-4">
-						<input type="text" class="form-control" id="id" name="managerId">
+				<div class="row title py-3 px-0">
+					<h3>블랙리스트 회원</h3>
+				</div>
+				<div class="row title-body py-2  mt-4 text-center">
+					<div class="col-3">
+						<h6>아이디</h6>
+					</div>
+					<div class="col-2">
+						<h6>날짜</h6>
+					</div>
+					<div class="col-7">
+						<h6>이유</h6>
 					</div>
 				</div>
-				<div class="row mb-3 justify-content-center">
-					<label for="inputPassword3" class="col-sm-1 col-form-label"><h5>비밀번호</h5></label>
-					<div class="col-sm-4">
-						<input type="password" class="form-control" id="pw" name="managerPw">
-					</div>
+				<div class="listmem">
+					<c:choose>
+						<c:when test="${list.size()==0}">
+							<div class="row content text-center align-items-center">
+								<div class="col">등록된 회원이 없습니다.</div>
+							</div>
+						</c:when>
+						<c:otherwise>
+							<c:forEach items="${list}" var="dto">
+								<div class="row content py-2 text-center">
+									<div class="col-3">${dto.id}</div>
+									<div class="col-2">${dto.blacklistDate}</div>
+									<div class="col-7">${dto.blacklistReason}</div>
+								</div>
+							</c:forEach>
+						</c:otherwise>
+					</c:choose>
 				</div>
-				<div class="d-grid col-5 mx-auto">
-  					<button class="btn btn-primary" type="button" id="login-btn">로그인</button>
-				</div>
-			</form>
-		</div>
-		<script>
-			$("#login-btn").on("click",function(){
-				if($("#id").val()==="" || $("#pw").val() === ""){
-					alert("아이디, 비밀번호를 입력하세요");
+			</div>
+			<div class='buttonBox1 d-grid gap-1 d-flex justify-content-center'>
+				<button type="button" class="btn btn-outline-secondary" id="add-btn">추가</button>
+			</div>
+			<script>
+			$("#add-btn").on("click",function(){
+				popup();
+			});
+			function popup(){
+            let url = "/admin/blacklistAdd.jsp";
+            let name = "addblacklist";
+            let option = "width = 800, height = 450, top = 300, left = 500, location = no"
+            window.open(url, name, option);
+            return;
+			}
+			function makeMember(rs){
+				let list = rs; // 함수의 매개변수로 받아온 json 형식의 문자열 실제 json 타입으로 변환 
+				console.log(list);
+			
+				$(".listmem").empty();
+			
+				if(list.length==0){
+					let row = $("<div>").addClass("row content text-center align-items-center");
+					let col =$("<div>").addClass("col").html("회원이 존재하지 않습니다.")
+					row.append(col);
+					$(".listmem").append(row);
+				}else{
+					for(let mem of list){
+						let row1 = $("<div>").addClass("row content py-2 text-center");
+						let col1 = $("<div>").addClass("col-2").html(mem.id);
+						let col2 = $("<div>").addClass("col-1").html(mem.name);
+						let col3 = $("<div>").addClass("col-2").html(mem.phone);
+						let col4 = $("<div>").addClass("col-2").html(mem.post);
+						let col5 = $("<div>").addClass("col-3").html(mem.roadAddress);
+						let col6 = $("<div>").addClass("col-2").html(mem.detailAddress);
+						
+						row1.append(col1,col2,col3,col4,col5,col6);
+						$(".listmem").append(row1);
+					}	
 				}
-				$("#loginForm").submit();
-				
-			})
+			}
 		</script>
 	</div>
 </body>

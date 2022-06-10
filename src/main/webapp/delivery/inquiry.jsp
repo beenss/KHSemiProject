@@ -145,10 +145,12 @@
 				</c:otherwise>
 			</c:choose>     
         </div>
-        <!--페이징-->
+        <c:if test="${not empty dto.id}">
         <div class="buttonBox" align="right">
             <button type="button" class="btn btn-outline-secondary" id="btn-write">글쓰기</button>
         </div>
+        </c:if>
+        <!--페이징-->
         <div class="row paging">
             <div class="col-12">
                 <nav aria-label="Page navigation">
