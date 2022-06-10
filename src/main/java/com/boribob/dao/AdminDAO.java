@@ -9,6 +9,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 
 import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
+
+import com.boribob.dto.AdminDTO;
 import com.boribob.dto.MemberDTO;
 
 public class AdminDAO {
@@ -83,5 +85,22 @@ public class AdminDAO {
 		            list.add(new MemberDTO(id,password,name,post,roadAddress,detailAddress,phone));
 				}return list;
 			}
+		}
+		public boolean isLoginOk(String id, String pw)throws Exception{
+			String sql = "select count(*) from tbl_manager where manager_id = ? and manager_pw = ?";
+			try(Connection con = bds.getConnection(); 
+				PreparedStatement pstmt = con.prepareStatement(sql);){
+				pstmt.setString(1, id);
+				pstmt.setString(2, pw);
+				ResultSet rs = pstmt.executeQuery();
+				rs.next();
+				int result = rs.getInt(1);
+				if(result==1) {//로그인 성공 이라면
+					return true;
+				}else {
+					return false;
+				}
+			}
+
 		}
 }
