@@ -142,8 +142,6 @@
                                 <div class="col d-flex justify-content-center align-items-center">
                                     <input type="text" placeholder="제목을 입력해주세요" id="review-title" name="reviewTitle">
                                 </div>
-                                
-         
                                
                             <div class="col d-flex justify-content-center align-items-center content">
                                 <textarea class="form-control" id="review-content" name="reviewContent"
@@ -174,7 +172,7 @@
                         $("#write-form").submit();
                     })
 
-                    $("#btnback").on("click", function () {
+                    $("#btn-back").on("click", function () {
                  
                         location.href = "/review.bo?currentPage=1"
                     });

@@ -134,8 +134,8 @@ body {
 						onclick="location.href='/detailView.bo?seqReview=${dto.seqReview}';">
 						<div class="col-lg-1 col-2">${dto.seqReview}</div>
 						<div class="col-lg-2">${dto.productCode}</div>
-						<div class="col-lg-5">${dto.id}</div>
-						<div class="col-lg-2">${dto.reviewTitle}</div>
+						<div class="col-lg-5">${dto.reviewTitle}</div>
+						<div class="col-lg-2">${dto.id}</div>
 						<div class="col-lg-2">${dto.reviewDate}</div>
 					</div>
 				</c:forEach>
