@@ -55,7 +55,7 @@ public class ReviewDAO {
 
 	//리뷰 수정 ok
 	public int update(ReviewDTO dto) throws Exception {
-		String sql = "update tbl_review set riview_title=?, review_content=? where seq_review=?";
+		String sql = "update tbl_review set review_title=?, review_content=? where seq_review=?";
 		try (Connection con = bds.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql)) {
 			pstmt.setString(1, dto.getReviewTitle());
 			pstmt.setString(2, dto.getReviewContent());
@@ -68,14 +68,15 @@ public class ReviewDAO {
 
 	//작성된 글을 테이블에 넣기 ok
 	public int insert(ReviewDTO dto) throws Exception{
-		String sql = "insert into tbl_review values(seq_review.nextval,?,?,?,?,sysdate,null)";
+		String sql = "insert into tbl_review values(?,?,?,?,?,sysdate,null)";
 		try (Connection con = bds.getConnection();
 			PreparedStatement pstmt = con.prepareStatement(sql)) {
 	
-			pstmt.setInt(1, dto.getProductCode());
-			pstmt.setString(2, dto.getId());
-			pstmt.setString(3, dto.getReviewTitle());
-			pstmt.setString(4, dto.getReviewContent());
+			pstmt.setInt(1, dto.getSeqReview());
+			pstmt.setInt(2, dto.getProductCode());
+			pstmt.setString(3, dto.getId());
+			pstmt.setString(4, dto.getReviewTitle());
+			pstmt.setString(5, dto.getReviewContent());
 			int rs = pstmt.executeUpdate();
 			return rs;
 		}
@@ -94,7 +95,7 @@ public class ReviewDAO {
 				String id = rs.getString("id");
 				int productCode = rs.getInt("product_code");
 				String reviewTitle = rs.getString("review_title");
-				String reviewContent = rs.getString("review_conntent");
+				String reviewContent = rs.getString("review_content");
 				String reviewImg = rs.getString("review_img");
 				String reviewDate = dateToString(rs.getDate("review_date"));
 

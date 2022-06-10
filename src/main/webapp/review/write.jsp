@@ -1,4 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="com.boribob.dao.ReviewDAO" %>
+
+<%@ page import="java.io.File" %>
+
+<%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy" %>
+
+
+
+<%@ page import="com.oreilly.servlet.MultipartRequest" %>
     <!DOCTYPE html>
     <html>
 
@@ -55,10 +64,10 @@
                 text-align: center;
                 
             }
-            .productBox {
-                border: 1px solid black;
-                width: 300px;
-                height: 300px;
+            .imgBox {
+
+                width: 80%;
+                padding-bottom: 30px;
                 margin: 0 auto;
 
             }
@@ -128,22 +137,22 @@
                     <strong>리뷰</strong>
                     <p>보리밥 회원들의 생생한 후기를 들려드립니다.</p>
                 </div>
-                <form id="write-form" action="/writeProc.bo" method="post">
+                <form id="write-form" action="/writeProc.bo" method="post" enctype="multipart/form-data">
                         <div class="board_write">
                                 <div class="col d-flex justify-content-center align-items-center">
                                     <input type="text" placeholder="제목을 입력해주세요" id="review-title" name="reviewTitle">
-                                </div>
-                                
-                                <div class="col d-flex justify-content-center align-items-center productBox">
-                                    <img src="${dto.productImg}" class="buy-item w-100" alt="상품이미지">
                                 </div>
                                
                             <div class="col d-flex justify-content-center align-items-center content">
                                 <textarea class="form-control" id="review-content" name="reviewContent"
                                     placeholder="어떤 점이 좋았나요?"></textarea>
                             </div>
+                            </div>
+                             <div class="col d-flex justify-content-left align-items-center imgBox">
+                                    <input type="file" name="file" id="review-img">
+                                </div>
+                               </form>   
                         </div>
-                </form>
                 <div class="row justify-content-center boxBtn">
                     <button type="button" class="btnSave" id="btn-save">등록하기</button>
                     <button type="button" class="btnBack" id="btn-back">목록</button>
@@ -163,7 +172,7 @@
                         $("#write-form").submit();
                     })
 
-                    $("#btnback").on("click", function () {
+                    $("#btn-back").on("click", function () {
                  
                         location.href = "/review.bo?currentPage=1"
                     });

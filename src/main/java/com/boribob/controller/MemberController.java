@@ -13,6 +13,7 @@ import com.boribob.dao.MemberDAO;
 import com.boribob.dto.MemberDTO;
 import com.boribob.mail.SendMail;
 import com.boribob.utils.EncryptionUtils;
+import com.google.gson.Gson;
 
 @WebServlet("*.mem") 
 public class MemberController extends HttpServlet {
@@ -106,7 +107,7 @@ public class MemberController extends HttpServlet {
 			
 			
 			
-		}else if(uri.equals("/login.mem")) { //로그인 요청
+		}else if(uri.equals("/login.mem")) { //로그인 버튼 눌렀을때
 			String id = request.getParameter("id");
 			String password = request.getParameter("password");
 			System.out.println(id + " : " + password);
@@ -119,14 +120,13 @@ public class MemberController extends HttpServlet {
 		         MemberDTO dto = dao.isLoginOk(id, password);
 		         if(dto !=null) {
 		            System.out.println("로그인성공");
-		            request.setAttribute("rs", true);
 		            HttpSession session = request.getSession();
 		            session.setAttribute("loginSession", dto);
-		            request.getRequestDispatcher("/index.jsp").forward(request, response);
+		            response.sendRedirect("/home");
 		         }else {
 		            System.out.println("로그인실패");
 		            request.setAttribute("rs", false);
-		            response.sendRedirect("/login/login.jsp");
+		            request.getRequestDispatcher("/login/login.jsp").forward(request, response);
 
 		         }
 		         
@@ -145,38 +145,47 @@ public class MemberController extends HttpServlet {
 			try {
 				MemberDTO phone = dao.selectByPhone(phone1);
 				System.out.println("ph : " + phone);
-				
-				if(phone!=null) { // 그런 핸드폰 번호 없음
-					
-					request.setAttribute("phone", phone);
-				}else { // 등록된 핸드폰 번호와 일치함
-					
-					request.setAttribute("rs", "no");
+				if(phone!=null) { // 회원이라면 
+				Gson gson = new Gson();
+				String rs = gson.toJson(phone);
+				response.getWriter().append(rs);
 				}
-				
+				else { 				// 회원이 아니라면 
+					response.getWriter().append(null);
+				}
 				
 			}catch(Exception e) {
 				e.printStackTrace();
-			}request.getRequestDispatcher("/search/searchid.jsp").forward(request, response);
+			}			
 			
-			
-		}else if(uri.equals("/idSearchPopup.mem")) {
-			response.sendRedirect("/search/searchid.jsp");
-			
-		}else if(uri.equals("/passwordsearch.mem")) { // 비밀번호 찾기
-			
-			
-						
-		}else if(uri.equals("/passwordSearchPopup.mem")) {
-			response.sendRedirect("/search/searchpassword.jsp");
-			
+		}else if(uri.equals("/searchPassword.mem")) { // 비밀번호 찾기
+			String password = request.getParameter("id");
+			System.out.println("id : " + password);
+			MemberDAO dao = new MemberDAO();
+			try {
+				MemberDTO id = dao.selectByPhone(password);
+				System.out.println("id : " + id);
+				if(id!=null) { // 회원이라면 
+				Gson gson = new Gson();
+				String ps = gson.toJson(id);
+				response.getWriter().append(ps);
+				}
+				else { 				// 회원이 아니라면 
+					response.getWriter().append(null);
+				}
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}else if(uri.equals("/idSearch.mem")) {
+			response.sendRedirect("/search/searchId.jsp");
+		}else if(uri.equals("/passwordSearch.mem")) {
+			response.sendRedirect("/search/searchPassword.jsp");
+		}else if(uri.equals("/loginError.mem")) {
+			response.sendRedirect("/login/loginError.jsp");
+		}else if(uri.equals("/cancelSignup.mem")) {
+			response.sendRedirect("/login/login.jsp");
 		}
-		
-		
-		
-		
-		
-		
 	}
 }
    

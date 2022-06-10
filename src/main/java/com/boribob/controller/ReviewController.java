@@ -10,11 +10,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+import com.boribob.dao.FileDAO;
+import com.boribob.dao.ProductDAO;
 import com.boribob.dao.ReviewDAO;
+import com.boribob.dao.SubscribeDAO;
+import com.boribob.dto.FileDTO;
 import com.boribob.dto.MemberDTO;
 import com.boribob.dto.ReviewDTO;
+import com.boribob.dto.SubscribeDTO;
 import com.google.gson.Gson;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 @WebServlet("*.bo")
 public class ReviewController extends HttpServlet {
@@ -58,22 +64,63 @@ public class ReviewController extends HttpServlet {
 			response.sendRedirect("/review/write.jsp");
 			// 리뷰작성 요청
 		} else if (uri.equals("/writeProc.bo")) {
-			String reviewTitle = request.getParameter("reviewTitle");
-			String reviewContent = request.getParameter("reviewContent");
-			System.out.println("리뷰 제목 : " + reviewTitle);
-			System.out.println("리뷰 내용 : " + reviewContent);
-			ReviewDAO dao = new ReviewDAO();
-			MemberDTO dto = (MemberDTO) request.getSession().getAttribute("loginSession");
-			try {
-				String id = dto.getId();
-
-				int rs = dao.insert(new ReviewDTO(0, 0, id, reviewTitle, reviewContent, null, null));
-				if (rs > 0) {
-					response.sendRedirect("/review.bo?currentPage=1");
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
+			String filePath = request.getServletContext().getRealPath("files");
+			System.out.println("filePath : " + filePath);
+			
+			File dir = new File(filePath);
+			
+			if(!dir.exists()) {
+				dir.mkdirs();
 			}
+			
+			int maxSize = 1024*1024*10;
+			
+			try {
+				// 서버의 경로에 파일 저장하기 
+				MultipartRequest multi = new MultipartRequest(request,filePath,maxSize,"utf-8",new DefaultFileRenamePolicy());
+				
+				// 아이디 뽑아내기
+			
+				MemberDTO dto = (MemberDTO)request.getSession().getAttribute("loginSession");
+				String id = dto.getId();
+				
+				// MultipartRequest 에서 제목, 내용 뽑아내기
+				String reviewTitle = multi.getParameter("reviewTitle");
+				String reviewContent = multi.getParameter("reviewContent");
+				
+				// MultipartRequest에서 파일태그의 name을 이용해 원본파일명, 실제 서버에 저장된 파일이름 뽑아내기
+				String oriName = multi.getOriginalFileName("file");
+				String sysName = multi.getFilesystemName("file");
+	
+				
+				ReviewDAO dao = new ReviewDAO();
+				FileDAO daoFile = new FileDAO();
+				SubscribeDAO sdao = new SubscribeDAO();
+				
+					  
+				try {
+					//구독중인 상품코 불러오기..
+					SubscribeDTO subscribe =  sdao.selectSubscribesById(id);
+					int productCode = subscribe.getProductCode(); 
+			 
+					// 게시글과 파일 데이터 저장하기 위해 새로운 게시글 번호 뽑아내기
+					int seqReview = dao.getNewSeq();
+
+					// 위에서 뽑아낸 게시글 번호를 활용하여 게시글, 파일 정보 DB에 저장 
+					int rs = dao.insert(new ReviewDTO(seqReview, productCode, id, reviewTitle, reviewContent, null, null));
+					int rsFile = daoFile.insert(new FileDTO(0, seqReview, oriName, sysName));
+					
+					if(rs > 0 && rsFile > 0) {
+						response.sendRedirect("/review.bo?curPage=1");
+					}
+					}catch(Exception e) {
+					e.printStackTrace();
+				}
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}			
+
 			// 게시물 상세보기 요청
 		} else if (uri.equals("/detailView.bo")) {
 			int seqReview = Integer.parseInt(request.getParameter("seqReview"));
@@ -119,7 +166,7 @@ public class ReviewController extends HttpServlet {
 				e.printStackTrace();
 			}
 
-		}else if(uri.equals("/reviewList.bo")) {//마이페이지에서 문의글 보기
+		}else if(uri.equals("/reviewList.bo")) {//마이페이지에서 리뷰글 보기
 			ReviewDAO dao = new ReviewDAO();
 			MemberDTO dto = (MemberDTO)request.getSession().getAttribute("loginSession");
 			try {
@@ -129,7 +176,7 @@ public class ReviewController extends HttpServlet {
 			}catch(Exception e) {
 				e.printStackTrace();
 			}request.getRequestDispatcher("/mypage/reviewList.jsp").forward(request, response);
-		}else if(uri.equals("/reviewListDetail.bo")) {
+		}else if(uri.equals("/reviewListDetail.bo")) { // 마이페이지 리뷰 상세페이지 
 			int seqReview = Integer.parseInt(request.getParameter("seqReview"));
 			System.out.println(seqReview);
 			ReviewDAO dao = new ReviewDAO();
@@ -144,7 +191,34 @@ public class ReviewController extends HttpServlet {
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
-		}else if(uri.equals("/reviewDelete.bo")) {//문의글 삭제하기
+	}
+			else if(uri.equals("/reviewUpdate.bo")) { // 마이페이지 리뷰 수정
+			int seqReview = Integer.parseInt(request.getParameter("seqReview"));
+			String reviewTitle = request.getParameter("reviewTitle");
+			String reviewContent = request.getParameter("reviewContent");
+			System.out.println(seqReview+" : "+reviewTitle+" : "+reviewContent);
+			
+			ReviewDAO dao = new ReviewDAO();
+			
+			try {		
+				
+				int result = dao.update(new ReviewDTO(seqReview, 0,null,reviewTitle, reviewContent,null,null));
+				if(result>0){
+					ReviewDTO dto = dao.selectBySeq(seqReview);
+					request.setAttribute("dto", dto);
+					Gson gson = new Gson();
+					String rs = gson.toJson(dto);
+					System.out.println(rs);
+					response.setCharacterEncoding("utf-8");
+					response.getWriter().append(rs);
+				}else {
+					response.getWriter().append("fail");
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		} 
+			else if(uri.equals("/reviewDelete.bo")) {//문의글 삭제하기
 			int seqReview = Integer.parseInt(request.getParameter("seqReview"));
 			System.out.println(seqReview);
 			ReviewDAO dao = new ReviewDAO();

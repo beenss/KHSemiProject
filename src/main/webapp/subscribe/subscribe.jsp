@@ -79,19 +79,19 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">제품 보기</a>
+                                    <a class="nav-link" href="/product.pro">제품 보기</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">고객센터</a>
+                                    <a class="nav-link" href="/inquiry.iq?currentPage=1">고객센터</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">회원 가입</a>
+                                    <a class="nav-link" href="/mypage.my">마이페이지</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">리뷰</a>
+                                    <a class="nav-link" href="/review.bo?currentPage=1">리뷰</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">로그인</a>
+                                    <a class="nav-link" href="/logout.mem">로그아웃</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">구독하기</a>
@@ -176,16 +176,6 @@
                     document.getElementById('subscribe-type').value = elem.value;
                 }
             })
-        }
-
-        // 현재 작업중
-        function isValidInput() {
-            let now = new Date();
-
-            /* if (petName.length == 0 || petName.length > 10) {
-                return 'invalidName';
-            } */
-            return 'valid';
         }
         
         console.log(isValidInput())

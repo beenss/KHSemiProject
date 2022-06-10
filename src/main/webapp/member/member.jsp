@@ -231,7 +231,7 @@ body {
 
 	<div class="row justify-content-center">
 		<div class="col-4 d-flex justify-content-end">
-			<button type="button" id="cancelBtn" class="btn btn-secondary">취소하기</button>
+			<button type="button" id="btnCancel" class="btn btn-secondary">취소하기</button>
 		</div>
 		<div class="col-4 d-flex justify-content-start">
 			<button type="button" id="submitBtn" class="btn btn-success">가입하기</button>
@@ -273,11 +273,15 @@ body {
 
 	<script>
 		// 이메일 확인 버튼 누르면 팝업창 띄우기
-		document.getElementById("checkIdBtn").onclick = function() {
+		document.getElementById("submitBtn").onclick = function() {
 			let url = "/idCheckPopup.mem"; // jsp 경로값 (팝업창 꾸며주는 jsp 필요 **)
 			let name = "이메일 중복검사"; // 팝업창 이름값
 			let option = "width=600, height=300, left=500, top=300"; // 팝업창 크기, 위치
 			window.open(url, name, option);
+		}
+		// 취소하기 버튼 누르면 로그인 창으로 띄우기
+		document.getElementById("btnCancel").onclick = function() {
+			let url = "/cancelSignup.mem";
 		}
 
 		// 가입 버튼을 눌렀을 때 유효성 검사 후 form 제출
@@ -313,7 +317,7 @@ body {
 						alert("주소를 입력해 주세요.");
 						return;
 					}
-
+					alert("환영합니다♡");
 					// form 제출
 					document.getElementById("memberForm").submit();
 				})

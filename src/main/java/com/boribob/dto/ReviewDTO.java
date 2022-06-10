@@ -7,13 +7,13 @@ public class ReviewDTO {
 	private String id;
 	private String reviewTitle;
 	private String reviewContent;
-	private String productImg;
 	private String reviewDate;
+	private String reviewImg;
 
 	public ReviewDTO() {
 	}
 
-	public ReviewDTO(int seqReview, int productCode, String id, String reviewTitle, String reviewContent, String reviewDate, String productImg) {
+	public ReviewDTO(int seqReview, int productCode, String id, String reviewTitle, String reviewContent, String reviewDate, String reviewImg) {
 		super();
 		this.seqReview = seqReview;
 		this.productCode = productCode;
@@ -21,15 +21,15 @@ public class ReviewDTO {
 		this.reviewTitle = reviewTitle;
 		this.reviewContent = reviewContent;
 		this.reviewDate = reviewDate;
-		this.productImg = productImg;
+		this.reviewImg = reviewImg;
 	}
 
-	public String getProductImg() {
-		return productImg;
+	public String getReviewImg() {
+		return reviewImg;
 	}
 
-	public void setProductImg(String productImg) {
-		this.productImg = productImg;
+	public void serReviewImg(String reviewImg) {
+		this.reviewImg = reviewImg;
 	}
 
 	public String getReviewContent() {
@@ -83,7 +83,7 @@ public class ReviewDTO {
 	@Override
 	public String toString() {
 		return "ReviewDTO [seqReview=" + seqReview + ", productCode=" + productCode + ", id=" + id + ", reviewTitle="
-				+ reviewTitle + ", reviewContent=" + reviewContent + ", productImg=" + productImg + ", reviewDate="
+				+ reviewTitle + ", reviewContent=" + reviewContent + ", reviewImg=" + reviewImg + ", reviewDate="
 				+ reviewDate + "]";
 	}
 }

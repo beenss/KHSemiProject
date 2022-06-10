@@ -34,7 +34,6 @@ public class MemberDAO {
 			pstmt.setString(2, dto.getPassword());
 			pstmt.setString(3, dto.getName());
 			pstmt.setString(4, dto.getPost());
-			pstmt.setString(5, dto.getRoadAddress());
 			pstmt.setString(6, dto.getDetailAddress());
 			pstmt.setString(7, dto.getPhone());
 			
@@ -166,8 +165,43 @@ public class MemberDAO {
 				}return null;
 			}
 		}
+		
+		// 회원의 핸드폰 번호 4~7번째
+		public String phone1(String id)throws Exception{
+			String sql = "select substr(phone,4,4) from tbl_member where id = ?";
+			try(Connection con = bds.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);){
+				pstmt.setString(1, id);
+				
+				ResultSet rs = pstmt.executeQuery();
+				if(rs.next()) {
+					
+					String phone = rs.getString(1);
+					return phone;
+					
+				}return null;
+			}
+		}
+		
 
-
+		// 회원의 핸드폰 번호 8~11번째
+		public String phone2(String id)throws Exception{
+			String sql = "select substr(phone,8,8) from tbl_member where id = ?";
+			try(Connection con = bds.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);){
+				pstmt.setString(1, id);
+				
+				ResultSet rs = pstmt.executeQuery();
+				if(rs.next()) {
+					
+					String phone = rs.getString(1);
+					return phone;
+					
+				}return null;
+			}
+		}
+		
 
 }
+
 
