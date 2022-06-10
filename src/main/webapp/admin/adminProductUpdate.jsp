@@ -57,6 +57,9 @@
         .btnInsert{
             text-align: center;
         }
+        #productUpdate{
+        display : none;
+        }
     </style>
 <body>
  <div class="wrapper">
@@ -146,7 +149,7 @@
                     </tr>
                   </thead>
                 <tbody>
-                <form action="/productUpdateProc.admin" method="post" entype="multipart/form-data" id="product-update">
+                <form action="/productUpdateProc.admin" method="post" enctype="multipart/form-data" id="product-update">
                   <tr>
                     <th scope="row">상품코드</th>
                     <td><input type="text" name="productCode" id="productCode"></td>
@@ -183,8 +186,11 @@
              <button type="button" class="btn btn-danger" id="btnDelete">삭제</button>
             </div>
             </div>
+            <input type="text" id="productUpdate" value="${productUpdate}">
         <script>
             $("#btnDelete").on("click",function(){ // 삭제 버튼을 눌렀을 때 상품전체 목록으로 이동
+            	if($("#productDelete").val()!==""){
+            		         	
             	let result = confirm($("#productDelete").val()+"상품을 정말 삭제하시겠습니까");
             	if(result){
             		
@@ -199,6 +205,7 @@
             				if(data=="ok"){
             					alert("해당 상품이 삭제되었습니다.");
             					$("#productDelete").val("");
+            					location.href="/productList.admin";
             				}else{
             					alert("해당 상품은 존재하지않습니다.");
             					$("#productDelete").val("");
@@ -210,11 +217,13 @@
             		})
             		
             		
-            	}
-            	else{
+            	}else{
             		location.href="/productUpdate.admin";
             	}
-				
+            	
+            	}else{
+            		alert("올바른 값을 입력해 주세요");
+            	}		
             	
             	
             })
@@ -248,13 +257,22 @@
             	}
             	
             	$("#product-update").submit();
+	/* 
+            	 if($("#productUpdate").val()!==1){
+                 	alert("상품등록에 실패하였습니다. 정확한 값을 입력하세요");
+                 	location.href="/productUpdate.admin";
+                 	
+                 }else {
+                 	alert("상품등록이 완료되었습니다");
+                 	location.href="/productList.admin";
+                 } */
+                 
             	
+            })  
             	
-            	console.log("${productInsert}");
-            	
-            	
-            	
-            })
+           
+           
+            
             
         </script>
 </body>
