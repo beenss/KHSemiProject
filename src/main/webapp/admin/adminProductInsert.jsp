@@ -145,7 +145,7 @@
                     </tr>
                   </thead>
                 <tbody>
-                <form action="/productInsertProc.admin" method="post" entype="multipart/form-data" id="product-insert">
+                <form action="/productInsertProc.admin" method="post" enctype="multipart/form-data" id="product-insert">
                   <tr>
                     <th scope="row">상품코드</th>
                     <td><input type="text" name="productCode" id="productCode"></td>
@@ -203,11 +203,8 @@
             		$("#productImg").focus();
             		return;
             	}
-            
-            
-           	
-            	
-            	$.ajax({
+          	
+            	/* $.ajax({
             		url:"/productInsertProc.admin"
             		,type:"post"
             		,data:$("#product-insert").serialize();
@@ -218,15 +215,18 @@
             		,error : function(e){
             			console.log(e);
             		}
-            	})
-            
-            
-            
-            	$("#product-insert").submit();
-            	
-         	
-            	
+            	}) */
+    
+            	$("#product-insert").submit();   	
             })
+           /*  if("${productInsert}"!==0){
+            	alert("상품등록이 완료되었습니다");
+            	location.href="/productList.admin";
+            }else if("${productInsert}"===0){
+            	alert("상품등록에 실패하였습니다. 정확한 값을 입력하세요");
+            	location.href="/productInsert.admin";
+            } */
+            
             
         </script>
 </body>

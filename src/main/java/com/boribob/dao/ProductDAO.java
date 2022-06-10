@@ -67,14 +67,14 @@ public class ProductDAO {
 	// 상품 수정
 	public int update(ProductDTO dto) throws Exception {
 
-		String sql = "update tbl_product set product_code = ?, product_name = ?, product_price = ?, product_content = ?, product_img = ?";
+		String sql = "update tbl_product set product_name = ?, product_price = ?, product_content = ?, product_img = ? where product_code = ?";
 
 		try (Connection con = this.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
-			pstmt.setInt(1, dto.getProductCode()); // 상품 코드
-			pstmt.setString(2, dto.getProductName()); // 상품명
-			pstmt.setInt(3, dto.getProductPrice()); // 상품 가격
-			pstmt.setString(4, dto.getProductContent()); // 상품 설명
-			pstmt.setString(5, dto.getProductImg()); // 상품 이미지 경로
+			pstmt.setString(1, dto.getProductName()); // 상품명
+			pstmt.setInt(2, dto.getProductPrice()); // 상품 가격
+			pstmt.setString(3, dto.getProductContent()); // 상품 설명
+			pstmt.setString(4, dto.getProductImg()); // 상품 이미지 경로
+			pstmt.setInt(5, dto.getProductCode()); // 상품 코드
 			int rs = pstmt.executeUpdate();
 			return rs;
 		}

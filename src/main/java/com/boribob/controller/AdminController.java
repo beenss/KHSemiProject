@@ -1,4 +1,5 @@
 package com.boribob.controller;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,8 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import org.apache.tomcat.jni.File;
 
 import com.boribob.dao.AdminDAO;
 import com.boribob.dao.InquiryDAO;
@@ -131,14 +130,14 @@ public class AdminController extends HttpServlet {
 			
 			response.sendRedirect("/admin/adminProductInsert.jsp");
 			
-		}else if(uri.equals("productInsertProc.admin")) {	//상품 등록
+		}else if(uri.equals("/productInsertProc.admin")) {	//상품 등록
 			String filePath = request.getServletContext().getRealPath("files"); // 데이터가 저장될 서버의 경로
 			System.out.println(filePath);
-//			File dir = new File(filePath);
-//
-//			if (!dir.exists()) {    // 폴더가 없을 경우를 대비
-//				dir.mkdirs();
-//			}
+			File dir = new File(filePath);
+
+			if (!dir.exists()) {    // 폴더가 없을 경우를 대비
+				dir.mkdirs();
+			}
 			int maxSize = 1024 * 1024 * 10;
 
 			try {
@@ -147,20 +146,22 @@ public class AdminController extends HttpServlet {
 				String productName = multi.getParameter("productName");
 				int productPrice = Integer.parseInt(multi.getParameter("productPrice"));  
 				String productContent = multi.getParameter("productContent");
-				String productImg = multi.getFilesystemName("productImg");
+				String productImg = "images"+File.separator+ multi.getFilesystemName("productImg");
 				
 				ProductDAO dao = new ProductDAO();
 				try {
 					int rs = dao.insert(new ProductDTO(productCode,productName,productPrice,productContent,productImg));
 					if(rs>0) {  // 만약에 상품 등록에 성공하면 관리자 페이지에 얼럿 띄워주기
-						request.setAttribute("productInsert", rs);
+						System.out.println("데이터 삭제 완료");
+						response.sendRedirect("/productList.admin");
 						
 					}else{
-						request.setAttribute("productInsert", rs);		
+						System.out.println("데이터 삭제 실패");
+						response.sendRedirect("/productUpdate.admin");
 					}
 					
 				}catch(Exception e) {e.printStackTrace();
-				} request.getRequestDispatcher("/admin/adminProductInsert.jsp").forward(request, response);
+				} 
 				
 				
 				
@@ -177,33 +178,35 @@ public class AdminController extends HttpServlet {
 			
 			String filePath = request.getServletContext().getRealPath("files"); // 데이터가 저장될 서버의 경로
 			System.out.println(filePath);
-//			File dir = new File(filePath);
-//
-//			if (!dir.exists()) {    // 폴더가 없을 경우를 대비
-//				dir.mkdirs();
-//			}
+			File dir = new File(filePath);
+
+			if (!dir.exists()) {    // 폴더가 없을 경우를 대비
+				dir.mkdirs();
+			}
 			int maxSize = 1024 * 1024 * 10;
 
 			try {
-				MultipartRequest multi = new MultipartRequest(request, filePath, maxSize, "utf-8",new DefaultFileRenamePolicy());
+				MultipartRequest multi = new MultipartRequest(request, filePath, maxSize, "utf-8");
 				int productCode = Integer.parseInt(multi.getParameter("productCode"));  
 				String productName = multi.getParameter("productName");
 				int productPrice = Integer.parseInt(multi.getParameter("productPrice"));  
 				String productContent = multi.getParameter("productContent");
-				String productImg = multi.getFilesystemName("productImg");
+				String productImg = "images"+File.separator+multi.getFilesystemName("productImg");
 				
 				ProductDAO dao = new ProductDAO();
 				try {
 					int rs = dao.update(new ProductDTO(productCode,productName,productPrice,productContent,productImg));
-					if(rs>0) {  // 만약에 상품 수정에 성공하면 관리자 페이지에 얼럿 띄워주기
-						request.setAttribute("productUpdate", rs);
-						
-					}else{
-						request.setAttribute("productUpdate", rs);		
-					}
-					
+					 // 만약에 상품 수정에 성공하면 관리자 페이지에 얼럿 띄워주기
+						if(rs>0) {
+							System.out.println("데이터 수정 완료");
+							response.sendRedirect("/productList.admin");
+						}else {
+							System.out.println("데이터 수정 실패");
+							response.sendRedirect("/productUpdate.admin");
+						}
+	
 				}catch(Exception e) {e.printStackTrace();
-				} request.getRequestDispatcher("/admin/adminProductUpdate.jsp").forward(request, response);
+				} 
 				
 				
 				
