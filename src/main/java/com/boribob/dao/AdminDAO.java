@@ -28,7 +28,7 @@ public class AdminDAO {
 		}
 	
 	public ArrayList<MemberDTO> findSubMem()throws Exception{
-		String sql = "select id,name,product_code,subscribe_start,subscribe_term from tbl_member join tbl_subscribe using (id);";
+		String sql = "select * from tbl_member WHERE id IN (SELECT id FROM tbl_subscribe)";
 		try (Connection con = bds.getConnection(); 
 			PreparedStatement pstmt = con.prepareStatement(sql);){
 			ResultSet rs = pstmt.executeQuery();

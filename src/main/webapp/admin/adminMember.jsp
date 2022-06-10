@@ -40,7 +40,8 @@ nav {
 }
 
 .title-body {
-	background-color: lightgray
+	background-color: lightgray;
+	
 }
 
 .content {
@@ -53,7 +54,7 @@ button {
 </style>
 </head>
 <body>
-	<div class="wrapper">
+	<div class="container">
 		<div class="row header">
 			<div class="col">
 				<nav
@@ -128,7 +129,7 @@ button {
 					<div class="col-md-5 mx-auto">
 						<div class="input-group">
 							<input class="form-control border-end-0 border rounded-pill"
-								type="search" placeholder="search" id="example-search-input">
+								type="search" placeholder="search ID" id="example-search-input">
 							<span class="input-group-append">
 								<button class="btn btn-outline-secondary bg-white border-bottom-0 border rounded-pill ms-n5 mt-0 searchBtn"type="button">
 									<i class="fa fa-search"></i>
@@ -136,27 +137,27 @@ button {
 							</span>
 						</div>
 					</div>
-				<div class="row title py-3">
+				<div class="row title py-3 px-0">
 					<h3>회원 목록</h3>
 				</div>
-				<div class="row title-body py-2 mt-4 text-center">
+				<div class="row title-body py-2  mt-4 text-center">
 					<div class="col-2">
-						<h5>아이디</h5>
+						<h6>아이디</h6>
 					</div>
 					<div class="col-1">
-						<h5>이름</h5>
+						<h6>이름</h6>
 					</div>
 					<div class="col-2">
-						<h5>연락처</h5>
+						<h6>연락처</h6>
 					</div>
 					<div class="col-2">
-						<h5>우편번호</h5>
+						<h6>우편번호</h6>
 					</div>
 					<div class="col-3">
-						<h5>주소</h5>
+						<h6>주소</h6>
 					</div>
 					<div class="col-2">
-						<h5>상세주소</h5>
+						<h6>상세주소</h6>
 					</div>
 				</div>
 				<div class="listmem">
@@ -169,12 +170,12 @@ button {
 						<c:otherwise>
 							<c:forEach items="${list}" var="dto">
 								<div class="row content py-2 text-center">
-									<div class="col-2">${dto.id}</div>
-									<div class="col-1">${dto.name}</div>
-									<div class="col-2">${dto.phone}</div>
-									<div class="col-2">${dto.post}</div>
-									<div class="col-3">${dto.roadAddress}</div>
-									<div class="col-2">${dto.detailAddress}</div>
+									<div class="col-2 p-0">${dto.id}</div>
+									<div class="col-1 p-0">${dto.name}</div>
+									<div class="col-2 p-0">${dto.phone}</div>
+									<div class="col-2 p-0">${dto.post}</div>
+									<div class="col-3 p-0">${dto.roadAddress}</div>
+									<div class="col-2 p-0">${dto.detailAddress}</div>
 								</div>
 							</c:forEach>
 						</c:otherwise>

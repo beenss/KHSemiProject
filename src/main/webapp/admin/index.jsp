@@ -100,7 +100,7 @@ nav {
 								<li class="nav-item"><a class="nav-link active"
 									aria-current="page" href="#">리뷰 조회/삭제</a></li>
 								<li class="nav-item"><a class="nav-link active"
-									aria-current="page" href="#">login</a></li>
+									aria-current="page" href="/logout.admin">logout</a></li>
 							</ul>
 						</div>
 					</div>
