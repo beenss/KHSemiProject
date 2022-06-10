@@ -1,7 +1,6 @@
 package com.boribob.controller;
 
 import java.io.IOException;
-import java.sql.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.boribob.dao.ProductDAO;
 import com.boribob.dto.MemberDTO;
 import com.boribob.dto.PetDTO;
 import com.boribob.dto.SubscribeDTO;
@@ -31,7 +31,17 @@ public class SubscribeController extends HttpServlet {
 		if (uri.equals("/subscribeInput.sub")) {
 			int subscribeTerm = Integer.parseInt(request.getParameter("subscribeType"));
 			int productCode = Integer.parseInt(request.getParameter("productCode"));
-			
+			int productPrice = 0;
+
+			ProductDAO productDao = new ProductDAO();
+			try {
+				productPrice = (productDao.selectByCode(productCode)).getProductPrice();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			int subscribePrice = productPrice * subscribeTerm;
+			System.out.println("상품 가격 : " + productPrice);
+				
 			String id = ((MemberDTO)request.getSession().getAttribute("loginSession")).getId();
 			
 			String petName = request.getParameter("petName");
@@ -49,6 +59,7 @@ public class SubscribeController extends HttpServlet {
 
 			request.setAttribute("petDto", petDto);
 			request.setAttribute("subscribeDto", subscribeDto);
+			request.setAttribute("subscribePrice", subscribePrice);
 			request.getRequestDispatcher("/form.order").forward(request, response);
 		}
 	}

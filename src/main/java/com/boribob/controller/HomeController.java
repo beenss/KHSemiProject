@@ -10,12 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/home")
 public class HomeController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doAction(request, response);
+	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doAction(request, response);
+	}
+	protected void doAction(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.sendRedirect("/index.jsp");
 	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		doGet(request, response);
-	}
-
 }

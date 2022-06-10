@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <script src="https://code.jquery.com/jquery-3.6.0.js"
 	integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
@@ -75,7 +75,7 @@ body {
 							<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 								<li class="nav-item"><a class="nav-link" href="#">제품 보기</a>
 								</li>
-								<li class="nav-item"><a class="nav-link" href="#">고객센터</a>
+								<li class="nav-item"><a class="nav-link" href="/inquiry.iq?currentPage=1">고객센터</a>
 								</li>
 								<li class="nav-item"><a class="nav-link" href="#">회원 가입</a>
 								</li>

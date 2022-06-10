@@ -17,6 +17,8 @@ import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 
 import com.boribob.dto.OrderDTO;
 import com.boribob.dto.OrderInfoDTO;
+import com.boribob.dto.PetDTO;
+
 
 
 
@@ -252,6 +254,26 @@ public class OrderDAO {
 		}
 
 	}
+
+	public  int insertTest(PetDTO dto) throws Exception { // 주문정보 등록
+		String sql = "insert into tbl_pet values (?, ?, ?, ?, ?, ?, ?)";
+		try (Connection con = getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
+			// order_no -> 시퀀스
+			pstmt.setString(1, dto.getId());
+			pstmt.setString(2, dto.getPetName());
+			pstmt.setInt(3, dto.getPetAge());
+			pstmt.setInt(4, dto.getPetAllergy());
+			pstmt.setInt(5, dto.getPetWeight());
+			pstmt.setString(6, dto.getPetKind());
+			pstmt.setString(7, dto.getPetType());
+
+			int rs = pstmt.executeUpdate();
+		
+			return rs;
+		}
+
+	}
+
 
 }
 

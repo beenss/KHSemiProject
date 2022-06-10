@@ -139,6 +139,7 @@ public class MemberDAO {
 
 	}
 	
+
 	// 회원의 핸드폰번호 조회
 		public MemberDTO selectByPhone(String phone1)throws Exception{
 			String sql = "select * from tbl_member where phone = ?";
@@ -165,11 +166,6 @@ public class MemberDAO {
 				}return null;
 			}
 		}
-	
-						
-
-	
-	
 
 
 

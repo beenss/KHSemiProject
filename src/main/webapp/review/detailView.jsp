@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
 <meta charset="UTF-8">
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-	rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -17,6 +18,8 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<title>문의글쓰기</title>
 <title>review</title>
 <style>
 body {
@@ -51,19 +54,7 @@ body {
 
 .board_view {
 	width: 100%;
-	border-top: 2px solid #000;
-}
-
-.board_view .title {
-	padding: 20px 15px;
-	border-bottom: 1px dashed #ddd;
-	font-size: 2rem;
-}
-
-.board_view .info {
-	padding: 15px;
-	border-bottom: 1px solid #999;
-	font-size: 0;
+	border-top: 1px solid #000;
 }
 
 .board_view .info dl {
@@ -72,64 +63,50 @@ body {
 	padding: 0 20px;
 }
 
-.board_view .info dl:first-child {
-	padding-left: 0;
+.title {
+	padding: 10px;
+	text-align: center;
+	font-size: 20px;
 }
 
-.board_view .info dl::before {
-	content: "";
-	position: absolute;
-	top: 1px;
-	left: 0;
-	display: block;
-	width: 1px;
-	height: 13px;
-	background: #ddd;
+.productBox {
+	border: 1px solid black;
+	width: 400px;
+	height: 400px;
+	margin: 0 auto;
 }
 
-.board_view .info dl:first-child::before {
-	display: none;
+.boxBtn>* {
+	width: 100px;
+	height: 40px;
+	background-color: rgb(0, 0, 0);
+	border: 1px solid white;
+	border-radius: 40px;
+	font-size: 15px;
+	color: white;
 }
 
-.board_view .info dl dd {
-	display: inline-block;
-	font-size: 1.4rem;
+.txt {
+	padding: 50px;
+	text-align: center;
+	margin: 0 auto;
+	background-color: white;
 }
 
-.board_view .info dl dt {
-	
+.info {
+	border-bottom: 1px solid black;
 }
 
-.board_view .info dl dd {
-	margin-left: 10px;
-	color: #777;
+.infobox {
+	border-bottom: 1px solid black;
 }
 
-.board_view .cont {
-	padding: 15px;
-	border-bottom: 1px solid #000;
-	line-height: 160%;
-	font-size: 1.4rem;
-}
-
-.board_view .info dl {
-	width: 50%;
-	padding: 0;
-}
-
-.board_view .info dl:nth-child(-n+2) {
-	margin-bottom: 5px;
-}
-
-.board_view .info dl::before {
-	display: none;
-}
-
-.board_view .info dl dt, .board_view .info dl dd {
-	font-size: 1.2rem;
+.cont {
+	padding-top: 40px;
 }
 </style>
 </head>
+
 <body>
 </head>
 <div class="wrapper">
@@ -165,87 +142,68 @@ body {
 		</div>
 	</div>
 	<div class="board_wrap">
-		<div class="board_title">
+		<div class="row justify-content-center title">
 			<img src="images/review_main.png" class="col-lg-10 d-block w-100"
 				id="main-logo"> <strong>리뷰</strong>
+			<p>보리밥 회원들의 생생한 후기를 들려드립니다.</p>
 		</div>
-		<div class="board_view_wrap">
+		<div class="row justify-content-center info">
 			<div class="board_view">
-				<div class="title">{dto.reviewTitle}</div>
-				<div class="info">
-					<dl>
-						<dt>${dto.seqReview}</dt>
-					</dl>
-					<dl>
-						<dt>글쓴이</dt>
-						<dd>${dto.id}</dd>
-					</dl>
-					<dl>
-						<dt>작성일</dt>
-						<dd>${dto.reviewDate}</dd>
-					</dl>
-				</div>
-				<div class="cont">
-					<p>$(dto.productImg)</p>
-					<p>${dto.reviewContent}</p>
+				<div class="col-12" style="text-align: center; font-size: 20px;">${dto.reviewTitle}</div>
+				<div class="row py-2 infobox">
+					<div class="col-lg-2 d-none d-lg-block col-form-label">작성자</div>
+					<div class="col-lg-5 col-7">${dto.id}</div>
+					<div class="col-lg-2 d-none d-lg-block col-form-label">작성일</div>
+					<div class="col-lg-3 col-5">${dto.reviewDate}</div>
 				</div>
 			</div>
-			<div class="bt_wrap">
-				<c:if test="${loginSession.id eq dto.id}">
-                <div class="col-2">
-                    <button type="button" class="btn btn-warning" id="btnupdate">수정</button>
-                </div>
-                <div class="col-2">
-                    <button type="button" class="btn btn-danger" id="btndelete">삭제</button>
-                </div>
-                <script>
-                    $("#btnupdate").on("click", function() { // 수정 페이지 요청
-                        location.href = "/modify.bo?seq_board=${dto.seq_board}";
-                    });
-                    $("#btndelete").on("click",function() { // 삭제 요청
-                        let answer = confirm("정말 삭제하시겠습니까?");
-                        console.log(answer);
-                        if (answer) {
-                            location.href = "/deleteProc.bo?seqReview=${dto.seqReview}";
-                        }
-                    })
-                </script>
-            </c:if>
+			<div class="cont">
+				<div
+					class="col d-flex justify-content-center align-items-center productBox">
+					<img src="${dto.productImg}" class="buy-item w-100" alt="상품이미지">
+				</div>
+			</div>
+			<div class="col d-flex justify-content-center align-items-center txt">
+				<textarea readonly class="form-control" id="review-content"
+					rows="20">${dto.reviewContent}</textarea>
 			</div>
 		</div>
+
 	</div>
 </div>
-</div>
-<div class="row justify-content-center footer">
-	<div class="col-lg-10 col-12">
-		<ul class="ft-ul">
-			<li>BoriBob Inc. 사랑시 고백구 행복동</li>
-			<li>대표 : 보리밥형제들 사업자등록번호 : 780-86-01094</li>
-			<li>대표번호 : +82)-665-3430 팩스번호 : +82)-888-3430 홈페이지 :
-				petvenience.store.com</li>
-			<li>CopyrightⓒBoriBob Inc. All Rights Reserved.</li>
-		</ul>
+<div class="bt_wrap">
+	<div class="row justify-content-center boxBtn">
+		<button type="button" class="boxBtn" id="btn-back">뒤로가기</button>
 	</div>
-	<div class="col-lg-2 col-12">
-		<ul class="ft-images">
-			<img src="images/facebook_icon.png" style="border-color: lightblue;">
-			<img src="images/instagram_icon.png" style="border-color: lightblue;">
-			<img src="images/youtube_icon.png" style="border-color: lightblue;">
-		</ul>
-		<ul class="ft-ul">
-			<li><strong>고객센터</strong></li>
-			<li style="height: 8px;"></li>
-			<li>오전 10시부터 오후 6시까지</li>
-			<li>토요일, 일요일, 공휴일 휴무</li>
-		</ul>
-	</div>
-</div>
 
-</div>
-</body>
+	<script>
+    $("#btn-back").on("click", function () {
+    location.href = "/review.bo?currentPage=1"
+ })
 
-</html>
+     </script>
+     <div class="row justify-content-center footer">
+                    <div class="col-lg-10 col-12">
+                        <ul class="ft-ul">
+                            <li>BoriBob Inc. 사랑시 고백구 행복동</li>
+                            <li>대표 : 보리밥형제들 사업자등록번호 : 780-86-01094</li>
+                            <li>대표번호 : +82)-665-3430 팩스번호 : +82)-888-3430 홈페이지 :
+                                petvenience.store.com</li>
+                            <li>CopyrightⓒBoriBob Inc. All Rights Reserved.</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-12">
 
-</body>
+                        <ul class="ft-ul">
+                            <li><strong>고객센터</strong></li>
+                            <li style="height: 8px;"></li>
+                            <li>오전 10시부터 오후 6시까지</li>
+                            <li>토요일, 일요일, 공휴일 휴무</li>
+                        </ul>
+                    </div>
+                </div>
 
-</html>
+            </div>
+    </body>
+
+    </html>
