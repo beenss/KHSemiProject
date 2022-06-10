@@ -111,7 +111,7 @@ public class ReviewController extends HttpServlet {
 					int rsFile = daoFile.insert(new FileDTO(0, seqReview, oriName, sysName));
 					
 					if(rs > 0 && rsFile > 0) {
-						response.sendRedirect("/review.bo?curPage=1");
+						response.sendRedirect("/review.bo?currentPage=1");
 					}
 					}catch(Exception e) {
 					e.printStackTrace();
@@ -126,9 +126,11 @@ public class ReviewController extends HttpServlet {
 			int seqReview = Integer.parseInt(request.getParameter("seqReview"));
 			System.out.println("seqReview : " + seqReview);
 			ReviewDAO ReviewDAO = new ReviewDAO();
+			FileDAO fileDao = new FileDAO();
 			try {
-
 				ReviewDTO dto = ReviewDAO.selectBySeq(seqReview);
+				String oriName = (fileDao.selectBySeqReview(seqReview)).getOriName();
+				request.setAttribute("oriName", oriName);
 				request.setAttribute("dto", dto);
 				Gson gson = new Gson();
 				String rs = gson.toJson(dto);
@@ -149,10 +151,13 @@ public class ReviewController extends HttpServlet {
 			System.out.println(reviewTitle+reviewContent);
 			
 			ReviewDAO dao = new ReviewDAO();
+			FileDAO fileDao = new FileDAO();
 			try {
 				int result = dao.update(new ReviewDTO(seqReview,0,null,reviewTitle,reviewContent,null,null));
 				if(result>0){
 					ReviewDTO dto = dao.selectBySeq(seqReview);
+					String oriName = (fileDao.selectBySeqReview(seqReview)).getOriName();
+					request.setAttribute("oriName", oriName);
 					request.setAttribute("dto", dto);
 					Gson gson = new Gson();
 					String rs = gson.toJson(dto);

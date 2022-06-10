@@ -2,6 +2,7 @@ package com.boribob.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -35,6 +36,25 @@ public class FileDAO {
 			int rs = pstmt.executeUpdate();
 			return rs;
 		}
-		
+	}
+	
+	public FileDTO selectBySeqReview (int seqReview) throws Exception {
+		String sql = "select * from tbl_file where seq_review = ?";
+		try(Connection con = bds.getConnection();
+			PreparedStatement pstmt = con.prepareStatement(sql)){
+			
+			pstmt.setInt(1, seqReview);
+			
+			ResultSet rs = pstmt.executeQuery();
+			FileDTO dto = new FileDTO();
+			if (rs.next()) {
+				int seqFile = rs.getInt("seq_file");
+				String oriName = rs.getString("ori_name");
+				String sysName = rs.getString("sys_name");
+				
+				dto = new FileDTO(seqFile, seqReview, oriName, sysName);
+			}
+			return dto;
+		}
 	}
 }

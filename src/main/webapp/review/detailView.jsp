@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import=com.boribob.dao.FileDAO" %>
+<%@ page import="com.boribob.dao.FileDAO" %>
 <%@ page import="java.io.File" %>
 
 <!-- 파일 이름이 동일한게 나오면 자동으로 다른걸로 바꿔주고 그런 행동 해주는것 -->
@@ -168,7 +168,7 @@ body {
 			</div>
 			<div class="cont">
 				<div class="col d-flex justify-content-center align-items-center">
-					<img src="<%=request.getContextPath() %> /files/${dto.oriname}" class="buy-item w-100" alt="리뷰이미">
+					<img src="<%=request.getContextPath()%>/files/${oriName}" class="buy-item w-100" alt="리뷰이미">
 				</div>
 		</div>
 			<div class="col d-flex justify-content-center align-items-center txt">
