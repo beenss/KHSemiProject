@@ -181,32 +181,32 @@ public class ReviewController extends HttpServlet {
 				e.printStackTrace();
 			}
 	}
-//			else if(uri.equals("/reviewUpdate.bo")) { // 마이페이지 리뷰 수정
-//			int seqReview = Integer.parseInt(request.getParameter("seqReview"));
-//			String reviewTitle = request.getParameter("reviewTitle");
-//			String reviewContent = request.getParameter("reviewContent");
-//			System.out.println(seqReview+" : "+reviewTitle+" : "+reviewContent);
-//			
-//			ReviewDAO dao = new ReviewDAO();
-//			
-//			try {		
-//				
-//				int result = dao.update(new ReviewDTO(seqReview, 0,null,reviewTitle, reviewContent,null,null));
-//				if(result>0){
-//					ReviewDTO dto = dao.selectBySeq(seqReview);
-//					request.setAttribute("dto", dto);
-//					Gson gson = new Gson();
-//					String rs = gson.toJson(dto);
-//					System.out.println(rs);
-//					response.setCharacterEncoding("utf-8");
-//					response.getWriter().append(rs);
-//				}else {
-//					response.getWriter().append("fail");
-//				}
-//			}catch(Exception e) {
-//				e.printStackTrace();
-//			}
-//		} 
+			else if(uri.equals("/reviewUpdate.bo")) { // 마이페이지 리뷰 수정
+			int seqReview = Integer.parseInt(request.getParameter("seqReview"));
+			String reviewTitle = request.getParameter("reviewTitle");
+			String reviewContent = request.getParameter("reviewContent");
+			System.out.println(seqReview+" : "+reviewTitle+" : "+reviewContent);
+			
+			ReviewDAO dao = new ReviewDAO();
+			
+			try {		
+				
+				int result = dao.update(new ReviewDTO(seqReview, 0,null,reviewTitle, reviewContent,null,null));
+				if(result>0){
+					ReviewDTO dto = dao.selectBySeq(seqReview);
+					request.setAttribute("dto", dto);
+					Gson gson = new Gson();
+					String rs = gson.toJson(dto);
+					System.out.println(rs);
+					response.setCharacterEncoding("utf-8");
+					response.getWriter().append(rs);
+				}else {
+					response.getWriter().append("fail");
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		} 
 			else if(uri.equals("/reviewDelete.bo")) {//문의글 삭제하기
 			int seqReview = Integer.parseInt(request.getParameter("seqReview"));
 			System.out.println(seqReview);
