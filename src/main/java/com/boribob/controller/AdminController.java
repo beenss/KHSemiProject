@@ -147,7 +147,7 @@ public class AdminController extends HttpServlet {
 				String productName = multi.getParameter("productName");
 				int productPrice = Integer.parseInt(multi.getParameter("productPrice"));  
 				String productContent = multi.getParameter("productContent");
-				String productImg = "images"+File.separator+ multi.getFilesystemName("productImg");
+				String productImg = "images"+ "/" + multi.getFilesystemName("productImg");
 				
 				ProductDAO dao = new ProductDAO();
 				try {
