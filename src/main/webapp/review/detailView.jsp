@@ -1,6 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import=com.boribob.dao.FileDAO" %>
+<%@ page import="java.io.File" %>
+
+<!-- 파일 이름이 동일한게 나오면 자동으로 다른걸로 바꿔주고 그런 행동 해주는것 -->
+
+<%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy" %>
+
+<!-- 실제로 파일 업로드 하기 위한 클래스 -->
+
+<%@ page import="com.oreilly.servlet.MultipartRequest" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,7 +29,6 @@
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<title>문의글쓰기</title>
 <title>review</title>
 <style>
 body {
@@ -158,11 +167,10 @@ body {
 				</div>
 			</div>
 			<div class="cont">
-				<div
-					class="col d-flex justify-content-center align-items-center productBox">
-					<img src="${dto.productImg}" class="buy-item w-100" alt="상품이미지">
+				<div class="col d-flex justify-content-center align-items-center">
+					<img src="<%=request.getContextPath() %> /files/${dto.oriname}" class="buy-item w-100" alt="리뷰이미">
 				</div>
-			</div>
+		</div>
 			<div class="col d-flex justify-content-center align-items-center txt">
 				<textarea readonly class="form-control" id="review-content"
 					rows="20">${dto.reviewContent}</textarea>

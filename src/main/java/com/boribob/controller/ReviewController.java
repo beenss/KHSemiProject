@@ -11,10 +11,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.boribob.dao.FileDAO;
+import com.boribob.dao.ProductDAO;
 import com.boribob.dao.ReviewDAO;
+import com.boribob.dao.SubscribeDAO;
 import com.boribob.dto.FileDTO;
 import com.boribob.dto.MemberDTO;
 import com.boribob.dto.ReviewDTO;
+import com.boribob.dto.SubscribeDTO;
 import com.google.gson.Gson;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -65,6 +68,7 @@ public class ReviewController extends HttpServlet {
 			System.out.println("filePath : " + filePath);
 			
 			File dir = new File(filePath);
+			
 			if(!dir.exists()) {
 				dir.mkdirs();
 			}
@@ -76,6 +80,7 @@ public class ReviewController extends HttpServlet {
 				MultipartRequest multi = new MultipartRequest(request,filePath,maxSize,"utf-8",new DefaultFileRenamePolicy());
 				
 				// 아이디 뽑아내기
+			
 				MemberDTO dto = (MemberDTO)request.getSession().getAttribute("loginSession");
 				String id = dto.getId();
 				
@@ -87,22 +92,28 @@ public class ReviewController extends HttpServlet {
 				String oriName = multi.getOriginalFileName("file");
 				String sysName = multi.getFilesystemName("file");
 	
-	
+				
 				ReviewDAO dao = new ReviewDAO();
 				FileDAO daoFile = new FileDAO();
+				SubscribeDAO sdao = new SubscribeDAO();
 				
+					  
 				try {
+					//구독중인 상품코 불러오기..
+					SubscribeDTO subscribe =  sdao.selectSubscribesById(id);
+					int productCode = subscribe.getProductCode(); 
+			 
 					// 게시글과 파일 데이터 저장하기 위해 새로운 게시글 번호 뽑아내기
 					int seqReview = dao.getNewSeq();
 
 					// 위에서 뽑아낸 게시글 번호를 활용하여 게시글, 파일 정보 DB에 저장 
-					int rs = dao.insert(new ReviewDTO(seqReview, 0, id, reviewTitle, reviewContent, null, null));
+					int rs = dao.insert(new ReviewDTO(seqReview, productCode, id, reviewTitle, reviewContent, null, null));
 					int rsFile = daoFile.insert(new FileDTO(0, seqReview, oriName, sysName));
 					
 					if(rs > 0 && rsFile > 0) {
 						response.sendRedirect("/review.bo?curPage=1");
 					}
-				}catch(Exception e) {
+					}catch(Exception e) {
 					e.printStackTrace();
 				}
 				
