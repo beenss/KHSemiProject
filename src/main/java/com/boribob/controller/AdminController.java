@@ -1,4 +1,5 @@
 package com.boribob.controller;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,19 +11,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
-
 import com.boribob.dao.AdminDAO;
 import com.boribob.dao.BlacklistDAO;
 import com.boribob.dao.InquiryDAO;
 import com.boribob.dao.MemberDAO;
 import com.boribob.dao.OrderDAO;
-
-import com.boribob.dto.AdminDTO;
-import com.boribob.dto.BlacklistDTO;
-
 import com.boribob.dao.ProductDAO;
-
+import com.boribob.dto.BlacklistDTO;
 import com.boribob.dto.InquiryDTO;
 import com.boribob.dto.MemberDTO;
 import com.boribob.dto.OrderDTO;
@@ -437,8 +432,6 @@ public class AdminController extends HttpServlet {
 			Integer orderId = Integer.parseInt(request.getParameter("orderId"));
 			OrderDAO orderDAO = new OrderDAO();
 			
-
-			File file = new File();
 			try {
 				OrderDTO orderDTO = orderDAO.findByOrderId(orderId);
 				request.setAttribute("orderDTO", orderDTO);
