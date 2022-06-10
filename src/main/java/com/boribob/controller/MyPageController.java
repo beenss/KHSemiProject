@@ -1,3 +1,4 @@
+
 package com.boribob.controller;
 
 import java.io.IOException;
@@ -41,17 +42,19 @@ public class MyPageController extends HttpServlet {
 		System.out.println("uri : " + uri);
 
 		if (uri.equals("/mypage.my")) { // 마이페이지의 첫페이지는 항상 나의 구독페이지
-//
-//			HttpSession session = request.getSession();
-//			MemberDTO dto = (MemberDTO) session.getAttribute("loginSession");
-//			String id = dto.getId();
-			String id = "test";
+
+			HttpSession session = request.getSession();
+			MemberDTO dto = (MemberDTO) session.getAttribute("loginSession");
+			String id = dto.getId();
+			
 			
 			SubscribeDAO dao = new SubscribeDAO();
 			ProductDAO pDao = new ProductDAO();
+			
+			
 			try{
-				  SubscribeDTO subscribe =  dao.selectSubscribesById(id);  // dao의 리턴값에 else{return null;} 추가 필요해 보임
-				   if(subscribe!= null) { 
+				  SubscribeDTO subscribe =  dao.selectSubscribesById(id);  
+				   if(dao.isSubscribedId(id)) { 
 					   int productCode = subscribe.getProductCode();  // 구독 상품의 상품코드로 해당 상품의 정보 뽑아오기
 					   ProductDTO pDto = pDao.selectByCode(productCode);
 					   
@@ -77,13 +80,21 @@ public class MyPageController extends HttpServlet {
 			// 비밀번호 입력받기
 			String withdrawPw = request.getParameter("withdrawPw");
 			System.out.println(withdrawPw);
-
+			
+			MemberDAO dao = new MemberDAO();
+			
 			try {
 				withdrawPw = EncryptionUtils.getSHA512(withdrawPw);
 
 				HttpSession session = request.getSession();
-				MemberDTO dto = (MemberDTO) session.getAttribute("loginSession");
-				if (withdrawPw.equals(dto.getPassword())) { // 비밀번호 비교
+				MemberDTO dto = (MemberDTO)session.getAttribute("loginSession");
+				String id = dto.getId();
+				
+				MemberDTO mDto = dao.selectById(id);
+				 
+				
+				
+				if (withdrawPw.equals(mDto.getPassword())) { // 비밀번호 비교
 
 					response.getWriter().append("ok");
 				} else {
@@ -111,6 +122,9 @@ public class MyPageController extends HttpServlet {
 					int rs = dao.delete(dto.getId());
 					if (rs > 0) {
 						System.out.println("데이터삭제 성공");
+						
+						session.invalidate();
+						
 					} else {
 						System.out.println("데이터삭제 실패");
 					}
@@ -124,7 +138,21 @@ public class MyPageController extends HttpServlet {
 			
 			HttpSession session = request.getSession();
 			MemberDTO dto = (MemberDTO) session.getAttribute("loginSession");
-			request.setAttribute("dto", dto);
+			String id = dto.getId();
+			MemberDAO dao = new MemberDAO();
+			
+			
+			try {
+				String phone1 = dao.phone1(id);
+				String phone2 = dao.phone2(id);
+				
+				request.setAttribute("dto", dto);
+				request.setAttribute("phone1", phone1);
+				request.setAttribute("phone2", phone2);
+				
+			}catch(Exception e){e.printStackTrace();
+			}
+			
 			request.getRequestDispatcher("/mypage/memberUpdate.jsp").forward(request, response);
 	
 		}else if(uri.equals("/updateProc.my")) { // 회원정보 수정
@@ -140,11 +168,15 @@ public class MyPageController extends HttpServlet {
 			
 			MemberDAO dao= new MemberDAO();
 			
+			
+			
 			try {
+
 				password = EncryptionUtils.getSHA512(password);
-				
-				int rs = dao.update(new MemberDTO(id,password, name, post,roadAddr, detailAddr, phone));
+				MemberDTO mDto = new MemberDTO(id, password, name, post, roadAddr, detailAddr, phone);
+				int rs = dao.update(mDto);
 				if(rs>0) {
+						request.getSession().setAttribute("loginSession", mDto);			
 					System.out.println("회원 정보수정 성공");
 					response.sendRedirect("/mypage.my"); // 회원정보 수정완료 후 마이페이지 메인으로 이동
 				}
@@ -152,40 +184,12 @@ public class MyPageController extends HttpServlet {
 			}catch(Exception e) {e.printStackTrace();
 			}
 
-		} else if(uri.equals("/inquiry.my")) {  // 마이페이지에서 나의 문의내역 확인
-			response.sendRedirect("/mypage/inquiry.jsp");
+		}	
+		else if(uri.equals("/orderList.my")) {  // 주문 내역 확인하기
 			
-//			HttpSession session = request.getSession();
-//			MemberDTO dto = (MemberDTO) session.getAttribute("loginSession");
-//			String id = dto.getId();
-//			InquiryDAO dao = new InquiryDAO();
-//			
-//			try {
-//				
-//				ArrayList<InquiryDTO> list = dao.selectById(id);
-//				request.setAttribute("list", list);
-//
-//			}catch(Exception e) {e.printStackTrace();
-//			}
-//			request.getRequestDispatcher("/mypage/inquiry.jsp").forward(request, response);			
-		} else if(uri.equals("/review.my")) {  // 마이페이지에서 나의 리뷰내역 확인 
-			response.sendRedirect("/mypage/review.jsp");
-			
-//			HttpSession session = request.getSession();
-//			MemberDTO dto = (MemberDTO) session.getAttribute("loginSession");
-//			String id = dto.getId();
-//			ReviewDAO dao = new ReviewDAO();
-//			
-//			try {
-//				
-//				ArrayList<ReviewDTO> list = dao.selectById(id);
-//				request.setAttribute("list", list);
-//
-//			}catch(Exception e) {e.printStackTrace();
-//			}
-//			request.getRequestDispatcher("/mypage/review.jsp").forward(request, response);						
-			
+			response.sendRedirect("/list.order");
 		}
+
 
 	}
 

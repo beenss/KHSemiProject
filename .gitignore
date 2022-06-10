@@ -10,6 +10,7 @@ tmp/
 *.bak
 *.swp
 *~.nib
+*.class
 local.properties
 .settings/
 .loadpath
@@ -18,6 +19,9 @@ local.properties
 .project
 build/
 Servers/
+
+#MacOS
+.DS_Store
 
 # External tool builders
 .externalToolBuilders/
