@@ -13,11 +13,13 @@ import javax.servlet.http.HttpSession;
 import oracle.security.o3logon.a;
 
 import com.boribob.dao.AdminDAO;
+import com.boribob.dao.BlacklistDAO;
 import com.boribob.dao.InquiryDAO;
 import com.boribob.dao.MemberDAO;
 import com.boribob.dao.OrderDAO;
 import com.boribob.dao.StatisticsDAO;
 import com.boribob.dto.AdminDTO;
+import com.boribob.dto.BlacklistDTO;
 import com.boribob.dto.InquiryDTO;
 import com.boribob.dto.MemberDTO;
 import com.boribob.dto.OrderDTO;
@@ -328,6 +330,42 @@ public class AdminController extends HttpServlet {
 
 				e.printStackTrace();
 			}
+		}else if(uri.equals("/blacklist.admin")) {
+			BlacklistDAO dao =new BlacklistDAO();
+			try {
+				ArrayList<BlacklistDTO> list = dao.selectAll();
+				request.setAttribute("list",list);
+			}catch(Exception e){
+				e.printStackTrace();
+			}request.getRequestDispatcher("/admin/blacklist.jsp").forward(request, response);	
+		
+		}else if(uri.equals("/blacklistProc.admin")) {
+			String id = request.getParameter("id");
+			String blacklistReason = request.getParameter("blacklistReason");
+			System.out.println(id+blacklistReason);
+			MemberDAO dao = new MemberDAO();
+			BlacklistDAO bldao = new BlacklistDAO();
+			try {
+				MemberDTO dto = dao.selectById(id);
+				BlacklistDTO bldto = bldao.selectById(id);
+				if(dto==null || bldto!=null) {
+					System.out.println("실패");
+					request.setAttribute("rs", false);
+				}else {
+					bldao.insert(new BlacklistDTO(id,null,blacklistReason));
+					request.setAttribute("rs", true);
+				}
+			}catch(Exception e){
+				e.printStackTrace();
+			}request.getRequestDispatcher("/admin/blacklistAdd.jsp").forward(request, response);
+			
+			
+		}
+		
+		else if(uri.equals("/logout.admin")) {
+			HttpSession session = request.getSession();
+			session.invalidate();
+			response.sendRedirect("/admin/adminLogin.jsp");
 		}
 
 	}

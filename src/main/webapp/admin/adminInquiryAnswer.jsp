@@ -126,7 +126,7 @@ input[id="delete"] {
 		</div>
 		<div class="container">
 			<div class="row title py-3">
-				<h3>문의 글</h3>
+				<h3>답변이 필요한 글</h3>
 			</div>
 			<div class="row title-body py-2 mt-4 text-center">
 				<div class="col-1">
