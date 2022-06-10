@@ -219,10 +219,9 @@ body {
 								if ($("#id").val() === "" || $("#password").val() === "") {
 									alert("아이디 혹은 비밀번호를 입력하세요.");
 									return;
-								}//else if($("#id").val() !== $("#password").val()) {
-									//alert("패스워드가 일치하지 않습니다.");
-									//return;
-								//}
+								}else if($("#id").val() == "${dto.id}" || $("#password").val() == "${dto.pw}" ){
+									alert("로그인 성공.");
+								}							
 								saveid();
 								$("#loginForm").submit();
 							})
@@ -233,14 +232,14 @@ body {
 					
 					// 아이디 찾기 버튼 누르면 팝업창 띄우기
 					document.getElementById("idSearch").onclick = function() {
-						let url = "/idSearchPopup.mem"; // jsp 경로값 (팝업창 꾸며주는 jsp 필요 **)
+						let url = "/idSearch.mem"; // jsp 경로값 (팝업창 꾸며주는 jsp 필요 **)
 						let name = "이메일 찾기"; // 팝업창 이름값
 						let option = "width=600, height=400, left=500, top=300"; // 팝업창 크기, 위치
 						window.open(url, name, option);
 					}
 					
 					document.getElementById("passwordSearch").onclick = function() {
-						let url = "/passwordSearchPopup.mem"; // jsp 경로값 (팝업창 꾸며주는 jsp 필요 **)
+						let url = "/passwordSearch.mem"; // jsp 경로값 (팝업창 꾸며주는 jsp 필요 **)
 						let name = "비밀번호 찾기"; // 팝업창 이름값
 						let option = "width=600, height=400, left=500, top=300"; // 팝업창 크기, 위치
 						window.open(url, name, option);
