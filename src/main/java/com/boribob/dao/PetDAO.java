@@ -102,7 +102,7 @@ public class PetDAO {
 
 		// 견/묘 구분 입력
 		if (dto.getPetType() == "dog") petDetails.add(0); // 개
-		else if (dto.getPetType() == "cat") petDetails.add(1); // 고양이
+		else petDetails.add(1); // 고양이
 		
 		return petDetails;
 	}

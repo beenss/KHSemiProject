@@ -328,59 +328,6 @@ public class AdminController extends HttpServlet {
 
 				e.printStackTrace();
 			}
-		}else if (uri.equals("/statistic.admin")) {
-			StatisticsDAO statisticsDAO = new StatisticsDAO();
-			System.out.println(111);
-			try {
-				ArrayList<StatisticsDTO>  statisticsDTO = statisticsDAO.AllList();
-				int totalPayAmount = statisticsDAO.totalPayAmount();
-				int totalSales = statisticsDAO.totalSales();
-				int countSales1 = statisticsDAO.countSales("강아지 소고기 사료");
-				int countSales2 = statisticsDAO.countSales("강아지 흰살 생선 사료");
-				int countSales3 = statisticsDAO.countSales("멍멍 소고기 사료");
-				int countSales4 = statisticsDAO.countSales("멍멍 흰살 생선 사료");
-				int countSales5 = statisticsDAO.countSales("강아지 오리 다이어트 사료");
-				int countSales6 = statisticsDAO.countSales("강아지 야채 연어 다이어트 사료");
-				int countSales7 = statisticsDAO.countSales("멍멍 오리 다이어트 사료");
-				int countSales8 = statisticsDAO.countSales("멍멍 야채 연어 다이어트 사료");
-				int countSales9 = statisticsDAO.countSales("묘아 닭고기 사료");
-				int countSales10 = statisticsDAO.countSales("묘아 생선 사료");
-				int countSales11 = statisticsDAO.countSales("야옹 닭고기 사료");
-				int countSales12 = statisticsDAO.countSales("야옹 연어 사료");
-				int countSales13 = statisticsDAO.countSales("묘아 양고기 다이어트 사료");
-				int countSales14 = statisticsDAO.countSales("묘아 생선 다이어트 사료");
-				int countSales15 = statisticsDAO.countSales("야옹 오리 다이어트 사료");
-				int countSales16 = statisticsDAO.countSales("야옹 야채 다이어트 사료");
-				
-				request.setAttribute("totalPayAmount", totalPayAmount);
-				request.setAttribute("totalSales", totalSales);
-				request.setAttribute("statisticsDTO", statisticsDTO);
-				
-				request.setAttribute("countSales1", countSales1);
-				request.setAttribute("countSales2", countSales2);
-				request.setAttribute("countSales3", countSales3);
-				request.setAttribute("countSales4", countSales4);
-				request.setAttribute("countSales5", countSales5);
-				request.setAttribute("countSales6", countSales6);
-				request.setAttribute("countSales7", countSales7);
-				request.setAttribute("countSales8", countSales8);
-				request.setAttribute("countSales9", countSales9);
-				request.setAttribute("countSales10", countSales10);
-				request.setAttribute("countSales11", countSales11);
-				request.setAttribute("countSales12", countSales12);
-				request.setAttribute("countSales13", countSales13);
-				request.setAttribute("countSales14", countSales14);
-				request.setAttribute("countSales15", countSales15);
-				request.setAttribute("countSales16", countSales16);
-				
-				request.getRequestDispatcher("/admin/adminStatistics.jsp").forward(request, response);
-			} catch (Exception e) {
-	
-				e.printStackTrace();
-			}
-			
-			
-
 		}
 
 	}

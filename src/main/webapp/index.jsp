@@ -33,8 +33,8 @@
                     <a class="nav-link" href="/review.bo?currentPage=1">리뷰</a>
                     <a class="nav-link" href="/inquiry.iq?currentPage=1">고객센터</a>
                     <a class="nav-link" href="/logout.mem">로그아웃</a>
-                    <a class="nav-link" href="/mypage/activities.jsp">마이페이지</a>
-                    <a class="nav-link" style="color: rgb(255, 94, 0);" href="/petInput.pet">구독하기</a>
+                    <a class="nav-link" href="/mypage.my">마이페이지</a>
+                    <a class="nav-link" style="color: rgb(255, 94, 0);" href="/pet.pet">구독하기</a>
                 </nav>
             </div>
             </c:when>
@@ -46,13 +46,11 @@
                     <a class="nav-link" href="/inquiry.iq?currentPage=1">고객센터</a>
                     <a class="nav-link" href="/login/login.jsp">로그인</a>
                     <a class="nav-link" href="/member/member.jsp">회원가입</a>
-                    <a class="nav-link" style="color: rgb(255, 94, 0);" href="/petInput.pet">구독하기</a>
+                    <a class="nav-link" style="color: rgb(255, 94, 0);" href="/pet.pet">구독하기</a>
                 </nav>
             </div>
             </c:otherwise>
            </c:choose> 
-            
-            
             
         </div>
     </header>

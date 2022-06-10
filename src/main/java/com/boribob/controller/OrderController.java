@@ -2,15 +2,13 @@ package com.boribob.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
-
-import org.apache.taglibs.standard.lang.jstl.test.beans.PublicBean1;
 
 import com.boribob.dao.MemberDAO;
 import com.boribob.dao.OrderDAO;
@@ -19,6 +17,7 @@ import com.boribob.dao.StatisticsDAO;
 import com.boribob.dao.SubscribeDAO;
 import com.boribob.dto.MemberDTO;
 import com.boribob.dto.OrderDTO;
+import com.boribob.dto.OrderInfoDTO;
 import com.boribob.dto.PetDTO;
 import com.boribob.dto.StatisticsDTO;
 import com.boribob.dto.SubscribeDTO;
@@ -29,7 +28,7 @@ import com.boribob.dto.SubscribeDTO;
 @WebServlet("*.order")
 public class OrderController extends HttpServlet {
 	OrderDAO orderDAO = new OrderDAO();
-	
+	OrderInfoDTO orderInfoDTO = new OrderInfoDTO();
 
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
@@ -42,21 +41,21 @@ public class OrderController extends HttpServlet {
 		if (uri.equals("/form.order")) { // 1. 주문정보 입력페이지로 이동
 
 			HttpSession session = request.getSession();
-//			String memberId = ((MemberDTO)session.getAttribute("loginSession")).getId();
+			String memberId = ((MemberDTO)session.getAttribute("loginSession")).getId();
 			// 세션값으로 회원id를 받고 회원 id로 회원정보랑 구독 정보를 OrderInfoDTO에 담아서 뷰에 뿌려주기
 
-			String memberId = "bori@gmail.com";// 세션으로 받아오는 아이디 -> 임시회원 아이디
+//			String memberId = "bori@gmail.com";// 세션으로 받아오는 아이디 -> 임시회원 아이디
 
 			try {
 				MemberDAO memberDAO = new MemberDAO();
 				MemberDTO memberDTO = memberDAO.selectById(memberId);
 
 				// test용 임시 객체
-				PetDTO petDto = new PetDTO("id2", "보리", 1, 10, 5, "왕", "cat");
-				request.setAttribute("petDto", petDto);
+//				PetDTO petDto = new PetDTO("id2", "보리", 1, 10, 5, "왕", "cat");
+//				request.setAttribute("petDto", petDto);
 
-				SubscribeDTO subscribeDto = new SubscribeDTO("21", 1, null, 6);
-				request.setAttribute("subscribeDto", subscribeDto);
+//				SubscribeDTO subscribeDto = new SubscribeDTO("21", 1, null, 6);
+//				request.setAttribute("subscribeDto", subscribeDto);
 
 				request.setAttribute("memberDTO", memberDTO);
 			} catch (Exception e) {
@@ -68,10 +67,9 @@ public class OrderController extends HttpServlet {
 
 		} else if (uri.equals("/insert.order")) { // 2.주문정보 저장
 			HttpSession session = request.getSession();
+			String memberId = ((MemberDTO)session.getAttribute("loginSession")).getId();
 			response.setContentType("application/x-json; charset=UTF-8");
 			request.setCharacterEncoding("utf-8");
-
-			String memberId = "bori@gmail.com";
 
 			try { // 주문정보 입력
 				MemberDAO memberDAO = new MemberDAO();
@@ -119,7 +117,7 @@ public class OrderController extends HttpServlet {
 
 					PetDTO petDTO = new PetDTO("id10", petName, petAge, petAllergy, petWeight, petKind, petType);
 
-					SubscribeDTO subscribeDTO = new SubscribeDTO("id10", productCode, null, subscribeTerm);
+					SubscribeDTO subscribeDTO = new SubscribeDTO(id, productCode, null, subscribeTerm);
 
 					StatisticsDTO statisticsDTO = new StatisticsDTO(productName(productCode), id, price, subscribeTerm,
 							Integer.parseInt(payAmount));
@@ -156,9 +154,9 @@ public class OrderController extends HttpServlet {
 
 		} else if (uri.equals("/list.order")) {// 주문 리스트
 			HttpSession session = request.getSession();
+			String memberId = ((MemberDTO)session.getAttribute("loginSession")).getId();
 
 			try {
-				String memberId = "bori@gmail.com";
 				ArrayList<OrderDTO> orderList = orderDAO.findListById(memberId);
 
 				request.setAttribute("orderList", orderList);
@@ -188,12 +186,40 @@ public class OrderController extends HttpServlet {
 
 	public String productName(int productCode) {
 		if (productCode == 1) {
-			return "boriBab";
+			return " 강아지 소고기 사료";
 		} else if (productCode == 2) {
-			return "babiBab";
-		} else {
+			return "강아지 흰살 생선 사료";
+		}else if (productCode == 3) {
+			return "멍멍 소고기 사료";
+		}else if (productCode == 4) {
+			return "멍멍 흰살 생선 사료";
+		}else if (productCode == 5) {
+			return "강아지 오리 다이어트 사료";
+		}else if (productCode == 6) {
+			return "강아지 야채 연어 다이어트 사료";
+		}else if (productCode == 7) {
+			return "멍멍 오리 다이어트 사료";
+		}else if (productCode == 8) {
+			return "멍멍 야채 연어 다이어트 사료";
+		}else if (productCode == 9) {
+			return "묘아 닭고기 사료";
+		}else if (productCode == 10) {
+			return "묘아 생선 사료 ";
+		}else if (productCode == 11) {
+			return "야옹 닭고기 사료";
+		}else if (productCode == 12) {
+			return "야옹 연어 사료";
+		}else if (productCode == 13) {
+			return "묘아 양고기 다이어트 사료";
+		}else if (productCode == 14) {
+			return "묘아 생선 다이어트 사료 ";
+		}else if (productCode == 16) {
+			return "야옹 오리 다이어트 사료";
+		}else if (productCode == 16) {
+			return "야옹 야채 다이어트 사료 ";
+		}else{
 			return "non";
 		}
-
 	}
 }
+

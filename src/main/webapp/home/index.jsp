@@ -138,7 +138,7 @@
 </lang>
 <div class="row justify-content-around header" style="text-align: center;">
     <div class="col-lg-3" style="text-align: center;">
-        <img src="images/project_logo.png" class="d-block w-100" id="main-logo">
+        <img src="/Users/leesaetbyeol/Semiproject/KHSemiProject/src/main/webapp/images/project_logo.png" class="d-block w-100" id="main-logo">
     </div>
     <div class="col-lg-8 col-12 menu">
         <nav class="navbar navbar-expand-lg navbar-light" style="float: right;">
@@ -204,7 +204,7 @@
 </div>
 <!--胶农费 局聪皋捞记 持扁-->
 <div class="d-block" id="mainbox2">
-    <img src="images/4.png" class="d-block w-100">
+    <img src="/webapp/images/4.png" class="d-block w-100">
 </div>
 <br>
 <br>

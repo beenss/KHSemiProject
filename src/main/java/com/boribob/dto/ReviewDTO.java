@@ -8,8 +8,6 @@ public class ReviewDTO {
 	private String reviewTitle;
 	private String reviewContent;
 	private String productImg;
-
-
 	private String reviewDate;
 
 	public ReviewDTO() {
