@@ -36,22 +36,74 @@
 					<button type="button" class="btn btn-success" id="checkIdBtn">중복확인</button>
 				</div>
 			</div>
+			
+			
 			<div class="row m-2 justify-content-start">
 				<div class="col-3">
 					<span>확인결과 : </span>
 				</div>
-				<div class="col-5">
+				
+ 				<div class="col-5">
 					<c:if test="${rs eq 'ok'}">
 						<span>사용가능한 이메일입니다.</span>
 					</c:if>
-					<c:if test="${rs eq 'no'}">
-						<span>중복된 이메일입니다.</span>
-					</c:if>
-				</div>
-				<div class="col-4">
-					<button type="button" id="certificationBtn">인증번호발송</button>
-				</div>
+										
+					<c:if test="${rs eq 'no'}">					
+						<span>중복된 이메일입니다.</span>						
+					</c:if>	
+			
+				</div>					
+			<div class="col-4">
+					<button type="button" id="certificationBtn">인증번호발송</button>		
 			</div>
+				
+			</div>          
+			
+			
+			<!-- 
+			<c:if test="${rs eq 'ok'}">
+				<div class="col-5">					
+						<span>사용가능한 이메일입니다.</span>					
+				</div>				
+				<div class="col-4">
+					<button type="button" id="certificationBtn">인증번호발송</button>		
+				</div>
+			</c:if>
+			
+			
+				
+			<c:if test="${rs eq 'no'}">
+				<div class="col-5">					
+						<span>중복된 이메일입니다.</span>					
+				</div>				
+				<div class="col-4">
+					<button type="button" id="certificationBtn" disabled>인증번호발송</button>		
+				</div>
+			</c:if>    
+			 -->
+			
+			
+			<!--
+			<div class="col-9">
+			<c:if test="${rs eq 'ok'}">									
+						<span>사용가능한 이메일입니다.</span>					
+					<button type="button" id="certificationBtn">인증번호발송</button>				
+			</c:if>
+			</div>				
+			
+			<div class="col-9">	
+				<c:if test="${rs eq 'no'}">				
+						<span>중복된 이메일입니다.</span>					
+					<button type="button" id="certificationBtn" disabled>인증번호발송</button>			
+			</c:if>
+			</div>
+			-->
+			
+				
+				
+			</div>
+			
+
 
 			<div class="row m-2 justify-content-start">
 				<div class="col-3">
@@ -82,8 +134,12 @@
 
 
 	<script>
-		//이메일인증 > 인증버튼 누르자
+		//이메일인증 > 인증버튼 누르자  
 		document.getElementById("certificationBtn").onclick = function() {
+			
+		
+			
+			
 			console.log("certificationEmail");
 			alert("인증코드 발송!");
 			let email = $("#id").val();
@@ -105,7 +161,7 @@
 
 					console.log($("#randomCode").val());
 					console.log(data);
-					let randomCode = /[0~9]{6}/;
+					let randomCode = /[0~9]{6}w/;
 					let useBtn = document.getElementById("useBtn");
 
 					console.log("${rs}");	
@@ -142,17 +198,14 @@
 								return;
 							}
 							$("#checkIdForm").submit();
-						})
-/*
-		let useBtn = document.getElementById("useBtn");
+							
+							if("{rs}"=="no"){
+								$("#checkIdBtn").attr("disabled",true);
+							}
+							
+						})				
+						
 
-		console.log("${rs}");
-		if ("${rs}" === "ok") { // 사용 가능 아이디
-			useBtn.disabled = false; // disabeld 날리기
-		} else {
-			useBtn.disabled = true; // disabled 살리기
-		}
-*/
 		document.getElementById("useBtn").onclick = function() { // 사용가능 이메일 사용한다 했을때
 			let regexId = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
 			if (!regexId.test($("#id").val())) {

@@ -313,7 +313,7 @@ body {
 						alert("주소를 입력해 주세요.");
 						return;
 					}
-
+					alert("환영합니다♡");
 					// form 제출
 					document.getElementById("memberForm").submit();
 				})

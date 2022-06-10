@@ -99,54 +99,94 @@ body {
 	<!-- 여기에 바디 코드 짜주셈 -->
 
 	<div class="container" style="border: 1px solid lightgrey">
-		<form id="searchPasswordForm" action="/searchPassword.mem" method="post">
+		<form id="searchIdForm" action="/searchId.mem" method="post">
 			<div class="row">
 				<div class="col-12 mb-5 d-flex justify-content-center">
-					<h2>비밀번호 찾기</h2>     
+					<h2>이메일 찾기</h2>     
 				</div>                
 			</div>
-            <div>*비밀번호는 가입시 입력하신 이메일를 통해 찾을 수 있습니다.</div>
+            <div>*이메일은 가입시 입력하신 휴대폰번호를 통해 찾을 수 있습니다.</div>
 
 			<div class="row p-2">
-				<label for="phone" class="form-label">이메일 주소</label>
-					
-					<div class="col-6 mb-2">
-						<input type="text" class="form-control" id="emailAddress">
-					</div>					
-					
-				<div class="col-4 mb-2">
-					<button type="button" id="searchPasswordBtn" class="btn btn-warning w-100">이메일
+				<label for="phone" class="form-label">휴대폰번호</label>
+					<div class="col-3 mb-2">
+						<select class="form-select" id="phone1">
+							<option value="010" selected>010</option>
+							<option value="011">011</option>
+							<option value="011">016</option>
+							<option value="011">017</option>
+							<option value="011">019</option>
+						</select>
+					</div>
+					<div class="col-3 mb-2">
+						<input type="text" class="form-control" id="phone2" maxlength="4">
+					</div>
+					<div class="col-3 mb-2">
+						<input type="text" class="form-control" id="phone3" maxlength="4">
+					</div>
+					<div class="col d-none">
+						<input type="text" id="phone" name="phone">
+					</div>
+				<div class="col-3 mb-2">
+					<button type="button" id="searchIdBtn" class="btn btn-warning w-100">번호
 						확인</button>
 				</div>
 			</div>
 		
 		</form>
+		
+		
 
 	</div>
 
 	<div class="row justify-content-center">
 		<div class="col-4 d-flex justify-content-end">
-			<button type="button" id="cancelBtn" class="btn btn-secondary">로그인</button>
+			<button type="button" id="loginButton" class="btn btn-secondary">로그인</button>
 		</div>
-		<div class="col-4 d-flex justify-content-start">
-			<button type="button" id="submitBtn" class="btn btn-success">이메일 찾기</button>
-		</div>
+		
+		
 		
 		<script>
 		
-		// 이메일 번호 확인
-		$("#searchPasswordBtn").on("click",	function() {				
-					
-					if ($("#emailAddress").val() === "") {
-						alert("");                       
-						return;
-					}
-					
-					document.getElementById("searchPasswordForm").submit();
 		
+		// 로그인 버튼 누르면
+		document.getElementById("loginButton").onclick = function() {
+			self.close();
+		}
+				
+			
+			// 핸드폰 번호 확인
+			$("#searchIdBtn").on("click",   function() {          
+
+	               // phone번호 합치기
+	               // select 박스에서 선택된 값을 가져오는 방법(selected된 옵션의 value값 가져옴)
+	               let phone = $("#phone1 option:selected").val()
+	                     + $("#phone2").val() + $("#phone3").val();
+	               	$("#phone").val(phone);
+	               
+	              $.ajax({
+	            	  url : "/searchId.mem?phone="+phone
+	            	  ,type : "get"
+	            	  ,dataType : "json"
+	            	  ,success : function(data){
+	            		  
+	            		  if (data!==null){
+	            		  alert(data.id);
+	            			  
+	            		  }else{
+	            			  alert("틀렷어");
+	            		  }
+            		  
+	            	  }
+	                  ,error : function(e){
+	                	  console.log(e);
+	                  }
+	              })
+	
+	            })
+
 		</script>
-
-
+		
 		<!-- 여기부터 풋터 -->
 		<div class="row justify-content-center footer">
 			<div class="col-lg-10 col-12">
