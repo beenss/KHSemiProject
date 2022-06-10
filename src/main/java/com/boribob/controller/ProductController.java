@@ -159,45 +159,7 @@ public class ProductController extends HttpServlet {
 			}request.getRequestDispatcher("/admin/product.jsp").forward(request, response);
 			
 		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-//		else if (uri.equals("/searchName.pro")) { // 전체 상품 페이지에서 상품 검색시 해당 상품만 띄워주기
-//
-//		String productName = request.getParameter("productName");
-//		ProductDAO dao = new ProductDAO();
-//
-//		try {
-//			ProductDTO dto = dao.selectByName(productName); // 해당 상품정보 불러오기
-//
-//			if (dto != null) { // 해당 상품이름이 존재하면 dto 보내주기
-//				request.setAttribute("dto", dto);
-//				Gson gson = new Gson();
-//				String rs = gson.toJson(dto);
-//				response.setCharacterEncoding("utf-8");
-//				response.getWriter().append(rs);
-//			} else {
-//				response.getWriter().append("fail"); // 실패하면 fail text 보내기
-//			}
-//
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//
+
 	}
 
 	}
