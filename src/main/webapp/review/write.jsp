@@ -155,7 +155,6 @@
                                 </div>
                                </form>   
                         </div>
-             
                 <div class="row justify-content-center boxBtn">
                     <button type="button" class="btnSave" id="btn-save">등록하기</button>
                     <button type="button" class="btnBack" id="btn-back">목록</button>
