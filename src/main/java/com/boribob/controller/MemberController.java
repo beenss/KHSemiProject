@@ -182,13 +182,9 @@ public class MemberController extends HttpServlet {
 			response.sendRedirect("/search/searchId.jsp");
 		}else if(uri.equals("/passwordSearch.mem")) {
 			response.sendRedirect("/search/searchPassword.jsp");
+		}else if(uri.equals("/loginError.mem")) {
+			response.sendRedirect("/login/loginError.jsp");
 		}
-		
-		
-		
-		
-		
-		
 	}
 }
    
