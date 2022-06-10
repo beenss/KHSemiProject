@@ -105,30 +105,19 @@ body {
 					<h2>비밀번호 찾기</h2>     
 				</div>                
 			</div>
-            <div>*비밀번호는 가입시 입력하신 이메일를 통해 찾을 수 있습니다.</div>
-
-			<div class="row p-2">
-				<label for="phone" class="form-label">이메일 주소</label>
-					
-					<div class="col-6 mb-2">
-						<input type="text" class="form-control" id="emailAddress">
-					</div>					
-					
-				<div class="col-4 mb-2">
-					<button type="button" id="searchPasswordBtn" class="btn btn-warning w-100">이메일
-						확인</button>
-				</div>
-			</div>
-		
+            <div>*안녕하세요 보리밥입니다*</div><br>
+            <div>저희 '보리밥'은 개인정보 처리방침에 따라 고객센터로 연락주시면</div><br>
+            <div>인증절차를 통하여 고객님의 비밀번호 변경을 도와드리고 있습니다.</div><br>
+            <div>이용에 불편을 드려 대단히 죄송합니다.</div>
+            
 		</form>
 
 	</div>
 
 	<div class="row justify-content-center">
 		<div class="col-4 d-flex justify-content-end">
-			<button type="button" id="cancelBtn" class="btn btn-secondary">로그인</button>
+			<button type="button" id="cancelBtn" class="btn btn-secondary">닫기</button>
 		</div>
-		
 		<script>
 		
 		// 로그인 버튼 누르면
@@ -160,7 +149,7 @@ body {
 	            		  alert(data.password);
 	            			  
 	            		  }else{
-	            			  alert("틀렷어");
+	            			  alert("틀렸어");
 	            		  }
             		  
 	            	  }

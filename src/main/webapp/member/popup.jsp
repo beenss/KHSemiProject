@@ -42,22 +42,70 @@
 				<div class="col-3">
 					<span>확인결과 : </span>
 				</div>
-				
- 				<div class="col-5">
-					<c:if test="${rs eq 'ok'}">
+				<c:if test="${rs eq 'ok'}">
+ 					<div class="col-5">
 						<span>사용가능한 이메일입니다.</span>
-					</c:if>
-										
-					<c:if test="${rs eq 'no'}">					
-						<span>중복된 이메일입니다.</span>						
-					</c:if>	
-			
-				</div>					
-			<div class="col-4">
-					<button type="button" id="certificationBtn">인증번호발송</button>		
-			</div>
+					</div>
+					<div class="col-4">
+						<button type="button" id="certificationBtn">인증번호발송</button>		
+					</div>
+					<script>
+					//이메일인증 > 인증버튼 누르자  
+					document.getElementById("certificationBtn").onclick = function() {
+						console.log("certificationEmail");
+						alert("인증코드 발송!");
+						let email = $("#id").val();
+						
+						 $.ajax({
+						type : "post",
+						//contentType : "application/json",
+						url : "/certificationEmail.mem",
+						data: {"email":email},
+						//data: JSON.stringify(data),
+						//dataType : 'json',
+						//cache : false,
+						timeout : 600000,
+						success : function(data) {
+							console.log("=================data===============");
+							console.log(data);
+							
+							document.getElementById("ranNumCheck").onclick = function() {
+
+								console.log($("#randomCode").val());
+								console.log(data);
+								let randomCode = /[0~9]{6}w/;
+								let useBtn = document.getElementById("useBtn");
+
+								console.log("${rs}");	
+								if ($("#randomCode").val()==data) {
+									alert("인증성공");
+									useBtn.disabled = false;
+								} else {
+									alert("인증실패");
+									useBtn.disabled = true;
+								}
+							}
+							
+							
+						},
+						error : function(e) {
+							console.log("ERROR : ", e);
+							console.log("ERROR : ", e.resultMsg);
+						}
+					});  
+
+						
+					}
+					</script>
+				</c:if>
+				<c:if test="${rs eq 'no'}">	
+					<div class="col-5">
+						<span>중복된 이메일입니다.</span>		
+					</div>				
+				</c:if>	
+			</div>					
 				
-			</div>          
+				          
 			
 			
 			<!-- 
@@ -134,56 +182,7 @@
 
 
 	<script>
-		//이메일인증 > 인증버튼 누르자  
-		document.getElementById("certificationBtn").onclick = function() {
-			
-		
-			
-			
-			console.log("certificationEmail");
-			alert("인증코드 발송!");
-			let email = $("#id").val();
-			
-			 $.ajax({
-			type : "post",
-			//contentType : "application/json",
-			url : "/certificationEmail.mem",
-			data: {"email":email},
-			//data: JSON.stringify(data),
-			//dataType : 'json',
-			//cache : false,
-			timeout : 600000,
-			success : function(data) {
-				console.log("=================data===============");
-				console.log(data);
-				
-				document.getElementById("ranNumCheck").onclick = function() {
 
-					console.log($("#randomCode").val());
-					console.log(data);
-					let randomCode = /[0~9]{6}w/;
-					let useBtn = document.getElementById("useBtn");
-
-					console.log("${rs}");	
-					if ($("#randomCode").val()==data) {
-						alert("인증성공");
-						useBtn.disabled = false;
-					} else {
-						alert("인증실패");
-						useBtn.disabled = true;
-					}
-				}
-				
-				
-			},
-			error : function(e) {
-				console.log("ERROR : ", e);
-				console.log("ERROR : ", e.resultMsg);
-			}
-		});  
-
-			
-		}
 		
 			//let data = {};
 			//data["email"] = $("#email").val();
@@ -199,9 +198,7 @@
 							}
 							$("#checkIdForm").submit();
 							
-							if("{rs}"=="no"){
-								$("#checkIdBtn").attr("disabled",true);
-							}
+						
 							
 						})				
 						

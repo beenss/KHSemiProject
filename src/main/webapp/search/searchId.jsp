@@ -174,7 +174,7 @@ body {
 	            		  alert(data.id);
 	            			  
 	            		  }else{
-	            			  alert("틀렷어");
+	            			  alert("틀렸어");
 	            		  }
             		  
 	            	  }
