@@ -16,9 +16,13 @@ import com.boribob.dao.AdminDAO;
 import com.boribob.dao.InquiryDAO;
 import com.boribob.dao.MemberDAO;
 import com.boribob.dao.OrderDAO;
+import com.boribob.dao.StatisticsDAO;
+import com.boribob.dto.AdminDTO;
 import com.boribob.dto.InquiryDTO;
 import com.boribob.dto.MemberDTO;
 import com.boribob.dto.OrderDTO;
+import com.boribob.dto.StatisticsDTO;
+import com.boribob.utils.EncryptionUtils;
 import com.google.gson.Gson;
 
 @WebServlet("*.admin")
@@ -30,14 +34,29 @@ public class AdminController extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		String uri = request.getRequestURI();
 		
-	if(uri.equals("/")) {  
-		
-		//HttpSession session = request.getSession();   // 세션으로 괸리자 아이디만 접속가능 처리
-		//String id = ((MemberDTO)session.getAttribute("loginSession")).getId();
-		//if(!(id.equals("admin@gmail.com"))) {
-		//response.sendRedirect("/login");
-		//}else
-	}	
+		if(uri.equals("/login.admin")) { //로그인 요청
+			String managerId = request.getParameter("managerId");
+			String managerPw = request.getParameter("managerPw");
+			System.out.println(managerId+managerPw);
+			
+		AdminDAO dao = new AdminDAO();
+		  try {
+		         if(dao.isLoginOk(managerId, managerPw)) {
+		            System.out.println("로그인성공");
+		            request.setAttribute("rs", true);
+					HttpSession session = request.getSession();
+					session.setAttribute("loginSession", managerId);
+					request.getRequestDispatcher("/admin/index.jsp").forward(request, response);
+		         }else {
+		        	 System.out.println("로그인실패");
+					 request.setAttribute("rs", false);
+					 request.getRequestDispatcher("/admin/adminLogin.jsp").forward(request, response);
+		         }
+		         
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}	
 		else if(uri.equals("/member.admin")) { //member 리스트 불러오기
 			MemberDAO dao =new MemberDAO();
 			try {

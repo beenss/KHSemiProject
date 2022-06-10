@@ -139,6 +139,9 @@
         		}
         		$("#inquiry-write-form").submit();
         	})
+        	$("#btn-cancel").on("click",function(){
+        		location.href="/inquiry.iq?currentPage=1"
+        	}
         </script>
         <!-- 여기부터 풋터 -->
         <div class="row justify-content-center footer">

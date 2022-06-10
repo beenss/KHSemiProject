@@ -100,7 +100,7 @@ nav {
 								<li class="nav-item"><a class="nav-link active"
 									aria-current="page" href="#">리뷰 조회/삭제</a></li>
 								<li class="nav-item"><a class="nav-link active"
-									aria-current="page" href="/logout.admin">logout</a></li>
+									aria-current="page" href="#">login</a></li>
 							</ul>
 						</div>
 					</div>
@@ -108,13 +108,39 @@ nav {
 			</div>
 		</div>
 		<div class="container">
-			<div class="row">
-			<div class="col ml-3">
-				<h4>보리밥 관리게시판 접속을 환영합니다 관리자님!</h4>
-			</div>
+			<form id="loginForm" action="/login.admin" method="post">
+				<div class="row mb-3 justify-content-center">
+					<label for="inputEmail3" class="col-sm-1 col-form-label"><h5>아이디</h5></label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="id" name="managerId">
+					</div>
+				</div>
+				<div class="row mb-3 justify-content-center">
+					<label for="inputPassword3" class="col-sm-1 col-form-label"><h5>비밀번호</h5></label>
+					<div class="col-sm-4">
+						<input type="password" class="form-control" id="pw" name="managerPw">
+					</div>
+				</div>
+				<div class="d-grid col-5 mx-auto">
+  					<button class="btn btn-primary" type="button" id="login-btn">로그인</button>
+				</div>
+			</form>
 		</div>
-		</div>
-			
+		<script>
+			$("#login-btn").on("click",function(){
+				if($("#id").val()==="" || $("#pw").val() === ""){
+					alert("아이디, 비밀번호를 입력하세요");
+				}
+				$("#loginForm").submit();
+			})
+		</script>
+			<c:if test="${rs eq true}">
+				<script>alert("로그인성공")</script>
+			</c:if>
+			<c:if test="${rs eq false}">
+				<script>alert("로그인실패")</script>
+			</c:if>
+		
 	</div>
 </body>
 </html>

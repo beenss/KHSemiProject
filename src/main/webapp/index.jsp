@@ -69,7 +69,7 @@
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="images/banner-1.JPG">
+                        <img src="/images/banner-1.JPG">
                         <div class="carousel-caption d-none d-md-block">
                             <div class="notice-txt">
                                 <h1><strong style="background-color: #ffdcbcd7;">사랑하는 나의 가족 친구를 위한 선택</strong></h1>
@@ -78,7 +78,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="images/banner-1.JPG">
+                        <img src="/images/banner-1.JPG">
                         <div class="carousel-caption d-none d-md-block">
                             <div class="notice-txt">
                                 <h1><strong style="background-color: #ffdcbcd7;">사랑하는 나의 가족 친구를 위한 선택</strong></h1>
@@ -87,7 +87,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="images/banner-1.JPG">
+                        <img src="/images/banner-1.JPG">
                         <div class="carousel-caption d-none d-md-block">
                             <div class="notice-txt">
                                 <h1><strong style="background-color: #ffdcbcd7;">사랑하는 나의 가족 친구를 위한 선택</strong></h1>
@@ -117,15 +117,15 @@
         <div class="row justify-content-around">
             <div class="col" id="product-imgs" style="margin-left: 100px;">
                 <br>
-                <a href="#"><img src="images/project_product.PNG" class="d-block w-100"></a>
+                <a href="#"><img src="/images/project_product.PNG" class="d-block w-100"></a>
             </div>
             <div class="col order-5">
                 <br>
-                <a href="#"><img src="images/project_product.PNG" class="d-block w-100"></a>
+                <a href="#"><img src="/images/project_product.PNG" class="d-block w-100"></a>
             </div>
             <div class="col order-1">
                 <br>
-                <a href="#"><img src="images/project_product.PNG" class="d-block w-100"></a>
+                <a href="#"><img src="/images/project_product.PNG" class="d-block w-100"></a>
             </div>
         </div>
     </div>
@@ -133,15 +133,15 @@
         <div class="row justify-content-around">
             <div class="col" id="product-imgs" style="margin-left: 100px;">
                 <br>
-                <a href="#"><img src="images/project_product.PNG" class="d-block w-100"></a>
+                <a href="#"><img src="/images/project_product.PNG" class="d-block w-100"></a>
             </div>
             <div class="col order-5">
                 <br>
-                <a href="#"><img src="images/project_product.PNG" class="d-block w-100"></a>
+                <a href="#"><img src="/images/project_product.PNG" class="d-block w-100"></a>
             </div>
             <div class="col order-1">
                 <br>
-                <a href="#"><img src="images/project_product.PNG" class="d-block w-100"></a>
+                <a href="#"><img src="/images/project_product.PNG" class="d-block w-100"></a>
             </div>
         </div>
     </div>
@@ -154,23 +154,23 @@
         <div class="col-4">
             <br>
             <br>
-            <a href="#"><img src="images/project_review.PNG" class="d-block w-100"></a>
+            <a href="#"><img src="/images/project_review.PNG" class="d-block w-100"></a>
         </div>
         <div class="col-4">
             <br>
             <br>
-            <a href="#"><img src="images/project_review.PNG" class="d-block w-100"></a>
+            <a href="#"><img src="/images/project_review.PNG" class="d-block w-100"></a>
         </div>
         <div class="row justify-content-around">
             <div class="col-4">
                 <br>
                 <br>
-                <a href="#"><img src="images/project_review.PNG" class="d-block w-100"></a>
+                <a href="#"><img src="/images/project_review.PNG" class="d-block w-100"></a>
             </div>
             <div class="col-4">
                 <br>
                 <br>
-                <a href="#"><img src="images/project_review.PNG" class="d-block w-100"></a>
+                <a href="#"><img src="/images/project_review.PNG" class="d-block w-100"></a>
             </div>
             <div class="footer">
                 <ul class="ft-ul">
@@ -179,13 +179,13 @@
                     <li>대표번호 : +82)-665-3430 팩스번호 : +82)-888-3430 홈페이지 : petvenience.store.com</li>
                     <li>CopyrightⓒBoriBob Inc. All Rights Reserved.</li>
                     <div class="facebookicon">
-                        <img src="images/facebook_icon.png" style="border-color: lightblue;">
+                        <img src="/images/facebook_icon.png" style="border-color: lightblue;">
                     </div>
                     <div class="instagramicon">
-                        <img src="images/instagram_icon.png" style="border-color: lightblue;">
+                        <img src="/images/instagram_icon.png" style="border-color: lightblue;">
                     </div>
                     <div class="youtubeicon">
-                        <img src="images/youtube_icon.png" style="border-color: lightblue;">
+                        <img src="/images/youtube_icon.png" style="border-color: lightblue;">
                     </div>
                     <div class="ft-ul2">
                         <li><strong>고객센터</strong></li>

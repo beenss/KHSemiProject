@@ -68,14 +68,15 @@ public class ReviewDAO {
 
 	//작성된 글을 테이블에 넣기 ok
 	public int insert(ReviewDTO dto) throws Exception{
-		String sql = "insert into tbl_review values(seq_review.nextval,?,?,?,?,sysdate,null)";
+		String sql = "insert into tbl_review values(?,?,?,?,?,sysdate,null)";
 		try (Connection con = bds.getConnection();
 			PreparedStatement pstmt = con.prepareStatement(sql)) {
 	
-			pstmt.setInt(1, dto.getProductCode());
-			pstmt.setString(2, dto.getId());
-			pstmt.setString(3, dto.getReviewTitle());
-			pstmt.setString(4, dto.getReviewContent());
+			pstmt.setInt(1, dto.getSeqReview());
+			pstmt.setInt(2, dto.getProductCode());
+			pstmt.setString(3, dto.getId());
+			pstmt.setString(4, dto.getReviewTitle());
+			pstmt.setString(5, dto.getReviewContent());
 			int rs = pstmt.executeUpdate();
 			return rs;
 		}
@@ -95,9 +96,10 @@ public class ReviewDAO {
 				int productCode = rs.getInt("product_code");
 				String reviewTitle = rs.getString("review_title");
 				String reviewContent = rs.getString("review_conntent");
-				String productImg = rs.getString("product_img");
+				String reviewImg = rs.getString("review_img");
 				String reviewDate = dateToString(rs.getDate("review_date"));
-				ReviewDTO dto = new ReviewDTO(seqReview, productCode, id, reviewTitle, reviewContent, reviewDate, productImg);
+
+				ReviewDTO dto = new ReviewDTO(seqReview, productCode, id, reviewTitle, reviewContent,reviewDate,reviewImg);
 				return dto;
 			}
 			return null;
@@ -120,20 +122,21 @@ public class ReviewDAO {
 				String reviewDate = dateToString(rs.getDate("review_date"));
 				String reviewImg = rs.getString("review_img");
 				list.add(new ReviewDTO(seqReview, productCode,id,reviewTitle, reviewContent,reviewDate, reviewImg));
+
 			}return list;
 		}
 	}
 	
 	//전체목록 띄워주기
 	public ArrayList<ReviewDTO> selectAll(int start, int end)throws Exception{
-		String sql = "select * from(select tbl_Review.*,row_number() over(order by seq_review desc)as num from tbl_review)"
+		String sql = "select * from(select tbl_review.*,row_number() over(order by seq_review desc)as num from tbl_review)"
 				+ "where num between ? and ?";
 		try(Connection con = bds.getConnection(); 
 			PreparedStatement pstmt = con.prepareStatement(sql);){
 			pstmt.setInt(1,start);
 			pstmt.setInt(2,end);
 			ResultSet rs = pstmt.executeQuery();
-			ArrayList<ReviewDTO> ReviewList = new ArrayList<>();
+			ArrayList<ReviewDTO> reviewList = new ArrayList<>();
 			
 			while(rs.next()) {
 				int seqReview = rs.getInt("seq_review");
@@ -141,11 +144,12 @@ public class ReviewDAO {
 				String id = rs.getString("id");
 				String reviewTitle = rs.getString("review_title");
 				String reviewContent = rs.getString("review_content");
-				String productImg = rs.getString("product_img");
 				String reviewDate = dateToString(rs.getDate("review_date"));
-				ReviewList.add(new ReviewDTO(seqReview,productCode,id,reviewTitle,reviewContent,reviewDate,productImg));
+
+				String reviewImg = rs.getString("review_img");
+				reviewList.add(new ReviewDTO(seqReview,productCode,id,reviewTitle,reviewContent,reviewDate,reviewImg));
 				
-			}return ReviewList;
+			}return reviewList;
 		}
 	}
 	//date > string 
