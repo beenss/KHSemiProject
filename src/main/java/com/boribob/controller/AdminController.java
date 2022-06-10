@@ -112,7 +112,6 @@ public class AdminController extends HttpServlet {
 			}
 		
 		}
-		
 		// 상품
 		else if(uri.equals("/productList.admin")) { //product 관리  // 홈페이지의 전체 상품 조회
 				
@@ -431,6 +430,9 @@ public class AdminController extends HttpServlet {
 		} else if (uri.equals("/orderDetail.admin")) {
 			Integer orderId = Integer.parseInt(request.getParameter("orderId"));
 			OrderDAO orderDAO = new OrderDAO();
+			
+
+			File file = new File();
 			try {
 				OrderDTO orderDTO = orderDAO.findByOrderId(orderId);
 				request.setAttribute("orderDTO", orderDTO);

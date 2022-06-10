@@ -177,8 +177,6 @@
                 }
             })
         }
-        
-        console.log(isValidInput())
 
         document.getElementById('button-pay').addEventListener('click', () => {
             getSubscribeType();

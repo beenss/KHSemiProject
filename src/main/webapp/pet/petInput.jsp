@@ -120,7 +120,7 @@
                     <div class="col-12 ">
                         우리 아이의 견/묘종은
                         <select style="display:inline; width: 200px;" class="form-select" id="pet-kind" name="petKind">
-                            <option value="1">테스트</option>
+                            <option value="1" style="display:none;"></option>
                             <option value="2">닥스훈트</option>
                             <option value="3">브리티쉬 숏헤어</option>
                         </select>
@@ -199,26 +199,43 @@
             })
         }
 
-        // 현재 작업중
         function isValidInput() {
             let petName = document.getElementById('pet-name').value;
             let petBirthdayYear = document.getElementById('pet-birthday-year').value;
             let petBirthdayMonth= document.getElementById('pet-birthday-month').value;
             let petBirthdayDay = document.getElementById('pet-birthday-day').value;
-            let petAllergy = document.getElementById('pet-allergy').value;
-
-            let now = new Date();
-
-            /* if (petName.length == 0 || petName.length > 10) {
-                return 'invalidName';
-            } */
-            return 'valid';
+            
+            if (petName === '') {
+            	return 'invalidName';
+            }
+            
+            if (petBirthdayMonth.length === 1) {
+            	petBirthdayMonth = '0' + petBirthdayMonth;
+            }
+            if (petBirthdayDay.length === 1) {
+            	petBirthdayDay = '0' + petBirthdayDay;
+            }
+            let petBirthday = petBirthdayYear + '-' + petBirthdayMonth + '-' + petBirthdayDay;
+            let result = true;
+            
+            var dateRegex = /^(?=\d)(?:(?:31(?!.(?:0?[2469]|11))|(?:30|29)(?!.0?2)|29(?=.0?2.(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00)))(?:\x20|$))|(?:2[0-8]|1\d|0?[1-9]))([-.\/])(?:1[012]|0?[1-9])\1(?:1[6-9]|[2-9]\d)?\d\d(?:(?=\x20\d)\x20|$))?(((0?[1-9]|1[012])(:[0-5]\d){0,2}(\x20[AP]M))|([01]\d|2[0-3])(:[0-5]\d){1,2})?$/;
+    	    result = dateRegex.test(petBirthday);
+    	    
+    	    if (result === true) {
+    	    	return 'valid';
+    	    } else {
+    	    	return 'invalidDate';
+    	    }
         }
 
         document.getElementById('button-submit').addEventListener('click', () => {
             getPetType();
-            if (isValidInput() === 'valid') {
-                document.getElementById('pet-input-form').submit();
+            if (isValidInput() === 'invalidName') {
+            	alert('이름을 입력해주십시오.');
+            } else if (isValidInput() === 'invalidDate') {
+                alert('유효한 생일 날짜가 아닙니다.');
+            } else {
+            	document.getElementById('pet-input-form').submit();
             }
         })
         
