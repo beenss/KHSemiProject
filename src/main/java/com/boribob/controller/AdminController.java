@@ -46,7 +46,7 @@ public class AdminController extends HttpServlet {
 		            System.out.println("로그인성공");
 		            request.setAttribute("rs", true);
 					HttpSession session = request.getSession();
-					session.setAttribute("loginSession", managerId);
+					session.setAttribute("adminSession", managerId);
 					request.getRequestDispatcher("/admin/index.jsp").forward(request, response);
 		         }else {
 		        	 System.out.println("로그인실패");
