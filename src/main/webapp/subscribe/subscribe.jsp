@@ -182,6 +182,10 @@
             getSubscribeType();
             document.getElementById('subscribe-input-form').submit();
         })
+        
+        document.getElementById('button-back').addEventListener('click', () => {
+        	location.href = '/pet.pet';
+        })
     </script>
 </body>
 </html>

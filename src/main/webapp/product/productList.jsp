@@ -128,10 +128,10 @@ img {
 			</div>
 			<div class="col" id="nav-item">
 				<nav class="nav">
-					<a class="nav-link" href="#">제품 보기</a> <a class="nav-link" href="#">리뷰</a>
-					<a class="nav-link" href="#">고객센터</a> <a class="nav-link" href="#">로그인</a>
-					<a class="nav-link" href="#">회원가입</a> <a class="nav-link"
-						style="color: rgb(255, 94, 0);" href="#">구독하기</a>
+					<a class="nav-link" href="/product.pro">제품 보기</a> <a class="nav-link" href="/review.bo?currentPage=1">리뷰</a>
+					<a class="nav-link" href="/inquiry.iq?currentPage=1">고객센터</a> <a class="nav-link" href="/login/login.jsp">로그인</a>
+					<a class="nav-link" href="/member/member.jsp">회원가입</a> <a class="nav-link"
+						style="color: rgb(255, 94, 0);" href="/pet.pet">구독하기</a>
 				</nav>
 			</div>
 		</div>
@@ -204,7 +204,7 @@ img {
 					</ul>
 				</div>
 			</div>
-
+		</div>
 			<script>
 		// 강아지버튼을 눌렀을 때 강아지상품만 비동기로 띄워주기 
 			$(".btnDog").on("click",function(){	

@@ -85,22 +85,20 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link" href="#">제품 보기</a>
+                    <a class="nav-link" href="/product.pro">제품 보기</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">고객센터</a>
+                    <a class="nav-link" href="/inquiry.iq?currentPage=1">고객센터</a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a class="nav-link" href="/review.bo?currentPage=1">리뷰</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">회원 가입</a>
+                    <a class="nav-link" href="/logout.mem">로그아웃</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">리뷰</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">로그인</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">구독하기</a>
+                    <a class="nav-link" href="/pet.pet">구독하기</a>
                   </li>
                 </ul>
               </div>
@@ -150,8 +148,8 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
             </table>
           </div>
 
-          <button type="button" class="btn btn-primary">
-            메인페이지로이동
+          <button type="button" class="btn btn-primary" href="/mypage.my">
+            마이페이지로이동
           </button>
         </div>
 

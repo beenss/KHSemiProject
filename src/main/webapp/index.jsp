@@ -1,201 +1,267 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
-<html lang="en">
+<lang lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Bold.woff">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+        <title>·¹ÀÌ¾Æ¿ô</title>
+        <style>
+            body {
+                box-sizing: border-box;
+            }
+            .header {
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
-    <title>ë©”ì¸-ì´ˆì•ˆ</title>
-    <link rel="stylesheet" href="css/index.css">
-</head>
+                padding: 20px;
+                position: relative;
+                height: 320px;
+                background: url("images/anibanner1.gif");
+                background-size: cover;
+            }
+            .vege {
+                z-index: -100000;
+            }
+            .footer>* {
+                background-color: rgb(255, 255, 255);
+                padding: 20px;
+                position: relative;
+            }
+            .ft-ul {
+                list-style: none;
+                text-align: center;
+                height: 100%;
+                padding-top: 28px;
+                color: black;
+                font-size: 12px;
+                z-index: 1;
+            }
+            .ft-images {
+                text-align: center;
+            }
+            @font-face {
+                src: url("fonts/MinSans-Regular.otf");
+                font-family: "MinSans-Regular.otf";
+            }
+            @font-face {
+                src: url("fonts/MinSans-bold.otf");
+                font-family: "MinSans-bold.otf";
+            }
+            @font-face {
+                font-family: "Theafhh_.TTF";
+                src: url("fonts/Theafhh_.TTF");
+            }
+            @font-face {
+                src: url("fonts/GongGothicLight.ttf");
+                font-family: "GongGothicLight.ttf";
+            }
+            #info {
+                font-family: "GongGothicLight.ttf";
+                font-size: 23px;
+                font-weight: 700;
+                line-height: 100%;
+                letter-spacing: 1px;
+                color: rgb(230, 137, 137);
+                padding-top: 30px;
+            }
+            #minititle {
+                padding-top: 50px;
+                font-size: 25px;
+                text-align: center;
+                font-family: "GongGothicLight.ttf";
+                color: #addaa0;
+            }
+            #title {
+                font-family: "Theafhh_.TTF";
+                font-size: 60px;
+                color: rgb(252, 194, 186);
+            }
+            #mainbox1 {
+                border: 1px solid rgb(255, 255, 255);
+                width: 300px;
+                height: 70px;
+                background-color: rgb(183, 216, 150);
+                font-family: "GongGothicLight.ttf";
+                font-size: 26px;
+                padding-top: 13.5px;
+                border-radius: 40px;
+                color: white;
+                text-align: center;
+                margin: 0 auto;
+            }
+            #mainbox2 {
+                width: 700px;
+                margin: 0 auto;
+                padding: 50px;
+            }
+            #subscribebtn {
+                width: 200px;
+                height: 70px;
+                background-color: rgb(255, 194, 145);
+                border: 1px solid white;
+                border-radius: 40px;
+                font-size: 26px;
+                font-family: "GongGothicLight.ttf";
+                color: white;
+            }
+            .reviewtitle {
+                border: 1px solid rgb(255, 255, 255);
+                width: 400px;
+                height: 70px;
+                background-color: rgb(183, 216, 150);
+                font-size: 27px;
+                font-family: "GongGothicLight.ttf";
+                border-radius: 40px;
+                color: white;
+                text-align: center;
+                padding-top: 13.5px;
+                margin-bottom: 70px;
+            }
+            .card {
+                width: 350px;
+                height: 350px;
+                border-radius: 170px;
+            }
+            .review1 {
+                background: url("images/6dog.jpg");
+                border-radius: 170px;
+            }
+        </style>
+    </head>
 
-
-<body>
-    <header>
-        <div class="row justify-content">
-            <div class="col-4">
-                <img src="images/project_logo.PNG" class="d-block w-100" id="main-logo">
-            </div>
-            <c:choose>
-			<c:when test="${not empty loginSession}">
-            <div class="col" id="nav-item">
-                <nav class="nav">
-                    <a class="nav-link" href="/product.pro">ì œí’ˆ ë³´ê¸°</a>
-                    <a class="nav-link" href="/review.bo?currentPage=1">ë¦¬ë·°</a>
-                    <a class="nav-link" href="/inquiry.iq?currentPage=1">ê³ ê°ì„¼í„°</a>
-                    <a class="nav-link" href="/logout.mem">ë¡œê·¸ì•„ì›ƒ</a>
-                    <a class="nav-link" href="/mypage.my">ë§ˆì´í˜ì´ì§€</a>
-                    <a class="nav-link" style="color: rgb(255, 94, 0);" href="/pet.pet">êµ¬ë…í•˜ê¸°</a>
-                </nav>
-            </div>
-            </c:when>
-            <c:otherwise>
-            <div class="col" id="nav-item">
-                <nav class="nav">
-                    <a class="nav-link" href="/product.pro">ì œí’ˆ ë³´ê¸°</a>
-                    <a class="nav-link" href="/review.bo?currentPage=1">ë¦¬ë·°</a>
-                    <a class="nav-link" href="/inquiry.iq?currentPage=1">ê³ ê°ì„¼í„°</a>
-                    <a class="nav-link" href="/login/login.jsp">ë¡œê·¸ì¸</a>
-                    <a class="nav-link" href="/member/member.jsp">íšŒì›ê°€ì…</a>
-                    <a class="nav-link" style="color: rgb(255, 94, 0);" href="/pet.pet">êµ¬ë…í•˜ê¸°</a>
-                </nav>
-            </div>
-            </c:otherwise>
-           </c:choose> 
-            
-        </div>
-    </header>
-	
-    <!--ìºëŸ¬ì…€ë¡œ ê³µì§€ì‚¬í•­ ë° ì´ë²¤íŠ¸ ì•ˆë‚´-->
-    <div class="row justify-content-center">
-        <div class="col-4">
-            <div id="banner-caption" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#banner-caption" data-bs-slide-to="0" class="active"
-                        aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#banner-caption" data-bs-slide-to="1"
-                        aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#banner-caption" data-bs-slide-to="2"
-                        aria-label="Slide 3"></button>
-                </div>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="/images/banner-1.JPG">
-                        <div class="carousel-caption d-none d-md-block">
-                            <div class="notice-txt">
-                                <h1><strong style="background-color: #ffdcbcd7;">ì‚¬ë‘í•˜ëŠ” ë‚˜ì˜ ê°€ì¡± ì¹œêµ¬ë¥¼ ìœ„í•œ ì„ íƒ</strong></h1>
-                                <h4>6ì›”, ë°”ìš°ì™€ìš° ë®¤ë®¤ì™€ í•¨ê»˜í•œ í›„ê¸°ë¥¼ ë“¤ë ¤ì£¼ì„¸ìš” ìƒí’ˆì´ ê¸°ë‹¤ë¦¬ê³  ìˆìŠµë‹ˆë‹¤</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="/images/banner-1.JPG">
-                        <div class="carousel-caption d-none d-md-block">
-                            <div class="notice-txt">
-                                <h1><strong style="background-color: #ffdcbcd7;">ì‚¬ë‘í•˜ëŠ” ë‚˜ì˜ ê°€ì¡± ì¹œêµ¬ë¥¼ ìœ„í•œ ì„ íƒ</strong></h1>
-                                <h4>6ì›”, ë°”ìš°ì™€ìš° ë®¤ë®¤ì™€ í•¨ê»˜í•œ í›„ê¸°ë¥¼ ë“¤ë ¤ì£¼ì„¸ìš” ìƒí’ˆì´ ê¸°ë‹¤ë¦¬ê³  ìˆìŠµë‹ˆë‹¤</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="/images/banner-1.JPG">
-                        <div class="carousel-caption d-none d-md-block">
-                            <div class="notice-txt">
-                                <h1><strong style="background-color: #ffdcbcd7;">ì‚¬ë‘í•˜ëŠ” ë‚˜ì˜ ê°€ì¡± ì¹œêµ¬ë¥¼ ìœ„í•œ ì„ íƒ</strong></h1>
-                                <h4>6ì›”, ë°”ìš°ì™€ìš° ë®¤ë®¤ì™€ í•¨ê»˜í•œ í›„ê¸°ë¥¼ ë“¤ë ¤ì£¼ì„¸ìš” ìƒí’ˆì´ ê¸°ë‹¤ë¦¬ê³  ìˆìŠµë‹ˆë‹¤</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#banner-caption"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
+</lang>
+<div class="row justify-content-around header" style="text-align: center;">
+    <div class="col-lg-3" style="text-align: center;">
+        <img src="/images/project_logo.png" class="d-block w-100" id="main-logo">
+    </div>
+    <div class="col-lg-8 col-12 menu">
+        <nav class="navbar navbar-expand-lg navbar-light" style="float: right;">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation" style="border: none;">
+                    <span class="navbar-toggler-icon"></span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#banner-caption"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" style="color: rgb(255, 255, 255);" href="#">Á¦Ç° º¸±â</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" style="color: rgb(255, 255, 255);" href="#">°í°´¼¾ÅÍ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" style="color: rgb(255, 255, 255);" href="#">È¸¿ø °¡ÀÔ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" style="color: rgb(255, 255, 255);" href="#">¸®ºä</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" style="color: rgb(255, 255, 255);" href="#">·Î±×ÀÎ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" style="color: rgb(218, 255, 193); font-weight: bold;" href="#">±¸µ¶ÇÏ±â</a>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+</div>
+<!-- ¿©±â±îÁö Çì´õ -->
+<!-- ¿©±â¿¡ ¹Ùµğ ÄÚµå Â¥ÁÖ¼À -->
+<div class="container">
+    <div class="row" style="text-align: center;">
+        <div class="d-block" style="text-align: center;">
+            <p id="minititle">¿ì¸®Áı °­¾ÆÁö¿Í °í¾çÀÌ¿¡°Ô °¡Àå Çàº¹ÇÑ ½Ã°£À»!</p>
+            <img src="/images/ss-001 (6).png" style="width: 800px; padding-bottom: 50px">
+            <div class="d-block" style="text-align: center;" id="title">
+                <p>BORI<br>BOB</p>
+                <div class="d-block" style="text-align: center;" id="info">
+                    <P>º¸¸®¹äÀº ÀÎ°øÃ·°¡¹°À» ³ÖÁö ¾Ê¾Æ ¹İ·Áµ¿¹°¿¡°Ô</P>
+                    <p>°¡Àå °Ç°­ÇÑ ½Ä´ÜÀ» Á¦°øÇÕ´Ï´Ù. ±ÕÇüÀâÈù ¿µ¾ç°¡ ³ôÀº ½Ä´ÜÀ¸·Î</p>
+                    <p>³ªÀÇ °¡Á·, ³ªÀÇ Ä£±¸¿¡°Ô Áñ°Ì°í Çàº¹ÇÑ ½Ã°£À» ¼±¹°ÇØÁÖ¼¼¿ä.</p>
+                </div>
             </div>
         </div>
     </div>
-    <!--ë©”ì¸ì˜ì—­-->
-    <!--êµ¬ë¶„ì„ -->
-    <hr class="divider" style="width: 1200px; margin-left: 123px;">
-    <div class="container">
-        <!--ìƒí’ˆ ì´ë¯¸ì§€ ì˜ì—­ì…ë‹ˆë‹¤ í•´ë‹¹ ì´ë¯¸ì§€ë¥¼ í´ë¦­ ì‹œ ìƒí’ˆ ìƒì„¸ì •ë³´ë¡œ ì´ë™-->
-        <div class="row justify-content-around">
-            <div class="col" id="product-imgs" style="margin-left: 100px;">
-                <br>
-                <a href="#"><img src="/images/project_product.PNG" class="d-block w-100"></a>
-            </div>
-            <div class="col order-5">
-                <br>
-                <a href="#"><img src="/images/project_product.PNG" class="d-block w-100"></a>
-            </div>
-            <div class="col order-1">
-                <br>
-                <a href="#"><img src="/images/project_product.PNG" class="d-block w-100"></a>
+</div>
+<br>
+<br>
+<div class="d-block" id="mainbox1">º¸¸®¹äÀº ÀÌ·¸°Ô ´Ş¶ó¿ä</div>
+<br>
+<!--½ºÅ©·Ñ ¾Ö´Ï¸ŞÀÌ¼Ç ³Ö±â-->
+<div class="d-block" id="mainbox2">
+    <img src="/images/3.png" class="d-block w-100">
+</div>
+<!--½ºÅ©·Ñ ¾Ö´Ï¸ŞÀÌ¼Ç ³Ö±â-->
+<div class="d-block" id="mainbox2">
+    <img src="/images/4.png" class="d-block w-100">
+</div>
+<br>
+<br>
+<!--hover·Î ¸®ºä ¹Ì¸®º¸±â¿Í Å¬¸¯ ÀÌº¥Æ®-->
+<div class="row justify-content-center">
+    <p style="text-align: center;" class="reviewtitle">º¸¸®¹ä È¸¿øµéÀÇ »ı»ıÇÑ ¸®ºä</p>
+</div>
+<div class="row justify-content-center">
+    <div class="col-lg-3">
+        <div class="col-lg-3">
+            <div class="card">
+                <div class="card-body review1">
+                    <h5 class="card-title">±è¹Ùºñ´Ô</h3>
+                        <p class="card-text">Á¦°¡ »ì¸é¼­ ¸Ô¾îº» »ç·á Áß¿¡¼­<br>
+                            Á¦ÀÏ ¸ÀÀÖ¾ú¾î¿ä.
+                            Àú´Â Æ¯È÷ ´ß°í±â¸¦ ÁÁ¾ÆÇÏ´Âµ¥ °í¼ÒÇÏ¸é¼­µµ
+                            Àâ³¿»õ°¡ ³ªÁö ¾Ê¾Æ¼­
+                            ¸Ô´Â ³»³» °¨Åº¸¸ Çß½À´Ï´Ù
+                     <a href="#" class="btn btn-primary">¸®ºä ´õº¸±â</a>
+                </div>
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="row justify-content-around">
-            <div class="col" id="product-imgs" style="margin-left: 100px;">
-                <br>
-                <a href="#"><img src="/images/project_product.PNG" class="d-block w-100"></a>
-            </div>
-            <div class="col order-5">
-                <br>
-                <a href="#"><img src="/images/project_product.PNG" class="d-block w-100"></a>
-            </div>
-            <div class="col order-1">
-                <br>
-                <a href="#"><img src="/images/project_product.PNG" class="d-block w-100"></a>
+    <div class="col-lg-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">ÀÌº¸¸® ´Ô</h5>
+                <p class="card-text">Àú Á¤¸» ¸ÀÀÖ´Â °Í¸¸ ÁÁ¾ÆÇÏ°Åµç¿ä?
+                    Á¦ Ä£±¸µé »çÀÌ¿¡¼­µµ ¸ÀÀÖ´Â °Í¸¸ ÁÁ¾ÆÇÏ´Â
+                    ¹Ì½Ä³ÉÀ¸·Î ¼Ò¹®³µ´Âµ¥ ¿©±â´Â ÁøÂ¥ ¸ÀÁıÀÌ³×¿ä.
+                    ¹İÇØ¼­ 6°³¿ù ±¸µ¶ ÇÑ¹ø¿¡ °¡º¸·Æ´Ï´Ù</p>
+                <a href="#" class="btn btn-primary">¸®ºä ´õº¸±â</a>
             </div>
         </div>
     </div>
     <br>
-    <br>
-    <hr class="divider" style="width: 1200px; margin-left: 123px;">
-    <!--ë©”ì¸ ì† ìƒí’ˆ ì´ë¯¸ì§€ ë¦¬ë·° ì´ë¯¸ì§€ êµ¬ë¶„ì„ -->
-    <div class="row justify-content-around">
-        <!--ë¦¬ë·° ì˜ì—­ ë¦¬ë·° í´ë¦­ ì‹œ í•´ë‹¹ ë¦¬ë·° ê²Œì‹œë¬¼ë¡œ ì´ë™-->
-        <div class="col-4">
-            <br>
-            <br>
-            <a href="#"><img src="/images/project_review.PNG" class="d-block w-100"></a>
-        </div>
-        <div class="col-4">
-            <br>
-            <br>
-            <a href="#"><img src="/images/project_review.PNG" class="d-block w-100"></a>
-        </div>
-        <div class="row justify-content-around">
-            <div class="col-4">
-                <br>
-                <br>
-                <a href="#"><img src="/images/project_review.PNG" class="d-block w-100"></a>
-            </div>
-            <div class="col-4">
-                <br>
-                <br>
-                <a href="#"><img src="/images/project_review.PNG" class="d-block w-100"></a>
-            </div>
-            <div class="footer">
-                <ul class="ft-ul">
-                    <li>BoriBob Inc. ì‚¬ë‘ì‹œ ê³ ë°±êµ¬ í–‰ë³µë™</li>
-                    <li>ëŒ€í‘œ : ë³´ë¦¬ë°¥í˜•ì œë“¤ ì‚¬ì—…ìë“±ë¡ë²ˆí˜¸ : 780-86-01094</li>
-                    <li>ëŒ€í‘œë²ˆí˜¸ : +82)-665-3430 íŒ©ìŠ¤ë²ˆí˜¸ : +82)-888-3430 í™ˆí˜ì´ì§€ : petvenience.store.com</li>
-                    <li>Copyrightâ“’BoriBob Inc. All Rights Reserved.</li>
-                    <div class="facebookicon">
-                        <img src="/images/facebook_icon.png" style="border-color: lightblue;">
-                    </div>
-                    <div class="instagramicon">
-                        <img src="/images/instagram_icon.png" style="border-color: lightblue;">
-                    </div>
-                    <div class="youtubeicon">
-                        <img src="/images/youtube_icon.png" style="border-color: lightblue;">
-                    </div>
-                    <div class="ft-ul2">
-                        <li><strong>ê³ ê°ì„¼í„°</strong></li>
-                        <li style="height: 8px;"></li>
-                        <li>ì˜¤ì „ 10ì‹œë¶€í„° ì˜¤í›„ 6ì‹œê¹Œì§€</li>
-                        <li>í† ìš”ì¼, ì¼ìš”ì¼, ê³µíœ´ì¼ íœ´ë¬´</li>
-                    </div>
-                </ul>
-            </div>
+    <!--±¸µ¶ÇÏ·¯ °¡±â ¹öÆ°À» ´©¸£¸é ·Î±×ÀÎ »óÅÂÀÏ ¶© ±¸µ¶Á¤º¸ ÀÔ·Â/ ºñÈ¸¿ø »óÅÂÀÏ ¶© ·Î±×ÀÎÃ¢À¸·Î ÀÌµ¿-->
+    <div class="btn-box">
+        <br>
+        <br>
+        <br>
+        <div class="row justify-content-center review">
+            <button type="button" id="subscribebtn">±¸µ¶ÇÏ·¯ °¡±â</button>
         </div>
     </div>
+    <!-- ¿©±âºÎÅÍ Ç²ÅÍ -->
+    <div class="row justify-content-center footer">
+        <div class="col-lg-10 col-12">
+            <ul class="ft-ul">
+                <li>BoriBob Inc. ¹Ùºñ½Ã º¸¸®±¸ ¹Ùºñº¸¸®µ¿</li>
+                <li>´ëÇ¥ : º¸¸®¹Ùºñ »ç¾÷ÀÚµî·Ï¹øÈ£ : 777-77-77777</li>
+                <li>´ëÇ¥¹øÈ£ : +82)-665-3430 ÆÑ½º¹øÈ£ : +82)-1234-5678 È¨ÆäÀÌÁö : boribob.com</li>
+                <li>Copyright¨ÏBoriBob Inc. All Rights Reserved.</li>
+            </ul>
+        </div>
+        </ul>
+    </div>
+</div>
 </body>
 </html>
