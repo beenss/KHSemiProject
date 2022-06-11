@@ -79,22 +79,20 @@ pageEncoding="UTF-8"%>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link" href="#">제품 보기</a>
+                    <a class="nav-link" href="/product.pro">제품 보기</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">고객센터</a>
+                    <a class="nav-link" href="/inquiry.iq?currentPage=1">고객센터</a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a class="nav-link" href="/review.bo?currentPage=1">리뷰</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">회원 가입</a>
+                    <a class="nav-link" href="/logout.mem">로그아웃</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">리뷰</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">로그인</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">구독하기</a>
+                    <a class="nav-link" href="/pet.pet">구독하기</a>
                   </li>
                 </ul>
               </div>
@@ -111,11 +109,11 @@ pageEncoding="UTF-8"%>
             <p>주문해주셔서 감사합니다</p>
           </div>
         </div>
-        <button id="goToMain" type="button" class="btn btn-secondary">
-          메인페이지로이동
+        <button id="goToMain" type="button" class="btn btn-secondary" href="/home">
+          홈페이지로이동
         </button>
-        <button id="myPage" type="button" class="btn btn-secondary">
-          상품페이지로이동
+        <button id="myPage" type="button" class="btn btn-secondary" href="/mypage.my">
+          마이페이지로이동
         </button>
       </div>
       <!-- 여기부터 풋터 -->

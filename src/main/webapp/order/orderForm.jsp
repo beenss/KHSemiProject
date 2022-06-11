@@ -151,12 +151,12 @@
             </div>
             <div class="col" id="nav-item">
                 <nav class="nav">
-                    <a class="nav-link" href="#">제품 보기</a>
-                    <a class="nav-link" href="#">리뷰</a>
-                    <a class="nav-link" href="#">고객센터</a>
-                    <a class="nav-link" href="#">로그인</a>
-                    <a class="nav-link" href="#">회원가입</a>
-                    <a class="nav-link" style="color: rgb(255, 94, 0);" href="#">구독하기</a>
+                    <a class="nav-link" href="/product.pro">제품 보기</a>
+                    <a class="nav-link" href="/review.bo?currentPage=1">리뷰</a>
+                    <a class="nav-link" href="/inquiry.iq?currentPage=1">고객센터</a>
+
+                    <a class="nav-link" href="/logout.mem">로그아웃</a>
+                    <a class="nav-link" style="color: rgb(255, 94, 0);" href="/pet.pet">구독하기</a>
                 </nav>
             </div>
         </div>
@@ -176,7 +176,8 @@
                 
                       
                 <div style="text-align: center;">
-                  주문상품코드<input id="productCode" name="productName" value="${subscribeDto.productCode}">
+                  주문상품코드<input id="productCode" type="readOnly" name="productName" value="${subscribeDto.productCode}">
+                    주문상품이름<input id="productName">
                   
                 </div>
                 
@@ -203,6 +204,7 @@
                     <div>수취인 이름</div>
                     <input id="orderName" type="text" name="orderName" placeholder="수취인이름"><br>
                     <div>전화번호</div>
+                    <p> - 빼고 입력 </p>
                     <input id="orderPhone" name="orderPhone" type="text" style="width: 380px; height: 35px;">
                     <div>받는분 주소</div>
                     
@@ -270,7 +272,7 @@
                  
                 <div style="text-align: center;"><strong>배송을 시작할까요?</strong></div>
                 <br>
-                <button type="button" class="btn btn-secondary" style="margin-left: 110px;">취소하기</button>
+                <button type="button" class="btn btn-secondary" style="margin-left: 110px;" href="/pet.pet">취소하기</button>
                 <button  id="check_module" type="button"  class="btn btn-success">결제하기</button>
             </div>
             
@@ -309,9 +311,50 @@
     
 
        <script>
-        
-          
-          
+           const productName = document.querySelector('productName');
+           const productCode = document.querySelector('productCode');
+
+
+               if (productCode == 1) {
+                   productName.value = " 강아지 소고기 사료";
+               } else if (productCode == 2) {
+                   productName.value = "강아지 흰살 생선 사료";
+               }else if (productCode == 3) {
+                   productName.value = "멍멍 소고기 사료";
+               }else if (productCode == 4) {
+                   productName.value = "멍멍 흰살 생선 사료";
+               }else if (productCode == 5) {
+                   productName.value = "강아지 오리 다이어트 사료";
+               }else if (productCode == 6) {
+                   productName.value = "강아지 야채 연어 다이어트 사료";
+               }else if (productCode == 7) {
+                   productName.value = "멍멍 오리 다이어트 사료";
+               }else if (productCode == 8) {
+                   productName.value = "멍멍 야채 연어 다이어트 사료";
+               }else if (productCode == 9) {
+                   productName.value = "묘아 닭고기 사료";
+               }else if (productCode == 10) {
+                   productName.value = "묘아 생선 사료 ";
+               }else if (productCode == 11) {
+                   productName.value = "야옹 닭고기 사료";
+               }else if (productCode == 12) {
+                   productName.value = "야옹 연어 사료";
+               }else if (productCode == 13) {
+                   productName.value = "묘아 양고기 다이어트 사료";
+               }else if (productCode == 14) {
+                   productName.value = "묘아 생선 다이어트 사료 ";
+               }else if (productCode == 16) {
+                   productName.value = "야옹 오리 다이어트 사료";
+               }else if (productCode == 16) {
+                   productName.value = "야옹 야채 다이어트 사료 ";
+               }
+
+
+
+
+
+
+
            const infoBtn = document.querySelector('#infoBtn');
            
            const name = document.querySelector('#name');
@@ -333,8 +376,9 @@
            const orderMsg = document.querySelector('#orderMsg');
            const postMsg = document.querySelector('postMsg');
            
-           infoBtn.addEventListener('click', () => { // 회원 가입 정보를 주문 정보로 대채 
-            const nameValue = name.value;
+           infoBtn.addEventListener('click', () => { // 회원 가입 정보를 주문 정보로 대채
+
+               const nameValue = name.value;
             orderName.value =nameValue;
           
             const phoneValue = phone.value;
@@ -352,6 +396,8 @@
 
            })
   
+           
+
 
 
            window.onload = function () { // 주소 api 
@@ -376,46 +422,102 @@
 
 
 //결제정보 ============================================================================
-  
+
+           let reg_email =/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+           let n_RegExp=/^[가-힣]{2,15}$/;
+           let reg_num = /^[0-9]{8,13}$/
+
+
 
 $("#check_module").click(function () { // 결제 api      
-  const nameProduct = document.querySelector("#productCode");    //결제 정보 미기입시 리턴 
+  const nameProduct = document.querySelector("#productCode");    
   if(nameProduct.value===""){
     console.log(nameProduct.value)
     alert("상품명이 누락 되었습니다")
-    return
+    return false;
   }
 
+  const orderName = document.querySelector("#orderName");    
+  if(orderName.value===""){
+    console.log(orderName.value)
+    alert("수취인 이름이 누락 되었습니다")
+    return false;
+  }
+    if(!n_RegExp.test(orderName.value)){
+        alert("특수문자,영어,숫자는 사용할수 없습니다.한글만 입력하여주세요.");
+        return false;
+    }
+
+
+  const orderPhone = document.querySelector("#orderPhone");    
+  if(orderPhone.value===""){
+    console.log(orderPhone.value)
+    alert("수취인 연락처가 누락 되었습니다")
+    return false;
+  }
+
+    if(!reg_num.test(orderPhone.value)){
+        alert("전화번호 형식이 맞지 않습니다 '-' 빼고 입력 영문 한글 입력불가.");
+        return false;
+    }
+
+  const orderPost = document.querySelector("#orderPost");    
+  if(orderPost.value===""){
+    console.log(orderPost.value)
+    alert("우편번호가 누락 되었습니다")
+    return false;
+  }
+
+  const orderRoadAddress = document.querySelector("#orderRoadAddress");    
+  if(orderRoadAddress.value===""){
+    console.log(orderRoadAddress.value)
+    alert("주소가 누락 되었습니다")
+    return false;
+  }
 
   const totalPrice = document.querySelector("#totalPrice");   
   if(totalPrice.value===""){
     alert("금액을 입력하세요.")
-    return
+    return false;
   }
   const namePay = document.querySelector("#namePay");
   if(namePay.value===""){
     alert("결제하시는분의 이름이 필요합니다.")
     return
   }
+    if(!n_RegExp.test(namePay.value)){
+        alert("특수문자,영어,숫자는 사용할수 없습니다.한글만 입력하여주세요.");
+        return false;
+    }
   const emailPay = document.querySelector("#emailPay");
+  
   if(emailPay.value===""){
     alert("결제하시는분의 이메일이 필요합니다.")
-    return
+    return false
   }
+    if(!reg_email.test(emailPay.value)){
+        alert("이메일 형식에 맞지 않습니다.");
+       return false;
+    }
   const phonePay = document.querySelector("#phonePay");
   if(phonePay.value===""){
     alert("결제하시는분의 전화번호가 필요합니다.")
-    return
+    return false;
   }
+
+    if(!reg_num.test(phonePay.value)){
+        alert("전화번호 형식이 맞지 않습니다 '-' 빼고 입력 영문 한글 입력불가.");
+        return false;
+    }
   const addressPay = document.querySelector("#addressPay");
   if(addressPay.value===""){
     alert("결제하시는분의 주소가 필요합니다.")
-    return
+    return false;
   }
-  const detailddressPay = document.querySelector("#detailAddressPay");
-  if(detailddressPay.value===""){
+  const detailAddressPay = document.querySelector("#detailAddressPay");
+  if(detailAddressPay.value===""){
     alert("결제하시는분의 상세주소가 필요합니다.")
-    return
+    return false;
   }
 
    
