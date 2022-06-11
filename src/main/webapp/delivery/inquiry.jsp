@@ -145,7 +145,7 @@
 				</c:otherwise>
 			</c:choose>     
         </div>
-        <c:if test="${not empty dto.id}">
+        <c:if test="${not empty loginSession.id}">
         <div class="buttonBox" align="right">
             <button type="button" class="btn btn-outline-secondary" id="btn-write">글쓰기</button>
         </div>

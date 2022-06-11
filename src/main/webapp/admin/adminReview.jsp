@@ -136,6 +136,9 @@ input[id="delete"] {
 					<h5>상품코드</h5>
 				</div>
 				<div class="col-3">
+					<h5>제목</h5>
+				</div>
+				<div class="col-3">
 					<h5>작성자</h5>
 				</div>
 				<div class="col-2">
@@ -153,43 +156,37 @@ input[id="delete"] {
 				</c:when>
 				<c:otherwise>
 					<c:forEach items="${list}" var="dto">
-						<div class="row content py-2 text-center" style="cursor: pointer;">
+						<div class="row content text-center align-items-center">
 							<!--클릭시 상세보기 페이지로 이어짐-->
-							<div class="col-1">${dto.seqInquiry}</div>
-							<c:if test="${not empty dto.inquiryAnswer}">
-								<div class="col-4">
-									<strong>[답변완료]</strong> ${dto.inquiryTitle}
-								</div>
-							</c:if>
-							<c:if test="${empty dto.inquiryAnswer}">
-								<div class="col-4">${dto.inquiryTitle}</div>
-							</c:if>
+							<div class="col-1">${dto.seqReview}</div>
+							<div class="col-1">${dto.productCode}</div>
+							<div class="col-3">${dto.reviewTitle}</div>
 							<div class="col-3">${dto.id}</div>
-							<div class="col-2">${dto.inquiryDate}</div>
+							<div class="col-2">${dto.reviewDate}</div>
 							<div class="col-1">
-								<button type="button" class="btn btn-outline-secondary detail" value="${dto.seqInquiry}">조회</button>
+								<button type="button" class="btn btn-outline-secondary detail" value="${dto.seqReview}">조회</button>
 							</div>
 							<div class="col-1">
 								<input type="text" name="page" value="${currentPage}" style="display:none">
-								<button type="button" class="btn btn-outline-secondary delete" value="${dto.seqInquiry}">삭제</button>
+								<button type="button" class="btn btn-outline-secondary delete" value="${dto.seqReview}">삭제</button>
 							</div>
 						</div>
 					</c:forEach>
 				</c:otherwise>
 			</c:choose>
 			<script>
-				$(".container").on("click",".delete",function(e){
-					let seqInquiry = $(e.target).val();
-					let page = $(e.target).parent().children("input").val();
-					console.log(seqInquiry);
-					console.log(page);
-					location.href="/inquiryDelete.admin?seqInquiry="+seqInquiry+"&page="+page
-				})
-				$(".container").on("click",".detail",function(e){
-					let seqInquiry = $(e.target).val();
-					console.log(seqInquiry);
-					location.href="/inquiryDetail.admin?seqInquiry="+seqInquiry
-				})
+			$(".container").on("click",".delete",function(e){
+				let seqReview = $(e.target).val();
+				let page = $(e.target).parent().children("input").val();
+				console.log(seqReview);
+				console.log(page);
+				location.href="/reviewDelete.admin?seqReview="+seqReview+"&page="+page
+			})
+			$(".container").on("click",".detail",function(e){
+				let seqReview = $(e.target).val();
+				console.log(seqReview);
+				location.href="/reviewDetail.admin?seqReview="+seqReview
+			})
 			</script>
 		</div>
 		<div class="row paging mt-3">

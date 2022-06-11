@@ -24,18 +24,48 @@ body {
 nav {
 	height: 80px;
 }
+
+.nav-item {
+	padding-right: 50px;
+}
+
 .header {
 	position: relative;
 	padding: 60px;
 }
-.nav-item {
-	padding-right: 50px;
+
+.title {
+	border-bottom: 1px solid black;
 }
-.d-grid{
-	margin-left:70px
+
+.title-body {
+	background-color: lightgray
+}
+
+.content {
+	border-bottom: 1px solid darkgray;
+}
+
+textarea {
+	resize: none;
+	margin-bottom: 30px;
+	background-color: #FFF !important;
+}
+
+.buttonBox {
+	margin-bottom: 30px;
+}
+
+.inquiry>.row:nth-child(2) {
+	border-bottom: 1px solid lightgray;
+}
+
+.inquiry>.row:nth-child(3) {
+	border-bottom: 1px solid lightgray;
 }
 </style>
 </head>
+<body>
 <body>
 	<div class="wrapper">
 		<div class="row header">
@@ -60,8 +90,8 @@ nav {
 									data-bs-toggle="dropdown" aria-expanded="false"> 회원 </a>
 									<ul class="dropdown-menu"
 										aria-labelledby="navbarDropdownMenuLink">
-										<li><a class="dropdown-item" href="/member.admin">조회</a></li>
-										<li><a class="dropdown-item" href="/blacklist.admin">블랙리스트</a></li>
+										<li><a class="dropdown-item" href="#">조회</a></li>
+										<li><a class="dropdown-item" href="#">블랙리스트</a></li>
 									</ul></li>
 								<li class="nav-item dropdown"><a
 									class="nav-link dropdown-toggle" href="#"
@@ -92,15 +122,13 @@ nav {
 									data-bs-toggle="dropdown" aria-expanded="false"> 문의 </a>
 									<ul class="dropdown-menu"
 										aria-labelledby="navbarDropdownMenuLink">
-										<li><a class="dropdown-item"
-											href="/inquiry.admin?currentPage=1">조회/삭제</a></li>
-										<li><a class="dropdown-item"
-											href="/inquiryAnswer.admin?currentPage=1">답변 추가</a></li>
+										<li><a class="dropdown-item" href="#">조회/삭제</a></li>
+										<li><a class="dropdown-item" href="#">답변 추가</a></li>
 									</ul></li>
 								<li class="nav-item"><a class="nav-link active"
-									aria-current="page" href="/review.admin?currentPage=1">리뷰 조회/삭제</a></li>
+									aria-current="page" href="#">리뷰 조회/삭제</a></li>
 								<li class="nav-item"><a class="nav-link active"
-									aria-current="page" href="/logout.admin">logout</a></li>
+									aria-current="page" href="#">login</a></li>
 							</ul>
 						</div>
 					</div>
@@ -108,13 +136,35 @@ nav {
 			</div>
 		</div>
 		<div class="container">
-			<div class="row">
-			<div class="col ml-3">
-				<h4>보리밥 관리게시판 접속을 환영합니다 관리자님!</h4>
+			<div class="row title py-3">
+				<div class="col-12">
+					<h4>리뷰상세페이지</h4>
+				</div>
+			</div>
+			<div class="row py-2">
+				<div class="col-2 col-form-label">제목</div>
+				<div class="col-10">${dto.reviewTitle}</div>
+			</div>
+			<div class="row py-2">
+				<div class="col-2 col-form-label">작성자</div>
+				<div class="col-5">${dto.id}</div>
+				<div class="col-2 col-form-label">작성일</div>
+				<div class="col-3">${dto.reviewDate}</div>
+			</div>
+			<div class="cont">
+				<div class="col d-flex justify-content-center align-items-center">
+					<img src="<%=request.getContextPath()%>/files/${oriName}" class="buy-item w-100" alt="리뷰이미지">
+				</div>
+			</div>
+			<div class="row py-2">
+				<div class="col-2 form-label">내용</div>
+				<div class="col-10">
+					<textarea readonly class="form-control" id="inquiry-content"
+						rows="20">${dto.reviewContent}</textarea>
+				</div>
 			</div>
 		</div>
-		</div>
-			
+		
 	</div>
 </body>
 </html>

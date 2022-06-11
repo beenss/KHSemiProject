@@ -48,7 +48,7 @@ nav {
 	border-bottom: 1px solid darkgray;
 }
 
-button {
+#add-btn {
 	margin-top: 20px;
 }
 </style>
@@ -135,8 +135,11 @@ button {
 					<div class="col-2">
 						<h6>날짜</h6>
 					</div>
-					<div class="col-7">
+					<div class="col-6">
 						<h6>이유</h6>
+					</div>
+					<div class="col-1">
+						<h6>삭제</h6>
 					</div>
 				</div>
 				<div class="listmem">
@@ -151,7 +154,8 @@ button {
 								<div class="row content py-2 text-center">
 									<div class="col-3">${dto.id}</div>
 									<div class="col-2">${dto.blacklistDate}</div>
-									<div class="col-7">${dto.blacklistReason}</div>
+									<div class="col-6">${dto.blacklistReason}</div>
+									<div class="col-1"><button type="button" class="btn btn-outline-secondary delete" value="${dto.id}">삭제</button></div>
 								</div>
 							</c:forEach>
 						</c:otherwise>
@@ -172,32 +176,13 @@ button {
             window.open(url, name, option);
             return;
 			}
-			function makeMember(rs){
-				let list = rs; // 함수의 매개변수로 받아온 json 형식의 문자열 실제 json 타입으로 변환 
-				console.log(list);
 			
-				$(".listmem").empty();
+			$(".delete").on("click",function(e){
+				let id = $(e.target).val();
+				console.log(id);
+				location.href="/blacklistDelete.admin?id="+id
+			})
 			
-				if(list.length==0){
-					let row = $("<div>").addClass("row content text-center align-items-center");
-					let col =$("<div>").addClass("col").html("회원이 존재하지 않습니다.")
-					row.append(col);
-					$(".listmem").append(row);
-				}else{
-					for(let mem of list){
-						let row1 = $("<div>").addClass("row content py-2 text-center");
-						let col1 = $("<div>").addClass("col-2").html(mem.id);
-						let col2 = $("<div>").addClass("col-1").html(mem.name);
-						let col3 = $("<div>").addClass("col-2").html(mem.phone);
-						let col4 = $("<div>").addClass("col-2").html(mem.post);
-						let col5 = $("<div>").addClass("col-3").html(mem.roadAddress);
-						let col6 = $("<div>").addClass("col-2").html(mem.detailAddress);
-						
-						row1.append(col1,col2,col3,col4,col5,col6);
-						$(".listmem").append(row1);
-					}	
-				}
-			}
 		</script>
 	</div>
 </body>
