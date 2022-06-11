@@ -11,9 +11,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 
 import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
-
 import com.boribob.dto.BlacklistDTO;
-import com.boribob.dto.MemberDTO;
 
 public class BlacklistDAO {
 	private BasicDataSource bds;
@@ -76,5 +74,15 @@ public class BlacklistDAO {
 	public String dateToString(Date date) {//date를 String으로 변환하는 메서드
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 		return sdf.format(date);
+	}
+	public int delete(String id)throws Exception{//삭제
+		String sql = "delete from tbl_blacklist where id=?";
+		try(Connection con = bds.getConnection(); 
+			PreparedStatement pstmt = con.prepareStatement(sql);){
+			pstmt.setString(1, id);
+			
+			int rs = pstmt.executeUpdate();
+			return rs;
+		}
 	}
 }

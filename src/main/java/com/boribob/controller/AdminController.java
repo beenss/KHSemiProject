@@ -13,15 +13,18 @@ import javax.servlet.http.HttpSession;
 
 import com.boribob.dao.AdminDAO;
 import com.boribob.dao.BlacklistDAO;
+import com.boribob.dao.FileDAO;
 import com.boribob.dao.InquiryDAO;
 import com.boribob.dao.MemberDAO;
 import com.boribob.dao.OrderDAO;
 import com.boribob.dao.ProductDAO;
+import com.boribob.dao.ReviewDAO;
 import com.boribob.dto.BlacklistDTO;
 import com.boribob.dto.InquiryDTO;
 import com.boribob.dto.MemberDTO;
 import com.boribob.dto.OrderDTO;
 import com.boribob.dto.ProductDTO;
+import com.boribob.dto.ReviewDTO;
 import com.google.gson.Gson;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -278,13 +281,61 @@ public class AdminController extends HttpServlet {
 			}
 		
 			
-		}else if(uri.equals("review.admin")) { //review 관리
-			
-			response.sendRedirect("/reviewAdmin.jsp");
-		}else if(uri.equals("reviewList.admin")) {
-			
-		}else if(uri.equals("reviewForm.admin")) {
-			
+		}else if(uri.equals("/review.admin")) { //review 관리
+			int currentPage = Integer.parseInt(request.getParameter("currentPage"));
+			ReviewDAO dao = new ReviewDAO();
+			try {
+				HashMap map = dao.getPage(currentPage);
+				System.out.println(map.get("startNavi"));
+				System.out.println(map.get("endNavi"));
+				System.out.println(map.get("makePrev"));
+				System.out.println(map.get("makeNext"));
+
+				// 전체목록 불러오기
+				System.out.println(currentPage);
+				ArrayList<ReviewDTO> list = dao.selectAll(currentPage * 10 - 9, currentPage * 10);
+				request.setAttribute("list", list);
+				request.setAttribute("map", map);
+				request.setAttribute("currentPage",currentPage);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			request.getRequestDispatcher("/admin/adminReview.jsp").forward(request, response);
+		}else if(uri.equals("/reviewDelete.admin")) {
+			ReviewDAO dao = new ReviewDAO();
+			int seqReview = Integer.parseInt(request.getParameter("seqReview"));
+			int page = Integer.parseInt(request.getParameter("page"));
+			System.out.println(seqReview);
+			System.out.println(page);
+			try {
+				int rs = dao.delete(seqReview);
+				if(rs>0) {
+					response.sendRedirect("/review.admin?currentPage="+page);
+				}
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}else if(uri.equals("/reviewDetail.admin")) {
+			int seqReview = Integer.parseInt(request.getParameter("seqReview"));
+			System.out.println("seqReview : " + seqReview);
+			ReviewDAO ReviewDAO = new ReviewDAO();
+			FileDAO fileDao = new FileDAO();
+			try {
+				ReviewDTO dto = ReviewDAO.selectBySeq(seqReview);
+				String oriName = (fileDao.selectBySeqReview(seqReview)).getOriName();
+				request.setAttribute("oriName", oriName);
+				request.setAttribute("dto", dto);
+				Gson gson = new Gson();
+				String rs = gson.toJson(dto);
+				System.out.println(rs);
+				response.setCharacterEncoding("utf-8");
+				response.getWriter().append(rs);
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			request.getRequestDispatcher("/admin/adminReviewDetail.jsp").forward(request, response);
+
 		}else if(uri.equals("/inquiry.admin")){
 			InquiryDAO dao = new InquiryDAO();
 			int currentPage = Integer.parseInt(request.getParameter("currentPage"));
@@ -472,8 +523,18 @@ public class AdminController extends HttpServlet {
 			}catch(Exception e){
 				e.printStackTrace();
 			}request.getRequestDispatcher("/admin/blacklistAdd.jsp").forward(request, response);
-			
-			
+		}else if(uri.equals("/blacklistDelete.admin")) {
+			String id = request.getParameter("id");
+			System.out.println(id);
+			BlacklistDAO dao = new BlacklistDAO();
+			try {
+				int rs = dao.delete(id);
+				if(rs>0) {
+					response.sendRedirect("/blacklist.admin");
+				}
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 		}
 		
 		else if(uri.equals("/logout.admin")) {
