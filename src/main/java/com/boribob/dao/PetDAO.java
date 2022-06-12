@@ -101,7 +101,7 @@ public class PetDAO {
 		petDetails.add(dto.getPetWeight()); // 0이면 보통, 1이면 통통
 
 		// 견/묘 구분 입력
-		if (dto.getPetType() == "dog") petDetails.add(0); // 개
+		if (dto.getPetType().equals("dog")) petDetails.add(0); // 개
 		else petDetails.add(1); // 고양이
 		
 		return petDetails;

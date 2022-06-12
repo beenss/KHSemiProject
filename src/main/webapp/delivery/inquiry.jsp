@@ -256,20 +256,12 @@
     </div>
         <!-- 여기부터 풋터 -->
         <div class="row justify-content-center footer">
-            <div class="col-lg-10 col-12">
+            <div class="col-12">
                 <ul class="ft-ul">
                     <li>BoriBob Inc. 사랑시 고백구 행복동</li>
                     <li>대표 : 보리밥형제들 사업자등록번호 : 780-86-01094</li>
                     <li>대표번호 : +82)-665-3430 팩스번호 : +82)-888-3430 홈페이지 : petvenience.store.com</li>
                     <li>CopyrightⓒBoriBob Inc. All Rights Reserved.</li>
-                </ul>
-            </div>
-            <div class="col-lg-2 col-12">
-                <ul class="ft-ul">
-                    <li><strong>고객센터</strong></li>
-                    <li style="height: 8px;"></li>
-                    <li>오전 10시부터 오후 6시까지</li>
-                    <li>토요일, 일요일, 공휴일 휴무</li>
                 </ul>
             </div>
         </div>

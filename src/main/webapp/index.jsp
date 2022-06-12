@@ -15,7 +15,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
-    <title>레이아웃</title>
+    <title>보리밥 - 멍멍이와 야옹이의 맞춤 사료 동산</title>
     <style>
         body {
             box-sizing: border-box;
@@ -224,7 +224,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 								<li class="nav-item"><a class="nav-link"
 									style="color: rgb(0, 0, 0);" href="/login/login.jsp">로그인</a></li>
 								<li class="nav-item"><a class="nav-link"
-									style="color: rgb(117, 160, 36); font-weight: bold;" href="/pet">구독하기</a>
+									style="color: rgb(117, 160, 36); font-weight: bold;" href="/pet.pet">구독하기</a>
 								</li>
 							</ul>
 						</div>

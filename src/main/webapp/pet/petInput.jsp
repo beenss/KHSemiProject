@@ -228,7 +228,7 @@ body {
 					</div>
 				</div>
 				<input type="text" name="petType" id="pet-type"
-					style="display: none;">
+					style="display: none;" value="cat">
 				<div class="col-12 ">
 					우리 아이의 견/묘종은 <select style="display: inline; width: 200px;"
 						class="form-select" id="pet-kind" name="petKind">
@@ -282,8 +282,8 @@ body {
 					<button type="button" id="button-back">뒤로가기</button>
 				</div>
 			</div>
+		</form>
 	</div>
-	</form>
 </div>
 <!-- 여기까지 바디 -->
 
