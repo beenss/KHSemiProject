@@ -25,22 +25,22 @@
 <title>Home</title>
 <style>
 @font-face {
-	src: url("fonts/MinSans-Regular.otf");
+	src: url("/fonts/MinSans-Regular.otf");
 	font-family: "MinSans-Regular.otf";
 }
 
 @font-face {
-	src: url("fonts/MinSans-bold.otf");
+	src: url("/fonts/MinSans-bold.otf");
 	font-family: "MinSans-bold.otf";
 }
 
 @font-face {
 	font-family: "Theafhh_.TTF";
-	src: url("fonts/Theafhh_.TTF");
+	src: url("/fonts/Theafhh_.TTF");
 }
 
 @font-face {
-	src: url("fonts/GongGothicLight.ttf");
+	src: url("/fonts/GongGothicLight.ttf");
 	font-family: "GongGothicLight.ttf";
 }
 
@@ -153,8 +153,6 @@ body {
 </style>
 </head>
 <body>
-</head>
-<body>
         <div class="row justify-content-around header" style="text-align: center;">
             <div class="col-lg-2" style="text-align: center;">
                 <img src="/images/project_logo.png" class="d-block w-100" id="main-logo">
@@ -201,7 +199,7 @@ body {
 								<li class="nav-item"><a class="nav-link"
 									style="color: rgb(0, 0, 0);" href="/login/login.jsp">로그인</a></li>
 								<li class="nav-item"><a class="nav-link"
-									style="color: rgb(117, 160, 36); font-weight: bold;" href="/pet">구독하기</a>
+									style="color: rgb(117, 160, 36); font-weight: bold;" href="/pet.pet">구독하기</a>
 								</li>
 							</ul>
 						</div>
@@ -236,7 +234,18 @@ body {
 						class="form-select" id="pet-kind" name="petKind">
 						<option value="1" style="display: none;"></option>
 						<option value="2">닥스훈트</option>
-						<option value="3">브리티쉬 숏헤어</option>
+						<option value="3">말티즈</option>
+						<option value="4">치와와</option>
+						<option value="5">시츄</option>
+						<option value="6">비숑</option>
+						<option value="7">포메라니안</option>
+						<option value="8">브리티쉬 숏헤어</option>
+						<option value="9">터키쉬 앙고라</option>
+						<option value="10">벵갈</option>
+						<option value="11">노르웨이의 숲</option>
+						<option value="12">아비시안</option>
+						<option value="13">아메리칸 숏헤이</option>
+						<option value="14">믹스 / 기타</option>
 					</select> 입니다.
 				</div>
 

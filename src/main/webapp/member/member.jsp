@@ -330,30 +330,13 @@ body {
 
 		<!-- 여기부터 풋터 -->
 		<div class="row justify-content-center footer">
-			<div class="col-lg-10 col-12">
+			<div class="col-12">
 				<ul class="ft-ul">
 					<li>BoriBob Inc. 사랑시 고백구 행복동</li>
 					<li>대표 : 보리밥형제들 사업자등록번호 : 780-86-01094</li>
 					<li>대표번호 : +82)-665-3430 팩스번호 : +82)-888-3430 홈페이지 :
 						petvenience.store.com</li>
 					<li>CopyrightⓒBoriBob Inc. All Rights Reserved.</li>
-				</ul>
-			</div>
-			<div class="col-lg-2 col-12">
-				<ul class="ft-images">
-					<img src="images/icons8-facebook-new-48.png"
-						style="border-color: lightblue;">
-					<img src="images/icons8-인스-타-그램-48.png"
-						style="border-color: lightblue;">
-					<img src="images/icons8-유튜브-재생-48.png"
-						style="border-color: lightblue;">
-
-				</ul>
-				<ul class="ft-ul">
-					<li><strong>고객센터</strong></li>
-					<li style="height: 8px;"></li>
-					<li>오전 10시부터 오후 6시까지</li>
-					<li>토요일, 일요일, 공휴일 휴무</li>
 				</ul>
 			</div>
 		</div>
@@ -371,7 +354,7 @@ body {
 		}
 		// 취소하기 버튼 누르면 로그인 창으로 띄우기
 		document.getElementById("btnCancel").onclick = function() {
-			let url = "/cancelSignup.mem";
+			location.href = "/cancelSignup.mem";
 		}
 
 		// 가입 버튼을 눌렀을 때 유효성 검사 후 form 제출

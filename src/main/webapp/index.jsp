@@ -278,12 +278,12 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
         <div class="col-lg-3">
             <div class="card">
                 <div class="card-body review1">
-                    <h5 class="card-title">김바비님</h3>
-                        <p class="card-text">제가 살면서 먹어본 사료 중에서<br>
+                    <h3 class="card-title" style="text-shadow: -1px 0px white, 0px 1px white, 1px 0px white, 0px -1px white;">김바비님</h3>
+                        <p class="card-text" style="text-shadow: -1px 0px white, 0px 1px white, 1px 0px white, 0px -1px white;">제가 살면서 먹어본 사료 중에서<br>
                             제일 맛있었어요.
                             저는 특히 닭고기를 좋아하는데 고소하면서도
                             잡냄새가 나지 않아서
-                            먹는 내내 감탄만 했습니다
+                            먹는 내내 감탄만 했습니다</p>
                             <br>
                             <a href="/review.bo?currentPage=1" class="btnMoreReview">리뷰 더보기</a>
                 </div>
@@ -293,11 +293,12 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     <div class="col-lg-3">
         <div class="card">
             <div class="card-body review2">
-                <h5 class="card-title">이보리 님</h5>
-                <p class="card-text">저 정말 맛있는 것만 좋아하거든요?
+                <h3 class="card-title" style="text-shadow: -1px 0px white, 0px 1px white, 1px 0px white, 0px -1px white;">이보리 님</h3>
+                <p class="card-text" style="text-shadow: -1px 0px white, 0px 1px white, 1px 0px white, 0px -1px white;">저 정말 맛있는 것만 좋아하거든요?
                     제 친구들 사이에서도 맛있는 것만 좋아하는
                     미식냥으로 소문났는데 여기는 진짜 맛집이네요.
                     반해서 6개월 구독할 거예요</p>
+                    <br>
                 <a href="/review.bo?currentPage=1" class="btnMoreReview">리뷰 더보기</a>
             </div>
         </div>

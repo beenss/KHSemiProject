@@ -1,6 +1,5 @@
 package com.boribob.controller;
 
-import java.io.Console;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -8,10 +7,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.boribob.dao.PetDAO;
 import com.boribob.dao.ProductDAO;
+import com.boribob.dao.SubscribeDAO;
 import com.boribob.dto.MemberDTO;
 import com.boribob.dto.PetDTO;
 
@@ -99,7 +98,17 @@ public class PetController extends HttpServlet {
 			if (dto == null) {
 				response.sendRedirect("/loginError.mem");
 			} else {
-				response.sendRedirect("/pet/petInput.jsp");
+				try {
+					SubscribeDAO subscribeDao = new SubscribeDAO();
+					boolean isSubscribed = subscribeDao.isSubscribedId(dto.getId());
+					if (!isSubscribed) {
+						response.sendRedirect("/pet/petInput.jsp");
+					} else {
+						response.sendRedirect("/subscribe/subscribeError.jsp");
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 		}
 	}

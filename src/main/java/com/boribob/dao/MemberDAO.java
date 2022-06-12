@@ -64,7 +64,7 @@ public class MemberDAO {
 	}
 	public int update(MemberDTO dto)throws Exception{
 
-		String sql = "update tbl_member set password=?, name=?, post=?, road_address=?, detail_address=?, phone=?";
+		String sql = "update tbl_member set password=?, name=?, post=?, road_address=?, detail_address=?, phone=? where id = ?";
 
 		try(Connection con = bds.getConnection(); 
 			PreparedStatement pstmt = con.prepareStatement(sql);){
@@ -74,7 +74,7 @@ public class MemberDAO {
 			pstmt.setString(4, dto.getRoadAddress());
 			pstmt.setString(5, dto.getDetailAddress());
 			pstmt.setString(6, dto.getPhone());
-
+			pstmt.setString(7, dto.getId());
 
 			int rs = pstmt.executeUpdate();
 			return rs;

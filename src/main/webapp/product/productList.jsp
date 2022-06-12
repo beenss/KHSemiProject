@@ -24,89 +24,7 @@
 	crossorigin="anonymous"></script>
 <title>제품보기_초안</title>
 <style>
-/*메인 로고 스타일*/
 
-
- body {
-            box-sizing: border-box;
-            background-color: white;
-        }
-}
-/*메뉴 폰트 스타일*/
-*.nav-link {
-	color: rgb(44, 44, 44);
-	font-size: large;
-}
-
-*.nav-link:hover {
-	background-color: blanchedalmond;
-	background-size: 3px;
-}
-  .topmenu {
-            font-family: "GongGothicLight.ttf";
-            font-size: 20px;
-
-        }
-
-        .menu {
-            background-color: rgb(255, 255, 255);
-            font-size: 17px;
-            font-family: "GongGothicLight.ttf";
-
-        }
-
-        #menu-logo {
-            width: 70px;
-            height: 80px;
-
-        }
-
-/*메뉴 위치*/
-#nav-item {
-	margin-top: 150px;
-	margin-left: 325px;
-}
-
-/*상품이미지 div 사이즈*/
-.container {
-	padding-right: 100px;
-}
-/*대략적인 구조를 직관적으로 확인하시라고 임의로 설정해 둔 테두리입니다!*/
-
-
-/*footer*/
-.footer {
-	height: 150px;
-	overflow: visible;
-	z-index: 1;
-	margin-top: 40px;
-}
-
-.ft-ul {
-	list-style: none;
-	text-align: center;
-	height: 100%;
-	padding-top: 28px;
-	color: black;
-	font-size: 12px;
-	z-index: 1;
-}
-
-.ft-ul li {
-	height: 25px;
-}
-
-.ft-ul2 {
-	position: relative;
-	bottom: 250px;
-	margin-left: 1100px;
-	z-index: 2;
-	font-size: 10px;
-}
-
-.ft-ul2 li {
-	height: 17px;
-}
 /* body 영역 */
 .container{
 font-family: "GongGothicMedium.ttf";
@@ -184,11 +102,55 @@ font-family: "GongGothicMedium.ttf";
                 src: url("/fonts/GongGothicMedium.ttf");
                 font-family: "GongGothicMedium.ttf";
             }   
-            
+            /* 헤더 풋터 */
+body {
+	box-sizing: border-box;
+	background-color: white;
+}
+
+.header {
+	padding: 20px;
+	position: relative;
+}
+
+.topmenu {
+	font-family: "GongGothicLight.ttf";
+	font-size: 20px;
+}
+
+.menu {
+	background-color: rgb(255, 255, 255);
+	font-size: 17px;
+	font-family: "GongGothicLight.ttf";
+}
+
+#menu-logo {
+	width: 70px;
+	height: 80px;
+}
+
+.footer>* {
+	background-color: white;
+	padding: 20px;
+	position: relative;
+}
+
+.ft-ul {
+	list-style: none;
+	text-align: center;
+	height: 100%;
+	padding-top: 28px;
+	color: black;
+	font-size: 12px;
+	z-index: 1;
+}  
+.footer{
+margin-top : 50px;
+} 
 </style>
 </head>
 <body>
-        <div class="row justify-content-around header" style="text-align: center;">
+	<div class="row justify-content-around header" style="text-align: center;">
             <div class="col-lg-2" style="text-align: center;">
                 <img src="/images/project_logo.png" class="d-block w-100" id="main-logo">
             </div>
@@ -234,7 +196,7 @@ font-family: "GongGothicMedium.ttf";
 								<li class="nav-item"><a class="nav-link"
 									style="color: rgb(0, 0, 0);" href="/login/login.jsp">로그인</a></li>
 								<li class="nav-item"><a class="nav-link"
-									style="color: rgb(117, 160, 36); font-weight: bold;" href="/pet">구독하기</a>
+									style="color: rgb(117, 160, 36); font-weight: bold;" href="/pet.pet">구독하기</a>
 								</li>
 							</ul>
 						</div>
@@ -242,9 +204,10 @@ font-family: "GongGothicMedium.ttf";
 		           	</c:choose> 
                     </div>
             </div>
-            </nav>
+            </nav> 
         </div>
-	<!--메인영역-->
+        </div>
+
 	<!--헤더와 메인의 구분선-->
 	<div class="container product-header">
 		<div class="row">
@@ -279,18 +242,22 @@ font-family: "GongGothicMedium.ttf";
 					</c:forEach>
 				</div>
 			</div>
-			<!--풋터영역-->
-			<div class="row justify-content-around">
-				<div class="footer">
-					<ul class="ft-ul">
-						<li>BoriBob Inc. 사랑시 고백구 행복동</li>
-						<li>대표 : 보리밥형제들 사업자등록번호 : 780-86-01094</li>
-						<li>대표번호 : +82)-665-3430 팩스번호 : +82)-888-3430 홈페이지 :
-							petvenience.store.com</li>
-						<li>CopyrightⓒBoriBob Inc. All Rights Reserved.</li>
-						
-				</div>
 			</div>
+			<!--풋터영역-->
+		<div class="row justify-content-center footer">
+			<div class="col-lg-10 col-12">
+				<ul class="ft-ul">
+					<li>BoriBob Inc. 사랑시 고백구 행복동</li>
+					<li>대표 : 보리밥형제들 사업자등록번호 : 780-86-01094</li>
+					<li>대표번호 : +82)-665-3430 팩스번호 : +82)-888-3430 홈페이지 :
+						petvenience.store.com</li>
+					<li>CopyrightⓒBoriBob Inc. All Rights Reserved.</li>
+				</ul>
+			</div>
+
+		</div>
+
+	</div>
 
 			<script>
 		// 강아지버튼을 눌렀을 때 강아지상품만 비동기로 띄워주기 
@@ -371,6 +338,31 @@ font-family: "GongGothicMedium.ttf";
 		
 		</script>
 </body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 </html>

@@ -77,7 +77,7 @@ public class OrderDAO {
 	}
 
 	public int insertOrder(OrderDTO dto) throws Exception { // 주문정보 등록
-		String sql = "insert into tbl_order values(order_seq.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into tbl_order values(order_seq.nextval,?,?,?,?,?,?,?,?,?,sysdate,?,?,?,?,?,?,?,?,?,?)";
 		try (Connection con = getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
 			// order_no -> 시퀀스
 			pstmt.setString(1, dto.getId()); // -> 회원 아이디
@@ -89,17 +89,16 @@ public class OrderDAO {
 			pstmt.setString(7, dto.getOrderMsg()); // -> 수취인 주문 메시지
 			pstmt.setString(8, dto.getPostMsg()); // -> 수취인 배송메시지
 			pstmt.setInt(9, dto.getProductCode()); // -> 상품코드
-			pstmt.setString(10, dto.getSubscribeStart()); // 구독 시작일
-			pstmt.setInt(11, dto.getSubscribeTerm()); // ->구독기간
-			pstmt.setInt(12, dto.getPrice()); // -> 가격
-			pstmt.setString(13, dto.getPaySuccess()); // 결제 성공여부
-			pstmt.setString(14, dto.getPayId()); // 결제 ID
-			pstmt.setString(15, dto.getPayTradeId()); // 상점 거래 ID
-			pstmt.setString(16, dto.getPayAmount()); // 결제금액
-			pstmt.setString(17, dto.getPayApproval()); // 승인여부
-			pstmt.setString(18, dto.getDeliveryStatus()); // 배송상태 
-			pstmt.setString(19, dto.getExpectedArrival()); // 배송예정일 
-			pstmt.setString(20, dto.getDeliveryCount()); // 배송회차 
+			pstmt.setInt(10, dto.getSubscribeTerm()); // ->구독기간
+			pstmt.setInt(11, dto.getPrice()); // -> 가격
+			pstmt.setString(12, dto.getPaySuccess()); // 결제 성공여부
+			pstmt.setString(13, dto.getPayId()); // 결제 ID
+			pstmt.setString(14, dto.getPayTradeId()); // 상점 거래 ID
+			pstmt.setString(15, dto.getPayAmount()); // 결제금액
+			pstmt.setString(16, dto.getPayApproval()); // 승인여부
+			pstmt.setString(17, dto.getDeliveryStatus()); // 배송상태 
+			pstmt.setString(18, dto.getExpectedArrival()); // 배송예정일 
+			pstmt.setString(19, dto.getDeliveryCount()); // 배송회차 
 
 			int rs = pstmt.executeUpdate();
 		

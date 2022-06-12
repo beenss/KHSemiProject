@@ -20,7 +20,7 @@
 <title>회원탈퇴</title>
 </head>
 <style>
-.container{
+.mypage-container{
 font-family: "GongGothicMedium.ttf";
 }
 
@@ -156,9 +156,94 @@ font-family: "GongGothicMedium.ttf";
             @font-face {
                 src: url("/fonts/GongGothicMedium.ttf");
                 font-family: "GongGothicMedium.ttf";
-            }   
+            }  
+            /* 헤더 풋터 */
+body {
+	box-sizing: border-box;
+	background-color: white;
+}
+
+.header {
+	padding: 20px;
+	position: relative;
+}
+
+.topmenu {
+	font-family: "GongGothicLight.ttf";
+	font-size: 20px;
+}
+
+.menu {
+	background-color: rgb(255, 255, 255);
+	font-size: 17px;
+	font-family: "GongGothicLight.ttf";
+}
+
+#menu-logo {
+	width: 70px;
+	height: 80px;
+}
+
+.footer>* {
+	background-color: white;
+	padding: 20px;
+	position: relative;
+}
+
+.ft-ul {
+	list-style: none;
+	text-align: center;
+	height: 100%;
+	padding-top: 28px;
+	color: black;
+	font-size: 12px;
+	z-index: 1;
+}  
+.footer{
+margin-top : 50px;
+}  
 </style>
 <body>
+<!-- header -->
+	<div class="row justify-content-around header"
+		style="text-align: center;">
+		<div class="col-lg-2" style="text-align: center;">
+			<img src="/images/project_logo.png" class="d-block w-100"
+				id="main-logo">
+		</div>
+		<div class="col-lg-8 col-12 topmenu">
+			<nav class="navbar navbar-expand-lg navbar-light"
+				style="float: right;">
+				<div class="container-fluid">
+					<button class="navbar-toggler" type="button"
+						data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+						aria-controls="navbarSupportedContent" aria-expanded="false"
+						aria-label="Toggle navigation" style="border: none;">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+
+
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+							<li class="nav-item"><a class="nav-link"
+								style="color: rgb(0, 0, 0);" href="/product.pro">제품 보기</a></li>
+							<li class="nav-item"><a class="nav-link"
+								style="color: rgb(0, 0, 0);" href="/inquiry.iq?currentPage=1">고객센터</a></li>
+							<li class="nav-item"><a class="nav-link"
+								style="color: rgb(0, 0, 0);" href="/mypage.my">마이페이지</a></li>
+							<li class="nav-item"><a class="nav-link"
+								style="color: rgb(0, 0, 0);" href="/review.bo?currentPage=1">리뷰</a></li>
+							<li class="nav-item"><a class="nav-link"
+								style="color: rgb(0, 0, 0);" href="/logout.mem">로그아웃</a></li>
+							<li class="nav-item"><a class="nav-link"
+								style="color: rgb(117, 160, 36); font-weight: bold;"
+								href="/pet.pet">구독하기</a></li>
+						</ul>
+					</div>
+				</div>
+				</nav>
+		</div>		
+	</div>
 	<!-- 마이페이지  -->
     <div class="container mypage-container">
         <div class="row">
@@ -225,6 +310,19 @@ font-family: "GongGothicMedium.ttf";
 					</div>
 					</form>
 				</div>
+			</div>
+		</div>
+	</div>
+	<!-- footer -->
+	<div class="row justify-content-center footer">
+			<div class="col-lg-10 col-12">
+				<ul class="ft-ul">
+					<li>BoriBob Inc. 사랑시 고백구 행복동</li>
+					<li>대표 : 보리밥형제들 사업자등록번호 : 780-86-01094</li>
+					<li>대표번호 : +82)-665-3430 팩스번호 : +82)-888-3430 홈페이지 :
+						petvenience.store.com</li>
+					<li>CopyrightⓒBoriBob Inc. All Rights Reserved.</li>
+				</ul>
 			</div>
 		</div>
 	</div>

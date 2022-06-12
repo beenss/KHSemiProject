@@ -175,7 +175,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 								<li class="nav-item"><a class="nav-link"
 									style="color: rgb(0, 0, 0);" href="/login/login.jsp">로그인</a></li>
 								<li class="nav-item"><a class="nav-link"
-									style="color: rgb(117, 160, 36); font-weight: bold;" href="/pet">구독하기</a>
+									style="color: rgb(117, 160, 36); font-weight: bold;" href="/pet.pet">구독하기</a>
 								</li>
 							</ul>
 						</div>
@@ -197,13 +197,21 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
  
     <div class="row content text-center align-items-center">
-        <button id="goToMain" type="button"  href="/home">
+        <button id="goToMain" type="button">
           홈페이지로이동
         </button>
-        <button id="myPage" type="button"href="/mypage.my">
+        <button id="myPage" type="button">
           마이페이지로이동
         </button>
       </div>
+      <script>
+      	document.getElementById('goToMain').addEventListener('click', () => {
+      		location.href = "/home";
+      	})
+      	document.getElementById('myPage').addEventListener('click', () => {
+      		location.href = "/mypage.my";
+      	})
+      </script>
       <!-- 여기부터 풋터 -->
       <div class="row justify-content-center footer">
         <div class="col-lg-10 col-12">

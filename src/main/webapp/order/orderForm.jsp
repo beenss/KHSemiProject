@@ -1,10 +1,8 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
-  
 <!DOCTYPE html>
 <html>
   <head>
@@ -24,7 +22,12 @@ pageEncoding="UTF-8"%>
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
-    <title>레이아웃</title>
+    <!— jQuery —>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+	<!— iamport.payment.js —>
+	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <title>주문페이지</title>
     <style>
    @font-face {
             src: url("/fonts/MinSans-Regular.otf");
@@ -214,7 +217,7 @@ pageEncoding="UTF-8"%>
 								<li class="nav-item"><a class="nav-link"
 									style="color: rgb(0, 0, 0);" href="/login/login.jsp">로그인</a></li>
 								<li class="nav-item"><a class="nav-link"
-									style="color: rgb(117, 160, 36); font-weight: bold;" href="/pet">구독하기</a>
+									style="color: rgb(117, 160, 36); font-weight: bold;" href="/pet.pet">구독하기</a>
 								</li>
 							</ul>
 						</div>
@@ -238,7 +241,7 @@ pageEncoding="UTF-8"%>
       <div class="col-lg-2" style="margin: 0 auto;"><input id="productCode" type="readOnly" name="productName" value="${subscribeDto.productCode}">
       </div>
 
-      <div class="col-lg-2" style="margin: 0 auto;"><input id="productName" placeholder="주문하신 상품">
+      <div class="col-lg-2" style="margin: 0 auto;"><input id="productName" placeholder="주문하신 상품" value="">
       </div>
     </div>
     <br>
@@ -351,41 +354,45 @@ pageEncoding="UTF-8"%>
 
 
    <script>
-       const productName = document.querySelector('productName');
-       const productCode = document.querySelector('productCode');
+   		document.getElementById('btn-back').addEventListener('click', () => {
+   			location.href = '/home'
+   		})
+   
+       const productName = document.querySelector('#productName');
+       const productCode = document.querySelector('#productCode');
 
 
-           if (productCode == 1) {
+           if (productCode.value == 1) {
                productName.value = " 강아지 소고기 사료";
-           } else if (productCode == 2) {
+           } else if (productCode.value == 2) {
                productName.value = "강아지 흰살 생선 사료";
-           }else if (productCode == 3) {
+           }else if (productCode.value == 3) {
                productName.value = "멍멍 소고기 사료";
-           }else if (productCode == 4) {
+           }else if (productCode.value == 4) {
                productName.value = "멍멍 흰살 생선 사료";
-           }else if (productCode == 5) {
+           }else if (productCode.value == 5) {
                productName.value = "강아지 오리 다이어트 사료";
-           }else if (productCode == 6) {
+           }else if (productCode.value == 6) {
                productName.value = "강아지 야채 연어 다이어트 사료";
-           }else if (productCode == 7) {
+           }else if (productCode.value == 7) {
                productName.value = "멍멍 오리 다이어트 사료";
-           }else if (productCode == 8) {
+           }else if (productCode.value == 8) {
                productName.value = "멍멍 야채 연어 다이어트 사료";
-           }else if (productCode == 9) {
+           }else if (productCode.value == 9) {
                productName.value = "묘아 닭고기 사료";
-           }else if (productCode == 10) {
+           }else if (productCode.value == 10) {
                productName.value = "묘아 생선 사료 ";
-           }else if (productCode == 11) {
+           }else if (productCode.value == 11) {
                productName.value = "야옹 닭고기 사료";
-           }else if (productCode == 12) {
+           }else if (productCode.value == 12) {
                productName.value = "야옹 연어 사료";
-           }else if (productCode == 13) {
+           }else if (productCode.value == 13) {
                productName.value = "묘아 양고기 다이어트 사료";
-           }else if (productCode == 14) {
+           }else if (productCode.value == 14) {
                productName.value = "묘아 생선 다이어트 사료 ";
-           }else if (productCode == 16) {
+           }else if (productCode.value == 15) {
                productName.value = "야옹 오리 다이어트 사료";
-           }else if (productCode == 16) {
+           }else if (productCode.value == 16) {
                productName.value = "야옹 야채 다이어트 사료 ";
            }
 
@@ -576,7 +583,7 @@ IMP.request_pay(
   buyer_name: namePay.value,
   buyer_tel: phonePay.value,
   buyer_addr: addressPay.value,
-  buyer_postcode: detailddressPay.value,
+  buyer_postcode: detailAddressPay.value,
   m_redirect_url: "http://127.0.0.1:5500/src/main/webapp/order/test.html",
 },
 

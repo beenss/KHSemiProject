@@ -197,13 +197,8 @@ public class AdminController extends HttpServlet {
 			
 		}else if(uri.equals("/productUpdateProc.admin")) { // 상품 수정
 			
-			String filePath = request.getServletContext().getRealPath("files"); // 데이터가 저장될 서버의 경로
-			System.out.println(filePath);
-			File dir = new File(filePath);
-
-			if (!dir.exists()) {    // 폴더가 없을 경우를 대비
-				dir.mkdirs();
-			}
+			String filePath = "/Users/USER/OneDrive/KHSemiProject/SemiProject/src/main/webapp/images"; // 데이터가 저장될 서버의 경로
+			
 			int maxSize = 1024 * 1024 * 10;
 
 			try {
@@ -212,7 +207,7 @@ public class AdminController extends HttpServlet {
 				String productName = multi.getParameter("productName");
 				int productPrice = Integer.parseInt(multi.getParameter("productPrice"));  
 				String productContent = multi.getParameter("productContent");
-				String ori_name = multi.getFilesystemName("productImg");
+				String ori_name = filePath +File.separator+ multi.getFilesystemName("productImg");
 				
 				ProductDAO dao = new ProductDAO();
 				try {

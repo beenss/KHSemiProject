@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
@@ -167,7 +168,7 @@ body {
 								<li class="nav-item"><a class="nav-link"
 									style="color: rgb(0, 0, 0);" href="/login/login.jsp">로그인</a></li>
 								<li class="nav-item"><a class="nav-link"
-									style="color: rgb(117, 160, 36); font-weight: bold;" href="/pet">구독하기</a>
+									style="color: rgb(117, 160, 36); font-weight: bold;" href="/pet.pet">구독하기</a>
 								</li>
 							</ul>
 						</div>
@@ -188,28 +189,39 @@ body {
 	</div>
 
 	<ul class="list-group">
-		<li class="list-group-item">배송상태 = ${detailDTO.deliveryStatus}</li>
-		<li class="list-group-item">주문상품코드 = ${detailDTO.productCode}</li>
-		<li class="list-group-item">주문자명 = ${detailDTO.orderName}</li>
+		<li class="list-group-item">배송상태 : ${detailDTO.deliveryStatus}</li>
+		<li class="list-group-item">주문상품코드 : ${detailDTO.productCode}</li>
+		<li class="list-group-item">주문자명 : ${detailDTO.orderName}</li>
 
-		<li class="list-group-item">배송지주소 =
+		<li class="list-group-item">배송지주소 :
 			${detailDTO.orderPost}-${detailDTO.orderRoadAddress}-${detailDTO.orderDetailAddress}
 		</li>
-		<li class="list-group-item">결제금액 = ${detailDTO.payAmount} 원</li>
-		<li class="list-group-item">구독기간 = ${detailDTO.subscribeTerm} 개월
+		<li class="list-group-item">결제금액 : ${detailDTO.payAmount} 원</li>
+		<li class="list-group-item">구독기간 : ${detailDTO.subscribeTerm} 개월
 		</li>
-		<li class="list-group-item">배송메시지 = ${detailDTO.postMsg}</li>
-		<li class="list-group-item">주문메시지 = ${detailDTO.orderMsg}</li>
+		<li class="list-group-item">배송메시지 : ${detailDTO.postMsg}</li>
+		<li class="list-group-item">주문메시지 : ${detailDTO.orderMsg}</li>
 	</ul>
 	<br> <br>
 	<div class="btnBox">
-		<button type="button" href="/home">홈페이지로 이동</button>
-		<button type="button" href="/review.bo?currentPage=1">리뷰페이지로
+		<button type="button" href="/home" id='homeBtn'>홈페이지로 이동</button>
+		<button type="button" href="/review.bo?currentPage=1" id='reviewBtn'>리뷰페이지로
 			이동</button>
-		<button id="myPage" type="button" href="/mypage.my">마이페이지로 이동
+		<button id="myPage" type="button">마이페이지로 이동
 		</button>
 	</div>
-
+	
+	<script>
+		document.getElementById('homeBtn').addEventListener('click', () => {
+			location.href = "/home"
+		})
+		document.getElementById('reviewBtn').addEventListener('click', () => {
+			location.href = "/review.bo?currentPage=1"
+		})
+		document.getElementById('myPage').addEventListener('click', () => {
+			location.href = "/mypage.my"
+		})
+	</script>
 
 
 

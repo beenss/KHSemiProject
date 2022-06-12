@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -127,9 +128,8 @@
                  }
           
              </style>
-  </head>
+</head>
 
-<body>
 <body>
 <div class="row justify-content-around header" style="text-align: center;">
             <div class="col-lg-2" style="text-align: center;">
@@ -177,16 +177,16 @@
 								<li class="nav-item"><a class="nav-link"
 									style="color: rgb(0, 0, 0);" href="/login/login.jsp">로그인</a></li>
 								<li class="nav-item"><a class="nav-link"
-									style="color: rgb(117, 160, 36); font-weight: bold;" href="/pet">구독하기</a>
+									style="color: rgb(117, 160, 36); font-weight: bold;" href="/pet.pet">구독하기</a>
 								</li>
 							</ul>
 						</div>
 		            </c:otherwise>
 		           	</c:choose> 
                     </div>
+                    
+            	</nav>
             </div>
-            </nav>
-        </div>
         </div>
 
 
@@ -212,11 +212,11 @@
 	                </div>
 	            </div>
         	</div>
+	        <div class="buttonBox d-grid gap-2 d-flex justify-content-center">
+	            <button type="button" id="btn-save">저장</button>
+	            <button type="button" id="btn-cancel">취소</button>
+	        </div>
         </form>
-        <div class="buttonBox d-grid gap-2 d-flex justify-content-center">
-            <button type="button" id="btn-save">저장</button>
-            <button type="button" id="btn-cancel">취소</button>
-        </div>
         <script>
         	$("#btn-save").on("click",function(){
         		if($("#inquiry-title").val()===""){
@@ -234,7 +234,7 @@
         	})
         	$("#btn-cancel").on("click",function(){
         		location.href="/inquiry.iq?currentPage=1"
-        	}
+        	})
         </script>
         <!-- 여기부터 풋터 -->
         <div class="row justify-content-center footer">

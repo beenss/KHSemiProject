@@ -168,7 +168,7 @@ body {
 								<li class="nav-item"><a class="nav-link"
 									style="color: rgb(0, 0, 0);" href="/login/login.jsp">로그인</a></li>
 								<li class="nav-item"><a class="nav-link"
-									style="color: rgb(117, 160, 36); font-weight: bold;" href="/pet">구독하기</a>
+									style="color: rgb(117, 160, 36); font-weight: bold;" href="/pet.pet">구독하기</a>
 								</li>
 							</ul>
 						</div>
@@ -185,8 +185,6 @@ body {
 	<div class="row content text-center align-items-center">
 		<img src="/images/order_img.png" class="d-block" id="orderimg">
 	</div>
-	<form action="/petInput.pet" method="post" id="pet-input-form">
-
 		<div class="col-12">
 			<div class="row orderindex">
 				<table id="listTable">
@@ -222,10 +220,15 @@ body {
 				</table>
 			</div>
 			<div class="row content text-center align-items-center">
-				<button type="button" id="btn-mypage" href="/mypage.my">
+				<button type="button" id="btn-mypage">
 					마이페이지로이동</button>
 			</div>
 		</div>
+		<script>
+			document.getElementById('btn-mypage').addEventListener('click', () =>{
+				location.href = '/mypage.my';
+			})
+		</script>
 		<!-- 여기부터 풋터 -->
 		<div class="row justify-content-center footer">
 			<div class="col-lg-10 col-12">
