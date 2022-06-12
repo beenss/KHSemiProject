@@ -177,57 +177,41 @@
             </div>
             </div>
         <script>
-            $("#btnList").on("click",function(){ // 목록 버튼을 눌렀을 때 상품전체 목록으로 이동
-            	location.href="/productList.admin";
-            })
-            
-            $("#btnInsert").on("click", function(){ // 등록 버튼을 눌렀을 때 
-            	if($("#productCode").val()==""){
-            		alert("상품코드를 입력해주세요"); 
-            		$("#productCode").focus();
-            		return;
-            	}else if($("#productName").val()==""){
-            		alert("상품명을 입력해주세요"); 
-            		$("#productName").focus();
-            		return;
-            	}else if($("#productPrice").val()==""){
-            		alert("상품가격을 입력해주세요"); 
-            		$("#productPrice").focus();
-            		return;
-            	}else if($("#productContent").val()==""){
-            		alert("상품내용을 입력해주세요"); 
-            		$("#productContent").focus();
-            		return;
-            	}else if($("#productImg").val()==""){
-            		alert("상품이미지를 첨부해주세요"); 
-            		$("#productImg").focus();
-            		return;
-            	}
-          	
-            	/* $.ajax({
-            		url:"/productInsertProc.admin"
-            		,type:"post"
-            		,data:$("#product-insert").serialize();
-            		,dataType:"text"
-            		,success : function(data){
-            			console.log(data);
-            		}
-            		,error : function(e){
-            			console.log(e);
-            		}
-            	}) */
-    
-            	$("#product-insert").submit();   	
-            })
-           /*  if("${productInsert}"!==0){
-            	alert("상품등록이 완료되었습니다");
-            	location.href="/productList.admin";
-            }else if("${productInsert}"===0){
-            	alert("상품등록에 실패하였습니다. 정확한 값을 입력하세요");
-            	location.href="/productInsert.admin";
-            } */
-            
-            
+	        $("#btnList").on("click",function(){ // 목록 버튼을 눌렀을 때 상품전체 목록으로 이동
+	        	location.href="/productList.admin";
+	        })
+	        
+	        $("#btnInsert").on("click", function(){ // 등록 버튼을 눌렀을 때 
+	        	let regexCode = /^[1-9]\d{0,20}$/;
+	        	let regexName = /^(?!\s*$)[a-zA-Zㄱ-힣0-9 ]{1,25}$/;
+	        	let regexPrice = /^[1-9]\d{0,20}$/;
+	        	let regexContent = /^(?!\s*$)[a-zA-Zㄱ-힣0-9 ,\W]{1,500}$/;
+        	
+        	
+        	if($("#productCode").val()=="" || !regexCode.test($("#productCode").val()) ){
+        		alert("올바른 상품코드를 입력해주세요"); 
+        		$("#productCode").focus();
+        		return;
+        	}else if($("#productName").val()=="" || !regexName.test($("#productName").val())){
+        		alert("올바른 상품명을 입력해주세요"); 
+        		$("#productName").focus();
+        		return;
+        	}else if($("#productPrice").val()=="" || !regexPrice.test($("#productPrice").val())){
+        		alert("올바른 상품가격을 입력해주세요"); 
+        		$("#productPrice").focus();
+        		return;
+        	}else if($("#productContent").val()=="" || !regexContent.test($("#productContent").val())){
+        		alert("올바른 상품내용을 입력해주세요"); 
+        		$("#productContent").focus();
+        		return;
+        	}else if($("#productImg").val()==""){
+        		alert("상품이미지를 첨부해주세요"); 
+        		$("#productImg").focus();
+        		return;
+        	}
+
+        	$("#product-insert").submit();   	
+        })
         </script>
 </body>
 </html>

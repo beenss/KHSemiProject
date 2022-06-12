@@ -163,10 +163,10 @@
                             <a class="nav-link" style="color: rgb(255, 255, 255);" href="#">리뷰</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" style="color: rgb(255, 255, 255);" href="#">로그인</a>
+                            <a class="nav-link" style="color: rgb(255, 255, 255);" href="/">로그인</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" style="color: rgb(218, 255, 193); font-weight: bold;" href="#">구독하기</a>
+                            <a class="nav-link" style="color: rgb(218, 255, 193); font-weight: bold;" href="/pet.pet">구독하기</a>
 
                         </li>
                     </ul>
