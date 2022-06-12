@@ -34,6 +34,7 @@ public class MemberDAO {
 			pstmt.setString(2, dto.getPassword());
 			pstmt.setString(3, dto.getName());
 			pstmt.setString(4, dto.getPost());
+			pstmt.setString(5, dto.getRoadAddress());
 			pstmt.setString(6, dto.getDetailAddress());
 			pstmt.setString(7, dto.getPhone());
 			
