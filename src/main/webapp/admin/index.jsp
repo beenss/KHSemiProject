@@ -40,8 +40,7 @@ nav {
 	<div class="wrapper">
 		<div class="row header">
 			<div class="col">
-				<nav
-					class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark justify-content-center">
+				<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark justify-content-center">
 					<div class="container">
 						<a class="navbar-brand" href="#"></a>
 						<button class="navbar-toggler" type="button"
@@ -53,7 +52,7 @@ nav {
 						<div class="collapse navbar-collapse" id="navbarNavDropdown">
 							<ul class="navbar-nav text-center">
 								<li class="nav-item"><a class="nav-link active"
-									aria-current="page" href="#">Home</a></li>
+									aria-current="page" href="/admin/index.jsp">Home</a></li>
 								<li class="nav-item dropdown"><a
 									class="nav-link dropdown-toggle" href="#"
 									id="navbarDropdownMenuLink" role="button"
@@ -66,26 +65,17 @@ nav {
 								<li class="nav-item dropdown"><a
 									class="nav-link dropdown-toggle" href="#"
 									id="navbarDropdownMenuLink" role="button"
-									data-bs-toggle="dropdown" aria-expanded="false"> 통계 </a>
-									<ul class="dropdown-menu"
-										aria-labelledby="navbarDropdownMenuLink">
-										<li><a class="dropdown-item" href="#">상품별매출/전체매출</a></li>
-										<li><a class="dropdown-item" href="#">재고</a></li>
-									</ul></li>
-								<li class="nav-item dropdown"><a
-									class="nav-link dropdown-toggle" href="#"
-									id="navbarDropdownMenuLink" role="button"
 									data-bs-toggle="dropdown" aria-expanded="false"> 상품 </a>
 									<ul class="dropdown-menu"
 										aria-labelledby="navbarDropdownMenuLink">
-										<li><a class="dropdown-item" href="#">전체 조회</a></li>
-										<li><a class="dropdown-item" href="#">수정/삭제</a></li>
-										<li><a class="dropdown-item" href="#">추가</a></li>
+										<li><a class="dropdown-item" href="/productList.admin">전체 조회</a></li>
+										<li><a class="dropdown-item" href="/productUpdate.admin">수정/삭제</a></li>
+										<li><a class="dropdown-item" href="/productInsert.admin">추가</a></li>
 									</ul></li>
 								<li class="nav-item"><a class="nav-link active"
-									aria-current="page" href="#">주문 조회/상세보기</a></li>
+									aria-current="page" href="/orderList.admin">주문 조회/상세보기</a></li>
 								<li class="nav-item"><a class="nav-link active"
-									aria-current="page" href="#">배송 조회/수정</a></li>
+									aria-current="page" href="/deliverList.admin">배송 조회/수정</a></li>
 								<li class="nav-item dropdown"><a
 									class="nav-link dropdown-toggle" href="#"
 									id="navbarDropdownMenuLink" role="button"
