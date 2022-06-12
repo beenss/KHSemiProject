@@ -203,7 +203,7 @@
         <!-- 바디 -->
         <div class="container class-body">
             <div class="row content text-center align-items-center">
-                <img src="images/petinfo_img.png" class="d-block w-100" id="petinfo">
+                <img src="/images/petinfo_img.png" class="d-block w-100" id="petinfo">
             <form action="/petInput.pet" method="post" id="pet-input-form">
                 <div class="row pet_input">
                     

@@ -223,7 +223,6 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
           </button>
           </div>
         </div>
-
         <!-- 여기부터 풋터 -->
         <div class="row justify-content-center footer">
           <div class="col-lg-10 col-12">
