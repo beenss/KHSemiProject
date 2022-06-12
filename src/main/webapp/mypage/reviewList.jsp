@@ -20,6 +20,7 @@
     <style>
         body {
             box-sizing: border-box;
+            font-family: "GongGothicMedium.ttf"
         }
 
         .header {
@@ -84,6 +85,49 @@
         .buttonBox2>button{
         	display:none;
         }
+        /*  font */
+              @font-face {
+                src: url("/fonts/MinSans-Regular.otf");
+                font-family: "MinSans-Regular.otf";
+            }
+        @font-face {
+                src: url("/fonts/MinSans-Thin.otf");
+                font-family: "MinSans-Thin.otf";
+            }    
+        @font-face {
+                src: url("/fonts/MinSans-Medium.otf");
+                font-family: "MinSans-Medium.otf";
+            }
+            
+            @font-face {
+                src: url("/fonts/MinSans-Theafhh.otf");
+                font-family: "Theafhh_.TTF";
+            }
+             @font-face {
+                src: url("/fonts/MinSans-Light.otf");
+                font-family: "MinSans-Light.otf";
+            }
+          @font-face {
+                src: url("/fonts/MinSans-Bold.otf");
+                font-family: "MinSans-Bold.otf";
+            }
+          @font-face {
+                src: url("/fonts/MinSans-Black.otf");
+                font-family: "MinSans-Black.otf";
+            }  
+             @font-face {
+                src: url("/fonts/GongGothicBold.ttf");
+                font-family: "GongGothicBold.ttf";
+            }  
+            @font-face {
+                src: url("/fonts/GongGothicLight.ttf");
+                font-family: "GongGothicLight.ttf";
+            } 
+            @font-face {
+                src: url("/fonts/GongGothicMedium.ttf");
+                font-family: "GongGothicMedium.ttf";
+            }   
+        
     </style>
 </head>
 <body>

@@ -24,91 +24,58 @@
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <title>레이아웃</title>
+
 <style>
 body {
 	box-sizing: border-box;
+	margin-top: 60px;
 }
-
-.header {
-	padding: 20px;
-	position: relative;
-}
-
-.footer>* {
-	padding: 20px;
-	position: relative;
-}
-
-.ft-ul {
-	list-style: none;
-	text-align: center;
-	height: 100%;
-	padding-top: 28px;
-	color: black;
-	font-size: 12px;
-	z-index: 1;
-}
-
-.ft-images {
-	text-align: center;
-}
+@font-face {
+                src: url("/fonts/GongGothicBold.ttf");
+                font-family: "GongGothicBold.ttf";
+            }
+#abcde {
+       			font-family: "GongGothicBold.ttf";
+       }
+@font-face {
+                src: url("/fonts/GongGothicMedium.ttf");
+                font-family: "GongGothicMedium.ttf";
+            }
+#searchIdBtn {
+       			font-family: "GongGothicMedium.ttf";
+       }
+#loginButton {
+       			font-family: "GongGothicMedium.ttf";
+       }
+@font-face {
+                src: url("/fonts/GongGothicLight.ttf");
+                font-family: "GongGothicLight.ttf";
+            }
+#abab {
+       			font-family: "GongGothicLight.ttf";
+       }
+#cdcd {
+       			font-family: "GongGothicLight.ttf";
+       }
 </style>
 </head>
 <body>
 
 
 
-	<div class="wrapper">
-		<div class="row justify-content-center header">
-			<div class="col-lg-4 col-12">
-				<img src="images/project_logo.PNG" class="d-block w-100"
-					id="main-logo">
-			</div>
-			<div class="col-lg-8 col-12">
-				<nav class="navbar navbar-expand-lg navbar-light">
-					<div class="container-fluid">
-						<a class="navbar-brand" href="#">Boribob</a>
-						<button class="navbar-toggler" type="button"
-							data-bs-toggle="collapse"
-							data-bs-target="#navbarSupportedContent"
-							aria-controls="navbarSupportedContent" aria-expanded="false"
-							aria-label="Toggle navigation">
-							<span class="navbar-toggler-icon"></span>
-						</button>
-						<div class="collapse navbar-collapse" id="navbarSupportedContent">
-							<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-								<li class="nav-item"><a class="nav-link" href="#">제품 보기</a>
-								</li>
-								<li class="nav-item"><a class="nav-link" href="#">고객센터</a>
-								</li>
-								<li class="nav-item"><a class="nav-link" href="#">회원 가입</a>
-								</li>
-								<li class="nav-item"><a class="nav-link" href="#">리뷰</a></li>
-								<li class="nav-item"><a class="nav-link" href="#">로그인</a></li>
-								<li class="nav-item"><a class="nav-link" href="#">구독하기</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</nav>
-			</div>
-		</div>
-	</div>
-	<!-- 여기까지 헤더 -->
-
 	<!-- 여기에 바디 코드 짜주셈 -->
 
-	<div class="container" style="border: 1px solid lightgrey">
+	<div class="container">
 		<form id="searchIdForm" action="/searchId.mem" method="post">
 			<div class="row">
 				<div class="col-12 mb-5 d-flex justify-content-center">
-					<h2>이메일 찾기</h2>     
+					<h2 id="abcde">이메일 찾기</h2>     
 				</div>                
 			</div>
-            <div>*이메일은 가입시 입력하신 휴대폰번호를 통해 찾을 수 있습니다.</div>
+            <div id="abab">*이메일은 가입시 입력하신 휴대폰번호를 통해 찾을 수 있습니다.</div>
 
 			<div class="row p-2">
-				<label for="phone" class="form-label">휴대폰번호</label>
+				<label for="phone" class="form-label" id="cdcd">휴대폰번호</label>
 					<div class="col-3 mb-2">
 						<select class="form-select" id="phone1">
 							<option value="010" selected>010</option>
@@ -132,17 +99,16 @@ body {
 						확인</button>
 				</div>
 			</div>
-		
+            <div class="row justify-content-center">
+                <div class="col-3 d-flex justify-content-center">
+                    <button type="button" id="loginButton" class="btn btn-primary">로그인</button>
+            </div>
+            </div>
 		</form>
 		
 		
 
 	</div>
-
-	<div class="row justify-content-center">
-		<div class="col-4 d-flex justify-content-end">
-			<button type="button" id="loginButton" class="btn btn-secondary">로그인</button>
-		</div>
 		
 		
 		
@@ -174,7 +140,7 @@ body {
 	            		  alert(data.id);
 	            			  
 	            		  }else{
-	            			  alert("틀렸어");
+	            			  alert("등록된 번호가 없습니다.");
 	            		  }
             		  
 	            	  }
@@ -187,35 +153,7 @@ body {
 
 		</script>
 		
-		<!-- 여기부터 풋터 -->
-		<div class="row justify-content-center footer">
-			<div class="col-lg-10 col-12">
-				<ul class="ft-ul">
-					<li>BoriBob Inc. 사랑시 고백구 행복동</li>
-					<li>대표 : 보리밥형제들 사업자등록번호 : 780-86-01094</li>
-					<li>대표번호 : +82)-665-3430 팩스번호 : +82)-888-3430 홈페이지 :
-						petvenience.store.com</li>
-					<li>CopyrightⓒBoriBob Inc. All Rights Reserved.</li>
-				</ul>
-			</div>
-			<div class="col-lg-2 col-12">
-				<ul class="ft-images">
-					<img src="images/icons8-facebook-new-48.png"
-						style="border-color: lightblue;">
-					<img src="images/icons8-인스-타-그램-48.png"
-						style="border-color: lightblue;">
-					<img src="images/icons8-유튜브-재생-48.png"
-						style="border-color: lightblue;">
-
-				</ul>
-				<ul class="ft-ul">
-					<li><strong>고객센터</strong></li>
-					<li style="height: 8px;"></li>
-					<li>오전 10시부터 오후 6시까지</li>
-					<li>토요일, 일요일, 공휴일 휴무</li>
-				</ul>
-			</div>
-		</div>
+		
 
 	</div>
 </body>

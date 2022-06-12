@@ -26,6 +26,7 @@
 <style>
 .container {
 	margin-top: 20px;
+	font-family: "GongGothicMedium.ttf";
 }
 
 .line {
@@ -46,25 +47,126 @@
 .wrap {
 	margin-bottom: 50px;
 }
+ .mypage-container {
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+
+        #id {
+            color: gray;
+            margin-top: 25px;
+            margin-bottom: 20px;
+
+        }
+
+        .sidebar {
+            margin-top: 30px;
+        }
+
+        .sidebar>h2:first-child {
+            font-weight: bolder;
+        }
+
+        li {
+            color: black;
+        }
+
+        .content-box h2 {
+            font-weight: bolder;
+        }
+
+        .row-product-body img {
+            width: 25rem;
+            height: 25rem;
+        }
+
+        .tr-th {
+            text-align: center;
+        }
+
+        .row-product-body table>thead>tr:first-child>th {
+            text-align: center;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .col-table {
+            line-height: 60px;
+        }
+
+        .col-img {
+            text-align: center;
+        }
+
+        .content-box p:first-child {
+            margin-left: 35px;
+        }
+        /*  font */
+              @font-face {
+                src: url("/fonts/MinSans-Regular.otf");
+                font-family: "MinSans-Regular.otf";
+            }
+        @font-face {
+                src: url("/fonts/MinSans-Thin.otf");
+                font-family: "MinSans-Thin.otf";
+            }    
+        @font-face {
+                src: url("/fonts/MinSans-Medium.otf");
+                font-family: "MinSans-Medium.otf";
+            }
+            
+            @font-face {
+                src: url("/fonts/MinSans-Theafhh.otf");
+                font-family: "Theafhh_.TTF";
+            }
+             @font-face {
+                src: url("/fonts/MinSans-Light.otf");
+                font-family: "MinSans-Light.otf";
+            }
+          @font-face {
+                src: url("/fonts/MinSans-Bold.otf");
+                font-family: "MinSans-Bold.otf";
+            }
+          @font-face {
+                src: url("/fonts/MinSans-Black.otf");
+                font-family: "MinSans-Black.otf";
+            }  
+             @font-face {
+                src: url("/fonts/GongGothicBold.ttf");
+                font-family: "GongGothicBold.ttf";
+            }  
+            @font-face {
+                src: url("/fonts/GongGothicLight.ttf");
+                font-family: "GongGothicLight.ttf";
+            } 
+            @font-face {
+                src: url("/fonts/GongGothicMedium.ttf");
+                font-family: "GongGothicMedium.ttf";
+            }   
+
 </style>
 <body>
 	<!-- 마이페이지  -->
-	<div class="container">
-		<div class="row">
-			<!-- 사이드 내비바 -->
-			<div class="col-sm-2">
-				<span>dnltnzla1@naver.com</span>
-				<ul class="nav flex-column">
-					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="/mypage.my">구독 내역 조회</a></li>
-					<li class="nav-item"><a class="nav-link" aria-current="page" href="#">주문 내역 조회</a></li>
-					<li class="nav-item"><a class="nav-link" href="/inquiryList.iq">내가 쓴 문의</a></li>
-					<li class="nav-item"><a class="nav-link" href="/reviewList.bo">내가 쓴 후기</a>
-					</li>
-					<li class="nav-item"><a class="nav-link" href="/update.my">회원정보 수정</a></li>
-					<li class="nav-item"><a class="nav-link" href="/withdrawal.my">회원탈퇴</a></li>
-				</ul>
-			</div>
+    <div class="container mypage-container">
+        <div class="row">
+            <!-- 사이드 내비바 -->
+            <div class="col-sm-2 sidebar">
+                <h2><span>${dto.name}</span><span>님</span></h2>
+                <h3><span>안녕하세요.</span></h3>
+                <div id="id">
+                    <span>${dto.id}</span>
+                </div>
+                <ul class="nav flex-column">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="/mypage.my">구독 내역 조회</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="/orderList.my">주문 내역 조회</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/inquiryList.iq">내가 쓴 문의</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/reviewList.bo">내가 쓴 후기</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="/update.my">회원정보 수정</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/withdrawal.my">회원탈퇴</a></li>
+                </ul>
+            </div>
 			<!-- content body -->
 			<div class="col-sm-10 wrap">
 				<p>

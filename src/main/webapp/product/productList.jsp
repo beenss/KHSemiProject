@@ -31,9 +31,6 @@
 	height: 200px;
 }
 
-body {
-	background-color: rgb(255, 252, 221);
-}
 /*메뉴 폰트 스타일*/
 *.nav-link {
 	color: rgb(44, 44, 44);
@@ -117,6 +114,84 @@ img {
 .ft-ul2 li {
 	height: 17px;
 }
+/* body 영역 */
+.container{
+font-family: "GongGothicMedium.ttf";
+}		
+
+.row-product-body{
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        .row-product-body{
+          justify-content : around;
+        }
+        h2:first-child{
+        margin :35px;
+        margin-top : 50px;
+        }
+        .btnArea{
+        border-bottom : solid 1.5px black;
+
+        }
+        .btnArea button{
+          margin-left: 5px;
+	        width: 150px;
+          background-color: white;
+          color: black;
+        }
+        .card{
+          margin-bottom: 10px;
+        }
+        .card img:hover{
+        box-shadow: 2px 2px 2px 2px rgb(224, 221, 221);
+        }
+        .card-body{
+          text-align: center;
+        }
+        /* 폰트 */
+        @font-face {
+                src: url("/fonts/MinSans-Regular.otf");
+                font-family: "MinSans-Regular.otf";
+            }
+        @font-face {
+                src: url("/fonts/MinSans-Thin.otf");
+                font-family: "MinSans-Thin.otf";
+            }    
+        @font-face {
+                src: url("/fonts/MinSans-Medium.otf");
+                font-family: "MinSans-Medium.otf";
+            }
+            
+            @font-face {
+                src: url("/fonts/MinSans-Theafhh.otf");
+                font-family: "Theafhh_.TTF";
+            }
+             @font-face {
+                src: url("/fonts/MinSans-Light.otf");
+                font-family: "MinSans-Light.otf";
+            }
+          @font-face {
+                src: url("/fonts/MinSans-Bold.otf");
+                font-family: "MinSans-Bold.otf";
+            }
+          @font-face {
+                src: url("/fonts/MinSans-Black.otf");
+                font-family: "MinSans-Black.otf";
+            }  
+             @font-face {
+                src: url("/fonts/GongGothicBold.ttf");
+                font-family: "GongGothicBold.ttf";
+            }  
+            @font-face {
+                src: url("/fonts/GongGothicLight.ttf");
+                font-family: "GongGothicLight.ttf";
+            } 
+            @font-face {
+                src: url("/fonts/GongGothicMedium.ttf");
+                font-family: "GongGothicMedium.ttf";
+            }   
+            
 </style>
 </head>
 <body>
@@ -126,14 +201,46 @@ img {
 				<img src="images/project_logo.PNG" class="d-block w-100"
 					id="main-logo">
 			</div>
-			<div class="col" id="nav-item">
-				<nav class="nav">
-					<a class="nav-link" href="/product.pro">제품 보기</a> <a class="nav-link" href="/review.bo?currentPage=1">리뷰</a>
-					<a class="nav-link" href="/inquiry.iq?currentPage=1">고객센터</a> <a class="nav-link" href="/login/login.jsp">로그인</a>
-					<a class="nav-link" href="/member/member.jsp">회원가입</a> <a class="nav-link"
-						style="color: rgb(255, 94, 0);" href="/pet.pet">구독하기</a>
-				</nav>
-			</div>
+			<c:choose>
+					<c:when test="${not empty loginSession}">
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/product.pro">제품 보기</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/inquiry.iq?currentPage=1">고객센터</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/mypage.my">마이페이지</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/review.bo?currentPage=1">리뷰</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/logout.mem">로그아웃</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(117, 160, 36); font-weight: bold;" href="/pet.pet">구독하기</a>
+								</li>
+							</ul>
+						</div>
+		            </c:when>
+		            <c:otherwise>
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/product.pro">제품 보기</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/inquiry.iq?currentPage=1">고객센터</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/member/member.jsp">회원 가입</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/review.bo?currentPage=1">리뷰</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/login/login.jsp">로그인</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(117, 160, 36); font-weight: bold;" href="/pet">구독하기</a>
+								</li>
+							</ul>
+						</div>
+		            </c:otherwise>
+		           	</c:choose> 
 		</div>
 		</div>
 	</header>
@@ -141,16 +248,14 @@ img {
 	<!--헤더와 메인의 구분선-->
 	<div class="container product-header">
 		<div class="row">
-			<div class="col-2">
-				<strong>전체 상품 조회</strong>
+			<div class="col-12">
+				<h2>BoriBob Product</h2>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-2">
-				<button type="button" class="btn btnDog btn-warning" value="dog">강아지</button>
-			</div>
-			<div class="col-2">
-				<button type="button" class="btn btnCat btn-info" value="cat">고양이</button>
+		<div class="row btnArea">
+			<div class="col-12">
+				<button type="button" class="btn btnDog btn-dark" value="dog">강아지</button>
+				<button type="button" class="btn btnCat btn-dark" value="cat">고양이</button>
 			</div>
 		</div>
 	</div>
@@ -204,7 +309,7 @@ img {
 					</ul>
 				</div>
 			</div>
-		</div>
+
 			<script>
 		// 강아지버튼을 눌렀을 때 강아지상품만 비동기로 띄워주기 
 			$(".btnDog").on("click",function(){	

@@ -18,7 +18,7 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
-<title>레이아웃</title>
+<title>보리밥</title>
 <style>
 body {
 	box-sizing: border-box;
@@ -274,7 +274,7 @@ body {
 						</h3>
 						<p class="card-text">
 							제가 살면서 먹어본 사료 중에서<br> 제일 맛있었어요. 저는 특히 닭고기를 좋아하는데 고소하면서도 잡냄새가
-							나지 않아서 먹는 내내 감탄만 했습니다 <a href="#" class="btn btn-primary">리뷰
+							나지 않아서 먹는 내내 감탄만 했습니다 <a href="/review.bo?currentPage=1" class="btn btn-primary">리뷰
 								더보기</a>
 				</div>
 			</div>
@@ -286,7 +286,7 @@ body {
 				<h5 class="card-title">이보리 님</h5>
 				<p class="card-text">저 정말 맛있는 것만 좋아하거든요? 제 친구들 사이에서도 맛있는 것만 좋아하는
 					미식냥으로 소문났는데 여기는 진짜 맛집이네요. 반해서 6개월 구독 한번에 가보렵니다</p>
-				<a href="#" class="btn btn-primary">리뷰 더보기</a>
+				<a href="/review.bo?currentPage=1" class="btn btn-primary">리뷰 더보기</a>
 			</div>
 		</div>
 	</div>
@@ -312,5 +312,10 @@ body {
 		</ul>
 	</div>
 </div>
+<script>
+	document.getElementById('subscribebtn').addEventListener('click', () => {
+		location.href = '/pet.pet';
+	})
+</script>
 </body>
 </html>

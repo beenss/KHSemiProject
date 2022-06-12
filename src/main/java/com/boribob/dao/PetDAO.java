@@ -72,6 +72,7 @@ public class PetDAO {
 				String petKind = rs.getString("pet_kind");
 				String petType = rs.getString("pet_type");
 				
+				dto.setId(id);
 				dto.setPetName(petName);
 				dto.setPetAge(petAge);
 				dto.setPetAllergy(petAllergy);
