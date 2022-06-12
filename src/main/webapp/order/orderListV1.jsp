@@ -53,7 +53,6 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
             position: relative;
         }
 
-
         .topmenu {
             font-family: "GongGothicLight.ttf";
 
