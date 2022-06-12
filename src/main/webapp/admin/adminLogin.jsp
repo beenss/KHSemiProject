@@ -60,17 +60,8 @@ nav {
 									data-bs-toggle="dropdown" aria-expanded="false"> 회원 </a>
 									<ul class="dropdown-menu"
 										aria-labelledby="navbarDropdownMenuLink">
-										<li><a class="dropdown-item" href="/member.admin">조회</a></li>
+										<li><a class="dropdown-item" href="#">조회</a></li>
 										<li><a class="dropdown-item" href="#">블랙리스트</a></li>
-									</ul></li>
-								<li class="nav-item dropdown"><a
-									class="nav-link dropdown-toggle" href="#"
-									id="navbarDropdownMenuLink" role="button"
-									data-bs-toggle="dropdown" aria-expanded="false"> 통계 </a>
-									<ul class="dropdown-menu"
-										aria-labelledby="navbarDropdownMenuLink">
-										<li><a class="dropdown-item" href="#">상품별매출/전체매출</a></li>
-										<li><a class="dropdown-item" href="#">재고</a></li>
 									</ul></li>
 								<li class="nav-item dropdown"><a
 									class="nav-link dropdown-toggle" href="#"
@@ -93,14 +84,14 @@ nav {
 									<ul class="dropdown-menu"
 										aria-labelledby="navbarDropdownMenuLink">
 										<li><a class="dropdown-item"
-											href="/inquiry.admin?currentPage=1">조회/삭제</a></li>
+											href="#">조회/삭제</a></li>
 										<li><a class="dropdown-item"
-											href="/inquiryAnswer.admin?currentPage=1">답변 추가</a></li>
+											href="#">답변 추가</a></li>
 									</ul></li>
 								<li class="nav-item"><a class="nav-link active"
 									aria-current="page" href="#">리뷰 조회/삭제</a></li>
 								<li class="nav-item"><a class="nav-link active"
-									aria-current="page" href="#">logout</a></li>
+									aria-current="page" href="#">login</a></li>
 							</ul>
 						</div>
 					</div>
@@ -130,11 +121,16 @@ nav {
 			$("#login-btn").on("click",function(){
 				if($("#id").val()==="" || $("#pw").val() === ""){
 					alert("아이디, 비밀번호를 입력하세요");
+					return;
 				}
 				$("#loginForm").submit();
-				
 			})
 		</script>
+			<c:if test="${rs eq false}">
+				<script>
+					alert("올바른 아이디 혹은 패스워드를 입력해주세요")
+				</script>
+			</c:if>
 	</div>
 </body>
 </html>
