@@ -174,46 +174,66 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     </head>
 
 </lang>
-<div class="row justify-content-around header" style="text-align: center;">
-    <div class="col-lg-3" style="text-align: center;">
-        <img src="/images/project_logo.png" class="d-block w-100" id="main-logo">
-    </div>
-    <div class="col-lg-8 col-12 topmenu">
-        <nav class="navbar navbar-expand-lg navbar-light" style="float: right;">
-            <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation" style="border: none;">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" style="color: rgb(255, 255, 255);" href="#">제품 보기</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" style="color: rgb(255, 255, 255);" href="#">고객센터</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" style="color: rgb(255, 255, 255);" href="#">회원 가입</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" style="color: rgb(255, 255, 255);" href="#">리뷰</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" style="color: rgb(255, 255, 255);" href="#">로그인</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" style="color: rgb(218, 255, 193); font-weight: bold;" href="#">구독하기</a>
 
-                        </li>
-                    </ul>
-                </div>
+<body>
+    <body>
+        <div class="row justify-content-around header" style="text-align: center;">
+            <div class="col-lg-2" style="text-align: center;">
+                <img src="/images/project_logo.png" class="d-block w-100" id="main-logo">
             </div>
-        </nav>
-    </div>
-</div>
-</div>
+            <div class="col-lg-8 col-12 topmenu">
+                <nav class="navbar navbar-expand-lg navbar-light" style="float: right;">
+                    <div class="container-fluid">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation" style="border: none;">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+			            <c:choose>
+					<c:when test="${not empty loginSession}">
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/product.pro">제품 보기</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/inquiry.iq?currentPage=1">고객센터</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/mypage.my">마이페이지</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/review.bo?currentPage=1">리뷰</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/logout.mem">로그아웃</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(117, 160, 36); font-weight: bold;" href="/pet.pet">구독하기</a>
+								</li>
+							</ul>
+						</div>
+		            </c:when>
+		            <c:otherwise>
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/product.pro">제품 보기</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/inquiry.iq?currentPage=1">고객센터</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/member/member.jsp">회원 가입</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/review.bo?currentPage=1">리뷰</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/login/login.jsp">로그인</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(117, 160, 36); font-weight: bold;" href="/pet">구독하기</a>
+								</li>
+							</ul>
+						</div>
+		            </c:otherwise>
+		           	</c:choose> 
+                    </div>
+            </div>
+            </nav>
+        </div>
+        </div>
 <!-- 여기까지 헤더 -->
 
 <!-- 여기에 바디 코드 짜주셈 -->
