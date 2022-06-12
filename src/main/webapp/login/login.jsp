@@ -24,22 +24,22 @@
 <title>Home</title>
 <style>
 @font-face {
-	src: url("fonts/MinSans-Regular.otf");
+	src: url("/fonts/MinSans-Regular.otf");
 	font-family: "MinSans-Regular.otf";
 }
 
 @font-face {
-	src: url("fonts/MinSans-bold.otf");
+	src: url("/fonts/MinSans-bold.otf");
 	font-family: "MinSans-bold.otf";
 }
 
 @font-face {
 	font-family: "Theafhh_.TTF";
-	src: url("fonts/Theafhh_.TTF");
+	src: url("/fonts/Theafhh_.TTF");
 }
 
 @font-face {
-	src: url("fonts/GongGothicLight.ttf");
+	src: url("/fonts/GongGothicLight.ttf");
 	font-family: "GongGothicLight.ttf";
 }
 
@@ -55,6 +55,7 @@ body {
 
 .topmenu {
 	font-family: "GongGothicLight.ttf";
+	font-size: 20px;
 }
 
 .menu {
@@ -100,7 +101,7 @@ body {
 
 .login_img {
 	width: 650px;
-	height: 300px;
+	height: 420px;
 	margin-left: 30px;
 }
 
@@ -175,23 +176,19 @@ body {
 <body>
 <body>
 </head>
-<div class="row justify-content-around header"
-	style="text-align: center;">
-	<div class="col-lg-2" style="text-align: center;">
-		<img src="images/project_logo.PNG" class="d-block w-100"
-			id="main-logo">
-	</div>
-	<div class="col-lg-8 col-12 topmenu">
-		<nav class="navbar navbar-expand-lg navbar-light"
-			style="float: right;">
-			<div class="container-fluid">
-				<button class="navbar-toggler" type="button"
-					data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-					aria-controls="navbarSupportedContent" aria-expanded="false"
-					aria-label="Toggle navigation" style="border: none;">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<c:choose>
+<div class="row justify-content-around header" style="text-align: center;">
+            <div class="col-lg-2" style="text-align: center;">
+                <img src="/images/project_logo.png" class="d-block w-100" id="main-logo">
+            </div>
+            <div class="col-lg-8 col-12 topmenu">
+                <nav class="navbar navbar-expand-lg navbar-light" style="float: right;">
+                    <div class="container-fluid">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation" style="border: none;">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+			            <c:choose>
 					<c:when test="${not empty loginSession}">
 						<div class="collapse navbar-collapse" id="navbarSupportedContent">
 							<ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -231,11 +228,11 @@ body {
 						</div>
 		            </c:otherwise>
 		           	</c:choose> 
-			</div>
-	</div>
-	</nav>
-</div>
-</div>
+                    </div>
+            </div>
+            </nav>
+        </div>
+        </div>
 
 
 <c:choose>
@@ -254,7 +251,7 @@ body {
 			<script>
 				alert("로그인 실패");
 			</script>
-		</c:if> -->
+		</c:if>
         <form id="loginForm" action="/login.mem" method="post">
 			<div class="row">
 				<div class="row content text-center align-items-center">
@@ -414,7 +411,6 @@ body {
 
 </div>
 
-</div>
 </body>
 
 </html>

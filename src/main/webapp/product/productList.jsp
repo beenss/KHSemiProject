@@ -25,12 +25,13 @@
 <title>제품보기_초안</title>
 <style>
 /*메인 로고 스타일*/
-#main-logo {
-	margin-left: 123px;
-	width: 350px;
-	height: 200px;
-}
 
+
+ body {
+            box-sizing: border-box;
+            background-color: white;
+        }
+}
 /*메뉴 폰트 스타일*/
 *.nav-link {
 	color: rgb(44, 44, 44);
@@ -41,6 +42,25 @@
 	background-color: blanchedalmond;
 	background-size: 3px;
 }
+  .topmenu {
+            font-family: "GongGothicLight.ttf";
+            font-size: 20px;
+
+        }
+
+        .menu {
+            background-color: rgb(255, 255, 255);
+            font-size: 17px;
+            font-family: "GongGothicLight.ttf";
+
+        }
+
+        #menu-logo {
+            width: 70px;
+            height: 80px;
+
+        }
+
 /*메뉴 위치*/
 #nav-item {
 	margin-top: 150px;
@@ -52,18 +72,12 @@
 	padding-right: 100px;
 }
 /*대략적인 구조를 직관적으로 확인하시라고 임의로 설정해 둔 테두리입니다!*/
-img {
-	border: 1px solid rgb(218, 218, 218);
-}
 
-#btn-category {
-	margin-left: 150px;
-}
+
 /*footer*/
 .footer {
 	height: 150px;
 	overflow: visible;
-	background-color: rgb(255, 216, 131);
 	z-index: 1;
 	margin-top: 40px;
 }
@@ -80,27 +94,6 @@ img {
 
 .ft-ul li {
 	height: 25px;
-}
-
-.facebookicon {
-	position: relative;
-	bottom: 40px;
-	margin-left: 1000px;
-	z-index: 2;
-}
-
-.instagramicon {
-	position: relative;
-	bottom: 90px;
-	margin-left: 1100px;
-	z-index: 2;
-}
-
-.youtubeicon {
-	position: relative;
-	bottom: 140px;
-	margin-left: 1200px;
-	z-index: 2;
 }
 
 .ft-ul2 {
@@ -195,13 +188,19 @@ font-family: "GongGothicMedium.ttf";
 </style>
 </head>
 <body>
-	<header>
-		<div class="row justify-content">
-			<div class="col-4">
-				<img src="images/project_logo.PNG" class="d-block w-100"
-					id="main-logo">
-			</div>
-			<c:choose>
+        <div class="row justify-content-around header" style="text-align: center;">
+            <div class="col-lg-2" style="text-align: center;">
+                <img src="/images/project_logo.png" class="d-block w-100" id="main-logo">
+            </div>
+            <div class="col-lg-8 col-12 topmenu">
+                <nav class="navbar navbar-expand-lg navbar-light" style="float: right;">
+                    <div class="container-fluid">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation" style="border: none;">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+			            <c:choose>
 					<c:when test="${not empty loginSession}">
 						<div class="collapse navbar-collapse" id="navbarSupportedContent">
 							<ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -241,9 +240,10 @@ font-family: "GongGothicMedium.ttf";
 						</div>
 		            </c:otherwise>
 		           	</c:choose> 
-		</div>
-		</div>
-	</header>
+                    </div>
+            </div>
+            </nav>
+        </div>
 	<!--메인영역-->
 	<!--헤더와 메인의 구분선-->
 	<div class="container product-header">
@@ -288,25 +288,7 @@ font-family: "GongGothicMedium.ttf";
 						<li>대표번호 : +82)-665-3430 팩스번호 : +82)-888-3430 홈페이지 :
 							petvenience.store.com</li>
 						<li>CopyrightⓒBoriBob Inc. All Rights Reserved.</li>
-						<div class="facebookicon">
-							<img src="images/facebook_icon.png"
-								style="border-color: lightblue;">
-						</div>
-						<div class="instagramicon">
-							<img src="images/instagram_icon.png"
-								style="border-color: lightblue;">
-						</div>
-						<div class="youtubeicon">
-							<img src="images/youtube_icon.png"
-								style="border-color: lightblue;">
-						</div>
-						<div class="ft-ul2">
-							<li><strong>고객센터</strong></li>
-							<li style="height: 8px;"></li>
-							<li>오전 10시부터 오후 6시까지</li>
-							<li>토요일, 일요일, 공휴일 휴무</li>
-						</div>
-					</ul>
+						
 				</div>
 			</div>
 
@@ -389,31 +371,6 @@ font-family: "GongGothicMedium.ttf";
 		
 		</script>
 </body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 </html>
