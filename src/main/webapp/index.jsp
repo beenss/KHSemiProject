@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <lang lang="en">
 <head>
@@ -17,7 +18,7 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
-<title>·¹ÀÌ¾Æ¿ô</title>
+<title>ë ˆì´ì•„ì›ƒ</title>
 <style>
 body {
 	box-sizing: border-box;
@@ -179,34 +180,57 @@ body {
 					aria-label="Toggle navigation" style="border: none;">
 					<span class="navbar-toggler-icon"></span>
 				</button>
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-						<li class="nav-item"><a class="nav-link"
-							style="color: rgb(255, 255, 255);" href="#">Á¦Ç° º¸±â</a></li>
-						<li class="nav-item"><a class="nav-link"
-							style="color: rgb(255, 255, 255);" href="#">°í°´¼¾ÅÍ</a></li>
-						<li class="nav-item"><a class="nav-link"
-							style="color: rgb(255, 255, 255);" href="#">È¸¿ø °¡ÀÔ</a></li>
-						<li class="nav-item"><a class="nav-link"
-							style="color: rgb(255, 255, 255);" href="#">¸®ºä</a></li>
-						<li class="nav-item"><a class="nav-link"
-							style="color: rgb(255, 255, 255);" href="#">·Î±×ÀÎ</a></li>
-						<li class="nav-item"><a class="nav-link"
-							style="color: rgb(218, 255, 193); font-weight: bold;" href="#">±¸µ¶ÇÏ±â</a>
-						</li>
-					</ul>
-				</div>
+	            <c:choose>
+				<c:when test="${not empty loginSession}">
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+							<li class="nav-item"><a class="nav-link"
+								style="color: rgb(255, 255, 255);" href="/product.pro">ì œí’ˆ ë³´ê¸°</a></li>
+							<li class="nav-item"><a class="nav-link"
+								style="color: rgb(255, 255, 255);" href="/inquiry.iq?currentPage=1">ê³ ê°ì„¼í„°</a></li>
+							<li class="nav-item"><a class="nav-link"
+								style="color: rgb(255, 255, 255);" href="/mypage.my">ë§ˆì´íŽ˜ì´ì§€</a></li>
+							<li class="nav-item"><a class="nav-link"
+								style="color: rgb(255, 255, 255);" href="/review.bo?currentPage=1">ë¦¬ë·°</a></li>
+							<li class="nav-item"><a class="nav-link"
+								style="color: rgb(255, 255, 255);" href="/logout.mem">ë¡œê·¸ì•„ì›ƒ</a></li>
+							<li class="nav-item"><a class="nav-link"
+								style="color: rgb(218, 255, 193); font-weight: bold;" href="/pet.pet">êµ¬ë…í•˜ê¸°</a>
+							</li>
+						</ul>
+					</div>
+	            </c:when>
+	            <c:otherwise>
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+							<li class="nav-item"><a class="nav-link"
+								style="color: rgb(255, 255, 255);" href="/product.pro">ì œí’ˆ ë³´ê¸°</a></li>
+							<li class="nav-item"><a class="nav-link"
+								style="color: rgb(255, 255, 255);" href="/inquiry.iq?currentPage=1">ê³ ê°ì„¼í„°</a></li>
+							<li class="nav-item"><a class="nav-link"
+								style="color: rgb(255, 255, 255);" href="/member/member.jsp">íšŒì› ê°€ìž…</a></li>
+							<li class="nav-item"><a class="nav-link"
+								style="color: rgb(255, 255, 255);" href="/review.bo?currentPage=1">ë¦¬ë·°</a></li>
+							<li class="nav-item"><a class="nav-link"
+								style="color: rgb(255, 255, 255);" href="/login/login.jsp">ë¡œê·¸ì¸</a></li>
+							<li class="nav-item"><a class="nav-link"
+								style="color: rgb(218, 255, 193); font-weight: bold;" href="/pet">êµ¬ë…í•˜ê¸°</a>
+							</li>
+						</ul>
+					</div>
+	            </c:otherwise>
+	           	</c:choose> 
 			</div>
 		</nav>
 	</div>
 </div>
 </div>
-<!-- ¿©±â±îÁö Çì´õ -->
-<!-- ¿©±â¿¡ ¹Ùµð ÄÚµå Â¥ÁÖ¼À -->
+<!-- ì—¬ê¸°ê¹Œì§€ í—¤ë” -->
+<!-- ì—¬ê¸°ì— ë°”ë”” ì½”ë“œ ì§œì£¼ì…ˆ -->
 <div class="container">
 	<div class="row" style="text-align: center;">
 		<div class="d-block" style="text-align: center;">
-			<p id="minititle">¿ì¸®Áý °­¾ÆÁö¿Í °í¾çÀÌ¿¡°Ô °¡Àå Çàº¹ÇÑ ½Ã°£À»!</p>
+			<p id="minititle">ìš°ë¦¬ì§‘ ê°•ì•„ì§€ì™€ ê³ ì–‘ì´ì—ê²Œ ê°€ìž¥ í–‰ë³µí•œ ì‹œê°„ì„!</p>
 			<img src="/images/ss-001 (6).png"
 				style="width: 800px; padding-bottom: 50px">
 			<div class="d-block" style="text-align: center;" id="title">
@@ -214,9 +238,9 @@ body {
 					BORI<br>BOB
 				</p>
 				<div class="d-block" style="text-align: center;" id="info">
-					<P>º¸¸®¹äÀº ÀÎ°øÃ·°¡¹°À» ³ÖÁö ¾Ê¾Æ ¹Ý·Áµ¿¹°¿¡°Ô</P>
-					<p>°¡Àå °Ç°­ÇÑ ½Ä´ÜÀ» Á¦°øÇÕ´Ï´Ù. ±ÕÇüÀâÈù ¿µ¾ç°¡ ³ôÀº ½Ä´ÜÀ¸·Î</p>
-					<p>³ªÀÇ °¡Á·, ³ªÀÇ Ä£±¸¿¡°Ô Áñ°Ì°í Çàº¹ÇÑ ½Ã°£À» ¼±¹°ÇØÁÖ¼¼¿ä.</p>
+					<P>ë³´ë¦¬ë°¥ì€ ì¸ê³µì²¨ê°€ë¬¼ì„ ë„£ì§€ ì•Šì•„ ë°˜ë ¤ë™ë¬¼ì—ê²Œ</P>
+					<p>ê°€ìž¥ ê±´ê°•í•œ ì‹ë‹¨ì„ ì œê³µí•©ë‹ˆë‹¤. ê· í˜•ìž¡ížŒ ì˜ì–‘ê°€ ë†’ì€ ì‹ë‹¨ìœ¼ë¡œ</p>
+					<p>ë‚˜ì˜ ê°€ì¡±, ë‚˜ì˜ ì¹œêµ¬ì—ê²Œ ì¦ê²ê³  í–‰ë³µí•œ ì‹œê°„ì„ ì„ ë¬¼í•´ì£¼ì„¸ìš”.</p>
 				</div>
 			</div>
 		</div>
@@ -224,21 +248,21 @@ body {
 </div>
 <br>
 <br>
-<div class="d-block" id="mainbox1">º¸¸®¹äÀº ÀÌ·¸°Ô ´Þ¶ó¿ä</div>
+<div class="d-block" id="mainbox1">ë³´ë¦¬ë°¥ì€ ì´ë ‡ê²Œ ë‹¬ë¼ìš”</div>
 <br>
-<!--½ºÅ©·Ñ ¾Ö´Ï¸ÞÀÌ¼Ç ³Ö±â-->
+<!--ìŠ¤í¬ë¡¤ ì• ë‹ˆë©”ì´ì…˜ ë„£ê¸°-->
 <div class="d-block" id="mainbox2">
 	<img src="/images/3.png" class="d-block w-100">
 </div>
-<!--½ºÅ©·Ñ ¾Ö´Ï¸ÞÀÌ¼Ç ³Ö±â-->
+<!--ìŠ¤í¬ë¡¤ ì• ë‹ˆë©”ì´ì…˜ ë„£ê¸°-->
 <div class="d-block" id="mainbox2">
 	<img src="/images/4.png" class="d-block w-100">
 </div>
 <br>
 <br>
-<!--hover·Î ¸®ºä ¹Ì¸®º¸±â¿Í Å¬¸¯ ÀÌº¥Æ®-->
+<!--hoverë¡œ ë¦¬ë·° ë¯¸ë¦¬ë³´ê¸°ì™€ í´ë¦­ ì´ë²¤íŠ¸-->
 <div class="row justify-content-center">
-	<p style="text-align: center;" class="reviewtitle">º¸¸®¹ä È¸¿øµéÀÇ »ý»ýÇÑ ¸®ºä</p>
+	<p style="text-align: center;" class="reviewtitle">ë³´ë¦¬ë°¥ íšŒì›ë“¤ì˜ ìƒìƒí•œ ë¦¬ë·°</p>
 </div>
 <div class="row justify-content-center">
 	<div class="col-lg-3">
@@ -246,12 +270,12 @@ body {
 			<div class="card">
 				<div class="card-body review1">
 					<h5 class="card-title">
-						±è¹Ùºñ´Ô
+						ê¹€ë°”ë¹„ë‹˜
 						</h3>
 						<p class="card-text">
-							Á¦°¡ »ì¸é¼­ ¸Ô¾îº» »ç·á Áß¿¡¼­<br> Á¦ÀÏ ¸ÀÀÖ¾ú¾î¿ä. Àú´Â Æ¯È÷ ´ß°í±â¸¦ ÁÁ¾ÆÇÏ´Âµ¥ °í¼ÒÇÏ¸é¼­µµ Àâ³¿»õ°¡
-							³ªÁö ¾Ê¾Æ¼­ ¸Ô´Â ³»³» °¨Åº¸¸ Çß½À´Ï´Ù <a href="#" class="btn btn-primary">¸®ºä
-								´õº¸±â</a>
+							ì œê°€ ì‚´ë©´ì„œ ë¨¹ì–´ë³¸ ì‚¬ë£Œ ì¤‘ì—ì„œ<br> ì œì¼ ë§›ìžˆì—ˆì–´ìš”. ì €ëŠ” íŠ¹ížˆ ë‹­ê³ ê¸°ë¥¼ ì¢‹ì•„í•˜ëŠ”ë° ê³ ì†Œí•˜ë©´ì„œë„ ìž¡ëƒ„ìƒˆê°€
+							ë‚˜ì§€ ì•Šì•„ì„œ ë¨¹ëŠ” ë‚´ë‚´ ê°íƒ„ë§Œ í–ˆìŠµë‹ˆë‹¤ <a href="#" class="btn btn-primary">ë¦¬ë·°
+								ë”ë³´ê¸°</a>
 				</div>
 			</div>
 		</div>
@@ -259,30 +283,30 @@ body {
 	<div class="col-lg-3">
 		<div class="card">
 			<div class="card-body">
-				<h5 class="card-title">ÀÌº¸¸® ´Ô</h5>
-				<p class="card-text">Àú Á¤¸» ¸ÀÀÖ´Â °Í¸¸ ÁÁ¾ÆÇÏ°Åµç¿ä? Á¦ Ä£±¸µé »çÀÌ¿¡¼­µµ ¸ÀÀÖ´Â °Í¸¸ ÁÁ¾ÆÇÏ´Â
-					¹Ì½Ä³ÉÀ¸·Î ¼Ò¹®³µ´Âµ¥ ¿©±â´Â ÁøÂ¥ ¸ÀÁýÀÌ³×¿ä. ¹ÝÇØ¼­ 6°³¿ù ±¸µ¶ ÇÑ¹ø¿¡ °¡º¸·Æ´Ï´Ù</p>
-				<a href="#" class="btn btn-primary">¸®ºä ´õº¸±â</a>
+				<h5 class="card-title">ì´ë³´ë¦¬ ë‹˜</h5>
+				<p class="card-text">ì € ì •ë§ ë§›ìžˆëŠ” ê²ƒë§Œ ì¢‹ì•„í•˜ê±°ë“ ìš”? ì œ ì¹œêµ¬ë“¤ ì‚¬ì´ì—ì„œë„ ë§›ìžˆëŠ” ê²ƒë§Œ ì¢‹ì•„í•˜ëŠ”
+					ë¯¸ì‹ëƒ¥ìœ¼ë¡œ ì†Œë¬¸ë‚¬ëŠ”ë° ì—¬ê¸°ëŠ” ì§„ì§œ ë§›ì§‘ì´ë„¤ìš”. ë°˜í•´ì„œ 6ê°œì›” êµ¬ë… í•œë²ˆì— ê°€ë³´ë µë‹ˆë‹¤</p>
+				<a href="#" class="btn btn-primary">ë¦¬ë·° ë”ë³´ê¸°</a>
 			</div>
 		</div>
 	</div>
 	<br>
-	<!--±¸µ¶ÇÏ·¯ °¡±â ¹öÆ°À» ´©¸£¸é ·Î±×ÀÎ »óÅÂÀÏ ¶© ±¸µ¶Á¤º¸ ÀÔ·Â/ ºñÈ¸¿ø »óÅÂÀÏ ¶© ·Î±×ÀÎÃ¢À¸·Î ÀÌµ¿-->
+	<!--êµ¬ë…í•˜ëŸ¬ ê°€ê¸° ë²„íŠ¼ì„ ëˆ„ë¥´ë©´ ë¡œê·¸ì¸ ìƒíƒœì¼ ë• êµ¬ë…ì •ë³´ ìž…ë ¥/ ë¹„íšŒì› ìƒíƒœì¼ ë• ë¡œê·¸ì¸ì°½ìœ¼ë¡œ ì´ë™-->
 	<div class="btn-box">
 		<br> <br> <br>
 		<div class="row justify-content-center review">
-			<button type="button" id="subscribebtn">±¸µ¶ÇÏ·¯ °¡±â</button>
+			<button type="button" id="subscribebtn">êµ¬ë…í•˜ëŸ¬ ê°€ê¸°</button>
 		</div>
 	</div>
-	<!-- ¿©±âºÎÅÍ Ç²ÅÍ -->
+	<!-- ì—¬ê¸°ë¶€í„° í’‹í„° -->
 	<div class="row justify-content-center footer">
 		<div class="col-lg-10 col-12">
 			<ul class="ft-ul">
-				<li>BoriBob Inc. ¹Ùºñ½Ã º¸¸®±¸ ¹Ùºñº¸¸®µ¿</li>
-				<li>´ëÇ¥ : º¸¸®¹Ùºñ »ç¾÷ÀÚµî·Ï¹øÈ£ : 777-77-77777</li>
-				<li>´ëÇ¥¹øÈ£ : +82)-665-3430 ÆÑ½º¹øÈ£ : +82)-1234-5678 È¨ÆäÀÌÁö :
+				<li>BoriBob Inc. ë°”ë¹„ì‹œ ë³´ë¦¬êµ¬ ë°”ë¹„ë³´ë¦¬ë™</li>
+				<li>ëŒ€í‘œ : ë³´ë¦¬ë°”ë¹„ ì‚¬ì—…ìžë“±ë¡ë²ˆí˜¸ : 777-77-77777</li>
+				<li>ëŒ€í‘œë²ˆí˜¸ : +82)-665-3430 íŒ©ìŠ¤ë²ˆí˜¸ : +82)-1234-5678 í™ˆíŽ˜ì´ì§€ :
 					boribob.com</li>
-				<li>Copyright¨ÏBoriBob Inc. All Rights Reserved.</li>
+				<li>Copyrightâ“’BoriBob Inc. All Rights Reserved.</li>
 			</ul>
 		</div>
 		</ul>
