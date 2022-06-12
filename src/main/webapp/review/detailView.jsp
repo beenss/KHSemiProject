@@ -164,23 +164,20 @@ textarea {
 <body>
 </head>
 <body>
-	<div class="row justify-content-around header"
-		style="text-align: center;">
-		<div class="col-lg-2" style="text-align: center;">
-			<img src="/images/project_logo.png" class="d-block w-100"
-				id="main-logo">
-		</div>
-		<div class="col-lg-8 col-12 topmenu">
-			<nav class="navbar navbar-expand-lg navbar-light"
-				style="float: right;">
-				<div class="container-fluid">
-					<button class="navbar-toggler" type="button"
-						data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-						aria-controls="navbarSupportedContent" aria-expanded="false"
-						aria-label="Toggle navigation" style="border: none;">
-						<span class="navbar-toggler-icon"></span>
-					</button>
-					<c:choose>
+    <body>
+        <div class="row justify-content-around header" style="text-align: center;">
+            <div class="col-lg-2" style="text-align: center;">
+                <img src="/images/project_logo.png" class="d-block w-100" id="main-logo">
+            </div>
+            <div class="col-lg-8 col-12 topmenu">
+                <nav class="navbar navbar-expand-lg navbar-light" style="float: right;">
+                    <div class="container-fluid">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation" style="border: none;">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+			            <c:choose>
 					<c:when test="${not empty loginSession}">
 						<div class="collapse navbar-collapse" id="navbarSupportedContent">
 							<ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -220,11 +217,11 @@ textarea {
 						</div>
 		            </c:otherwise>
 		           	</c:choose> 
-				</div>
-		</div>
-		</nav>
-	</div>
-	</div>
+                    </div>
+            </div>
+            </nav> 
+        </div>
+        </div>
 	<div class="board_wrap">
 		<div class="container review">
 			<div class="row  py-3">
