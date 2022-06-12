@@ -40,8 +40,7 @@ nav {
 	<div class="wrapper">
 		<div class="row header">
 			<div class="col">
-				<nav
-					class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark justify-content-center">
+				<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark justify-content-center">
 					<div class="container">
 						<a class="navbar-brand" href="#"></a>
 						<button class="navbar-toggler" type="button"
@@ -60,17 +59,8 @@ nav {
 									data-bs-toggle="dropdown" aria-expanded="false"> 회원 </a>
 									<ul class="dropdown-menu"
 										aria-labelledby="navbarDropdownMenuLink">
-										<li><a class="dropdown-item" href="/member.admin">조회</a></li>
+										<li><a class="dropdown-item" href="#">조회</a></li>
 										<li><a class="dropdown-item" href="#">블랙리스트</a></li>
-									</ul></li>
-								<li class="nav-item dropdown"><a
-									class="nav-link dropdown-toggle" href="#"
-									id="navbarDropdownMenuLink" role="button"
-									data-bs-toggle="dropdown" aria-expanded="false"> 통계 </a>
-									<ul class="dropdown-menu"
-										aria-labelledby="navbarDropdownMenuLink">
-										<li><a class="dropdown-item" href="#">상품별매출/전체매출</a></li>
-										<li><a class="dropdown-item" href="#">재고</a></li>
 									</ul></li>
 								<li class="nav-item dropdown"><a
 									class="nav-link dropdown-toggle" href="#"
@@ -93,14 +83,14 @@ nav {
 									<ul class="dropdown-menu"
 										aria-labelledby="navbarDropdownMenuLink">
 										<li><a class="dropdown-item"
-											href="/inquiry.admin?currentPage=1">조회/삭제</a></li>
+											href="#">조회/삭제</a></li>
 										<li><a class="dropdown-item"
-											href="/inquiryAnswer.admin?currentPage=1">답변 추가</a></li>
+											href="#">답변 추가</a></li>
 									</ul></li>
 								<li class="nav-item"><a class="nav-link active"
 									aria-current="page" href="#">리뷰 조회/삭제</a></li>
 								<li class="nav-item"><a class="nav-link active"
-									aria-current="page" href="#">logout</a></li>
+									aria-current="page" href="/admin.admin">login</a></li>
 							</ul>
 						</div>
 					</div>
@@ -135,6 +125,11 @@ nav {
 				
 			})
 		</script>
+			<c:if test="${rs eq false}">
+				<script>
+					alert("일치하지 않는 아이디 혹은 비밀번호 입니다.")
+				</script>
+			</c:if>
 	</div>
 </body>
 </html>

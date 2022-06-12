@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -84,20 +85,25 @@ public class ProductDAO {
 	// 모든 상품내역 출력
 	public ArrayList<ProductDTO> selectAll() throws Exception {
 
-		String sql = "select * from tbl_product";
+		String sql = "select * from tbl_product order by 1";
 
 		try (Connection con = this.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
 			ResultSet rs = pstmt.executeQuery();
 
-			ArrayList list = new ArrayList<>();
+			ArrayList<ProductDTO> list = new ArrayList<>();
 			while (rs.next()) {
 				int productCode = rs.getInt(1);
 				String productName = rs.getString(2);
 				int productPrice = rs.getInt(3);
 				String productContent = rs.getString(4);
-				String productImg = rs.getString(5);
+				String productImg = rs.getString(5);  // 대상문자열 
 
-				list.add(new ProductDTO(productCode, productName, productPrice, productContent, productImg));
+				String pattern = "/images.*"; // 패턴 
+				String img = productImg.replaceAll(".*/images", "/images");
+				
+				
+				
+				list.add(new ProductDTO(productCode, productName, productPrice, productContent, img));
 			}
 			return list;
 		}
@@ -139,7 +145,13 @@ public class ProductDAO {
 			int productPrice = rs.getInt(3);
 			String productContent = rs.getString(4);
 			String productImg = rs.getString(5);
-			ProductDTO dto = new ProductDTO(productCode,productName,productPrice,productContent,productImg);
+			
+
+			String pattern = "/images.*"; // 패턴 
+			String img = productImg.replaceAll(".*/images", "/images");
+			
+			
+			ProductDTO dto = new ProductDTO(productCode,productName,productPrice,productContent,img);
 			return dto;
 		}
 	}
@@ -157,9 +169,15 @@ public class ProductDAO {
 				String productName = rs.getString(2);
 				int productPrice = rs.getInt(3);
 				String productContent = rs.getString(4);
-				String productImg = rs.getString(5);
+				String productImg = rs.getString(5); // 대상문자열 
+
 				
-				list.add(new ProductDTO(productCode,productName, productPrice, productContent, productImg));
+				String pattern = "/images.*"; // 패턴 
+				String img = productImg.replaceAll(".*/images", "/images");
+				
+				System.out.println(img);
+				
+				list.add(new ProductDTO(productCode,productName, productPrice, productContent, img));
 			}return list;
 			
 		}
@@ -185,16 +203,20 @@ public class ProductDAO {
 			
 		}
 	}
+	// 상품 등록 여부 확인
+	public boolean productExist(int productCode) throws Exception {
+		String sql = "select * from tbl_product where product_code = ?";
+
+		try(Connection con = this.getConnection();
+			PreparedStatement pstmt = con.prepareStatement(sql)) {
+		
+			pstmt.setInt(1, productCode);
+			
+			ResultSet rs = pstmt.executeQuery();
+			return rs.next();
+		}
+	}
+	
+	
+	
 }
-
-
-
-
-
-
-
-
-
-
-
-

@@ -48,119 +48,104 @@
     </style>
 <body>
 	<div class="wrapper">
-        <div class="row header">
-            <div class="col">
-                <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark justify-content-center">
-                    <div class="container">
-                        <a class="navbar-brand" href="#"></a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
-                            aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                            <ul class="navbar-nav text-center">
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
-                                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        회원
-                                    </a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <li><a class="dropdown-item" href="#">조회</a></li>
-                                        <li><a class="dropdown-item" href="#">블랙리스트</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
-                                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        통계
-                                    </a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <li><a class="dropdown-item" href="#">상품별매출/전체매출</a></li>
-                                        <li><a class="dropdown-item" href="#">재고</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
-                                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        상품
-                                    </a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <li><a class="dropdown-item" href="/productList.admin">전체 조회</a></li>
-                                        <li><a class="dropdown-item" href="/productUpdate.admin">수정/삭제</a></li>
-                                        <li><a class="dropdown-item" href="/productInsert.admin">추가</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">주문 조회/상세보기</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">배송 조회/수정</a>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
-                                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        문의
-                                    </a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <li><a class="dropdown-item" href="#">조회/삭제</a></li>
-                                        <li><a class="dropdown-item" href="#">답변 추가</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">리뷰 조회/삭제</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">login</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row title py-3">
-                <h3>전체 상품</h3>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col-2">
-                    <button type="button" class="btn btnDog btn-warning" value="dog">강아지</button>
-                </div>
-                <div class="col-2">
-                    <button type="button" class="btn btnCat btn-info" value="cat">고양이</button>
-                </div>
-            </div>
-        </div>
+		<div class="row header">
+			<div class="col">
+				<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark justify-content-center">
+					<div class="container">
+						<a class="navbar-brand" href="#"></a>
+						<button class="navbar-toggler" type="button"
+							data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+							aria-controls="navbarNavDropdown" aria-expanded="false"
+							aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+						<div class="collapse navbar-collapse" id="navbarNavDropdown">
+							<ul class="navbar-nav text-center">
+								<li class="nav-item"><a class="nav-link active"
+									aria-current="page" href="/admin/index.jsp">Home</a></li>
+								<li class="nav-item dropdown"><a
+									class="nav-link dropdown-toggle" href="#"
+									id="navbarDropdownMenuLink" role="button"
+									data-bs-toggle="dropdown" aria-expanded="false"> 회원 </a>
+									<ul class="dropdown-menu"
+										aria-labelledby="navbarDropdownMenuLink">
+										<li><a class="dropdown-item" href="/member.admin">조회</a></li>
+										<li><a class="dropdown-item" href="/blacklist.admin">블랙리스트</a></li>
+									</ul></li>
+								<li class="nav-item dropdown"><a
+									class="nav-link dropdown-toggle" href="#"
+									id="navbarDropdownMenuLink" role="button"
+									data-bs-toggle="dropdown" aria-expanded="false"> 상품 </a>
+									<ul class="dropdown-menu"
+										aria-labelledby="navbarDropdownMenuLink">
+										<li><a class="dropdown-item" href="/productList.admin">전체 조회</a></li>
+										<li><a class="dropdown-item" href="/productUpdate.admin">수정/삭제</a></li>
+										<li><a class="dropdown-item" href="/productInsert.admin">추가</a></li>
+									</ul></li>
+								<li class="nav-item"><a class="nav-link active"
+									aria-current="page" href="/orderList.admin">주문 조회/상세보기</a></li>
+								<li class="nav-item"><a class="nav-link active"
+									aria-current="page" href="/deliverList.admin">배송 조회/수정</a></li>
+								<li class="nav-item dropdown"><a
+									class="nav-link dropdown-toggle" href="#"
+									id="navbarDropdownMenuLink" role="button"
+									data-bs-toggle="dropdown" aria-expanded="false"> 문의 </a>
+									<ul class="dropdown-menu"
+										aria-labelledby="navbarDropdownMenuLink">
+										<li><a class="dropdown-item"
+											href="/inquiry.admin?currentPage=1">조회/삭제</a></li>
+										<li><a class="dropdown-item"
+											href="/inquiryAnswer.admin?currentPage=1">답변 추가</a></li>
+									</ul></li>
+								<li class="nav-item"><a class="nav-link active"
+									aria-current="page" href="/review.admin?currentPage=1">리뷰 조회/삭제</a></li>
+								<li class="nav-item"><a class="nav-link active"
+									aria-current="page" href="/logout.admin">logout</a></li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row title py-3">
+				<h3>전체 상품</h3>
+			</div>
+			<br>
+			<div class="row">
+				<div class="row btnArea">
+					<div class="col-12">
+						<button type="button" class="btn btnDog btn-dark" value="dog">강아지</button>
+						<button type="button" class="btn btnCat btn-dark" value="cat">고양이</button>
+					</div>
+				</div>
+			</div>
+		</div>
 
-        <br>
-        <div class="container product-body">
-            <div class="row row-product-body">
-                <!--상품 이미지 영역입니다 해당 이미지를 클릭 시 상품 상세정보로 이동-->
-                <div class="container product-body">
-                    <div class="row row-product-body">
-                        <c:forEach items="${productList}" var="dto">
-                            <div class="col-lg-3 col-md-6">
-                                <div class="card">
-                                    <a href="/productDetail.pro?productCode=${dto.productCode}"><img
-                                            src="${dto.productImg}" class="card-img-top" alt="..."></a>
-                                    <div class="card-body">
-                                        <p class="card-text">상품명 : ${dto.productName}</p>
-                                        <p class="card-text">상품코드 : ${dto.productCode}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </c:forEach>
-                    </div>
-                </div>
+		<br>
+		<div class="container product-body">
+			<div class="row row-product-body">
+				<!--상품 이미지 영역입니다 해당 이미지를 클릭 시 상품 상세정보로 이동-->
+				<div class="container product-body">
+					<div class="row row-product-body">
+						<c:forEach items="${productList}" var="dto">
+							<div class="col-lg-3 col-md-6">
+								<div class="card">
+									<a href="/productDetail.pro?productCode=${dto.productCode}"><img
+										src="${dto.productImg}" class="card-img-top" alt="..."></a>
+									<div class="card-body">
+										<p class="card-text">상품명 : ${dto.productName}</p>
+										<p class="card-text">상품코드 : ${dto.productCode}</p>
+									</div>
+								</div>
+							</div>
+						</c:forEach>
+					</div>
+				</div>
 
-            </div>
-        </div>
-        <script>
+			</div>
+		</div>
+		<script>
             // 강아지버튼을 눌렀을 때 강아지상품만 비동기로 띄워주기 
             $(".btnDog").on("click", function () {
 
@@ -177,10 +162,12 @@
                                 let anchor = $("<a>").attr("href", "/productDetail.pro?productCode=" + productDog.productCode);
                                 let img = $("<img>").addClass("card-img-top").attr("src", productDog.productImg);
                                 let cardBody = $("<div>").addClass("card-body");
-                                let p = $("<p>").addClass("card-text").html(productDog.productName);
-
+                                let p = $("<p>").addClass("card-text").html( "상품명 : "+productDog.productName);
+                                let p1 = $("<p>").addClass("card-text").html("상품코드 : " + productDog.productCode);
+                                
+                                
                                 let anchorImg = anchor.append(img);
-                                let cardBodyP = cardBody.append(p);
+                                let cardBodyP = cardBody.append(p,p1);
                                 let card1 = card.append(anchorImg, cardBodyP);
                                 let col1 = col.append(card1);
 
@@ -213,10 +200,11 @@
                                 let anchor = $("<a>").attr("href", "/productDetail.pro?productCode=" + productCat.productCode);
                                 let img = $("<img>").addClass("card-img-top").attr("src", productCat.productImg);
                                 let cardBody = $("<div>").addClass("card-body");
-                                let p = $("<p>").addClass("card-text").html(productCat.productName);
-
+                                let p = $("<p>").addClass("card-text").html("상품명 : "+productCat.productName);
+                                let p1 = $("<p>").addClass("card-text").html("상품코드 : "+productCat.productCode);
+                                
                                 let anchorImg = anchor.append(img);
-                                let cardBodyP = cardBody.append(p);
+                                let cardBodyP = cardBody.append(p,p1);
                                 let card1 = card.append(anchorImg, cardBodyP);
                                 let col1 = col.append(card1);
 
@@ -234,5 +222,6 @@
             })
 
         </script>
+	</div>
 </body>
 </html>
