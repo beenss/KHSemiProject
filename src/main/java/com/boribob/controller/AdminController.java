@@ -138,7 +138,7 @@ public class AdminController extends HttpServlet {
 			response.sendRedirect("/admin/adminProductInsert.jsp");
 			
 		}else if(uri.equals("/productInsertProc.admin")) {	//상품 등록
-			String filePath = "/Users/minhu/eclipse-workspace/semi_workspace/FinalSemiProject/src/main/webapp/images"; // 데이터가 저장될 서버의 경로
+			String filePath = "/Users/USER/OneDrive/KHSemiProject/SemiProject/src/main/webapp/images"; // 데이터가 저장될 서버의 경로
 			System.out.println(filePath);
 			File dir = new File(filePath);
 
