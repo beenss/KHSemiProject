@@ -285,7 +285,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
                             잡냄새가 나지 않아서
                             먹는 내내 감탄만 했습니다
                             <br>
-                            <a href="#" class="btnMoreReview">리뷰 더보기</a>
+                            <a href="/review.bo?currentPage=1" class="btnMoreReview">리뷰 더보기</a>
                 </div>
             </div>
         </div>
@@ -298,7 +298,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
                     제 친구들 사이에서도 맛있는 것만 좋아하는
                     미식냥으로 소문났는데 여기는 진짜 맛집이네요.
                     반해서 6개월 구독할 거예요</p>
-                <a href="#" class="btnMoreReview">리뷰 더보기</a>
+                <a href="/review.bo?currentPage=1" class="btnMoreReview">리뷰 더보기</a>
             </div>
         </div>
     </div>
@@ -325,6 +325,11 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
         </ul>
     </div>
+    <script>
+    	document.getElementById('subscribebtn').addEventListener('click', () => {
+    		location.href = '/pet.pet';
+    	})
+    </script>
 </div>
 </div>
 </body>
