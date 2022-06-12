@@ -244,7 +244,7 @@
             <div class="row">
                 <div class="row content text-center align-items-center">
                     <div class="row justify-content-around" style="text-align: center;">
-                        <img src="images/login_img.png" class="d-block login_img">
+                        <img src="/images/login_img.png" class="d-block login_img">
                     </div>
                 </div>
 

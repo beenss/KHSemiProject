@@ -142,7 +142,7 @@
     </head>
     <div class="row justify-content-around header" style="text-align: center;">
         <div class="col-lg-2" style="text-align: center;">
-            <img src="images/project_logo.PNG" class="d-block w-100" id="main-logo">
+            <img src="/images/project_logo.PNG" class="d-block w-100" id="main-logo">
         </div>
         <div class="col-lg-8 col-12 topmenu">
             <nav class="navbar navbar-expand-lg navbar-light" style="float: right;">
