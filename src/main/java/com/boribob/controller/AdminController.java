@@ -38,7 +38,10 @@ public class AdminController extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		String uri = request.getRequestURI();
 		
-		if(uri.equals("/login.admin")) { //로그인 요청
+		if(uri.equals("/admin.admin")) {
+			response.sendRedirect("/admin/adminLogin.jsp");
+		}
+		else if(uri.equals("/login.admin")) { //로그인 요청
 			String managerId = request.getParameter("managerId");
 			String managerPw = request.getParameter("managerPw");
 			System.out.println(managerId+managerPw);
@@ -135,7 +138,7 @@ public class AdminController extends HttpServlet {
 			response.sendRedirect("/admin/adminProductInsert.jsp");
 			
 		}else if(uri.equals("/productInsertProc.admin")) {	//상품 등록
-			String filePath = request.getServletContext().getRealPath("files"); // 데이터가 저장될 서버의 경로
+			String filePath = "/Users/minhu/eclipse-workspace/semi_workspace/FinalSemiProject/src/main/webapp/images"; // 데이터가 저장될 서버의 경로
 			System.out.println(filePath);
 			File dir = new File(filePath);
 
@@ -144,16 +147,25 @@ public class AdminController extends HttpServlet {
 			}
 			int maxSize = 1024 * 1024 * 10;
 
+
 			try {
 				MultipartRequest multi = new MultipartRequest(request, filePath, maxSize, "utf-8",new DefaultFileRenamePolicy());
 				int productCode = Integer.parseInt(multi.getParameter("productCode"));  
 				String productName = multi.getParameter("productName");
 				int productPrice = Integer.parseInt(multi.getParameter("productPrice"));  
 				String productContent = multi.getParameter("productContent");
-				String productImg = filePath+File.separator+multi.getFilesystemName("productImg");
+				String productImg = filePath +File.separator+ multi.getFilesystemName("productImg");
+				
+				System.out.println("filePath : " +productImg);
 				
 				ProductDAO dao = new ProductDAO();
 				try {
+					
+					System.out.println(dao.productExist(productCode));
+					
+					if(!dao.productExist(productCode)) {
+					
+					
 					int rs = dao.insert(new ProductDTO(productCode,productName,productPrice,productContent,productImg));
 					if(rs>0) {  // 만약에 상품 등록에 성공하면 관리자 페이지에 얼럿 띄워주기
 						System.out.println("데이터 삭제 완료");
@@ -162,6 +174,11 @@ public class AdminController extends HttpServlet {
 					}else{
 						System.out.println("데이터 삭제 실패");
 						response.sendRedirect("/productUpdate.admin");
+					}
+				
+					}else {
+						request.setAttribute("fail","fail");
+						request.getRequestDispatcher("/admin/productInsertFail.jsp").forward(request, response);
 					}
 					
 				}catch(Exception e) {e.printStackTrace();
@@ -195,18 +212,19 @@ public class AdminController extends HttpServlet {
 				String productName = multi.getParameter("productName");
 				int productPrice = Integer.parseInt(multi.getParameter("productPrice"));  
 				String productContent = multi.getParameter("productContent");
-				String productImg = multi.getFilesystemName("productImg");
+				String ori_name = multi.getFilesystemName("productImg");
 				
 				ProductDAO dao = new ProductDAO();
 				try {
-					int rs = dao.update(new ProductDTO(productCode,productName,productPrice,productContent,productImg));
+					int rs = dao.update(new ProductDTO(productCode,productName,productPrice,productContent,ori_name));
 					 // 만약에 상품 수정에 성공하면 관리자 페이지에 얼럿 띄워주기
 						if(rs>0) {
 							System.out.println("데이터 수정 완료");
 							response.sendRedirect("/productList.admin");
 						}else {
 							System.out.println("데이터 수정 실패");
-							response.sendRedirect("/productUpdate.admin");
+							request.setAttribute("fail", "fail");
+							request.getRequestDispatcher("/admin/productUpdateFail.jsp").forward(request, response);						
 						}
 	
 				}catch(Exception e) {e.printStackTrace();
@@ -540,7 +558,7 @@ public class AdminController extends HttpServlet {
 		else if(uri.equals("/logout.admin")) {
 			HttpSession session = request.getSession();
 			session.invalidate();
-			response.sendRedirect("/admin/adminLogin.jsp");
+			response.sendRedirect("/admin.admin");
 		}
 
 	}
