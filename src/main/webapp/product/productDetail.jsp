@@ -19,33 +19,66 @@
 
     <title>상품상세-초안</title>
     <style>
-        /*메인 로고 스타일*/
-        #main-logo {
-            margin-left: 123px;
-            width: 350px;
-            height: 200px;
+       <style>
+/*메인 로고 스타일*/
+
+
+ body {
+            box-sizing: border-box;
+            background-color: white;
         }
 
-        body {
-            
+/*메뉴 폰트 스타일*/
+*.nav-link {
+	color: rgb(44, 44, 44);
+	font-size: large;
+}
+
+*.nav-link:hover {
+	background-color: blanchedalmond;
+	background-size: 3px;
+}
+  .topmenu {
+            font-family: "GongGothicLight.ttf";
+            font-size: 20px;
+
         }
 
-        /*메뉴 폰트 스타일*/
-        *.nav-link {
-            color: rgb(44, 44, 44);
-            font-size: large;
+        .menu {
+            background-color: rgb(255, 255, 255);
+            font-size: 17px;
+            font-family: "GongGothicLight.ttf";
+
         }
 
-        *.nav-link:hover {
-            background-color: blanchedalmond;
-            background-size: 3px;
+        #menu-logo {
+            width: 70px;
+            height: 80px;
+
+        }
+         .topmenu {
+            font-family: "GongGothicLight.ttf";
+            font-size: 20px;
+
         }
 
-        /*메뉴 위치*/
-        #nav-item {
-            margin-top: 150px;
-            margin-left: 325px;
+        .menu {
+            background-color: rgb(255, 255, 255);
+            font-size: 17px;
+            font-family: "GongGothicLight.ttf";
+
         }
+
+        #menu-logo {
+            width: 70px;
+            height: 80px;
+
+        }
+
+/*메뉴 위치*/
+#nav-item {
+	margin-top: 150px;
+	margin-left: 325px;
 
 
         #pro-explain {
@@ -64,56 +97,24 @@
       
 
         /*footer*/
-        .footer {
-            height: 150px;
-            overflow: visible;
-            background-color: rgb(255, 216, 131);
-            z-index: 1;
-            margin-top: 40px;
-        }
+       .footer>* {
+                background-color: rgb(255, 255, 255);
+                padding: 20px;
+                position: relative;
+            }
+            .ft-ul {
+                list-style: none;
+                text-align: center;
+                height: 100%;
+                padding-top: 28px;
+                color: black;
+                font-size: 12px;
+               }
+      
 
-        .ft-ul {
-            list-style: none;
-            text-align: center;
-            height: 100%;
-            padding-top: 28px;
-            color: black;
-            font-size: 12px;
-            z-index: 1;
-        }
+       
 
-        .ft-ul li {
-            height: 25px;
-        }
-
-        .facebookicon {
-            position: relative;
-            bottom: 40px;
-            margin-left: 1000px;
-            z-index: 2;
-        }
-
-        .instagramicon {
-            position: relative;
-            bottom: 90px;
-            margin-left: 1100px;
-            z-index: 2;
-        }
-
-        .youtubeicon {
-            position: relative;
-            bottom: 140px;
-            margin-left: 1200px;
-            z-index: 2;
-        }
-
-        .ft-ul2 {
-            position: relative;
-            bottom: 250px;
-            margin-left: 1100px;
-            z-index: 2;
-            font-size: 10px;
-        }
+      
 
         .ft-ul2 li {
             height: 17px;
@@ -250,54 +251,42 @@
 </head>
 
 <body>
-    <header>
-        <div class="row justify-content">
-            <div class="col-4">
-                <img src="../images/project_logo.PNG" class="d-block w-100" id="main-logo">
+    <header> <div class="row justify-content-around header" style="text-align: center;">
+            <div class="col-lg-2" style="text-align: center;">
+                <img src="/images/project_logo.png" class="d-block w-100" id="main-logo">
             </div>
-            <c:choose>
-					<c:when test="${not empty loginSession}">
-						<div class="collapse navbar-collapse" id="navbarSupportedContent">
-							<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-								<li class="nav-item"><a class="nav-link"
-									style="color: rgb(0, 0, 0);" href="/product.pro">제품 보기</a></li>
-								<li class="nav-item"><a class="nav-link"
-									style="color: rgb(0, 0, 0);" href="/inquiry.iq?currentPage=1">고객센터</a></li>
-								<li class="nav-item"><a class="nav-link"
-									style="color: rgb(0, 0, 0);" href="/mypage.my">마이페이지</a></li>
-								<li class="nav-item"><a class="nav-link"
-									style="color: rgb(0, 0, 0);" href="/review.bo?currentPage=1">리뷰</a></li>
-								<li class="nav-item"><a class="nav-link"
-									style="color: rgb(0, 0, 0);" href="/logout.mem">로그아웃</a></li>
-								<li class="nav-item"><a class="nav-link"
-									style="color: rgb(117, 160, 36); font-weight: bold;" href="/pet.pet">구독하기</a>
-								</li>
-							</ul>
-						</div>
-		            </c:when>
-		            <c:otherwise>
-						<div class="collapse navbar-collapse" id="navbarSupportedContent">
-							<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-								<li class="nav-item"><a class="nav-link"
-									style="color: rgb(0, 0, 0);" href="/product.pro">제품 보기</a></li>
-								<li class="nav-item"><a class="nav-link"
-									style="color: rgb(0, 0, 0);" href="/inquiry.iq?currentPage=1">고객센터</a></li>
-								<li class="nav-item"><a class="nav-link"
-									style="color: rgb(0, 0, 0);" href="/member/member.jsp">회원 가입</a></li>
-								<li class="nav-item"><a class="nav-link"
-									style="color: rgb(0, 0, 0);" href="/review.bo?currentPage=1">리뷰</a></li>
-								<li class="nav-item"><a class="nav-link"
-									style="color: rgb(0, 0, 0);" href="/login/login.jsp">로그인</a></li>
-								<li class="nav-item"><a class="nav-link"
-									style="color: rgb(117, 160, 36); font-weight: bold;" href="/pet">구독하기</a>
-								</li>
-							</ul>
-						</div>
-		            </c:otherwise>
-		           	</c:choose> 
+            <div class="col-lg-8 col-12 topmenu">
+                <nav class="navbar navbar-expand-lg navbar-light" style="float: right;">
+                    <div class="container-fluid">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation" style="border: none;">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                          <li class="nav-item">
+                            <a class="nav-link" style="color: rgb(0, 0, 0);" href="/product.pro">제품 보기</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" style="color: rgb(0, 0, 0);" href="/inquiry.iq?currentPage=1">고객센터</a>
+                          </li>
+        
+                          <li class="nav-item">
+                            <a class="nav-link" style="color: rgb(0, 0, 0);" href="/review.bo?currentPage=1">리뷰</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" style="color: rgb(0, 0, 0);" href="/logout.mem">로그아웃</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" style="color: rgb(117, 160, 36)" href="/pet.pet">구독하기</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+            </div>
+            </nav>
         </div>
-        </div>
-    </header>
     <!--메인영역-->
 
     <!--헤더와 메인의 구분선-->
@@ -893,31 +882,18 @@
     
     
     <!--풋터영역-->
-    <div class="row justify-content-around">
-        <div class="footer">
-            <ul class="ft-ul">
-                <li>BoriBob Inc. 사랑시 고백구 행복동</li>
-                <li>대표 : 보리밥형제들 사업자등록번호 : 780-86-01094</li>
-                <li>대표번호 : +82)-665-3430 팩스번호 : +82)-888-3430 홈페이지 : petvenience.store.com</li>
-                <li>CopyrightⓒBoriBob Inc. All Rights Reserved.</li>
-                <div class="facebookicon">
-                    <img src="../images/facebook_icon.png" style="border-color: lightblue;">
-                </div>
-                <div class="instagramicon">
-                    <img src="../images/instagram_icon.png" style="border-color: lightblue;">
-                </div>
-                <div class="youtubeicon">
-                    <img src="../images/youtube_icon.png" style="border-color: lightblue;">
-                </div>
-                <div class="ft-ul2">
-                    <li><strong>고객센터</strong></li>
-                    <li style="height: 8px;"></li>
-                    <li>오전 10시부터 오후 6시까지</li>
-                    <li>토요일, 일요일, 공휴일 휴무</li>
-                </div>
-            </ul>
-        </div>
-    </div>
+    	<div class="row justify-content-center footer">
+	<div class="col-lg-10 col-12">
+		<ul class="ft-ul">
+			<li>BoriBob Inc. 사랑시 고백구 행복동</li>
+			<li>대표 : 보리밥형제들 사업자등록번호 : 780-86-01094</li>
+			<li>대표번호 : +82)-665-3430 팩스번호 : +82)-888-3430 홈페이지 :
+				petvenience.store.com</li>
+			<li>CopyrightⓒBoriBob Inc. All Rights Reserved.</li>
+		</ul>
+	</div>
+
+</div>
     <script>
     	$("#btnSubscribe").on("click",function(){
     		
