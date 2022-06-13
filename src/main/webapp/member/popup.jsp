@@ -247,8 +247,7 @@
 			}
 
 
-			opener.document.getElementById("id").value = document
-					.getElementById("id").value;
+			opener.document.getElementById("id").value = document.getElementById("id").value;
 			self.close();
 		}
 

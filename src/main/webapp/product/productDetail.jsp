@@ -600,6 +600,26 @@
                     </li>
                 </ul>
                 </c:if>
+                <c:if test="${product.productCode > 16}">
+                <ul class="d-none d-lg-block">
+                    <li>
+                        <p class="img"><img src="/images/nutrient/a.png"></p>
+                        <span>고단백</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/b.png"></p>
+                        <span>기호증강</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/e.png"></p>
+                        <span>비타민보충</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/i.png"></p>
+                        <span>영양균형</span>
+                    </li>
+                </ul>
+                </c:if>
                         
                 <div class="txt">
                     <span>${product.productContent}</span>
@@ -832,6 +852,42 @@
                 <li>
                     <p class="img"><img src="/images/ingredient/8.png"></p>
                     <span>돼지고기</span>
+                </li>
+            </ul>
+            </c:if>
+            <c:if test="${product.productCode > 16}">
+            <ul>
+                <li>
+                    <p class="img"><img src="/images/ingredient/9.png"></p>
+                    <span>두부</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/17.png"></p>
+                    <span>애호박</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/3.png"></p>
+                    <span>고구마</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/23.png"></p>
+                    <span>파프리카</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/22.png"></p>
+                    <span>오트밀</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/13.png"></p>
+                    <span>블루베리</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/7.png"></p>
+                    <span>당근</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/19.png"></p>
+                    <span>양배추</span>
                 </li>
             </ul>
             </c:if>
