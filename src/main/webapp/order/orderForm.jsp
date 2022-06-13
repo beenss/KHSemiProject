@@ -354,6 +354,9 @@ pageEncoding="UTF-8"%>
 
 
    <script>
+		$('#main-logo').on('click', () => {
+			location.href = "/home";
+		})
    		document.getElementById('btn-back').addEventListener('click', () => {
    			location.href = '/home'
    		})

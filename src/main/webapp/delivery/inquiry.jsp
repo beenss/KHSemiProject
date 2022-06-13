@@ -271,5 +271,8 @@
 	$("#btn-write").on("click",function(){
 		location.href="/inquiryWrite.iq";
 	})
+	$('#main-logo').on('click', () => {
+		location.href = "/home";
+	})
 </script>
 </html>

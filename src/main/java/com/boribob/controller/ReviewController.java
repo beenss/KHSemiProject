@@ -125,6 +125,7 @@ public class ReviewController extends HttpServlet {
 				
 			}catch(Exception e) {
 				e.printStackTrace();
+				response.sendRedirect("/review.bo?currentPage=1");
 			}			
 
 			// 게시물 상세보기 요청

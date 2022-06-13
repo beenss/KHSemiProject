@@ -226,6 +226,9 @@
             $("#back-btn").on("click",function(){
             		location.href="/inquiry.iq?currentPage=1"
             	})
+           	$('#main-logo').on('click', () => {
+           		location.href = "/home";
+           	})
             </script>
             <!-- 여기부터 풋터 -->
             <div class="row justify-content-center footer">

@@ -21,7 +21,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
-    <title>레이아웃</title>
+    <title>주문 완료</title>
     <style>
    @font-face {
             src: url("/fonts/MinSans-Regular.otf");
@@ -205,6 +205,9 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
         </button>
       </div>
       <script>
+	  	$('#main-logo').on('click', () => {
+			location.href = "/home";
+		})
       	document.getElementById('goToMain').addEventListener('click', () => {
       		location.href = "/home";
       	})

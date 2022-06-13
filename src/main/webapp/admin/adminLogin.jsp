@@ -15,7 +15,7 @@
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<title>Insert title here</title>
+<title>관리자 로그인</title>
 <style>
 body {
 	box-sizing: border-box;
@@ -120,6 +120,7 @@ nav {
 			$("#login-btn").on("click",function(){
 				if($("#id").val()==="" || $("#pw").val() === ""){
 					alert("아이디, 비밀번호를 입력하세요");
+					return;
 				}
 				$("#loginForm").submit();
 				

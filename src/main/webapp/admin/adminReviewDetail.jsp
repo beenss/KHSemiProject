@@ -15,7 +15,7 @@
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<title>Insert title here</title>
+<title>리뷰관리 - 상세</title>
 <style>
 body {
 	box-sizing: border-box;

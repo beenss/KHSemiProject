@@ -15,7 +15,7 @@
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <title>review</title>
+    <title>리뷰 목록</title>
     <style>
         @font-face {
             src: url("/fonts/MinSans-Regular.otf");
@@ -196,8 +196,8 @@
         <div class="row text-center align-items-center menu">
             <div class="col-lg-1 col-2">번호</div>
             <div class="col-lg-2 d-none d-lg-block">상품코드</div>
-            <div class="col-lg-6 col-8">제목</div>
-            <div class="col-lg-1 d-none d-lg-block">작성자</div>
+            <div class="col-lg-5 col-8">제목</div>
+            <div class="col-lg-2 d-none d-lg-block">작성자</div>
             <div class="col-lg-2 col-2">작성일</div>
         </div>
         <c:choose>
@@ -211,9 +211,9 @@
                     <div class="row content text-center align-items-center" style="cursor: pointer;"
                         onclick="location.href='/detailView.bo?seqReview=${dto.seqReview}';">
                         <div class="col-lg-1 col-2">${dto.seqReview}</div>
-                        <div class="col-lg-2">${dto.productCode}</div>
+                        <div class="col-lg-2 d-none d-lg-block">${dto.productCode}</div>
                         <div class="col-lg-5">${dto.reviewTitle}</div>
-                        <div class="col-lg-2">${dto.id}</div>
+                        <div class="col-lg-2 d-none d-lg-block">${dto.id}</div>
                         <div class="col-lg-2">${dto.reviewDate}</div>
                     </div>
                 </c:forEach>
@@ -249,6 +249,9 @@
             <button type="button" class="btnBox" id="btn-write">글쓰기</button>
     </div>
     <script>
+		$('#main-logo').on('click', () => {
+			location.href = "/home";
+		})
         $("#btn-write").on("click", function () {
             location.href = "/write.bo";
         });

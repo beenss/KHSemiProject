@@ -218,6 +218,9 @@
 	        </div>
         </form>
         <script>
+	    	$('#main-logo').on('click', () => {
+	    		location.href = "/home";
+	    	})
         	$("#btn-save").on("click",function(){
         		if($("#inquiry-title").val()===""){
         			//제목 입력 안하면 제목 입력해달라 요청

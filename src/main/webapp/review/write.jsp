@@ -18,7 +18,7 @@
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<title>리뷰쓰</title>
+<title>리뷰 글쓰기</title>
 <style>
 @font-face {
 	src: url("/fonts/MinSans-Regular.otf");
@@ -225,16 +225,24 @@ textarea {
 	</div>
 	</div>
 	<script>
+		$('#main-logo').on('click', () => {
+			location.href = "/home";
+		})
             $("#btn-save").on("click", function () {
                 if ($("#review-title").val() === "") {
                     alert("제목을 입력해주세요");
                      $("#review-content").focus();
+                     return;
                 }
                 if ($("#reivew-content").val() === "") {
                     alert("내용을 입력하세요.");
                     //커서 이동
                     $("#review-content").focus();
                     return;
+                }
+                if ($('#review-img').val() === '') {
+                	alert("이미지를 등록해주세요.")
+                	return;
                 }
                 $("#write-form").submit();
             })

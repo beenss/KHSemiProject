@@ -22,7 +22,7 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
-<title>제품보기_초안</title>
+<title>제품보기</title>
 <style>
 
 /* body 영역 */
@@ -260,6 +260,9 @@ margin-top : 50px;
 	</div>
 
 			<script>
+        	$('#main-logo').on('click', () => {
+        		location.href = "/home";
+        	})
 		// 강아지버튼을 눌렀을 때 강아지상품만 비동기로 띄워주기 
 			$(".btnDog").on("click",function(){	
 				

@@ -246,6 +246,12 @@ margin-top : 50px;
 			</c:choose>     
         </div>
         <script>
+	    	$('#main-logo').on('click', () => {
+	    		location.href = "/home";
+	    	})
+        	$('#main-logo').on('click', () => {
+        		location.href = "/home";
+        	})
        		$(".content").on("click",function(e){
        			let seqInquiry = $(e.target).parent(".row").children().eq(0).html();
        			console.log(seqInquiry);

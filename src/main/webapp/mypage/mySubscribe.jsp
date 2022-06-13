@@ -338,6 +338,9 @@ body {
 	</div>
 	
 	<script>
+	$('#main-logo').on('click', () => {
+		location.href = "/home";
+	})
 	$("#btnSubscribe").on("click",function(){
 		location.href="/pet.pet";
 	})

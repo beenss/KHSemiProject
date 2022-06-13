@@ -353,7 +353,7 @@ body {
 				</div>
 				<div class="row">
 					<div class="col-12 btn-area">
-						<button type="button" class="btn btn-light">취소하기</button>
+						<button type="button" class="btn btn-light" id="btnCancel">취소하기</button>
 						<button type="button" class="btn btn-warning " id="btnUpdate">수정하기</button>
 					</div>
 				</div>
@@ -375,6 +375,12 @@ body {
 		</div>
 	</div>
 	<script>
+	$('#main-logo').on('click', () => {
+		location.href = "/home";
+	})
+	$("#btnCancel").on("click", () => {
+		location.href = "/mypage.my";
+	})
 	// 수정 버튼을 눌렀을 때 유효성 검사 후 form 제출
     $("#btnUpdate").on("click",function() {
              let regexPw = /[a-zA-Z0-9~!@#$%^&*]{6,20}/; // 비밀번호 정규식 (영문자, 숫자,~!@#$%^&* 6~20자리)

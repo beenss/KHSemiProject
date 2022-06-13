@@ -255,6 +255,9 @@ textarea {
 		</div>
 
 		<script>
+    	$('#main-logo').on('click', () => {
+    		location.href = "/home";
+    	})
     $("#btn-back").on("click", function () {
     location.href = "/review.bo?currentPage=1"
  })

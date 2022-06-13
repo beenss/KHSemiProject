@@ -16,7 +16,7 @@
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <title>문의게시판</title>
+    <title>리뷰게시판</title>
     <style>
         body {
             box-sizing: border-box;
@@ -245,6 +245,9 @@ margin-top : 50px;
 			</c:choose>     
         </div>
         <script>
+	    	$('#main-logo').on('click', () => {
+	    		location.href = "/home";
+	    	})
        		$(".content").on("click",function(e){
        			let seqReview = $(e.target).parent(".row").children().eq(0).html();
        			console.log(seqReview);
@@ -278,7 +281,7 @@ margin-top : 50px;
     			location.href="/reviewDelete.bo?seqReview="+seqReview;
     		})
     		$(".container").on("click",".cancelReview",function(e){//취소버튼
-    			location.href="/ReviewList.bo"
+    			location.href="/reviewList.bo"
     		})
        		$(".container").on("click",".submitReview",function(e){//수정완료버튼
        			let seqReview = $(e.target).val();
@@ -327,6 +330,8 @@ margin-top : 50px;
    				let col7 = $("<div class='col-2 form-label'>").html("내용");
    				let col8 = $("<div class='col-10'>");
    				let textarea = $("<textarea readonly class='reviewContent form-control' rows='20'>").val(rs.reviewContent);
+   				
+   				
    				col8.append(textarea);
    				row3.append(col7,col8);
    					

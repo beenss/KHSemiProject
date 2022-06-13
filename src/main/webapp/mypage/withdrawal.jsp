@@ -327,6 +327,9 @@ margin-top : 50px;
 		</div>
 	</div>
 	<script>
+		$('#main-logo').on('click', () => {
+			location.href = "/home";
+		})
 		// 탈퇴하기 버튼을 눌렀을 때  --> 체크박스 체크여부 확인 / 비밀번호 동일한지 확인하기!  --> confirm창으로 탈퇴여부 재차 물어보기
 		$(".btnWithdraw").on("click", function() {
 			// 체크박스

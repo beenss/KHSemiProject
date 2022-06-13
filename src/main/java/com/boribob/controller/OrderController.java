@@ -115,7 +115,7 @@ public class OrderController extends HttpServlet {
 							paySuccess, payId, payTradeId, payAmount, payApproval, deliveryStatus, expectedArrival,
 							deliveryCount);
 
-					PetDTO petDTO = new PetDTO("id10", petName, petAge, petAllergy, petWeight, petKind, petType);
+					PetDTO petDTO = new PetDTO(id, petName, petAge, petAllergy, petWeight, petKind, petType);
 
 					SubscribeDTO subscribeDTO = new SubscribeDTO(id, productCode, null, subscribeTerm);
 

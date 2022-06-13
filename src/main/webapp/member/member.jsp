@@ -23,7 +23,7 @@
 	crossorigin="anonymous"></script>
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<title>레이아웃</title>
+<title>회원가입</title>
 <style>
 body {
 	box-sizing: border-box;
@@ -345,6 +345,9 @@ body {
 
 
 	<script>
+		$('#main-logo').on('click', () => {
+			location.href = "/home";
+		})
 		// 이메일 확인 버튼 누르면 팝업창 띄우기
 		document.getElementById("checkIdBtn").onclick = function() {
 			let url = "/idCheckPopup.mem"; // jsp 경로값 (팝업창 꾸며주는 jsp 필요 **)

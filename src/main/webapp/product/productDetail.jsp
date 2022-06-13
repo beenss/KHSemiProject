@@ -17,7 +17,7 @@
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
 
-    <title>상품상세-초안</title>
+    <title>상품상세</title>
     <style>
         
 
@@ -915,6 +915,9 @@
 	</div>
 
     <script>
+		$('#main-logo').on('click', () => {
+			location.href = "/home";
+		})
     	$("#btnSubscribe").on("click",function(){
     		
     		location.href="/pet.pet";

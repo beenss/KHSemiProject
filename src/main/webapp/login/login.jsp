@@ -21,7 +21,7 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
-<title>Home</title>
+<title>로그인</title>
 <style>
 @font-face {
 	src: url("/fonts/MinSans-Regular.otf");
@@ -271,7 +271,7 @@ body {
 			</div>
 			<br>
 			</div>
-			<div class="row justify-content-center">
+			<div class="row justify-content-center text-center">
 				<div class="col-lg-2">
 					<button type="button" id="loginBtn">로그인</button>
 				</div>
@@ -302,6 +302,13 @@ body {
 
 		<!-- 캐시를 이용하여 이메일 저장하기 checkbox 활용 -->
 		<script type="text/javascript">
+
+	    	$('#main-logo').on('click', () => {
+	    		location.href = "/home";
+	    	})
+	    	$('#main-logo').on('click', () => {
+	    		location.href = "/home";
+	    	})
             $(function () {
                 fnInit();
             });
