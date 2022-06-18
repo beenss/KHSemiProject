@@ -178,9 +178,9 @@
         <div class= "container">
             <div class="row text-center align-items-center menu">
                 <div class="col-lg-1 col-2">번호</div>
-                <div class="col-lg-9 col-8">제목</div>
-                <div class="col-lg-1 d-none d-lg-block">작성자</div>
-                <div class="col-lg-1 col-2">작성일</div>
+                <div class="col-lg-6 col-7">제목</div>
+                <div class="col-lg-3 col-3">작성자</div>
+                <div class="col-lg-2 d-none d-lg-block">작성일</div>
             </div>
             <c:choose>
 				<c:when test="${list.size()==0}">
@@ -194,15 +194,15 @@
 					<c:forEach items="${list}" var="dto">
 						<div class="row content text-center align-items-center" style="cursor: pointer;" 
 						onclick="location.href='/inquiryDetailview.iq?seqInquiry=${dto.seqInquiry}';">
-                			<div class="col-lg-1 col-10">${dto.seqInquiry}</div>
+                			<div class="col-lg-1 col-2">${dto.seqInquiry}</div>
                 			<c:if test="${not empty dto.inquiryAnswer}">
-               		 			<div class="col-lg-8 col-10"><strong>[답변완료]</strong> ${dto.inquiryTitle}</div>
+               		 			<div class="col-lg-6 col-7"><strong>[답변완료]</strong> ${dto.inquiryTitle}</div>
                		 		</c:if>
                		 		<c:if test="${empty dto.inquiryAnswer}">
-               		 			<div class="col-lg-9 col-9">${dto.inquiryTitle}</div>
+               		 			<div class="col-lg-6 col-7">${dto.inquiryTitle}</div>
                		 		</c:if >
-               	 			<div class="col-lg-1 d-none d-lg-block">${dto.id}</div>
-                			<div class="col-lg-1 d-none d-lg-block">${dto.inquiryDate}</div>    
+               	 			<div class="col-lg-3 col-3">${dto.id}</div>
+                			<div class="col-lg-2 d-none d-lg-block">${dto.inquiryDate}</div>    
            				</div>
 					</c:forEach>
 				</c:otherwise>
@@ -236,8 +236,10 @@
                 </nav>
             </div>
             <div class="row justify-content-center boxBtn">
+            <c:if test="${not empty loginSession.id }">
             <button type="button" class="btnBox" id="btn-write">글쓰기</button>
-    </div>
+            </c:if>
+            </div>
         <!-- 여기부터 풋터 -->
         <div class="row justify-content-center footer">
             <div class="col-lg-10 col-12">
