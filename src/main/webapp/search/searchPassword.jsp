@@ -27,30 +27,24 @@
 <style>
 body {
 	box-sizing: border-box;
+	margin-top: 60px;
 }
-
-.header {
-	padding: 20px;
-	position: relative;
-}
-
-.footer>* {
-	padding: 20px;
-	position: relative;
-}
-
-.ft-ul {
-	list-style: none;
-	text-align: center;
-	height: 100%;
-	padding-top: 28px;
-	color: black;
-	font-size: 12px;
-	z-index: 1;
-}
-
-.ft-images {
-	text-align: center;
+@font-face {
+                src: url("/fonts/GongGothicBold.ttf");
+                font-family: "GongGothicBold.ttf";
+            }
+#abcdef {
+       			font-family: "GongGothicBold.ttf";
+       }
+@font-face {
+                src: url("/fonts/GongGothicLight.ttf");
+                font-family: "GongGothicLight.ttf";
+            }
+.qwer {
+       			font-family: "GongGothicLight.ttf";
+       }
+#cancelBtn{
+	margin-top: 20px;
 }
 </style>
 </head>
@@ -58,141 +52,47 @@ body {
 
 
 
-	<div class="wrapper">
-		<div class="row justify-content-center header">
-			<div class="col-lg-4 col-12">
-				<img src="images/project_logo.PNG" class="d-block w-100"
-					id="main-logo">
-			</div>
-			<div class="col-lg-8 col-12">
-				<nav class="navbar navbar-expand-lg navbar-light">
-					<div class="container-fluid">
-						<a class="navbar-brand" href="#">Boribob</a>
-						<button class="navbar-toggler" type="button"
-							data-bs-toggle="collapse"
-							data-bs-target="#navbarSupportedContent"
-							aria-controls="navbarSupportedContent" aria-expanded="false"
-							aria-label="Toggle navigation">
-							<span class="navbar-toggler-icon"></span>
-						</button>
-						<div class="collapse navbar-collapse" id="navbarSupportedContent">
-							<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-								<li class="nav-item"><a class="nav-link" href="#">제품 보기</a>
-								</li>
-								<li class="nav-item"><a class="nav-link" href="#">고객센터</a>
-								</li>
-								<li class="nav-item"><a class="nav-link" href="#">회원 가입</a>
-								</li>
-								<li class="nav-item"><a class="nav-link" href="#">리뷰</a></li>
-								<li class="nav-item"><a class="nav-link" href="#">로그인</a></li>
-								<li class="nav-item"><a class="nav-link" href="#">구독하기</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</nav>
-			</div>
-		</div>
-	</div>
-	<!-- 여기까지 헤더 -->
-
 	<!-- 여기에 바디 코드 짜주셈 -->
 
-	<div class="container" style="border: 1px solid lightgrey">
+	<div class="container">
 		<form id="searchPasswordForm" action="/searchPassword.mem" method="post">
 			<div class="row">
 				<div class="col-12 mb-5 d-flex justify-content-center">
-					<h2>비밀번호 찾기</h2>     
+					<h2 id="abcdef">비밀번호 찾기</h2>     
 				</div>                
 			</div>
+			<div class="qwer">
             <div>*안녕하세요 보리밥입니다*</div><br>
             <div>저희 '보리밥'은 개인정보 처리방침에 따라 고객센터로 연락주시면</div><br>
             <div>인증절차를 통하여 고객님의 비밀번호 변경을 도와드리고 있습니다.</div><br>
             <div>이용에 불편을 드려 대단히 죄송합니다.</div>
+            <div>고객센터 : 1544-9970</div>
+            </div>
             
+            <div class="row justify-content-center">
+		<div class="col-4 d-flex justify-content-center">
+			<button type="button" id="cancelBtn" class="btn btn-secondary">닫기</button>
+		</div>
+		</div>
 		</form>
 
 	</div>
 
-	<div class="row justify-content-center">
-		<div class="col-4 d-flex justify-content-end">
-			<button type="button" id="cancelBtn" class="btn btn-secondary">닫기</button>
-		</div>
+	
+	
 		<script>
 		
-		// 로그인 버튼 누르면
+		// 닫기 버튼 누르면
 		document.getElementById("cancelBtn").onclick = function() {
 			self.close();
 		}
 		
-		// 이메일 번호 확인  $("#emailAddress").val();
-//		$("#searchPasswordBtn").on("click",	function() {				
-//			
-//					if ($("#emailAddress").val() === "") {
-//						alert("");                       
-//						return;
-//					}					
-//					document.getElementById("searchPasswordForm").submit();
-//		}
 
-		$("#searchPasswordBtn").on("click",   function() {          
-
-			$("#emailAddress").val();
-	               
-	              $.ajax({
-	            	  url : "/searchPassword.mem?emailAddress="+emailAddress
-	            	  ,type : "get"
-	            	  ,dataType : "json"
-	            	  ,success : function(data){
-	            		  
-	            		  if (data!==null){
-	            		  alert(data.password);
-	            			  
-	            		  }else{
-	            			  alert("틀렸어");
-	            		  }
-            		  
-	            	  }
-	                  ,error : function(e){
-	                	  console.log(e);
-	                  }
-	              })
-	
-	            })
 
 
 		</script>
 
 
-		<!-- 여기부터 풋터 -->
-		<div class="row justify-content-center footer">
-			<div class="col-lg-10 col-12">
-				<ul class="ft-ul">
-					<li>BoriBob Inc. 사랑시 고백구 행복동</li>
-					<li>대표 : 보리밥형제들 사업자등록번호 : 780-86-01094</li>
-					<li>대표번호 : +82)-665-3430 팩스번호 : +82)-888-3430 홈페이지 :
-						petvenience.store.com</li>
-					<li>CopyrightⓒBoriBob Inc. All Rights Reserved.</li>
-				</ul>
-			</div>
-			<div class="col-lg-2 col-12">
-				<ul class="ft-images">
-					<img src="images/icons8-facebook-new-48.png"
-						style="border-color: lightblue;">
-					<img src="images/icons8-인스-타-그램-48.png"
-						style="border-color: lightblue;">
-					<img src="images/icons8-유튜브-재생-48.png"
-						style="border-color: lightblue;">
-
-				</ul>
-				<ul class="ft-ul">
-					<li><strong>고객센터</strong></li>
-					<li style="height: 8px;"></li>
-					<li>오전 10시부터 오후 6시까지</li>
-					<li>토요일, 일요일, 공휴일 휴무</li>
-				</ul>
-			</div>
-		</div>
 
 	</div>
 </body>

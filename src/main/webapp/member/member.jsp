@@ -23,7 +23,7 @@
 	crossorigin="anonymous"></script>
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<title>레이아웃</title>
+<title>회원가입</title>
 <style>
 body {
 	box-sizing: border-box;
@@ -52,13 +52,95 @@ body {
 .ft-images {
 	text-align: center;
 }
+.w-btn-skin {
+    background-color: #f8e6e0;
+    color: #1e6b7b;
+	position: relative;
+    border: none;
+    display: inline-block;
+    padding: 15px 30px;
+    border-radius: 15px;
+    text-decoration: none;
+    font-weight: 550;
+    transition: 0.25s;
+}
+.w-btn-skin-outline {
+    transition: 0.25s;
+    transform: scale(1.1);
+    cursor: pointer;
+	
+}
+.w-btn-skin:hover {
+	letter-spacing: 1px;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+.w-btn-indigo {
+    background-color: aliceblue;
+    color: #1e6b7b;
+	position: relative;
+    border: none;
+    display: inline-block;
+    padding: 15px 30px;
+    border-radius: 15px;
+    text-decoration: none;
+    font-weight: 550;
+    transition: 0.25s;
+}
+.w-btn-indigo-outline {
+    transition: 0.25s;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+.w-btn-indigo:hover {
+    letter-spacing: 1px;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+@font-face {
+                src: url("/fonts/GongGothicBold.ttf");
+                font-family: "GongGothicBold.ttf";
+            }
+#memInfoSignup {
+       			font-family: "GongGothicBold.ttf";
+       }
+@font-face {
+                src: url("/fonts/GongGothicLight.ttf");
+                font-family: "GongGothicLight.ttf";
+            }
+#checkIdBtn {
+       			font-family: "GongGothicBold.ttf";
+       }
+#btnPostCode {
+       			font-family: "GongGothicBold.ttf";
+       }
+#btnCancel {
+       			font-family: "GongGothicBold.ttf";
+       }
+#submitBtn {
+       			font-family: "GongGothicBold.ttf";
+       }
+@font-face {
+                src: url("/fonts/Theafhh_.TTF");
+                font-family: "Theafhh_.TTF";
+            }
+.form-label{
+				font-family: "GongGothicLight.ttf";
+}
+#asdf{
+				font-family: "GongGothicLight.ttf";
+}
+#fdsa{
+				font-family: "GongGothicLight.ttf";
+}
 </style>
 </head>
 <body>
 
 
 
-	<div class="wrapper">
+	<!-- <div class="wrapper">
 		<div class="row justify-content-center header">
 			<div class="col-lg-4 col-12">
 				<img src="images/project_logo.PNG" class="d-block w-100"
@@ -93,154 +175,162 @@ body {
 				</nav>
 			</div>
 		</div>
-	</div>
+	</div>  -->
 	<!-- 여기까지 헤더 -->
 
 	<!-- 여기에 바디 코드 짜주셈 -->
 
-	<div class="container" style="border: 1px solid lightgrey">
-		<form id="memberForm" action="/signup.mem" method="post">
-			<div class="row">
-				<div class="col-12 mb-5 d-flex justify-content-center">
-					<h2>회원 정보 입력</h2>
+	<div class="container" style="border-radius: 30px; width: 800px; border: 5px solid #f8e6e0">
+			<form id="memberForm" action="/signup.mem" method="post">
+				<div class="row">
+					<div class="col-12 mb-5 d-flex justify-content-center" style="margin-top: 30px;">
+						<h2 id="memInfoSignup">회원 정보 입력</h2>
+					</div>
 				</div>
-			</div>
-
-			<div class="row p-2">
-				<div class="col-12">
-					<label for="id" class="form-label">아이디 (이메일)</label>
-				</div>
-				<div class="col-8 mb-2">
-					<input type="text" class="form-control" id="id" name="id" readonly>
-				</div>
-				<div class="col-4 mb-2">
-					<button type="button" id="checkIdBtn" class="btn btn-warning w-100">이메일
-						확인</button>
-				</div>
-			</div>
-
-			<div class="row p-2">
-				<div class="col-12">
-					<label for="password" class="form-label">비밀번호</label>
-				</div>
-				<div class="col-12 mb-2">
-					<input type="password" class="form-control" id="pw" name="password">
-					<span style="font-size : 10px;">*6~10자의 영문 대소문자와 숫자, 특수문자로만 입력하세요.</span>
-				</div>
-			</div>
-
-			<div class="row p-2">
-				<div class="col-12">
-					<label for="pwCheck" class="form-label">비밀번호 확인</label>
-				</div>
-				<div class="col-12 mb-2">
-					<input type="password" class="form-control" id="pwCheck">
-				</div>
-			</div>
-
-			<div class="row p-2">
-				<div class="col-12">
-					<label for="name" class="form-label">이름</label>
-				</div>
-				<div class="col-12 mb-2">
-					<input type="text" class="form-control" id="name" name="name">
-				</div>
-			</div>
-
-
-			<div class="row p-2">
-			
-				<div class="col">				
-					<label for="address" class="form-label">주소</label>
-				</div>
+	
 				<div class="row p-2">
-				<div class="col">				
-					<input type="text" class="form-control" id="postCode"
-						name="post" placeholder="우편번호">
+					<div class="col-12">
+						<label for="id" class="form-label">아이디 (이메일)</label>
+					</div>
+					<div class="col-8 mb-2">
+						<input type="text" class="form-control" id="id" name="id" readonly>
+					</div>
+					<div class="col-4 mb-2">
+						<button type="button" id="checkIdBtn" class="btn btn-warning w-100" 
+						style="background-color: #f8e6e0; border-radius: 10px; color: #318697; 
+						font-weight: 550;">이메일	확인</button>
+					</div>
 				</div>
+	
+				<div class="row p-2">
+					<div class="col-12">
+						<label for="password" class="form-label">비밀번호</label>
+					</div>
+					<div class="col-12 mb-2">
+						<input type="password" style="outline: px solid #f8e6e0;" class="form-control" id="pw" name="password">
+						<span style="font-size : 10px;">*6~10자의 영문 대소문자와 숫자, 특수문자로만 입력하세요.</span>
+					</div>
+				</div>
+	
+				<div class="row p-2">
+					<div class="col-12">
+						<label for="pwCheck" class="form-label">비밀번호 확인</label>
+					</div>
+					<div class="col-12 mb-2">
+						<input type="password" class="form-control" id="pwCheck">
+					</div>
+				</div>
+	
+				<div class="row p-2">
+					<div class="col-12">
+						<label for="name" class="form-label">이름</label>
+					</div>
+					<div class="col-12 mb-2">
+						<input type="text" class="form-control" id="name" name="name">
+					</div>
+				</div>
+	
+	
+				<div class="row p-2">
 				
-				<div class="col">
-					<button type="button" class="btn btn-primary w-100"
-						id="btnPostCode">우편번호 찾기</button>
-				</div>
-				</div>
-				<div class="row p-2">
-					<div class="col">
-						<input type="text" class="form-control" id="roadAddr"
-							name="roadAddress" placeholder="도로명주소">
+					<div class="col">				
+						<label for="address" class="form-label">주소</label>
 					</div>
-				</div>
-				<span id="guide" style="color: #999; display: none"></span>
-				<div class="row p-2">
-					<div class="col">
-						<input type="text" class="form-control" id="detailAddr"
-							name="detailAddress" placeholder="상세주소">
-					</div>
-				</div>
-			</div>
-
-
-
-
-
-			<div class="row p-2">
-					<label for="phone" class="form-label">휴대폰번호</label>
-					<div class="col-3 mb-2">
-						<select class="form-select" id="phone1">
-							<option value="010" selected>010</option>
-							<option value="011">011</option>
-							<option value="011">016</option>
-							<option value="011">017</option>
-							<option value="011">019</option>
-						</select>
-					</div>
-					<div class="col-4 mb-2">
-						<input type="text" class="form-control" id="phone2" maxlength="4">
-					</div>
-					<div class="col-4 mb-2">
-						<input type="text" class="form-control" id="phone3" maxlength="4">
-					</div>
-					<div class="col d-none">
-						<input type="text" id="phone" name="phone">
+					<div class="row p-2">
+					<div class="col">				
+						<input type="text" class="form-control" id="postCode"
+							name="post" placeholder="우편번호">
 					</div>
 					
-				
+					<div class="col">
+						<button type="button" class="btn btn-warning w-100"
+							id="btnPostCode" 
+							style="background-color: #f8e6e0; border-radius: 10px; 
+							font-weight: 550; color: #318697;">우편번호 찾기</button>
+					</div>
+					</div>
+					<div class="row p-2">
+						<div class="col">
+							<input type="text" class="form-control" id="roadAddr"
+								name="roadAddress" placeholder="도로명주소">
+						</div>
+					</div>
+					<span id="guide" style="color: #999; display: none"></span>
+					<div class="row p-2">
+						<div class="col">
+							<input type="text" class="form-control" id="detailAddr"
+								name="detailAddress" placeholder="상세주소">
+						</div>
+					</div>
+				</div>
+	
+	
+	
+	
+	
+				<div class="row p-2">
+						<label for="phone" class="form-label">휴대폰번호</label>
+						<div class="col-3 mb-2">
+							<select class="form-select" id="phone1">
+								<option value="010" selected>010</option>
+								<option value="011">011</option>
+								<option value="011">016</option>
+								<option value="011">017</option>
+								<option value="011">019</option>
+							</select>
+						</div>
+						<div class="col-4 mb-2">
+							<input type="text" class="form-control" id="phone2" maxlength="4">
+						</div>
+						<div class="col-4 mb-2">
+							<input type="text" class="form-control" id="phone3" maxlength="4">
+						</div>
+						<div class="col d-none">
+							<input type="text" id="phone" name="phone">
+						</div>
+						
+					
+	
+				</div>
+				<div class="row p-2">
+					<div class="col-12">
+				<label for="address" class="form-label">이용약관</label>
+				</div>
+				</div>
 
+				<div class="row p-2 justify-content-center">
+				<div class="col-12" style="width: 600px;">
+				<div style="border-radius: 30px; height: 340px; border: 1px solid lightgrey; text-align: center; margin-bottom: 20px;">						
+				<div style="margin-top: 20px;">					
+				<textarea style="border-radius: 3px; font-size: small; width: 400px; height: 100px; border: 1px solid black;">여러분을 환영합니다.보리밥 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. 본 약관은 다양한 보리밥 서비스의 이용과 관련하여 보리밥 서비스를 제공하는 보리밥 주식회사(이하 ‘보리밥’)와 이를 이용하는 보리밥 서비스 회원(이하 ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 보리밥 서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.</textarea>
+				</div>
+				<div style="text-align: center; margin-top: 5px;">
+					<input type="checkbox" id="asdf">(선택)동의합니다.
+				</div>
+				<textarea style="border-radius: 3px; margin-top: 20px; font-size: small; width: 400px; height: 100px; border: 1px solid black;">여러분을 환영합니다.여러분 혹시 이거 이용약관 내용까지 확인하실건가요. 그런거아니잖아요. 우리 3팀 팀원들 다들 괴물같아요 제가 이번 세미 프로젝트에서 한거라곤 당산에서 밥이나 술마실때 길안내가 전부였습니다. 3팀은 5명입니다. 다들 제 몫까지 하고 자기가 맡은거 겁나 완벽하게 잘하고 그랬답니다. 이 프로젝트는 깐족거리는 저를 조용하게 만들어주는 정신교육 프로젝트였습니다. 그래요. 다들 고생했어요.ㅋㅋㅋ</textarea>
+				<div style="text-align: center; margin-top: 5px;">
+					<input type="checkbox" id="fdsa">(선택)동의합니다.
+				</div>
+				</div>
+				</div>
 			</div>
-			<div class="row p-2">
-			<label for="address" class="form-label">이용약관</label>
-			</div>
-			<div style="border: 1px solid lightgrey; width: 600px; height: 400px;">						
-			<textarea style="font-size: small; width: 400px; height: 100px; border: 1px solid black;">여러분을 환영합니다.보리밥 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. 
-본 약관은 다양한 보리밥 서비스의 이용과 관련하여 보리밥 서비스를 제공하는 보리밥 주식회사(이하 ‘보리밥’)와
-이를 이용하는 보리밥 서비스 회원(이하 ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 보리밥
-서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.</textarea>
-<textarea style="font-size: small; width: 400px; height: 100px; border: 1px solid black;">여러분을 환영합니다.보리밥 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. 
-본 약관은 다양한 보리밥 서비스의 이용과 관련하여 보리밥 서비스를 제공하는 보리밥 주식회사(이하 ‘보리밥’)와
-이를 이용하는 보리밥 서비스 회원(이하 ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 보리밥
-서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.</textarea>
-<textarea style="font-size: small; width: 400px; height: 100px; border: 1px solid black;">여러분을 환영합니다.보리밥 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. 
-본 약관은 다양한 보리밥 서비스의 이용과 관련하여 보리밥 서비스를 제공하는 보리밥 주식회사(이하 ‘보리밥’)와
-이를 이용하는 보리밥 서비스 회원(이하 ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 보리밥
-서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.</textarea>
-			</div>
-			
-		</form>
-
-	</div>
-
-	<div class="row justify-content-center">
-		<div class="col-4 d-flex justify-content-end">
-			<button type="button" id="btnCancel" class="btn btn-secondary">취소하기</button>
+			</form>
+	
 		</div>
-		<div class="col-4 d-flex justify-content-start">
-			<button type="button" id="submitBtn" class="btn btn-success">가입하기</button>
+	
+		<div class="row justify-content-center" style="margin-top: 30px; margin-bottom: 30px;">
+			<div class="col-4 d-flex justify-content-end" style="margin-right: 10px;">
+				<button type="button" id="btnCancel" class="w-btn w-btn-indigo">취소하기</button>
+			</div>
+			<div class="col-4 d-flex justify-content-start"  style="margin-left: 10px;">
+				<button type="button" id="submitBtn" class="w-btn w-btn-skin">가입하기</button>
+			</div>
 		</div>
 
 
 		<!-- 여기부터 풋터 -->
 		<div class="row justify-content-center footer">
-			<div class="col-lg-10 col-12">
+			<div class="col-12">
 				<ul class="ft-ul">
 					<li>BoriBob Inc. 사랑시 고백구 행복동</li>
 					<li>대표 : 보리밥형제들 사업자등록번호 : 780-86-01094</li>
@@ -249,29 +339,15 @@ body {
 					<li>CopyrightⓒBoriBob Inc. All Rights Reserved.</li>
 				</ul>
 			</div>
-			<div class="col-lg-2 col-12">
-				<ul class="ft-images">
-					<img src="images/icons8-facebook-new-48.png"
-						style="border-color: lightblue;">
-					<img src="images/icons8-인스-타-그램-48.png"
-						style="border-color: lightblue;">
-					<img src="images/icons8-유튜브-재생-48.png"
-						style="border-color: lightblue;">
-
-				</ul>
-				<ul class="ft-ul">
-					<li><strong>고객센터</strong></li>
-					<li style="height: 8px;"></li>
-					<li>오전 10시부터 오후 6시까지</li>
-					<li>토요일, 일요일, 공휴일 휴무</li>
-				</ul>
-			</div>
 		</div>
 
 	</div>
 
 
 	<script>
+		$('#main-logo').on('click', () => {
+			location.href = "/home";
+		})
 		// 이메일 확인 버튼 누르면 팝업창 띄우기
 		document.getElementById("checkIdBtn").onclick = function() {
 			let url = "/idCheckPopup.mem"; // jsp 경로값 (팝업창 꾸며주는 jsp 필요 **)
@@ -281,7 +357,7 @@ body {
 		}
 		// 취소하기 버튼 누르면 로그인 창으로 띄우기
 		document.getElementById("btnCancel").onclick = function() {
-			let url = "/cancelSignup.mem";
+			location.href = "/cancelSignup.mem";
 		}
 
 		// 가입 버튼을 눌렀을 때 유효성 검사 후 form 제출

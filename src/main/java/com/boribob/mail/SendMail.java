@@ -25,7 +25,7 @@ public class SendMail {
 		
 		final String bodyEncoding = "UTF-8"; // 콘텐츠 인코딩
 
-		String subject = "Boribob 인증번호 요청"; // 제목
+		String subject = "Boribob 인증번호 요청메일입니다."; // 제목
 		String fromEmail = "damnyou1994@gmail.com"; // 보낼 이메일 주소
 		String fromUsername = "Boribob"; // 보낸사람 이름
 		String toEmail = email; // 콤마(,)로 여러개 나열
@@ -35,7 +35,8 @@ public class SendMail {
 
 		// 메일에 출력할 텍스트
 		StringBuffer sb = new StringBuffer();
-		sb.append("<h4>해당 인증번호를 입력해 주세요.</h4>");
+		sb.append("<h2>안녕하세요. Boribob입니다.^^</h4>");
+		sb.append("<h4>해당 인증번호를 입력해 주세요~♡</h4>");		
 		sb.append(randomNumber);
 		String html = sb.toString();
 		// 메일 옵션 설정

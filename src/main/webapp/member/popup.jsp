@@ -21,10 +21,87 @@
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 <title>아이디 확인</title>
+<style>
+    .w-btn-skin {
+    background-color: #f8e6e0;
+    color: #1e6b7b;
+	position: relative;
+    border: none;
+    display: inline-block;
+    padding: 15px 30px;
+    border-radius: 15px;
+    text-decoration: none;
+    font-weight: 550;
+    transition: 0.25s;
+}
+.w-btn-skin-outline {
+    transition: 0.25s;
+    transform: scale(1.1);
+    cursor: pointer;
+	
+}
+.w-btn-skin:hover {
+	letter-spacing: 1px;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+.w-btn-indigo {
+    background-color: aliceblue;
+    color: #1e6b7b;
+	position: relative;
+    border: none;
+    display: inline-block;
+    padding: 15px 30px;
+    border-radius: 15px;
+    text-decoration: none;
+    font-weight: 550;
+    transition: 0.25s;
+}
+.w-btn-indigo-outline {
+    transition: 0.25s;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+.w-btn-indigo:hover {
+    letter-spacing: 1px;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+@font-face {
+                src: url("/fonts/GongGothicMedium.ttf");
+                font-family: "GongGothicMedium.ttf";
+            }
+#checkIdBtn {
+       			font-family: "GongGothicMedium.ttf";
+       }
+#ranNumCheck {
+       			font-family: "GongGothicMedium.ttf";
+       }
+#useBtn {
+       			font-family: "GongGothicMedium.ttf";
+       }
+#cancelBtn {
+       			font-family: "GongGothicMedium.ttf";
+       }
+@font-face {
+                src: url("/fonts/GongGothicLight.ttf");
+                font-family: "GongGothicLight.ttf";
+            }
+.abcd {
+       			font-family: "GongGothicLight.ttf";
+       }
+@font-face {
+                src: url("/fonts/GongGothicLight.ttf");
+                font-family: "GongGothicLight.ttf";
+            }
+#certificationBtn {
+       			font-family: "GongGothicLight.ttf";
+       }
+</style>
 </head>
 <body>
 
-
+	<div class="container" style="border-radius: 30px; width: 550px;  height: 200px; border: 3px solid #f8e6e0;">
 	<form id="checkIdForm" action="/checkId.mem" method="post">
 		<div class='container'>
 			<div class="row m-3 justify-content-center">
@@ -32,22 +109,23 @@
 					<input type="text" class="form-control" id="id" name="id"
 						value="${id}" placeholder="이메일을 입력하세요.">
 				</div>
-				<div class="col-3 m-2">
-					<button type="button" class="btn btn-success" id="checkIdBtn">중복확인</button>
+				<div class="col-4 m-2">
+					<button type="button" class="btn btn-warning w-100" 
+                    style="background-color: #f8e6e0; border-radius: 10px; color: #318697;" id="checkIdBtn">중복확인</button>
 				</div>
 			</div>
 			
 			
 			<div class="row m-2 justify-content-start">
 				<div class="col-3">
-					<span>확인결과 : </span>
+					<span class="abcd">확인결과 :</span>
 				</div>
 				<c:if test="${rs eq 'ok'}">
  					<div class="col-5">
-						<span>사용가능한 이메일입니다.</span>
+						<span>사용가능 이메일입니다.</span>
 					</div>
 					<div class="col-4">
-						<button type="button" id="certificationBtn">인증번호발송</button>		
+						<button type="button" id="certificationBtn" style="border-radius: 10px; border: none; color: #318697; background-color: #f8e6e0;">인증번호발송</button>		
 					</div>
 					<script>
 					//이메일인증 > 인증버튼 누르자  
@@ -103,77 +181,34 @@
 						<span>중복된 이메일입니다.</span>		
 					</div>				
 				</c:if>	
-			</div>					
-				
-				          
-			
-			
-			<!-- 
-			<c:if test="${rs eq 'ok'}">
-				<div class="col-5">					
-						<span>사용가능한 이메일입니다.</span>					
-				</div>				
-				<div class="col-4">
-					<button type="button" id="certificationBtn">인증번호발송</button>		
-				</div>
-			</c:if>
-			
-			
-				
-			<c:if test="${rs eq 'no'}">
-				<div class="col-5">					
-						<span>중복된 이메일입니다.</span>					
-				</div>				
-				<div class="col-4">
-					<button type="button" id="certificationBtn" disabled>인증번호발송</button>		
-				</div>
-			</c:if>    
-			 -->
-			
-			
-			<!--
-			<div class="col-9">
-			<c:if test="${rs eq 'ok'}">									
-						<span>사용가능한 이메일입니다.</span>					
-					<button type="button" id="certificationBtn">인증번호발송</button>				
-			</c:if>
-			</div>				
-			
-			<div class="col-9">	
-				<c:if test="${rs eq 'no'}">				
-						<span>중복된 이메일입니다.</span>					
-					<button type="button" id="certificationBtn" disabled>인증번호발송</button>			
-			</c:if>
-			</div>
-			-->
-			
-				
+			</div>	
 				
 			</div>
 			
 
 
-			<div class="row m-2 justify-content-start">
+			<div class="row m-2 justify-content-center">
 				<div class="col-3">
-					<span>이메일 인증 : </span>
+					<span class="abcd">이메일 인증 : </span>
 				</div>
 				<div class="col-5">
 					<input type="text" id="randomCode" maxlength="6" placeholder="인증번호를 입력하세요.">
 				</div>
 				<div class="col-4">
-					<button type="button" id="ranNumCheck">확인</button>
+					<button type="button" id="ranNumCheck" class="btn btn-warning w-100" 
+                    style="background-color: #f8e6e0; border-radius: 10px; color: #318697;">확인</button>
 				</div>
 			</div>
-
+		</div>
 
 
 			<div class="row m-2 justify-content-center">
-				<div class="col-4 d-flex justify-content-end">
-					<button type="button" class="btn btn-primary" id="useBtn" disabled>사용</button>
+			<div class="col-4 d-flex justify-content-end">
+					<button type="button" class="w-btn w-btn-indigo" id="cancelBtn" style="height: 50px;">취소</button>
 				</div>
 				<div class="col-4 d-flex justify-content-start">
-					<button type="button" class="btn btn-secondary" id="cancelBtn">취소</button>
-				</div>
+					<button type="button" class="w-btn w-btn-skin" style="height: 50px;" id="useBtn" disabled >사용</button>
+				</div>				
 			</div>
 		</div>
 	</form>
@@ -212,8 +247,7 @@
 			}
 
 
-			opener.document.getElementById("id").value = document
-					.getElementById("id").value;
+			opener.document.getElementById("id").value = document.getElementById("id").value;
 			self.close();
 		}
 

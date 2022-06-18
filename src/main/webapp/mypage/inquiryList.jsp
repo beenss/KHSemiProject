@@ -20,6 +20,7 @@
     <style>
         body {
             box-sizing: border-box;
+            font-family: "GongGothicMedium.ttf";
         }
 
         .header {
@@ -84,49 +85,137 @@
         .buttonBox2>button{
         	display:none;
         }
+          /*  font */
+              @font-face {
+                src: url("/fonts/MinSans-Regular.otf");
+                font-family: "MinSans-Regular.otf";
+            }
+        @font-face {
+                src: url("/fonts/MinSans-Thin.otf");
+                font-family: "MinSans-Thin.otf";
+            }    
+        @font-face {
+                src: url("/fonts/MinSans-Medium.otf");
+                font-family: "MinSans-Medium.otf";
+            }
+            
+            @font-face {
+                src: url("/fonts/MinSans-Theafhh.otf");
+                font-family: "Theafhh_.TTF";
+            }
+             @font-face {
+                src: url("/fonts/MinSans-Light.otf");
+                font-family: "MinSans-Light.otf";
+            }
+          @font-face {
+                src: url("/fonts/MinSans-Bold.otf");
+                font-family: "MinSans-Bold.otf";
+            }
+          @font-face {
+                src: url("/fonts/MinSans-Black.otf");
+                font-family: "MinSans-Black.otf";
+            }  
+             @font-face {
+                src: url("/fonts/GongGothicBold.ttf");
+                font-family: "GongGothicBold.ttf";
+            }  
+            @font-face {
+                src: url("/fonts/GongGothicLight.ttf");
+                font-family: "GongGothicLight.ttf";
+            } 
+            @font-face {
+                src: url("/fonts/GongGothicMedium.ttf");
+                font-family: "GongGothicMedium.ttf";
+            }
+            			/* 헤더 풋터 */
+body {
+	box-sizing: border-box;
+	background-color: white;
+}
+
+.header {
+	padding: 20px;
+	position: relative;
+}
+
+.topmenu {
+	font-family: "GongGothicLight.ttf";
+	font-size: 20px;
+}
+
+.menu {
+	background-color: rgb(255, 255, 255);
+	font-size: 17px;
+	font-family: "GongGothicLight.ttf";
+}
+
+#menu-logo {
+	width: 70px;
+	height: 80px;
+}
+
+.footer>* {
+	background-color: white;
+	padding: 20px;
+	position: relative;
+}
+
+.ft-ul {
+	list-style: none;
+	text-align: center;
+	height: 100%;
+	padding-top: 28px;
+	color: black;
+	font-size: 12px;
+	z-index: 1;
+}  
+.footer{
+margin-top : 50px;
+} 
     </style>
 </head>
 <body>
-	<div class="wrapper">
-        <div class="row justify-content-center header">
-            <div class="col-lg-4 col-12">
-                <img src="/images/project_logo.PNG" class="d-block w-100" id="main-logo">
-            </div>
-            <div class="col-lg-8 col-12">
-                <nav class="navbar navbar-expand-lg navbar-light">
-                    <div class="container-fluid">
-                        <a class="navbar-brand" href="#">Boribob</a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">제품 보기</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">고객센터</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">회원 가입</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">리뷰</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/login.jsp">로그인</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">구독하기</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-        </div>
+
+	<!-- header -->
+	<div class="row justify-content-around header"
+		style="text-align: center;">
+		<div class="col-lg-2" style="text-align: center;">
+			<img src="/images/project_logo.png" class="d-block w-100"
+				id="main-logo">
+		</div>
+		<div class="col-lg-8 col-12 topmenu">
+			<nav class="navbar navbar-expand-lg navbar-light"
+				style="float: right;">
+				<div class="container-fluid">
+					<button class="navbar-toggler" type="button"
+						data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+						aria-controls="navbarSupportedContent" aria-expanded="false"
+						aria-label="Toggle navigation" style="border: none;">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+
+
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+							<li class="nav-item"><a class="nav-link"
+								style="color: rgb(0, 0, 0);" href="/product.pro">제품 보기</a></li>
+							<li class="nav-item"><a class="nav-link"
+								style="color: rgb(0, 0, 0);" href="/inquiry.iq?currentPage=1">고객센터</a></li>
+							<li class="nav-item"><a class="nav-link"
+								style="color: rgb(0, 0, 0);" href="/mypage.my">마이페이지</a></li>
+							<li class="nav-item"><a class="nav-link"
+								style="color: rgb(0, 0, 0);" href="/review.bo?currentPage=1">리뷰</a></li>
+							<li class="nav-item"><a class="nav-link"
+								style="color: rgb(0, 0, 0);" href="/logout.mem">로그아웃</a></li>
+							<li class="nav-item"><a class="nav-link"
+								style="color: rgb(117, 160, 36); font-weight: bold;"
+								href="/pet.pet">구독하기</a></li>
+						</ul>
+					</div>
+				</div>
+				</nav>
+		</div>		
+	</div>
         <!-- 여기까지 헤더 -->
         <!-- 여기부터 바디 -->
         <div class= "container listAll">
@@ -157,6 +246,12 @@
 			</c:choose>     
         </div>
         <script>
+	    	$('#main-logo').on('click', () => {
+	    		location.href = "/home";
+	    	})
+        	$('#main-logo').on('click', () => {
+        		location.href = "/home";
+        	})
        		$(".content").on("click",function(e){
        			let seqInquiry = $(e.target).parent(".row").children().eq(0).html();
        			console.log(seqInquiry);
@@ -254,30 +349,18 @@
        		}
        		    		
         </script>
-        <!-- 여기부터 풋터 -->
-        <div class="row justify-content-center footer">
-            <div class="col-lg-10 col-12">
-                <ul class="ft-ul">
-                    <li>BoriBob Inc. 사랑시 고백구 행복동</li>
-                    <li>대표 : 보리밥형제들 사업자등록번호 : 780-86-01094</li>
-                    <li>대표번호 : +82)-665-3430 팩스번호 : +82)-888-3430 홈페이지 : petvenience.store.com</li>
-                    <li>CopyrightⓒBoriBob Inc. All Rights Reserved.</li>
-                </ul>
-            </div>
-            <div class="col-lg-2 col-12">
-                <ul class="ft-images">
-                    <img src="/images/facebook_icon.png" style="border-color: lightblue;">
-                    <img src="/images/instagram_icon.png" style="border-color: lightblue;">
-                    <img src="/images/youtube_icon.png" style="border-color: lightblue;">
-                </ul>
-                <ul class="ft-ul">
-                    <li><strong>고객센터</strong></li>
-                    <li style="height: 8px;"></li>
-                    <li>오전 10시부터 오후 6시까지</li>
-                    <li>토요일, 일요일, 공휴일 휴무</li>
-                </ul>
-            </div>
-        </div>
-    </div>
+        <!-- footer -->
+	<div class="row justify-content-center footer">
+			<div class="col-lg-10 col-12">
+				<ul class="ft-ul">
+					<li>BoriBob Inc. 사랑시 고백구 행복동</li>
+					<li>대표 : 보리밥형제들 사업자등록번호 : 780-86-01094</li>
+					<li>대표번호 : +82)-665-3430 팩스번호 : +82)-888-3430 홈페이지 :
+						petvenience.store.com</li>
+					<li>CopyrightⓒBoriBob Inc. All Rights Reserved.</li>
+				</ul>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

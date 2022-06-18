@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,117 +17,25 @@
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
 
-    <title>상품상세-초안</title>
+    <title>상품상세</title>
     <style>
-        /*메인 로고 스타일*/
-        #main-logo {
-            margin-left: 123px;
-            width: 350px;
-            height: 200px;
-        }
-
-        body {
-            background-color: rgb(255, 252, 221);
-        }
-
-        /*메뉴 폰트 스타일*/
-        *.nav-link {
-            color: rgb(44, 44, 44);
-            font-size: large;
-        }
-
-        *.nav-link:hover {
-            background-color: blanchedalmond;
-            background-size: 3px;
-        }
-
-        /*메뉴 위치*/
-        #nav-item {
-            margin-top: 150px;
-            margin-left: 325px;
-        }
-
-
-        #pro-explain {
-            position: relative;
-            border: 1px solid rgb(218, 218, 218);
-            height: 600px;
-            bottom: 100px;
-            width: 1200px;
-            text-align: center;
-            margin-top: 200px;
-            margin-left: 130px;
-        }
-
-
-        /*대략적인 구조를 직관적으로 확인하시라고 임의로 설정해 둔 테두리입니다!*/
-        img {
-            border: 1px solid rgb(218, 218, 218);
-        }
-
-        /*footer*/
-        .footer {
-            height: 150px;
-            overflow: visible;
-            background-color: rgb(255, 216, 131);
-            z-index: 1;
-            margin-top: 40px;
-        }
-
-        .ft-ul {
-            list-style: none;
-            text-align: center;
-            height: 100%;
-            padding-top: 28px;
-            color: black;
-            font-size: 12px;
-            z-index: 1;
-        }
-
-        .ft-ul li {
-            height: 25px;
-        }
-
-        .facebookicon {
-            position: relative;
-            bottom: 40px;
-            margin-left: 1000px;
-            z-index: 2;
-        }
-
-        .instagramicon {
-            position: relative;
-            bottom: 90px;
-            margin-left: 1100px;
-            z-index: 2;
-        }
-
-        .youtubeicon {
-            position: relative;
-            bottom: 140px;
-            margin-left: 1200px;
-            z-index: 2;
-        }
-
-        .ft-ul2 {
-            position: relative;
-            bottom: 250px;
-            margin-left: 1100px;
-            z-index: 2;
-            font-size: 10px;
-        }
-
-        .ft-ul2 li {
-            height: 17px;
-        }
+        
 
  		/* 상품상세 페이지 바디 부분 */
  		
-        .container {
-            margin-top: 20px;
+             .wrap{
+            margin-bottom: 50px;
+            font-family: "GongGothicMedium.ttf"
+            
+        }
+        .product-detail-info{
+            margin-top: 50px;
 
         }
-        ul {
+        .product-name{
+            margin-left: 50px;
+        }
+        .wrap ul {
             margin-top: 30px;
             margin-bottom: 30px;
             display: block;
@@ -134,10 +43,11 @@
             height:150px;
         }
 
-        li {
+        .wrap li {
             float: left;
             height: 75px;
             line-height: 75px;
+            text-align: center;
         }
 
         li:not(:first-child) {
@@ -182,37 +92,172 @@
             margin-top: 30px;
             font-weight: 650;
         }
+        .nutrient-text{
+            margin-bottom: 30px;
+        }
+        .nutrient-text{
+            border-bottom: 2px solid black;
+        }
+        .nutrient-text p {
+            font-size: 20px;
+            font-weight: bolder;
+            margin-left: 20px;
+        }
+        .row-product-name{
+            border-bottom: solid 2px black;
+        }
+        /*  font */
+              @font-face {
+                src: url("/fonts/MinSans-Regular.otf");
+                font-family: "MinSans-Regular.otf";
+            }
+        @font-face {
+                src: url("/fonts/MinSans-Thin.otf");
+                font-family: "MinSans-Thin.otf";
+            }    
+        @font-face {
+                src: url("/fonts/MinSans-Medium.otf");
+                font-family: "MinSans-Medium.otf";
+            }
+            
+            @font-face {
+                src: url("/fonts/MinSans-Theafhh.otf");
+                font-family: "Theafhh_.TTF";
+            }
+             @font-face {
+                src: url("/fonts/MinSans-Light.otf");
+                font-family: "MinSans-Light.otf";
+            }
+          @font-face {
+                src: url("/fonts/MinSans-Bold.otf");
+                font-family: "MinSans-Bold.otf";
+            }
+          @font-face {
+                src: url("/fonts/MinSans-Black.otf");
+                font-family: "MinSans-Black.otf";
+            }  
+             @font-face {
+                src: url("/fonts/GongGothicBold.ttf");
+                font-family: "GongGothicBold.ttf";
+            }  
+            @font-face {
+                src: url("/fonts/GongGothicLight.ttf");
+                font-family: "GongGothicLight.ttf";
+            } 
+            @font-face {
+                src: url("/fonts/GongGothicMedium.ttf");
+                font-family: "GongGothicMedium.ttf";
+            }
+            /* 헤더 풋터 */
+            body {
+	box-sizing: border-box;
+	background-color: white;
+}
+
+.header {
+	padding: 20px;
+	position: relative;
+}
+
+.topmenu {
+	font-family: "GongGothicLight.ttf";
+	font-size: 20px;
+}
+
+.menu {
+	background-color: rgb(255, 255, 255);
+	font-size: 17px;
+	font-family: "GongGothicLight.ttf";
+}
+
+#menu-logo {
+	width: 70px;
+	height: 80px;
+}
+
+.footer>* {
+	background-color: white;
+	padding: 20px;
+	position: relative;
+}
+
+.ft-ul {
+	list-style: none;
+	text-align: center;
+	height: 100%;
+	padding-top: 28px;
+	color: black;
+	font-size: 12px;
+	z-index: 1;
+}
+               
     </style>
 </head>
 
 <body>
-    <header>
-        <div class="row justify-content">
-            <div class="col-4">
-                <img src="../images/project_logo.PNG" class="d-block w-100" id="main-logo">
+    <div class="row justify-content-around header" style="text-align: center;">
+            <div class="col-lg-2" style="text-align: center;">
+                <img src="/images/project_logo.png" class="d-block w-100" id="main-logo">
             </div>
-            <div class="col" id="nav-item">
-                <nav class="nav">
-                    <a class="nav-link" href="#">제품 보기</a>
-                    <a class="nav-link" href="#">리뷰</a>
-                    <a class="nav-link" href="#">고객센터</a>	
-                    <a class="nav-link" href="#">로그인</a>
-                    <a class="nav-link" href="#">회원가입</a>
-                    <a class="nav-link" style="color: rgb(255, 94, 0);" href="#">구독하기</a>
-                </nav>
+            <div class="col-lg-8 col-12 topmenu">
+                <nav class="navbar navbar-expand-lg navbar-light" style="float: right;">
+                    <div class="container-fluid">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation" style="border: none;">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+			            <c:choose>
+					<c:when test="${not empty loginSession}">
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/product.pro">제품 보기</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/inquiry.iq?currentPage=1">고객센터</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/mypage.my">마이페이지</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/review.bo?currentPage=1">리뷰</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/logout.mem">로그아웃</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(117, 160, 36); font-weight: bold;" href="/pet.pet">구독하기</a>
+								</li>
+							</ul>
+						</div>
+		            </c:when>
+		            <c:otherwise>
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/product.pro">제품 보기</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/inquiry.iq?currentPage=1">고객센터</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/member/member.jsp">회원 가입</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/review.bo?currentPage=1">리뷰</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/login/login.jsp">로그인</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(117, 160, 36); font-weight: bold;" href="/pet.pet">구독하기</a>
+								</li>
+							</ul>
+						</div>
+		            </c:otherwise>
+		           	</c:choose> 
+                    </div>
             </div>
+            </nav> 
         </div>
         </div>
-    </header>
-    <!--메인영역-->
-
-    <!--헤더와 메인의 구분선-->
-    <hr class="divider" style="width: 1200px; margin-left: 123px;">
         <!--상품 이미지 영역입니다 해당 이미지를 클릭 시 상품 상세정보로 이동-->
         <!-- 상품 상세 페이지 -->
+    <div class="wrap">
     <div class="container product-detail-info">
-        <div class="row">
-            <div class="col-sm-12">
+        <div class="row row-product-name">
+            <div class="col-sm-12 product-name">
                 <h1><span>${product.productName}</span></h1>
             </div>
         </div>
@@ -229,24 +274,353 @@
                     <span>이런 특징을 가지고 있어요!</span></h2>
                 </div>
                 <br>
+                <c:if test="${product.productCode == 1}">
                 <ul class="d-none d-lg-block">
                     <li>
-                        <p class="img"><img src="/semi_project/images/영양/고단백.png"></p>
+                        <p class="img"><img src="/images/nutrient/a.png"></p>
                         <span>고단백</span>
                     </li>
                     <li>
-                        <p class="img"><img src="/semi_project/images/영양/기호증강.png"></p>
+                        <p class="img"><img src="/images/nutrient/b.png"></p>
                         <span>기호증강</span>
                     </li>
                     <li>
-                        <p class="img"><img src="/semi_project/images/영양/성장기 도움.png"></p>
+                        <p class="img"><img src="/images/nutrient/g.png"></p>
                         <span>성장기도움</span>
                     </li>
                     <li>
-                        <p class="img"><img src="/semi_project/images/영양/영양보충.png"></p>
+                        <p class="img"><img src="/images/nutrient/j.png"></p>
                         <span>영양보충</span>
                     </li>
                 </ul>
+                </c:if>
+                <c:if test="${product.productCode == 2}">
+                <ul class="d-none d-lg-block">
+                    <li>
+                        <p class="img"><img src="/images/nutrient/l.png"></p>
+                        <span>피부건강</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/b.png"></p>
+                        <span>기호증강</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/g.png"></p>
+                        <span>성장기도움</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/d.png"></p>
+                        <span>미네랄보충</span>
+                    </li>
+                </ul>
+                </c:if>
+                <c:if test="${product.productCode == 3}">
+                <ul class="d-none d-lg-block">
+                    <li>
+                        <p class="img"><img src="/images/nutrient/a.png"></p>
+                        <span>고단백</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/e.png"></p>
+                        <span>미네랄강화</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/c.png"></p>
+                        <span>면역력증가</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/j.png"></p>
+                        <span>영양보충</span>
+                    </li>
+                </ul>
+                </c:if>
+                    <c:if test="${product.productCode == 4}">
+                <ul class="d-none d-lg-block">
+                    <li>
+                        <p class="img"><img src="/images/nutrient/k.png"></p>
+                        <span>윤택한헤어</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/b.png"></p>
+                        <span>기호증강</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/l.png"></p>
+                        <span>피부건강</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/j.png"></p>
+                        <span>영양보충</span>
+                    </li>
+                </ul>
+                </c:if>
+                 <c:if test="${product.productCode == 5}">
+                <ul class="d-none d-lg-block">
+                    <li>
+                        <p class="img"><img src="/images/nutrient/f.png"></p>
+                        <span>뼈건강</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/h.png"></p>
+                        <span>소화도움</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/g.png"></p>
+                        <span>성장기도움</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/i.png"></p>
+                        <span>영양균형</span>
+                    </li>
+                </ul>
+                </c:if>
+                <c:if test="${product.productCode == 6}">
+                <ul class="d-none d-lg-block">
+                    <li>
+                        <p class="img"><img src="/images/nutrient/f.png"></p>
+                        <span>뼈건강</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/h.png"></p>
+                        <span>소화도움</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/d.png"></p>
+                        <span>비타민강화</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/i.png"></p>
+                        <span>영양균형</span>
+                    </li>
+                </ul>
+                </c:if>
+                   <c:if test="${product.productCode == 7}">
+                <ul class="d-none d-lg-block">
+                    <li>
+                        <p class="img"><img src="/images/nutrient/f.png"></p>
+                        <span>뼈건강</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/h.png"></p>
+                        <span>소화도움</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/m.png"></p>
+                        <span>항산화</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/i.png"></p>
+                        <span>영양균형</span>
+                    </li>
+                </ul>
+                </c:if>
+                     <c:if test="${product.productCode == 8}">
+                <ul class="d-none d-lg-block">
+                    <li>
+                        <p class="img"><img src="/images/nutrient/f.png"></p>
+                        <span>뼈건강</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/e.png"></p>
+                        <span>미네랄강화</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/e.png"></p>
+                        <span>비타민강화</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/i.png"></p>
+                        <span>영양균형</span>
+                    </li>
+                </ul>
+                </c:if>
+                     <c:if test="${product.productCode == 9}">
+                <ul class="d-none d-lg-block">
+                    <li>
+                        <p class="img"><img src="/images/nutrient/a.png"></p>
+                        <span>고단백</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/b.png"></p>
+                        <span>기호증강</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/g.png"></p>
+                        <span>성장기도움</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/j.png"></p>
+                        <span>영양보충</span>
+                    </li>
+                </ul>
+                </c:if>
+                <c:if test="${product.productCode == 10}">
+                <ul class="d-none d-lg-block">
+                    <li>
+                        <p class="img"><img src="/images/nutrient/l.png"></p>
+                        <span>피부건강</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/b.png"></p>
+                        <span>기호증강</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/g.png"></p>
+                        <span>성장기도움</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/i.png"></p>
+                        <span>영양균형</span>
+                    </li>
+                </ul>
+                </c:if>
+                
+                <c:if test="${product.productCode == 11}">
+                <ul class="d-none d-lg-block">
+                    <li>
+                        <p class="img"><img src="/images/nutrient/a.png"></p>
+                        <span>고단백</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/d.png"></p>
+                        <span>미네랄강화</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/e.png"></p>
+                        <span>영양보충</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/c.png"></p>
+                        <span>면역력증가</span>
+                    </li>
+                </ul>
+                </c:if>
+                
+                 <c:if test="${product.productCode == 12}">
+                <ul class="d-none d-lg-block">
+                    <li>
+                        <p class="img"><img src="/images/nutrient/k.png"></p>
+                        <span>윤택한헤어</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/b.png"></p>
+                        <span>기호증강</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/l.png"></p>
+                        <span>피부건강</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/j.png"></p>
+                        <span>영양보충</span>
+                    </li>
+                </ul>
+                </c:if>
+                
+                  <c:if test="${product.productCode == 13}">
+                <ul class="d-none d-lg-block">
+                    <li>
+                        <p class="img"><img src="/images/nutrient/h.png"></p>
+                        <span>소화도움</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/g.png"></p>
+                        <span>성장기도움</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/i.png"></p>
+                        <span>영양균형</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/c.png"></p>
+                        <span>면연력증진</span>
+                    </li>
+                </ul>
+                </c:if>
+                
+                <c:if test="${product.productCode == 14}">
+                <ul class="d-none d-lg-block">
+                    <li>
+                        <p class="img"><img src="/images/nutrient/f.png"></p>
+                        <span>뼈건강</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/h.png"></p>
+                        <span>소화도움</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/e.png"></p>
+                        <span>비타민강화</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/i.png"></p>
+                        <span>영양균형</span>
+                    </li>
+                </ul>
+                </c:if>
+                
+                  <c:if test="${product.productCode == 15}">
+                <ul class="d-none d-lg-block">
+                    <li>
+                        <p class="img"><img src="/images/nutrient/f.png"></p>
+                        <span>뼈건강</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/h.png"></p>
+                        <span>소화도움</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/m.png"></p>
+                        <span>항산화</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/i.png"></p>
+                        <span>영양균형</span>
+                    </li>
+                </ul>
+                </c:if>
+                
+                 <c:if test="${product.productCode == 16}">
+                <ul class="d-none d-lg-block">
+                    <li>
+                        <p class="img"><img src="/images/nutrient/f.png"></p>
+                        <span>뼈건강</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/d.png"></p>
+                        <span>미네랄강화</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/e.png"></p>
+                        <span>비타민보충</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/m.png"></p>
+                        <span>항산화</span>
+                    </li>
+                </ul>
+                </c:if>
+                <c:if test="${product.productCode > 16}">
+                <ul class="d-none d-lg-block">
+                    <li>
+                        <p class="img"><img src="/images/nutrient/a.png"></p>
+                        <span>고단백</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/b.png"></p>
+                        <span>기호증강</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/e.png"></p>
+                        <span>비타민보충</span>
+                    </li>
+                    <li>
+                        <p class="img"><img src="/images/nutrient/i.png"></p>
+                        <span>영양균형</span>
+                    </li>
+                </ul>
+                </c:if>
+                        
                 <div class="txt">
                     <span>${product.productContent}</span>
                 </div> <br>
@@ -259,67 +633,291 @@
     </div>
     <div class="container product-detail-nutrient">
         <div class="row">
-            <p>필수 영양소들이 포함된 재로로 만들어졌어요!</p>
+            <div class="col-12 nutrient-text d-none d-lg-block">
+            <p>필수 영양소들이 포함된 재료로 만들어졌어요!</p>
+            </div>
         </div>
-        <div class="row">
+        <div class="row row-ingredient">
+       	<div class = "d-none d-lg-block">
+       	<c:if test="${product.productCode == 1 || product.productCode == 3 }">
             <ul>
                 <li>
-                    <p class="img"><img src="/semi_project/images/식재료/소고기.png"></p>
+                    <p class="img"><img src="/images/ingredient/16.png"></p>
                     <span>소고기</span>
                 </li>
                 <li>
-                    <p class="img"><img src="/semi_project/images/식재료/보리.png"></p>
+                    <p class="img"><img src="/images/ingredient/11.png"></p>
                     <span>보리</span>
                 </li>
                 <li>
-                    <p class="img"><img src="/semi_project/images/식재료/블루베리.png"></p>
+                    <p class="img"><img src="/images/ingredient/13.png"></p>
                     <span>블루베리</span>
                 </li>
                 <li>
-                    <p class="img"><img src="/semi_project/images/식재료/비트.png"></p>
+                    <p class="img"><img src="/images/ingredient/14.png"></p>
                     <span>비트</span>
                 </li>
                 <li>
-                    <p class="img"><img src="/semi_project/images/식재료/두부.png"></p>
+                    <p class="img"><img src="/images/ingredient/9.png"></p>
                     <span>두부</span>
                 </li>
                 <li>
-                    <p class="img"><img src="/semi_project/images/식재료/감자.png"></p>
+                    <p class="img"><img src="/images/ingredient/2.png"></p>
                     <span>감자</span>
                 </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/23.png"></p>
+                    <span>파프리카</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/10.png"></p>
+                    <span>렌틸콩</span>
+                </li>
             </ul>
-        </div>
-        <div class="row">
-            <div class="col-6"><h1>영양소 설명</h1></div>
-            <div class="col-6"><h1>영양 정보표</h1></div>
-        </div>
-    </div>    <!--풋터영역-->
-    <div class="row justify-content-around">
-        <div class="footer">
-            <ul class="ft-ul">
-                <li>BoriBob Inc. 사랑시 고백구 행복동</li>
-                <li>대표 : 보리밥형제들 사업자등록번호 : 780-86-01094</li>
-                <li>대표번호 : +82)-665-3430 팩스번호 : +82)-888-3430 홈페이지 : petvenience.store.com</li>
-                <li>CopyrightⓒBoriBob Inc. All Rights Reserved.</li>
-                <div class="facebookicon">
-                    <img src="../images/facebook_icon.png" style="border-color: lightblue;">
-                </div>
-                <div class="instagramicon">
-                    <img src="../images/instagram_icon.png" style="border-color: lightblue;">
-                </div>
-                <div class="youtubeicon">
-                    <img src="../images/youtube_icon.png" style="border-color: lightblue;">
-                </div>
-                <div class="ft-ul2">
-                    <li><strong>고객센터</strong></li>
-                    <li style="height: 8px;"></li>
-                    <li>오전 10시부터 오후 6시까지</li>
-                    <li>토요일, 일요일, 공휴일 휴무</li>
-                </div>
+            </c:if>
+            <c:if test="${product.productCode == 2 || product.productCode == 4 || product.productCode == 10 || product.productCode == 14}">
+            <ul>
+                <li>
+                    <p class="img"><img src="/images/ingredient/25.png"></p>
+                    <span>생선</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/15.png"></p>
+                    <span>버섯</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/7.png"></p>
+                    <span>당근</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/12.png"></p>
+                    <span>브로콜리</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/9.png"></p>
+                    <span>두부</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/22.png"></p>
+                    <span>오트밀</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/19.png"></p>
+                    <span>양배추</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/10.png"></p>
+                    <span>렌틸콩</span>
+                </li>
             </ul>
+            </c:if>
+  <c:if test="${product.productCode == 5 || product.productCode == 7 || product.productCode == 15 }">
+            <ul>
+                <li>
+                    <p class="img"><img src="/images/ingredient/21.png"></p>
+                    <span>오리</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/14.png"></p>
+                    <span>비트</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/17.png"></p>
+                    <span>애호박</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/7.png"></p>
+                    <span>당근</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/9.png"></p>
+                    <span>두부</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/22.png"></p>
+                    <span>오트밀</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/19.png"></p>
+                    <span>양배추</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/1.png"></p>
+                    <span>가지</span>
+                </li>
+            </ul>
+            </c:if>
+              <c:if test="${product.productCode == 6 || product.productCode == 8 || product.productCode == 12 || product.productCode == 16}">
+            <ul>
+                <li>
+                    <p class="img"><img src="/images/ingredient/12.png"></p>
+                    <span>브로콜리</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/20.png"></p>
+                    <span>연어</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/17.png"></p>
+                    <span>애호박</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/10.png"></p>
+                    <span>렌틸콩</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/22.png"></p>
+                    <span>오트밀</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/24.png"></p>
+                    <span>보리</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/15.png"></p>
+                    <span>버섯</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/3.png"></p>
+                    <span>고구마</span>
+                </li>
+            </ul>
+            </c:if>
+  				<c:if test="${product.productCode == 9 || product.productCode == 11}">
+            <ul>
+                <li>
+                    <p class="img"><img src="/images/ingredient/5.png"></p>
+                    <span>닭고기</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/2.png"></p>
+                    <span>감자</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/3.png"></p>
+                    <span>고구마</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/12.png"></p>
+                    <span>브로콜리</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/22.png"></p>
+                    <span>오트밀</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/23.png"></p>
+                    <span>파프리카</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/14.png"></p>
+                    <span>비트</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/8.png"></p>
+                    <span>돼지고기</span>
+                </li>
+            </ul>
+            </c:if>
+		<c:if test="${product.productCode == 13}">
+            <ul>
+                <li>
+                    <p class="img"><img src="/images/ingredient/18.png"></p>
+                    <span>양고기</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/17.png"></p>
+                    <span>애호박</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/3.png"></p>
+                    <span>고구마</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/23.png"></p>
+                    <span>파프리카</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/22.png"></p>
+                    <span>오트밀</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/13.png"></p>
+                    <span>블루베리</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/7.png"></p>
+                    <span>당근</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/8.png"></p>
+                    <span>돼지고기</span>
+                </li>
+            </ul>
+            </c:if>
+            <c:if test="${product.productCode > 16}">
+            <ul>
+                <li>
+                    <p class="img"><img src="/images/ingredient/9.png"></p>
+                    <span>두부</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/17.png"></p>
+                    <span>애호박</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/3.png"></p>
+                    <span>고구마</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/23.png"></p>
+                    <span>파프리카</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/22.png"></p>
+                    <span>오트밀</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/13.png"></p>
+                    <span>블루베리</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/7.png"></p>
+                    <span>당근</span>
+                </li>
+                <li>
+                    <p class="img"><img src="/images/ingredient/19.png"></p>
+                    <span>양배추</span>
+                </li>
+            </ul>
+            </c:if>
+            
+            </div>
         </div>
+    </div>    
     </div>
+    
+    
+    <!--풋터영역-->
+    <div class="row justify-content-center footer">
+			<div class="col-lg-10 col-12">
+				<ul class="ft-ul">
+					<li>BoriBob Inc. 사랑시 고백구 행복동</li>
+					<li>대표 : 보리밥형제들 사업자등록번호 : 780-86-01094</li>
+					<li>대표번호 : +82)-665-3430 팩스번호 : +82)-888-3430 홈페이지 :
+						petvenience.store.com</li>
+					<li>CopyrightⓒBoriBob Inc. All Rights Reserved.</li>
+				</ul>
+			</div>
+
+		</div>
+
+	</div>
+
     <script>
+		$('#main-logo').on('click', () => {
+			location.href = "/home";
+		})
     	$("#btnSubscribe").on("click",function(){
     		
     		location.href="/pet.pet";

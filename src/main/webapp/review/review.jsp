@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,25 +15,25 @@
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <title>review</title>
+    <title>리뷰 목록</title>
     <style>
         @font-face {
-            src: url("fonts/MinSans-Regular.otf");
+            src: url("/fonts/MinSans-Regular.otf");
             font-family: "MinSans-Regular.otf";
         }
 
         @font-face {
-            src: url("fonts/MinSans-bold.otf");
+            src: url("/fonts/MinSans-bold.otf");
             font-family: "MinSans-bold.otf";
         }
 
         @font-face {
             font-family: "Theafhh_.TTF";
-            src: url("fonts/Theafhh_.TTF");
+            src: url("/fonts/Theafhh_.TTF");
         }
 
         @font-face {
-            src: url("fonts/GongGothicLight.ttf");
+            src: url("/fonts/GongGothicLight.ttf");
             font-family: "GongGothicLight.ttf";
         }
 
@@ -50,8 +49,8 @@
 
 
         .topmenu{
-         	font-size: 15px;
             font-family: "GongGothicLight.ttf";
+            font-size: 20px;
 
         }
 
@@ -131,58 +130,74 @@
 </head>
 
 <body>
-    </head>
-    <div class="row justify-content-around header" style="text-align: center;">
-        <div class="col-lg-2" style="text-align: center;">
-            <img src="/images/project_logo.PNG" class="d-block w-100" id="main-logo">
-        </div>
-        <div class="col-lg-8 col-12 topmenu">
-            <nav class="navbar navbar-expand-lg navbar-light" style="float: right;">
-                <div class="container-fluid">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation" style="border: none;">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link" style="color: rgb(0, 0, 0);" href="#">제품 보기</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" style="color: rgb(0, 0, 0);" href="#">고객센터</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" style="color: rgb(0, 0, 0);" href="#">회원 가입</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" style="color: rgb(0, 0, 0);" href="#">리뷰</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" style="color: rgb(0, 0, 0);" href="#">로그인</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" style="color: rgb(117, 160, 36); font-weight: bold;"
-                                    href="#">구독하기</a>
-                            </li>
-                        </ul>
+    <body>
+        <div class="row justify-content-around header" style="text-align: center;">
+            <div class="col-lg-2" style="text-align: center;">
+                <img src="/images/project_logo.png" class="d-block w-100" id="main-logo">
+            </div>
+            <div class="col-lg-8 col-12 topmenu">
+                <nav class="navbar navbar-expand-lg navbar-light" style="float: right;">
+                    <div class="container-fluid">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation" style="border: none;">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+			            <c:choose>
+					<c:when test="${not empty loginSession}">
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/product.pro">제품 보기</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/inquiry.iq?currentPage=1">고객센터</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/mypage.my">마이페이지</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/review.bo?currentPage=1">리뷰</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/logout.mem">로그아웃</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(117, 160, 36); font-weight: bold;" href="/pet.pet">구독하기</a>
+								</li>
+							</ul>
+						</div>
+		            </c:when>
+		            <c:otherwise>
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/product.pro">제품 보기</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/inquiry.iq?currentPage=1">고객센터</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/member/member.jsp">회원 가입</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/review.bo?currentPage=1">리뷰</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/login/login.jsp">로그인</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(117, 160, 36); font-weight: bold;" href="/pet.pet">구독하기</a>
+								</li>
+							</ul>
+						</div>
+		            </c:otherwise>
+		           	</c:choose> 
                     </div>
-                </div>
             </div>
             </nav>
         </div>
-    </div>
-    </div>
+        </div>
     <div class="row justify-content-around" style="text-align: center;">
-        <img src="images/review_img.png"class="d-block review_img">
+        <img src="/images/review_img.png"class="d-block review_img">
         </div>
     <div class="container">
      
         <div class="row text-center align-items-center menu">
             <div class="col-lg-1 col-2">번호</div>
             <div class="col-lg-2 d-none d-lg-block">상품코드</div>
-            <div class="col-lg-6 col-8">제목</div>
-            <div class="col-lg-1 d-none d-lg-block">작성자</div>
+            <div class="col-lg-5 col-8">제목</div>
+            <div class="col-lg-2 d-none d-lg-block">작성자</div>
             <div class="col-lg-2 col-2">작성일</div>
         </div>
         <c:choose>
@@ -196,9 +211,9 @@
                     <div class="row content text-center align-items-center" style="cursor: pointer;"
                         onclick="location.href='/detailView.bo?seqReview=${dto.seqReview}';">
                         <div class="col-lg-1 col-2">${dto.seqReview}</div>
-                        <div class="col-lg-2">${dto.productCode}</div>
+                        <div class="col-lg-2 d-none d-lg-block">${dto.productCode}</div>
                         <div class="col-lg-5">${dto.reviewTitle}</div>
-                        <div class="col-lg-2">${dto.id}</div>
+                        <div class="col-lg-2 d-none d-lg-block">${dto.id}</div>
                         <div class="col-lg-2">${dto.reviewDate}</div>
                     </div>
                 </c:forEach>
@@ -234,6 +249,9 @@
             <button type="button" class="btnBox" id="btn-write">글쓰기</button>
     </div>
     <script>
+		$('#main-logo').on('click', () => {
+			location.href = "/home";
+		})
         $("#btn-write").on("click", function () {
             location.href = "/write.bo";
         });
@@ -248,18 +266,9 @@
                 <li>CopyrightⓒBoriBob Inc. All Rights Reserved.</li>
             </ul>
         </div>
-        <div class="col-lg-2 col-12">
-            <ul class="ft-ul">
-                <li><strong>고객센터</strong></li>
-                <li style="height: 8px;"></li>
-                <li>오전 10시부터 오후 6시까지</li>
-                <li>토요일, 일요일, 공휴일 휴무</li>
-            </ul>
-        </div>
-    </div>
 
     </div>
 
 </body>
 
-</html>`
+</html>

@@ -72,6 +72,7 @@ public class PetDAO {
 				String petKind = rs.getString("pet_kind");
 				String petType = rs.getString("pet_type");
 				
+				dto.setId(id);
 				dto.setPetName(petName);
 				dto.setPetAge(petAge);
 				dto.setPetAllergy(petAllergy);
@@ -97,11 +98,10 @@ public class PetDAO {
 		else petDetails.add(1); // 6살 이상
 		
 		// 몸무게 입력
-		if (dto.getPetWeight() <= 5) petDetails.add(0); // 5kg 이하
-		else petDetails.add(1); // 6kg 이상
+		petDetails.add(dto.getPetWeight()); // 0이면 보통, 1이면 통통
 
 		// 견/묘 구분 입력
-		if (dto.getPetType() == "dog") petDetails.add(0); // 개
+		if (dto.getPetType().equals("dog")) petDetails.add(0); // 개
 		else petDetails.add(1); // 고양이
 		
 		return petDetails;

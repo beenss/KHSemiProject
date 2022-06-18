@@ -18,7 +18,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
-    <title>Document</title>
+    <title>배송관리</title>
     <style>
       body {
         box-sizing: border-box;
@@ -83,7 +83,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 								<li class="nav-item"><a class="nav-link active"
 									aria-current="page" href="/orderList.admin">주문 조회/상세보기</a></li>
 								<li class="nav-item"><a class="nav-link active"
-									aria-current="page" href="/deliverList.admin">배송 조회/수정</a></li>
+									aria-current="page" href="/deliveryList.admin">배송 조회/수정</a></li>
 								<li class="nav-item dropdown"><a
 									class="nav-link dropdown-toggle" href="#"
 									id="navbarDropdownMenuLink" role="button"

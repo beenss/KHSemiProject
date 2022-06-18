@@ -61,7 +61,13 @@ public class ReviewController extends HttpServlet {
 			request.getRequestDispatcher("/review/review.jsp").forward(request, response);
 
 		} else if (uri.equals("/write.bo")) {
-			response.sendRedirect("/review/write.jsp");
+			MemberDTO dto = (MemberDTO)request.getSession().getAttribute("loginSession");
+			System.out.println(dto);
+			if (dto == null) {
+				response.sendRedirect("/loginError.mem");
+			} else {
+				response.sendRedirect("/review/write.jsp");
+			}
 			// 리뷰작성 요청
 		} else if (uri.equals("/writeProc.bo")) {
 			String filePath = request.getServletContext().getRealPath("files");
@@ -119,6 +125,7 @@ public class ReviewController extends HttpServlet {
 				
 			}catch(Exception e) {
 				e.printStackTrace();
+				response.sendRedirect("/review.bo?currentPage=1");
 			}			
 
 			// 게시물 상세보기 요청

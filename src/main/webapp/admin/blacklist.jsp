@@ -16,7 +16,7 @@
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<title>Insert title here</title>
+<title>블랙리스트</title>
 <style>
 body {
 	box-sizing: border-box;
@@ -92,7 +92,7 @@ nav {
 								<li class="nav-item"><a class="nav-link active"
 									aria-current="page" href="/orderList.admin">주문 조회/상세보기</a></li>
 								<li class="nav-item"><a class="nav-link active"
-									aria-current="page" href="/deliverList.admin">배송 조회/수정</a></li>
+									aria-current="page" href="/deliveryList.admin">배송 조회/수정</a></li>
 								<li class="nav-item dropdown"><a
 									class="nav-link dropdown-toggle" href="#"
 									id="navbarDropdownMenuLink" role="button"

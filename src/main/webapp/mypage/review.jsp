@@ -63,6 +63,9 @@
         </div>
     </div>
     <script>
+		$('#main-logo').on('click', () => {
+			location.href = "/home";
+		})
     	// 나의 활동내역에서 문의내역 버튼을 눌렀을 때
     	$(".btnInquiry").on("click", function(){
     		

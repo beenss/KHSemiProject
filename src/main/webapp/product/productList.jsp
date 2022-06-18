@@ -22,53 +22,117 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
-<title>제품보기_초안</title>
+<title>제품보기</title>
 <style>
-/*메인 로고 스타일*/
-#main-logo {
-	margin-left: 123px;
-	width: 350px;
-	height: 200px;
-}
 
+/* body 영역 */
+.container{
+font-family: "GongGothicMedium.ttf";
+}		
+
+.row-product-body{
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        .row-product-body{
+          justify-content : around;
+        }
+        h2:first-child{
+        margin :35px;
+        margin-top : 50px;
+        }
+        .btnArea{
+        border-bottom : solid 1.5px black;
+
+        }
+        .btnArea button{
+          margin-left: 5px;
+	        width: 150px;
+          background-color: white;
+          color: black;
+        }
+        .card{
+          margin-bottom: 10px;
+        }
+        .card img:hover{
+        box-shadow: 2px 2px 2px 2px rgb(224, 221, 221);
+        }
+        .card-body{
+          text-align: center;
+        }
+        /* 폰트 */
+        @font-face {
+                src: url("/fonts/MinSans-Regular.otf");
+                font-family: "MinSans-Regular.otf";
+            }
+        @font-face {
+                src: url("/fonts/MinSans-Thin.otf");
+                font-family: "MinSans-Thin.otf";
+            }    
+        @font-face {
+                src: url("/fonts/MinSans-Medium.otf");
+                font-family: "MinSans-Medium.otf";
+            }
+            
+            @font-face {
+                src: url("/fonts/MinSans-Theafhh.otf");
+                font-family: "Theafhh_.TTF";
+            }
+             @font-face {
+                src: url("/fonts/MinSans-Light.otf");
+                font-family: "MinSans-Light.otf";
+            }
+          @font-face {
+                src: url("/fonts/MinSans-Bold.otf");
+                font-family: "MinSans-Bold.otf";
+            }
+          @font-face {
+                src: url("/fonts/MinSans-Black.otf");
+                font-family: "MinSans-Black.otf";
+            }  
+             @font-face {
+                src: url("/fonts/GongGothicBold.ttf");
+                font-family: "GongGothicBold.ttf";
+            }  
+            @font-face {
+                src: url("/fonts/GongGothicLight.ttf");
+                font-family: "GongGothicLight.ttf";
+            } 
+            @font-face {
+                src: url("/fonts/GongGothicMedium.ttf");
+                font-family: "GongGothicMedium.ttf";
+            }   
+            /* 헤더 풋터 */
 body {
-	background-color: rgb(255, 252, 221);
-}
-/*메뉴 폰트 스타일*/
-*.nav-link {
-	color: rgb(44, 44, 44);
-	font-size: large;
+	box-sizing: border-box;
+	background-color: white;
 }
 
-*.nav-link:hover {
-	background-color: blanchedalmond;
-	background-size: 3px;
-}
-/*메뉴 위치*/
-#nav-item {
-	margin-top: 150px;
-	margin-left: 325px;
+.header {
+	padding: 20px;
+	position: relative;
 }
 
-/*상품이미지 div 사이즈*/
-.container {
-	padding-right: 100px;
-}
-/*대략적인 구조를 직관적으로 확인하시라고 임의로 설정해 둔 테두리입니다!*/
-img {
-	border: 1px solid rgb(218, 218, 218);
+.topmenu {
+	font-family: "GongGothicLight.ttf";
+	font-size: 20px;
 }
 
-#btn-category {
-	margin-left: 150px;
+.menu {
+	background-color: rgb(255, 255, 255);
+	font-size: 17px;
+	font-family: "GongGothicLight.ttf";
 }
-/*footer*/
-.footer {
-	height: 150px;
-	overflow: visible;
-	background-color: rgb(255, 216, 131);
-	z-index: 1;
-	margin-top: 40px;
+
+#menu-logo {
+	width: 70px;
+	height: 80px;
+}
+
+.footer>* {
+	background-color: white;
+	padding: 20px;
+	position: relative;
 }
 
 .ft-ul {
@@ -79,78 +143,82 @@ img {
 	color: black;
 	font-size: 12px;
 	z-index: 1;
-}
-
-.ft-ul li {
-	height: 25px;
-}
-
-.facebookicon {
-	position: relative;
-	bottom: 40px;
-	margin-left: 1000px;
-	z-index: 2;
-}
-
-.instagramicon {
-	position: relative;
-	bottom: 90px;
-	margin-left: 1100px;
-	z-index: 2;
-}
-
-.youtubeicon {
-	position: relative;
-	bottom: 140px;
-	margin-left: 1200px;
-	z-index: 2;
-}
-
-.ft-ul2 {
-	position: relative;
-	bottom: 250px;
-	margin-left: 1100px;
-	z-index: 2;
-	font-size: 10px;
-}
-
-.ft-ul2 li {
-	height: 17px;
-}
+}  
+.footer{
+margin-top : 50px;
+} 
 </style>
 </head>
 <body>
-	<header>
-		<div class="row justify-content">
-			<div class="col-4">
-				<img src="images/project_logo.PNG" class="d-block w-100"
-					id="main-logo">
-			</div>
-			<div class="col" id="nav-item">
-				<nav class="nav">
-					<a class="nav-link" href="/product.pro">제품 보기</a> <a class="nav-link" href="/review.bo?currentPage=1">리뷰</a>
-					<a class="nav-link" href="/inquiry.iq?currentPage=1">고객센터</a> <a class="nav-link" href="/login/login.jsp">로그인</a>
-					<a class="nav-link" href="/member/member.jsp">회원가입</a> <a class="nav-link"
-						style="color: rgb(255, 94, 0);" href="/pet.pet">구독하기</a>
-				</nav>
-			</div>
-		</div>
-		</div>
-	</header>
-	<!--메인영역-->
+	<div class="row justify-content-around header" style="text-align: center;">
+            <div class="col-lg-2" style="text-align: center;">
+                <img src="/images/project_logo.png" class="d-block w-100" id="main-logo">
+            </div>
+            <div class="col-lg-8 col-12 topmenu">
+                <nav class="navbar navbar-expand-lg navbar-light" style="float: right;">
+                    <div class="container-fluid">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation" style="border: none;">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+			            <c:choose>
+					<c:when test="${not empty loginSession}">
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/product.pro">제품 보기</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/inquiry.iq?currentPage=1">고객센터</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/mypage.my">마이페이지</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/review.bo?currentPage=1">리뷰</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/logout.mem">로그아웃</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(117, 160, 36); font-weight: bold;" href="/pet.pet">구독하기</a>
+								</li>
+							</ul>
+						</div>
+		            </c:when>
+		            <c:otherwise>
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/product.pro">제품 보기</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/inquiry.iq?currentPage=1">고객센터</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/member/member.jsp">회원 가입</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/review.bo?currentPage=1">리뷰</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/login/login.jsp">로그인</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(117, 160, 36); font-weight: bold;" href="/pet.pet">구독하기</a>
+								</li>
+							</ul>
+						</div>
+		            </c:otherwise>
+		           	</c:choose> 
+                    </div>
+            </div>
+            </nav> 
+        </div>
+        </div>
+
 	<!--헤더와 메인의 구분선-->
 	<div class="container product-header">
 		<div class="row">
-			<div class="col-2">
-				<strong>전체 상품 조회</strong>
+			<div class="col-12">
+				<h2>BoriBob Product</h2>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-2">
-				<button type="button" class="btn btnDog btn-warning" value="dog">강아지</button>
-			</div>
-			<div class="col-2">
-				<button type="button" class="btn btnCat btn-info" value="cat">고양이</button>
+		<div class="row btnArea">
+			<div class="col-12">
+				<button type="button" class="btn btnDog btn-dark" value="dog">강아지</button>
+				<button type="button" class="btn btnCat btn-dark" value="cat">고양이</button>
 			</div>
 		</div>
 	</div>
@@ -174,38 +242,27 @@ img {
 					</c:forEach>
 				</div>
 			</div>
-			<!--풋터영역-->
-			<div class="row justify-content-around">
-				<div class="footer">
-					<ul class="ft-ul">
-						<li>BoriBob Inc. 사랑시 고백구 행복동</li>
-						<li>대표 : 보리밥형제들 사업자등록번호 : 780-86-01094</li>
-						<li>대표번호 : +82)-665-3430 팩스번호 : +82)-888-3430 홈페이지 :
-							petvenience.store.com</li>
-						<li>CopyrightⓒBoriBob Inc. All Rights Reserved.</li>
-						<div class="facebookicon">
-							<img src="images/facebook_icon.png"
-								style="border-color: lightblue;">
-						</div>
-						<div class="instagramicon">
-							<img src="images/instagram_icon.png"
-								style="border-color: lightblue;">
-						</div>
-						<div class="youtubeicon">
-							<img src="images/youtube_icon.png"
-								style="border-color: lightblue;">
-						</div>
-						<div class="ft-ul2">
-							<li><strong>고객센터</strong></li>
-							<li style="height: 8px;"></li>
-							<li>오전 10시부터 오후 6시까지</li>
-							<li>토요일, 일요일, 공휴일 휴무</li>
-						</div>
-					</ul>
-				</div>
 			</div>
+			<!--풋터영역-->
+		<div class="row justify-content-center footer">
+			<div class="col-lg-10 col-12">
+				<ul class="ft-ul">
+					<li>BoriBob Inc. 사랑시 고백구 행복동</li>
+					<li>대표 : 보리밥형제들 사업자등록번호 : 780-86-01094</li>
+					<li>대표번호 : +82)-665-3430 팩스번호 : +82)-888-3430 홈페이지 :
+						petvenience.store.com</li>
+					<li>CopyrightⓒBoriBob Inc. All Rights Reserved.</li>
+				</ul>
+			</div>
+
 		</div>
+
+	</div>
+
 			<script>
+        	$('#main-logo').on('click', () => {
+        		location.href = "/home";
+        	})
 		// 강아지버튼을 눌렀을 때 강아지상품만 비동기로 띄워주기 
 			$(".btnDog").on("click",function(){	
 				

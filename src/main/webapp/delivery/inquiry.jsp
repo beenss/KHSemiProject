@@ -5,42 +5,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+      <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <title>문의게시판</title>
     <style>
        @font-face {
-            src: url("fonts/MinSans-Regular.otf");
+            src: url("/fonts/MinSans-Regular.otf");
             font-family: "MinSans-Regular.otf";
         }
 
         @font-face {
-            src: url("fonts/MinSans-bold.otf");
+            src: url("/fonts/MinSans-bold.otf");
             font-family: "MinSans-bold.otf";
         }
 
         @font-face {
             font-family: "Theafhh_.TTF";
-            src: url("fonts/Theafhh_.TTF");
+            src: url("/fonts/Theafhh_.TTF");
         }
 
         @font-face {
-            src: url("fonts/GongGothicLight.ttf");
+            src: url("/fonts/GongGothicLight.ttf");
             font-family: "GongGothicLight.ttf";
         }
 
         body {
             box-sizing: border-box;
-            background-color: white;
+            background-color: none;
         }
 
         .header {
@@ -125,52 +125,66 @@
         }
     </style>
     <title>고객센터</title>
-    <link rel='stylesheet' href='../css/inquiry.css'>
 </head>
 <body>
-    </head>
-    <div class="row justify-content-around header" style="text-align: center;">
-        <div class="col-lg-2" style="text-align: center;">
-            <img src="images/project_logo.PNG" class="d-block w-100" id="main-logo">
-        </div>
-        <div class="col-lg-8 col-12 topmenu">
-            <nav class="navbar navbar-expand-lg navbar-light" style="float: right;">
-                <div class="container-fluid">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation" style="border: none;">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link" style="color: rgb(0, 0, 0);" href="#">제품 보기</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" style="color: rgb(0, 0, 0);" href="#">고객센터</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" style="color: rgb(0, 0, 0);" href="#">회원 가입</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" style="color: rgb(0, 0, 0);" href="#">리뷰</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" style="color: rgb(0, 0, 0);" href="#">로그인</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" style="color: rgb(117, 160, 36); font-weight: bold;"
-                                    href="#">구독하기</a>
-                            </li>
-                        </ul>
+    <body>
+        <div class="row justify-content-around header" style="text-align: center;">
+            <div class="col-lg-2" style="text-align: center;">
+                <img src="/images/project_logo.png" class="d-block w-100" id="main-logo">
+            </div>
+            <div class="col-lg-8 col-12 topmenu">
+                <nav class="navbar navbar-expand-lg navbar-light" style="float: right;">
+                    <div class="container-fluid">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation" style="border: none;">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+			            <c:choose>
+					<c:when test="${not empty loginSession}">
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/product.pro">제품 보기</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/inquiry.iq?currentPage=1">고객센터</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/mypage.my">마이페이지</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/review.bo?currentPage=1">리뷰</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/logout.mem">로그아웃</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(117, 160, 36); font-weight: bold;" href="/pet.pet">구독하기</a>
+								</li>
+							</ul>
+						</div>
+		            </c:when>
+		            <c:otherwise>
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/product.pro">제품 보기</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/inquiry.iq?currentPage=1">고객센터</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/member/member.jsp">회원 가입</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/review.bo?currentPage=1">리뷰</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(0, 0, 0);" href="/login/login.jsp">로그인</a></li>
+								<li class="nav-item"><a class="nav-link"
+									style="color: rgb(117, 160, 36); font-weight: bold;" href="/pet.pet">구독하기</a>
+								</li>
+							</ul>
+						</div>
+		            </c:otherwise>
+		           	</c:choose> 
                     </div>
-                </div>
             </div>
             </nav>
         </div>
-    </div>
-    </div>
-        <!-- 여기까지 헤더 -->
+        </div>
         <!-- 여기부터 바디 -->
           <div class="row justify-content-around" style="text-align: center;">
         <img src="/images/inquiry_img.png"class="d-block inquiry_img">
@@ -235,6 +249,7 @@
                     </ul>
                 </nav>
             </div>
+            </div>
             <div class="row justify-content-center boxBtn">
             <c:if test="${not empty loginSession.id }">
             <button type="button" class="btnBox" id="btn-write">글쓰기</button>
@@ -242,7 +257,7 @@
             </div>
         <!-- 여기부터 풋터 -->
         <div class="row justify-content-center footer">
-            <div class="col-lg-10 col-12">
+            <div class="col-12">
                 <ul class="ft-ul">
                     <li>BoriBob Inc. 사랑시 고백구 행복동</li>
                     <li>대표 : 보리밥형제들 사업자등록번호 : 780-86-01094</li>
@@ -250,20 +265,14 @@
                     <li>CopyrightⓒBoriBob Inc. All Rights Reserved.</li>
                 </ul>
             </div>
-            <div class="col-lg-2 col-12">
-                <ul class="ft-ul">
-                    <li><strong>고객센터</strong></li>
-                    <li style="height: 8px;"></li>
-                    <li>오전 10시부터 오후 6시까지</li>
-                    <li>토요일, 일요일, 공휴일 휴무</li>
-                </ul>
-            </div>
         </div>
-    </div>
 </body>
 <script>
 	$("#btn-write").on("click",function(){
 		location.href="/inquiryWrite.iq";
+	})
+	$('#main-logo').on('click', () => {
+		location.href = "/home";
 	})
 </script>
 </html>
